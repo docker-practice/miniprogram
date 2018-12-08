@@ -1,0 +1,9 @@
+.idea
+
+node_modules
+
+package-lock.json
+
+client/pages/**/*.js
+client/app.js
+client/util/*.js

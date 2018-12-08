@@ -1,0 +1,7 @@
+<import src="/towxml/entry.wxml"/>
+
+<template is="entry" data="{{...data}}"/>
+
+<view class="weui-footer">
+  <view class="weui-footer__text">Copyright ©docker_practice</view>
+</view>

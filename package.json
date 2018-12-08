@@ -1,0 +1,12 @@
+{
+  "name": "docker_practice",
+  "version": "18.12.0-alpha.0",
+  "scripts": {
+    "prettier": "npx prettier --write ./**/*.ts ./**/*.json ./**/*.md",
+    "docker": "cd docker && node serverrender.js"
+  },
+  "devDependencies": {
+    "towxml": "*",
+    "weui-wxss": "*"
+  }
+}

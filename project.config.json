@@ -1,0 +1,25 @@
+{
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.4.1",
+  "projectname": "docker",
+  "miniprogramRoot": "client/",
+  "scripts": {
+    "beforeCompile": "npm run docker && cd client && npm run compile",
+    "beforePreview": "npm run docker && cd client && npm run compile-pro",
+    "beforeUpload": "npm run docker && cd client && npm run compile-pro"
+  },
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "newFeature": true,
+    "autoAudits": false
+  },
+  "appid": "wxb830c3abf8a658a5",
+  "condition": {}
+}

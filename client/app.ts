@@ -4,6 +4,7 @@ export interface IMyApp {
   globalData: {
     userInfo?: wx.UserInfo;
     MDData: any;
+    theme: 'light' | 'dark';
   };
   towxml: any;
 }
@@ -46,6 +47,7 @@ App<IMyApp>({
   },
   globalData: {
     MDData: '',
+    theme: 'light',
   },
   towxml: new towxml(),
 });

@@ -1,8 +1,8 @@
 // pages/docker/index.js
 
-// import { IMyApp } from '../../app';
+import { IMyApp } from '../../../app';
 
-// const app = getApp<IMyApp>();
+const app = getApp<IMyApp>();
 
 const data = require('./summary.js');
 
@@ -17,11 +17,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function() {
-    wx.showLoading({
-      title: '加载中',
-    });
+  onLoad: function() {},
 
+  show() {
     // wx.request({
     // url: 'https://ci.khs1994.com/proxy_github_raw/yeasy/docker_practice/master/SUMMARY.md',
     // success:(res:any)=>{
@@ -32,12 +30,20 @@ Page({
     // });
 
     // const towxml = app.towxml.toJson(res.data, 'markdown');
-    data.theme = 'light';
+    const theme = app.globalData.theme;
+
+    data.theme = theme;
 
     this.setData!({
       data,
     });
     // },
+    // });
+
+    // wx.setNavigationBarColor({
+    //   backgroundColor: theme === 'dark' ? '#000000': '#ffffff',
+    //   frontColor: theme === 'dark' ? '#ffffff': '#000000',
+    //   animation: {},
     // });
 
     setTimeout(() => wx.hideLoading({}), 1000);
@@ -51,7 +57,9 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {},
+  onShow: function() {
+    this.show();
+  },
 
   /**
    * 生命周期函数--监听页面隐藏

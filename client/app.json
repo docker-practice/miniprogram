@@ -8,8 +8,23 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTitleText": "Docker 从入门到实践",
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#36a1f0"
+  },
+  "tabBar": {
+    "backgroundColor": "#36a1f0",
+    "color": "#fff",
+    "position": "top",
+    "list": [
+      {
+        "pagePath": "pages/docker/index/index",
+        "text": "目录"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "个人主页"
+      }
+    ]
   }
 }

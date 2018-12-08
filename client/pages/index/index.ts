@@ -13,9 +13,9 @@ Page({
   },
   //事件处理函数
   bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs',
-    });
+    // wx.navigateTo({
+    //   url: '../logs/logs',
+    // });
   },
   onLoad() {
     if (app.globalData.userInfo) {
@@ -53,5 +53,11 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true,
     });
+  },
+
+  changeTheme(res: any) {
+    const theme = res.detail.value ? 'dark' : 'light';
+
+    app.globalData.theme = theme;
   },
 });

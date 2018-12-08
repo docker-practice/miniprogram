@@ -85,7 +85,8 @@
 /*正文样式*/
 .h2w {
     font-family: "STHeitiTC-Light", "Microsoft YaHei Light", "Hiragino Sans GB", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 32rpx;
+    /* font-size: 32rpx; */
+    font-size: 35rpx;
     line-height: 1.8;
     word-wrap: break-word;
     word-wrap: break-word;
@@ -110,7 +111,8 @@
 .h2w__h1 {
     border-bottom-style: double;
     border-bottom-width: 6rpx;
-    font-size: 42rpx;
+    /* font-size: 42rpx; */
+    font-size: 45rpx;
     padding-bottom: 10rpx;
     margin-bottom: 20rpx;
 }
@@ -118,25 +120,29 @@
 .h2w__h2 {
     border-bottom-style: solid;
     border-bottom-width: 1rpx;
-    font-size: 40rpx;
+    /* font-size: 40rpx; */
+    font-size: 43rpx;
     padding-bottom: 8rpx;
     margin-bottom: 18rpx;
 }
 
 .h2w__h3 {
-    font-size: 38rpx;
+    /* font-size: 38rpx; */
+    font-size: 41rpx;
     padding-bottom: 6rpx;
     margin-bottom: 12rpx;
 }
 
 .h2w__h4 {
-    font-size: 36rpx;
+    /* font-size: 36rpx; */
+    font-size: 39rpx;
     padding-bottom: 4rpx;
     margin-bottom: 12rpx;
 }
 
 .h2w__h5 {
-    font-size: 34rpx;
+    /* font-size: 34rpx; */
+    font-size: 37rpx;
     padding-bottom: 2rpx;
     margin-bottom: 12rpx;
 }
@@ -200,7 +206,8 @@
 .h2w__pre {
     /*white-space:nowrap;*/
     padding: 20rpx;
-    font-size: 28rpx;
+    /* font-size: 28rpx; */
+    font-size: 31rpx;
     word-break: normal;
     border-width: 1rpx;
     border-style: solid;
@@ -226,7 +233,8 @@
     border-width: 1rpx;
     border-style: solid;
     border-radius: 8rpx;
-    font-size: 80%;
+    /* font-size: 80%; */
+    font-size: 90%;
     overflow-x: auto;
 }
 
@@ -249,7 +257,8 @@
     white-space: pre;
     width: 9999px;
     display: block;
-    font-size: 80%;
+    /* font-size: 80%; */
+    font-size: 110%;
 }
 
 /**列表**/

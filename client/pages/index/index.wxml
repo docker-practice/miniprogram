@@ -8,7 +8,3 @@
     </block>
   </view>
 </view>
-
-<view class="body-view">
-  <switch bindchange="changeTheme"></switch>护眼模式
-</view>

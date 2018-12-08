@@ -8,6 +8,12 @@ Page({
   },
 
   onLoad() {
+    this.show();
+  },
+
+  show(){
+    wx.showNavigationBarLoading({});
+
     const data = app.towxml.toJson(app.globalData.MDData, 'markdown');
 
     const theme = app.globalData.theme;
@@ -23,6 +29,8 @@ Page({
     //   frontColor: theme === 'dark' ? '#ffffff': '#000000',
     //   animation: {},
     // });
+
+    setTimeout(()=>wx.hideNavigationBarLoading({}),1500);
   },
   __bind_touchend() {},
   __bind_touchstart() {},

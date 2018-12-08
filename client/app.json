@@ -16,6 +16,7 @@
     "backgroundColor": "#36a1f0",
     "color": "#fff",
     "position": "top",
+    "selectedColor":"#fff",
     "list": [
       {
         "pagePath": "pages/docker/index/index",

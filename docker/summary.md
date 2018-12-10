@@ -88,7 +88,7 @@
   - [创建 Swarm 集群](../redirect/redirect?key=swarm_mode/create.md)
   - [部署服务](../redirect/redirect?key=swarm_mode/deploy.md)
   - [使用 compose 文件](../redirect/redirect?key=swarm_mode/stack.md)
-  - [管理敏感数据](../redirect/redirect?key=swarm_mode/secret.md)
+  - [管理密钥](../redirect/redirect?key=swarm_mode/secret.md)
   - [管理配置信息](../redirect/redirect?key=swarm_mode/config.md)
   - [滚动升级](../redirect/redirect?key=swarm_mode/rolling_update.md)
 - [安全](../redirect/redirect?key=security/README.md)

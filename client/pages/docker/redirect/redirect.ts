@@ -21,6 +21,11 @@ Page({
     if (key) {
       console.log(key);
 
+      // @ts-ignore
+      wx.reportAnalytics('pages', {
+        page: key,
+      });
+
       let url = `https://ci.khs1994.com/proxy_github_raw/yeasy/docker_practice/master/${key}`;
 
       if (key === 'README.md') {
@@ -76,7 +81,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function(): any {},
+  // onShareAppMessage: function(): any {},
 
   __bind_touchend() {},
   __bind_touchstart() {},

@@ -11,7 +11,7 @@ Page({
     this.show();
   },
 
-  show(){
+  show() {
     wx.showNavigationBarLoading({});
 
     const data = app.towxml.toJson(app.globalData.MDData, 'markdown');
@@ -30,7 +30,26 @@ Page({
     //   animation: {},
     // });
 
-    setTimeout(()=>wx.hideNavigationBarLoading({}),1500);
+    setTimeout(() => wx.hideNavigationBarLoading({}), 1500);
+  },
+  onShareAppMessage: function(): any {
+    return {
+      title: '开始 Docker 之旅~',
+      path: '/pages/docker/index/index',
+      imageUrl:
+        'https://gitee.com/docker_practice/docker_practice/raw/master/_images/cover.jpg',
+      success() {
+        wx.showToast({
+          title: '感谢支持',
+        });
+      },
+      fail() {
+        wx.showToast({
+          title: '转发失败',
+          icon: 'success',
+        });
+      },
+    };
   },
   __bind_touchend() {},
   __bind_touchstart() {},

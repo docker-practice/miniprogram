@@ -2,7 +2,7 @@ const Towxml = require('../client/towxml/main');
 const towxml = new Towxml();
 const fs = require('fs');
 
-const targetPath = '../client/pages/docker/index/summary.js';
+let targetPath = '../client/pages/docker/index/summary.js';
 
 try {
   fs.accessSync(targetPath);
@@ -17,4 +17,12 @@ try {
 
   // htm转towxml数据
   // let data = towxml.toJson('<h1>Article title</h1>','html');
+}
+
+targetPath = '../client/pages/docker/content/summary.ts';
+
+try {
+  fs.accessSync(targetPath);
+}catch(e){
+  fs.copyFileSync('./summary.ts',targetPath)
 }

@@ -1,5 +1,13 @@
+<progress percent="{{percent}}" stroke-width="3px" activeColor="{{progressColor}}"></progress>
+
 <import src="/towxml/entry.wxml"/>
 
 <template is="entry" data="{{...data}}">
 
 </template>
+
+<view class="weui-footer weui-footer_fixed-bottom footer-btn">
+  <button bindtap="before" wx:if="{{before_key}}">上一页</button>
+  <button bindtap="menu">目录</button>
+  <button bindtap="next" wx:if="{{next_key}}">下一页</button>
+</view>

@@ -3,7 +3,9 @@
   "version": "18.12.0-alpha.0",
   "scripts": {
     "prettier": "npx prettier --write ./**/*.ts ./**/*.json ./**/*.md",
-    "docker": "cd docker && node serverrender.js"
+    "predocker": "cd docker && php tojson.php",
+    "docker": "cd docker && node serverrender.js",
+    "cleanup": "npx rimraf docker/summary.ts client/pages/docker/content/summary.ts client/pages/docker/index/summary.js"
   },
   "devDependencies": {
     "towxml": "*",

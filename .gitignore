@@ -6,4 +6,7 @@ package-lock.json
 
 client/pages/**/*.js
 client/app.js
-client/util/*.js
+client/utils/*.js
+client/pages/docker/content/summary.ts
+
+docker/summary.ts

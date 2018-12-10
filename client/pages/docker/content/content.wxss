@@ -5,4 +5,10 @@
 
 .weui-footer__text {
   font-size: 40rpx;
+  margin-bottom: 15vh;
+}
+
+button {
+  display: inline-block;
+  width: 32.4vw;
 }

@@ -8,3 +8,16 @@
 .weui-footer__text {
   font-size: 40rpx;
 }
+
+.h2w__h1 {
+  color: #36a1f0;
+}
+
+.h2w-light .h2w__a {
+  color: #36a1f0;
+}
+
+.h2w__a {
+  border-bottom-style: none;
+  font-size: 40rpx;
+}

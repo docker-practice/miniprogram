@@ -1,1 +1,8 @@
-{}
+{
+  "usingComponents": {
+    "i-drawer": "/iviewui/dist/drawer/index",
+    "i-tab-bar": "/iviewui/dist/tab-bar/index",
+    "i-tab-bar-item": "/iviewui/dist/tab-bar-item/index",
+    "i-notice-bar": "/iviewui/dist/notice-bar/index"
+  }
+}

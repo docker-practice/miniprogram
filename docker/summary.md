@@ -1,4 +1,4 @@
-# [Docker — 从入门到实践](https://github.com/yeasy/docker_practice/blob/master/SUMMARY.md)
+# Docker — 从入门到实践
 
 - [前言](../content/content?key=README.md)
 - [修订记录](../content/content?key=CHANGELOG.md)

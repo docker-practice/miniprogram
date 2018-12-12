@@ -5,10 +5,19 @@
 
 .weui-footer__text {
   font-size: 40rpx;
-  margin-bottom: 15vh;
+  margin-bottom: 11vh;
 }
 
 button {
   display: inline-block;
   width: 32.4vw;
+}
+
+.h2w-light .h2w__a {
+  color: #36a1f0;
+  border-bottom-color: #36a1f0;
+}
+
+.h2w__a {
+  border-bottom-color: #36a1f0;
 }

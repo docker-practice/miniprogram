@@ -58,6 +58,7 @@ App<IMyApp>({
   globalData: {
     MDData: '',
     theme: 'light',
+    baseUrl: 'https://gitee.com/docker_practice/docker_practice/raw/master',
   },
   towxml: new towxml(),
 });

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "i-cell-group": "/iviewui/dist/cell-group/index",
+    "i-cell": "/iviewui/dist/cell/index",
+    "i-switch": "/iviewui/dist/switch/index",
+    "i-panel": "/iviewui/dist/panel/index"
+  }
+}

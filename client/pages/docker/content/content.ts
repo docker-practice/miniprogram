@@ -266,8 +266,9 @@ Page({
       page: key,
     });
 
-    const base_url =
-      'https://gitee.com/docker_practice/docker_practice/raw/master';
+    // const base_url = 'https://gitee.com/docker_practice/docker_practice/raw/master';
+
+    const base_url = app.globalData.baseUrl;
 
     // let url = `https://ci.khs1994.com/proxy_github_raw/yeasy/docker_practice/master/${key}`;
 
@@ -379,7 +380,7 @@ Page({
     // console.log(res);
   },
 
-  __bind_tap() {},
+  __bind_tap() { },
 
-  __bind_touchcancel() {},
+  __bind_touchcancel() { },
 });

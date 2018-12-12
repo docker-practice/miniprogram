@@ -1,0 +1,17 @@
+<i-panel>
+<i-cell-group>
+  <i-cell title="开关">
+    <i-switch slot="footer" value="{{switch}}" bind:change="onChange">
+      <i-icon type="right" slot="open"></i-icon>
+      <i-icon type="close" slot="close"></i-icon>
+    </i-switch>
+  </i-cell>
+
+  <i-cell title="开关">
+    <i-switch value="{{ switch1 }}" bind:change="onChange" slot="footer">
+        <i-icon type="right" slot="open"></i-icon>
+        <i-icon type="close" slot="close"></i-icon>
+    </i-switch>
+</i-cell>
+</i-cell-group>
+</i-panel>

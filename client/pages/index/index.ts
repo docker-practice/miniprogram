@@ -89,10 +89,14 @@ Page({
     });
   },
 
+  changeMirror(){
+    app.globalData.baseUrl = 'https://code.aliyun.com/khs1994-docker/docker_practice/raw/master'
+  },
+
   settings() {
     let theme = wx.getStorageSync('theme');
 
-    let itemList = ['清理缓存', '暗黑模式', '技术交流'];
+    let itemList = ['清理缓存', '暗黑模式', '技术交流', '切换源','更多设置'];
 
     theme === 'dark' ? (itemList[1] = '明亮模式') : '';
 
@@ -112,6 +116,14 @@ Page({
             break;
           case 2:
             this.copyLink();
+            break;
+          case 3:
+            this.changeMirror();
+            break;
+          case 4:
+            wx.navigateTo({
+              url: '../settings/index'
+            });
             break;
         }
       },

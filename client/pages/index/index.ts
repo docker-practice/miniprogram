@@ -55,9 +55,66 @@ Page({
     });
   },
 
-  changeTheme(res: any) {
-    const theme = res.detail.value ? 'dark' : 'light';
+  changeTheme() {
+    let theme = wx.getStorageSync('theme');
+    theme = theme === 'dark' ? 'light' : 'dark';
+
+    wx.setStorage({
+      key: 'theme',
+      data: theme,
+    });
 
     app.globalData.theme = theme;
+  },
+
+  clearStorage() {
+    wx.clearStorage({
+      success() {
+        wx.showToast({
+          title: 'success',
+        });
+      },
+    });
+  },
+
+  copyLink() {
+    wx.setClipboardData({
+      data: 'https://github.com/yeasy/docker_practice/issues',
+    });
+
+    wx.showModal({
+      title: 'GitHub',
+      content: '浏览器粘贴链接，在项目 GitHub 交流',
+      showCancel: false,
+    });
+  },
+
+  settings() {
+    let theme = wx.getStorageSync('theme');
+
+    let itemList = ['清理缓存', '暗黑模式', '技术交流'];
+
+    theme === 'dark' ? (itemList[1] = '明亮模式') : '';
+
+    wx.showActionSheet({
+      itemList,
+      success: res => {
+        let index = res.tapIndex;
+
+        console.log(index);
+
+        switch (index) {
+          case 0:
+            this.clearStorage();
+            break;
+          case 1:
+            this.changeTheme();
+            break;
+          case 2:
+            this.copyLink();
+            break;
+        }
+      },
+    });
   },
 });

@@ -3,9 +3,13 @@
 @import '/towxml/style/theme/dark.wxss';
 @import '/weui/weui.wxss';
 
+page {
+  height: 100%;
+}
+
 .weui-footer__text {
   font-size: 40rpx;
-  margin-bottom: 11vh;
+  padding-bottom: 11vh;
 }
 
 button {
@@ -18,6 +22,15 @@ button {
   border-bottom-color: #36a1f0;
 }
 
+.h2w-dark .h2w__a {
+  color: #36a1f0;
+  border-bottom-color: #36a1f0;
+}
+
 .h2w__a {
   border-bottom-color: #36a1f0;
+}
+
+.dark {
+  background: #000!important;
 }

@@ -21,6 +21,8 @@ Page({
     MDData: '',
     folder: '',
     showNotice: true,
+    noticeBGColor: '#fff',
+    tabbarMode: 'light',
   },
   onUnload() {
     app.globalData.MDData = '';
@@ -29,12 +31,35 @@ Page({
     console.log('onload');
     this.load(options);
   },
+  onPullDownRefresh() {
+    this.request(this.data.key, false);
+
+    setTimeout(() => wx.stopPullDownRefresh({}), 2000);
+  },
   load(options: any) {
+    let theme: any = app.globalData.theme;
+
+    const noticeBGColor = theme === 'dark' ? '#000000' : '#ffffff';
+
+    if (noticeBGColor === '#000000') {
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: noticeBGColor,
+        animation: {},
+      });
+
+      wx.setBackgroundColor({
+        backgroundColor: noticeBGColor,
+      });
+    }
+
     wx.showNavigationBarLoading({});
     this.setData!({
       percent: 0,
       progressColor: '#36a1f0',
       showNotice: true,
+      noticeBGColor,
+      tabbarMode: theme,
     });
     // let time = 1;
 
@@ -50,14 +75,14 @@ Page({
 
     let key = options.key;
 
-    let next_key = next(key);
-    let before_key = before(key);
-
     let folder = this.getFolder(key);
 
     this.setData!({
       folder,
     });
+
+    let next_key = next(key);
+    let before_key = before(key);
 
     next_key = next_key ? next_key : '';
     before_key = before_key ? before_key : '';
@@ -87,12 +112,23 @@ Page({
     return key_array.join('/') + '/';
   },
 
-  show() {
-    const data = app.towxml.toJson(this.data.MDData, 'markdown');
+  show(key: string, isCache: boolean = false) {
+    let data;
+
+    if (isCache) {
+      data = JSON.parse(wx.getStorageSync(key));
+    } else {
+      data = app.towxml.toJson(this.data.MDData, 'markdown');
+
+      wx.setStorage({
+        key,
+        data: JSON.stringify(data),
+      });
+    }
 
     const theme = app.globalData.theme;
-
     data.theme = theme;
+    console.log(theme);
 
     this.setData!({
       data,
@@ -206,12 +242,24 @@ Page({
     });
   },
 
-  request(key: any) {
+  request(key: any, cache: boolean = true) {
     if (!key) {
       return;
     }
 
     console.log(key);
+
+    wx.getStorageInfo({
+      success(res) {
+        console.log(res);
+      },
+    });
+
+    if (cache && wx.getStorageSync(key)) {
+      this.show(key, true);
+
+      return;
+    }
 
     // @ts-ignore
     wx.reportAnalytics('pages', {
@@ -225,10 +273,9 @@ Page({
 
     let url = `${base_url}/${key}`;
 
-    if (key === 'README.md') {
+    if (key === 'README.md' || key === 'miniprogram.md') {
       // url = 'https://ci.khs1994.com/proxy_github_raw/khs1994-docker/docker_practice/master/README.md';
-      url =
-        'https://gitee.com/khs1994-docker/docker_practice/raw/master/README.md';
+      url = `https://gitee.com/khs1994-docker/docker_practice/raw/master/${key}`;
     }
 
     wx.request({
@@ -242,13 +289,13 @@ Page({
               success(res) {
                 const networkType = res.networkType;
 
-                if (networkType !== 'wifi') {
-                  wx.showToast({
-                    title: '无图模式',
-                  });
-
-                  reject('not wifi');
-                }
+                // if (networkType !== 'wifi') {
+                //   wx.showToast({
+                //     title: '无图模式',
+                //   });
+                //
+                //   reject('not wifi');
+                // }
 
                 resolve(networkType);
               },
@@ -279,14 +326,14 @@ Page({
               MDData,
             });
 
-            this.show();
+            this.show(key);
           })
           .catch(() => {
             this.setData!({
               MDData,
             });
 
-            this.show();
+            this.show(key);
           });
       },
       fail() {

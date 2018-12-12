@@ -1,8 +1,8 @@
 // pages/docker/index.js
 
-import { IMyApp } from '../../../app';
+// import { IMyApp } from '../../../app';
 
-const app = getApp<IMyApp>();
+// const app = getApp<IMyApp>();
 
 const data = require('./summary.js');
 
@@ -30,9 +30,9 @@ Page({
     // });
 
     // const towxml = app.towxml.toJson(res.data, 'markdown');
-    const theme = app.globalData.theme;
+    // const theme = app.globalData.theme;
 
-    data.theme = theme;
+    // data.theme = theme;
 
     this.setData!({
       data,
@@ -90,6 +90,7 @@ Page({
       imageUrl:
         'https://gitee.com/docker_practice/docker_practice/raw/master/_images/cover.jpg',
       success() {
+        console.log(1);
         wx.showToast({
           title: '感谢支持',
         });

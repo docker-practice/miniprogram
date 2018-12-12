@@ -1,7 +1,7 @@
 <!-- <progress percent="{{percent}}" stroke-width="3px" activeColor="{{progressColor}}"></progress> -->
-
+<view style="height:100%;background-color:{{noticeBGColor}}">
 <i-notice-bar icon="systemprompt" loop
-wx:if="{{showNotice}}" backgroundcolor="#fff" color="#36a1f0"
+wx:if="{{showNotice}}" backgroundcolor="{{noticeBGColor}}" color="#36a1f0"
 speed="1200"
 >
 《Docker 技术入门与实战》第三版已经面世，介绍最新的容器技术栈，欢迎大家阅读使用并反馈建议。
@@ -21,8 +21,9 @@ speed="1200"
 <template is="entry" data="{{...MenuData}}"/>
 </i-drawer>
 
-<i-tab-bar fixed bind:change="tabbar">
+<i-tab-bar fixed bind:change="tabbar" i-class="{{tabbarMode}}">
   <i-tab-bar-item key="before" icon="return" wx:if="{{before_key}}"></i-tab-bar-item>
   <i-tab-bar-item key="menu" icon="createtask"></i-tab-bar-item>
   <i-tab-bar-item key="next" icon="enter" wx:if="{{next_key}}"></i-tab-bar-item>
 </i-tab-bar>
+</view>

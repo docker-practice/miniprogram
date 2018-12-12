@@ -4,7 +4,7 @@
     "ignore": []
   },
   "compileType": "miniprogram",
-  "libVersion": "2.4.1",
+  "libVersion": "2.4.2",
   "projectname": "docker",
   "miniprogramRoot": "client/",
   "scripts": {
@@ -21,5 +21,25 @@
     "autoAudits": false
   },
   "appid": "wxb830c3abf8a658a5",
-  "condition": {}
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "plugin": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "miniprogram": {
+      "current": -1,
+      "list": []
+    }
+  }
 }

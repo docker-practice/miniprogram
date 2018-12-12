@@ -4,7 +4,8 @@ export interface IMyApp {
   globalData: {
     userInfo?: wx.UserInfo;
     MDData: any;
-    theme: 'light' | 'dark';
+    theme?: 'light' | 'dark';
+    [index: string]: any;
   };
   towxml: any;
 }
@@ -13,10 +14,19 @@ const towxml = require('/towxml/main.js');
 
 App<IMyApp>({
   onLaunch() {
+    // 获取主题
+    wx.getStorage({
+      key: 'theme',
+      success: res => {
+        console.log(res);
+        this.globalData.theme = res.data ? <'light' | 'dark'>res.data : 'light';
+      },
+    });
+
     // 展示本地存储能力
-    var logs: number[] = wx.getStorageSync('logs') || [];
-    logs.unshift(Date.now());
-    wx.setStorageSync('logs', logs);
+    // var logs: number[] = wx.getStorageSync('logs') || [];
+    // logs.unshift(Date.now());
+    // wx.setStorageSync('logs', logs);
 
     // 登录
     wx.login({

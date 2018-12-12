@@ -4,6 +4,8 @@ speed="1200" backgroundcolor="#fff" color="#36a1f0"
 《Docker 技术入门与实战》第三版已经面世，介绍最新的容器技术栈，欢迎大家阅读使用并反馈建议。
 </i-notice-bar>
 
+<!-- <official-account></official-account> -->
+
 <import src="/towxml/entry.wxml"/>
 
 <template is="entry" data="{{...data}}"/>

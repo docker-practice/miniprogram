@@ -97,9 +97,22 @@ Page({
   settings() {
     let theme = wx.getStorageSync('theme');
 
-    let itemList = ['分享', '暗黑模式', '技术交流', '更多设置'];
+    let itemList = ['分享', '暗黑模式', '技术交流', '登录 GitHub', '更多设置'];
 
     theme === 'dark' ? (itemList[1] = '明亮模式') : '';
+
+    const fs = wx.getFileSystemManager();
+
+    let token: any;
+    let tokenFile = `${wx.env.USER_DATA_PATH}/token`;
+
+    try {
+      token = fs.readFileSync(tokenFile);
+    } catch (e) {}
+
+    if (token) {
+      itemList[3] = '登出 GitHub';
+    }
 
     wx.showActionSheet({
       itemList,
@@ -125,6 +138,19 @@ Page({
             this.copyLink();
             break;
           case 3:
+            if (token) {
+              fs.unlink({
+                filePath: tokenFile,
+              });
+
+              return;
+            }
+
+            wx.navigateTo({
+              url: '../login/index',
+            });
+            break;
+          case 4:
             wx.navigateTo({
               url: '../settings/index',
             });

@@ -1,0 +1,7 @@
+<form bindsubmit="login">
+<input placeholder="GitHub Username" name="username" id="username"
+auto-focus></input>
+<input placeholder="Password" type="password" name="password" id="password"
+></input>
+<button form-type="submit" loading="{{isloading}}">登录</button>
+</form>

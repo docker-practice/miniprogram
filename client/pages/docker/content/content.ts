@@ -4,6 +4,8 @@ const app = getApp<IMyApp>();
 import { next, before } from './next_page';
 // const MenuData = require('../index/summary.js');
 
+const fs = wx.getFileSystemManager();
+
 Page({
   data: {
     data: '',
@@ -24,6 +26,12 @@ Page({
     noticeBGColor: '#fff',
     tabbarMode: 'light',
     lazy: true,
+    theme: 'light',
+    note: '',
+    noteTitle: '',
+    textareaValue: '',
+    textareaTitleValue: '',
+    isLoading: false,
   },
   onUnload() {
     app.globalData.MDData = '';
@@ -61,6 +69,7 @@ Page({
       showNotice: true,
       noticeBGColor,
       tabbarMode: theme,
+      theme,
     });
     // let time = 1;
 
@@ -377,20 +386,144 @@ Page({
     //   startY,
     // });
   },
-
   __bind_touchmove() {
     // console.log('触摸中');
     // console.log(res);
   },
-
   __bind_tap() {},
-
   __bind_touchcancel() {},
-
   adError(e: any) {
     console.log(e);
   },
   adSuccess(res: any) {
     console.log(res);
+  },
+  inputNote(res: any) {
+    // this.checkToken();
+
+    this.setData!({
+      note: res.detail.value,
+    });
+  },
+  inputNoteTitle(res: any) {
+    // this.checkToken();
+
+    this.setData!({
+      noteTitle: res.detail.value,
+    });
+  },
+  checkToken() {
+    let token;
+    try {
+      token = fs.readFileSync(`${wx.env.USER_DATA_PATH}/token`, 'base64');
+    } catch (e) {
+      token = '';
+    }
+    if (!token) {
+      wx.showModal({
+        title: '未登录 GitHub',
+        content: '点击确定登录 GitHub 账户',
+        success: (res: any) => {
+          res.confirm === true &&
+            wx.navigateTo({
+              url: '/pages/login/index',
+            });
+        },
+      });
+
+      throw new Error('login first');
+    }
+  },
+  // 提交 issue
+  pushNote() {
+    this.checkToken();
+
+    const note = this.data.note;
+    const noteTitle = this.data.noteTitle;
+
+    if (!note || !noteTitle) {
+      wx.showToast({
+        title: '请输入标题及内容',
+        icon: 'none',
+      });
+
+      return;
+    }
+
+    this.setData!({
+      isLoading: true,
+    });
+
+    wx.showModal({
+      title: noteTitle,
+      content: note,
+      showCancel: false,
+    });
+
+    // const repo = 'khs1994/docker_practice_miniprogram';
+    const repo = 'yeasy/docker_practice';
+
+    const token = fs.readFileSync(`${wx.env.USER_DATA_PATH}/token`, 'base64');
+
+    // console.log(token);
+
+    wx.request({
+      url: 'https://ci.khs1994.com/proxy_github_api/repos/' + repo + '/issues',
+      method: 'POST',
+      data: {
+        title: noteTitle,
+        body:
+          note +
+          '\n' +
+          `
+
+## This issue from docker_practice miniprogram
+
+> [${this.data.key}](https://github.com/yeasy/docker_practice/blob/master/${
+            this.data.key
+          })
+`,
+      },
+      header: {
+        Authorization: 'Basic ' + token,
+      },
+      success: (res: any) => {
+        if (res.statusCode !== 201) {
+          this.pushNodeError(res);
+
+          return;
+        }
+
+        wx.showModal({
+          title: '提交成功',
+          content: '请登录 GitHub 查看最新回复',
+          showCancel: false,
+          success: () => {
+            this.setData!({
+              textareaValue: '',
+              textareaTitleValue: '',
+              note: '',
+              noteTitle: '',
+            });
+          },
+        });
+      },
+      fail: (e: any) => {
+        this.pushNodeError(e);
+      },
+      complete: () => {
+        this.setData!({
+          isLoading: false,
+        });
+      },
+    });
+  },
+  // 提交 note 出现错误
+  pushNodeError(e: any) {
+    wx.showModal({
+      title: '提交失败',
+      content: JSON.stringify(e),
+      showCancel: false,
+    });
   },
 });

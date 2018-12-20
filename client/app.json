@@ -3,7 +3,8 @@
     "pages/docker/index/index",
     "pages/docker/content/content",
     "pages/index/index",
-    "pages/settings/index"
+    "pages/settings/index",
+    "pages/login/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

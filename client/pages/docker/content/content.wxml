@@ -17,9 +17,36 @@ speed="1200"
   <button bindtap="next" wx:if="{{next_key}}">下一页</button>
 </view> -->
 
+<!--
 <i-drawer mode="left" visible="{{showMenu}}" bind:close="menuClose">
 <template is="entry" data="{{...MenuData}}"/>
 </i-drawer>
+-->
+
+<view wx:if="{{theme === 'dark'}}" class="dark">
+<textarea bindinput="inputNoteTitle" placeholder="请输入标题..." class="dark-title"
+value="{{textareaTitleValue}}"
+></textarea>
+
+<textarea bindinput="inputNote" class="dark" placeholder="请输入您学习本节遇到的问题...(支持 Markdown 格式)"
+maxlength='-1' value="{{textareaValue}}">
+</textarea>
+
+<i-button bind:click="pushNote" size="large">提交到 GitHub</i-button>
+<view class="note-list"></view>
+</view>
+
+<view wx:else class="light">
+<textarea bindinput="inputNoteTitle" placeholder="请输入标题..." class="light-title"
+value="{{textareaTitleValue}}"></textarea>
+
+<textarea bindinput="inputNote" class="light" placeholder="请输入您学习本节遇到的问题...(支持 Markdown 格式)"
+maxlength='-1' value="{{textareaValue}}">
+</textarea>
+
+<i-button bind:click="pushNote" size="large" loading="{{isLoading}}">提交到 GitHub</i-button>
+<view class="note-list"></view>
+</view>
 
 <i-tab-bar fixed bind:change="tabbar" i-class="{{tabbarMode}}">
   <i-tab-bar-item key="before" icon="return" wx:if="{{before_key}}"></i-tab-bar-item>

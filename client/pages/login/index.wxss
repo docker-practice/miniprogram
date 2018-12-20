@@ -1,0 +1,25 @@
+page {
+  background-color: #36a1f0;
+}
+
+#username {
+  border-bottom: 1px solid #fff;
+  margin-bottom: 2vh;
+  color: #fff;
+  height: 10vh;
+}
+
+#password {
+  border-bottom: 1px solid #fff;
+  height: 10vh;
+  color: #fff;
+  margin-bottom: 2vh;
+}
+
+.input-placeholder{
+  color: #fff;
+}
+
+.loginButton {
+  color: #36a1f0!important;
+}

@@ -23,6 +23,7 @@ Page({
     showNotice: true,
     noticeBGColor: '#fff',
     tabbarMode: 'light',
+    lazy: true,
   },
   onUnload() {
     app.globalData.MDData = '';
@@ -128,6 +129,8 @@ Page({
 
     const theme = app.globalData.theme;
     data.theme = theme;
+    data.footer = true;
+    data.ad = false;
     console.log(theme);
 
     this.setData!({
@@ -380,7 +383,14 @@ Page({
     // console.log(res);
   },
 
-  __bind_tap() { },
+  __bind_tap() {},
 
-  __bind_touchcancel() { },
+  __bind_touchcancel() {},
+
+  adError(e: any) {
+    console.log(e);
+  },
+  adSuccess(res: any) {
+    console.log(res);
+  },
 });

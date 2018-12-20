@@ -5,8 +5,9 @@
       <block wx:for="{{child}}" wx:key="{{index}}">
         <template is="m0" data="{{item}}"/>
       </block>
+      <!--<ad wx:if="{{ad}}" unit-id="1" bindload="adSuccess" binderror="adError"></ad>-->
       <view class="weui-footer">
-        <view class="weui-footer__text">Copyright ©docker_practice</view>
+        <view class="weui-footer__text" wx:if="{{footer}}">Copyright ©docker_practice</view>
       </view>
     </view>
   </view>

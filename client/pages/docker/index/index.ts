@@ -12,6 +12,8 @@ Page({
    */
   data: {
     data: '',
+    lazy: false,
+    spinShow: true,
   },
 
   /**
@@ -34,6 +36,9 @@ Page({
 
     // data.theme = theme;
 
+    data.footer = false;
+    data.ad = false;
+
     this.setData!({
       data,
     });
@@ -46,7 +51,14 @@ Page({
     //   animation: {},
     // });
 
-    setTimeout(() => wx.hideLoading({}), 1000);
+    setTimeout(() => {
+      wx.hideLoading({});
+
+      this.setData!({
+        lazy: true,
+        spinShow: false,
+      });
+    }, 1000);
   },
 
   /**
@@ -111,4 +123,10 @@ Page({
   __bind_touchmove() {},
 
   __bind_touchcancel() {},
+  adError(e: any) {
+    console.log(e);
+  },
+  adSuccess(res: any) {
+    console.log(res);
+  },
 });

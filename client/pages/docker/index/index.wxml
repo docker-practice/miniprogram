@@ -1,10 +1,14 @@
 <i-notice-bar icon="systemprompt" loop
-speed="1200" backgroundcolor="#fff" color="#36a1f0"
+speed="1200" backgroundcolor="#fff" color="#36a1f0" wx:if="{{lazy}}"
 >
 《Docker 技术入门与实战》第三版已经面世，介绍最新的容器技术栈，欢迎大家阅读使用并反馈建议。
 </i-notice-bar>
 
 <!-- <official-account></official-account> -->
+
+<view class="container" wx:if="{{spinShow}}">
+  <i-spin fix></i-spin>
+</view>
 
 <import src="/towxml/entry.wxml"/>
 

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "i-notice-bar": "/iviewui/dist/notice-bar/index"
+    "i-notice-bar": "/iviewui/dist/notice-bar/index",
+    "i-spin": "/iviewui/dist/spin/index"
   }
 }

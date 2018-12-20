@@ -89,14 +89,15 @@ Page({
     });
   },
 
-  changeMirror(){
-    app.globalData.baseUrl = 'https://code.aliyun.com/khs1994-docker/docker_practice/raw/master'
+  changeMirror() {
+    app.globalData.baseUrl =
+      'https://code.aliyun.com/khs1994-docker/docker_practice/raw/master';
   },
 
   settings() {
     let theme = wx.getStorageSync('theme');
 
-    let itemList = ['清理缓存', '暗黑模式', '技术交流', '切换源','更多设置'];
+    let itemList = ['分享', '暗黑模式', '技术交流', '更多设置'];
 
     theme === 'dark' ? (itemList[1] = '明亮模式') : '';
 
@@ -109,7 +110,13 @@ Page({
 
         switch (index) {
           case 0:
-            this.clearStorage();
+            wx.previewImage({
+              current:
+                'https://gitee.com/khs1994-docker/docker_practice/raw/master/gh_410be172deaa_344.jpg',
+              urls: [
+                'https://gitee.com/khs1994-docker/docker_practice/raw/master/gh_410be172deaa_344.jpg',
+              ],
+            });
             break;
           case 1:
             this.changeTheme();
@@ -118,11 +125,8 @@ Page({
             this.copyLink();
             break;
           case 3:
-            this.changeMirror();
-            break;
-          case 4:
             wx.navigateTo({
-              url: '../settings/index'
+              url: '../settings/index',
             });
             break;
         }

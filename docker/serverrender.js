@@ -19,7 +19,7 @@ try {
   // let data = towxml.toJson('<h1>Article title</h1>','html');
 }
 
-targetPath = '../client/pages/docker/content/summary.ts';
+targetPath = '../client/pages/docker/content/util/summary.ts';
 
 try {
   fs.accessSync(targetPath);

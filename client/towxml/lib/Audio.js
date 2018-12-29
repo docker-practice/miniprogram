@@ -1,5 +1,4 @@
-module.exports = (option) => {
-    option = option || {};
+module.exports = (option = {}) => {
     const app = option.app;
 
     class Audio {
@@ -84,7 +83,7 @@ module.exports = (option) => {
         }
 
         // 创建播放器
-        createPlayer() {
+        createPlayer(){
             const _ts = this;
 
             let option = _ts.option,
@@ -155,20 +154,18 @@ module.exports = (option) => {
         }
 
         // 数字补位
-        // fillIn = val => {
-        //     return `${val < 10 ? '0' : ''}${val}`;
-        // }
+        fillIn(val) {
+            return `${val < 10 ? '0' : ''}${val}`;
+        }
 
         // 格式化时间
-        //formatTime = time => {
-            // let fillIn = this.fillIn,
-            //     second = Math.floor(time % 60),
-            //     minute = Math.floor(time / 60 % 60),
-            //     hour = Math.floor(time / 60 / 60);
-            // return `${fillIn(hour)}:${fillIn(minute)}:${fillIn(second)}`;
-
-          //  return `1:2:3`;
-        //}
+        formatTime(time){
+            let fillIn = this.fillIn,
+                second = Math.floor(time % 60),
+                minute = Math.floor(time / 60 % 60),
+                hour = Math.floor(time / 60 / 60);
+            return `${fillIn(hour)}:${fillIn(minute)}:${fillIn(second)}`;
+        }
     };
     return new Audio(option);
 };

@@ -1,7 +1,7 @@
 import { IMyApp } from '../../../app';
 
 const app = getApp<IMyApp>();
-import { next, before } from './next_page';
+import { next, before } from './util/next_page';
 // const MenuData = require('../index/summary.js');
 
 const fs = wx.getFileSystemManager();
@@ -32,7 +32,7 @@ Page({
     textareaValue: '',
     textareaTitleValue: '',
     isLoading: false,
-    statusBarHeight: '20',
+    statusBarHeight: 20,
     // spinShow: false,
     show: false,
   },
@@ -73,7 +73,7 @@ Page({
       });
     }
 
-    wx.showNavigationBarLoading({});
+    wx.showNavigationBarLoading();
     this.setData!({
       percent: 0,
       progressColor: '#36a1f0',
@@ -160,6 +160,7 @@ Page({
     // });
 
     this.setData!({
+      // @ts-ignore
       data: {},
     });
 
@@ -171,7 +172,7 @@ Page({
       //   progressColor: '#fff',
       // });
 
-      wx.hideNavigationBarLoading({});
+      wx.hideNavigationBarLoading();
 
       this.setData!({
         // 去掉加载动画
@@ -301,8 +302,8 @@ Page({
       return;
     }
 
-    // @ts-ignore
     wx.reportAnalytics('pages', {
+      // @ts-ignore
       page: key,
     });
 

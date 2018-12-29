@@ -3,10 +3,11 @@
 node_modules
 
 package-lock.json
+yarn.lock
 
 client/pages/**/*.js
 client/app.js
 client/utils/*.js
-client/pages/docker/content/summary.ts
+client/pages/docker/content/util/summary.ts
 
 docker/summary.ts

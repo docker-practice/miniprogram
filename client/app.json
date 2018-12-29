@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/docker/index/index",
-    "pages/docker/content/content",
+    "pages/docker/content/index",
     "pages/index/index",
     "pages/settings/index",
     "pages/login/index"

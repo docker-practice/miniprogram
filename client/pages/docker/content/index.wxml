@@ -2,8 +2,8 @@
 <view style="height:100%;background-color:{{noticeBGColor}}">
 
 <view
-style="height:{{statusBarHeight}}px;width:100%;background-color:#36a1f0;position:fixed"
->
+style="height:{{statusBarHeight}}px;width:100%;background-color:{{noticeBGColor}};position:fixed"
+wx:if="{{showFixedStatusBar}}">
 </view>
 
 <view style="padding-top:{{statusBarHeight}}px">

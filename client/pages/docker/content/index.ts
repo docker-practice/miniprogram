@@ -1,10 +1,16 @@
 import { IMyApp } from '../../../app';
-
 const app = getApp<IMyApp>();
-import { next, before } from './util/next_page';
-// const MenuData = require('../index/summary.js');
 
 const fs = wx.getFileSystemManager();
+
+import { next, before } from './util/next_page';
+// const MenuData = require('../index/summary.js');
+import getFolder from './util/getFolder';
+import Token from './util/Token';
+import Issue from './util/Issue';
+import Request from './util/Request';
+import Show from './util/Show';
+import Style from './util/Style';
 
 Page({
   data: {
@@ -12,76 +18,114 @@ Page({
     key: '',
     next_key: '',
     before_key: '',
-    startX: '',
-    startY: '',
-    endX: '',
-    endY: '',
-    percent: 0,
-    intervalNum: 0,
-    progressColor: '#36a1f0',
-    showMenu: false,
+    // startX: '',
+    // startY: '',
+    // endX: '',
+    // endY: '',
+    // percent: 0,
+    // intervalNum: 0,
+    // progressColor: '#36a1f0',
+    // showMenu: false,
     MDData: '',
     folder: '',
     showNotice: true,
     noticeBGColor: '#fff',
     tabbarMode: 'light',
-    lazy: true,
+    // lazy: true,
     theme: 'light',
     note: '',
     noteTitle: '',
     textareaValue: '',
     textareaTitleValue: '',
     isLoading: false,
-    statusBarHeight: 20,
+    statusBarHeight: 0,
     // spinShow: false,
     show: false,
+    hideFirst: true,
+    showFixedStatusBar: false,
   },
+
   onUnload() {
-    app.globalData.MDData = '';
+    // app.globalData.MDData = '';
   },
-  onLoad(options: any) {
-    console.log('onload');
-    this.load(options);
-  },
+
   onPullDownRefresh() {
+    this.setData!({
+      hideFirst: false,
+    });
+
     this.request(this.data.key, false);
 
-    setTimeout(() => wx.stopPullDownRefresh({}), 2000);
+    setTimeout(() => {
+      wx.stopPullDownRefresh();
+      this.setData!({
+        hideFirst: true,
+      });
+    }, 2000);
   },
-  load(options: any) {
-    let theme: any = app.globalData.theme;
 
+  onLoad(options: any) {
+    // console.log('onload');
+    this.load(options);
+  },
+
+  // 分享按钮
+  onShareAppMessage() {
+    return {
+      title: '开始 Docker 之旅~',
+      path: '/pages/docker/index/index',
+      imageUrl:
+        'https://gitee.com/docker_practice/docker_practice/raw/master/_images/cover.jpg',
+      success() {
+        wx.showToast({
+          title: '感谢支持',
+        });
+      },
+      fail() {
+        wx.showToast({
+          title: '转发失败',
+          icon: 'success',
+        });
+      },
+    };
+  },
+
+  // 系统事件 end
+
+  // 处理加载事件
+  load(options: any) {
+    const theme: any = app.globalData.theme;
     const noticeBGColor = theme === 'dark' ? '#000000' : '#ffffff';
 
+    // 获取状态栏（信号栏）高度
     wx.getSystemInfo({
       success: res => {
+        if (res.version.split('.')[0] === '6') {
+          return;
+        }
+
         this.setData!({
+          showFixedStatusBar: true,
           statusBarHeight: res.statusBarHeight,
         });
       },
     });
 
-    if (noticeBGColor === '#000000') {
-      wx.setNavigationBarColor({
-        frontColor: '#ffffff',
-        backgroundColor: noticeBGColor,
-        animation: {},
-      });
+    Style(noticeBGColor);
 
-      wx.setBackgroundColor({
-        backgroundColor: noticeBGColor,
-      });
-    }
-
+    // 加载中
     wx.showNavigationBarLoading();
-    this.setData!({
-      percent: 0,
-      progressColor: '#36a1f0',
-      showNotice: true,
-      noticeBGColor,
-      tabbarMode: theme,
-      theme,
-    });
+
+    const key = options.key;
+    const folder = getFolder(key);
+    let next_key = next(key);
+    let before_key = before(key);
+
+    next_key = next_key ? next_key : '';
+    before_key = before_key ? before_key : '';
+
+    // console.log(before_key, key, next_key);
+
     // let time = 1;
 
     // let intervalNum = setInterval(() => {
@@ -94,75 +138,30 @@ Page({
     //   });
     // }, 20);
 
-    let key = options.key;
-
-    let folder = this.getFolder(key);
-
     this.setData!({
+      // percent: 0,
+      // progressColor: '#36a1f0',
+      // showNotice: true,
+      noticeBGColor,
+      tabbarMode: theme,
+      theme,
       folder,
-    });
-
-    let next_key = next(key);
-    let before_key = before(key);
-
-    next_key = next_key ? next_key : '';
-    before_key = before_key ? before_key : '';
-
-    this.setData!({
       key,
       next_key,
       before_key,
-      // intervalNum,
     });
-
-    console.log(before_key, key, next_key);
 
     this.request(key);
   },
 
-  getFolder(key: string) {
-    let key_array = key.split('/');
-    let key_array_length = key_array.length;
-
-    if (key_array_length === 1) {
-      return '/';
-    }
-
-    key_array.length = key_array.length - 1;
-
-    return key_array.join('/') + '/';
-  },
-
   show(key: string, isCache: boolean = false) {
-    let data: any;
+    let data = Show(isCache, key, this.data.MDData);
 
-    if (isCache) {
-      data = JSON.parse(wx.getStorageSync(key));
-    } else {
-      data = app.towxml.toJson(this.data.MDData, 'markdown');
-
-      wx.setStorage({
-        key,
-        data: JSON.stringify(data),
+    this.data.hideFirst &&
+      this.setData!({
+        // @ts-ignore
+        data: {},
       });
-    }
-
-    const theme = app.globalData.theme;
-    data.theme = theme;
-    // data.footer = true;
-    // data.ad = false;
-    console.log(theme);
-
-    // wx.setNavigationBarColor({
-    //   backgroundColor: theme === 'dark' ? '#000000': '#ffffff',
-    //   frontColor: theme === 'dark' ? '#ffffff': '#000000',
-    //   animation: {},
-    // });
-
-    this.setData!({
-      // @ts-ignore
-      data: {},
-    });
 
     setTimeout(() => {
       // clearInterval(this.data.intervalNum);
@@ -188,82 +187,43 @@ Page({
     //   })
     // },10000);
 
+    // 返回顶部
     wx.pageScrollTo({
       scrollTop: 0,
       // duration: 1000,
     });
   },
-  onShareAppMessage: function(): any {
-    return {
-      title: '开始 Docker 之旅~',
-      path: '/pages/docker/index/index',
-      imageUrl:
-        'https://gitee.com/docker_practice/docker_practice/raw/master/_images/cover.jpg',
-      success() {
-        wx.showToast({
-          title: '感谢支持',
-        });
-      },
-      fail() {
-        wx.showToast({
-          title: '转发失败',
-          icon: 'success',
-        });
-      },
-    };
-  },
+
   tabbar(res: any) {
     const key = res.detail.key;
-    switch (key) {
-      case 'next':
-        this.next();
-        break;
-      case 'before':
-        this.before();
-        break;
-      default:
-        this.menu();
+
+    if (key === 'next' || key === 'before') {
+      this.jump(key);
+
+      return;
     }
+
+    this.menu();
   },
-  next() {
-    const [, next_key] = <any>this.data.next_key;
+
+  // 跳页
+  jump(type = 'next') {
+    const [, jump_key] =
+      type === 'next' ? <any>this.data.next_key : <any>this.data.before_key;
 
     this.setData!({
       // spinShow: true,
-      show: false,
+      show: false, // 隐藏
     });
 
-    // wx.redirectTo({
-    //   url: './content?key='+ next_key,
-    // });
-    this.load({ key: next_key });
+    this.load({ key: jump_key });
 
-    if (!next_key) {
+    if (!jump_key) {
       wx.showToast({
         title: '没有了',
       });
       return;
     }
-  },
-  before() {
-    const [, before_key] = <any>this.data.before_key;
-
-    this.setData!({
-      // spinShow: true,
-      show: false,
-    });
-
-    if (!before_key) {
-      wx.showToast({
-        title: '没有了',
-      });
-      return;
-    }
-
-    // wx.redirectTo({
-    //   url: './content?key='+ before_key,
-    // });
-    this.load({ key: before_key });
   },
 
   menu() {
@@ -277,24 +237,24 @@ Page({
     });
   },
 
-  menuClose() {
-    this.setData!({
-      showMenu: false,
-    });
-  },
+  // menuClose() {
+  //   this.setData!({
+  //     showMenu: false,
+  //   });
+  // },
 
   request(key: any, cache: boolean = true) {
     if (!key) {
       return;
     }
 
-    console.log(key);
+    // console.log(key);
 
-    wx.getStorageInfo({
-      success(res) {
-        console.log(res);
-      },
-    });
+    // wx.getStorageInfo({
+    //   success(res) {
+    //     console.log(res);
+    //   },
+    // });
 
     if (cache && wx.getStorageSync(key)) {
       this.show(key, true);
@@ -302,131 +262,33 @@ Page({
       return;
     }
 
+    // 上传分析数据
     wx.reportAnalytics('pages', {
       // @ts-ignore
       page: key,
     });
 
-    // const base_url = 'https://gitee.com/docker_practice/docker_practice/raw/master';
+    const baseUrl = app.globalData.baseUrl;
 
-    const base_url = app.globalData.baseUrl;
-
-    // let url = `https://ci.khs1994.com/proxy_github_raw/yeasy/docker_practice/master/${key}`;
-
-    let url = `${base_url}/${key}`;
-
-    if (key === 'README.md' || key === 'miniprogram.md') {
-      // url = 'https://ci.khs1994.com/proxy_github_raw/khs1994-docker/docker_practice/master/README.md';
-      url = `https://gitee.com/khs1994-docker/docker_practice/raw/master/${key}`;
-    }
-
-    wx.request({
-      url,
-      success: (res: any) => {
-        let MDData = res.data;
-
-        async function requestImg(folder: string) {
-          await new Promise((resolve, reject) => {
-            wx.getNetworkType({
-              success(res) {
-                const networkType = res.networkType;
-
-                // if (networkType !== 'wifi') {
-                //   wx.showToast({
-                //     title: '无图模式',
-                //   });
-                //
-                //   reject('not wifi');
-                // }
-
-                resolve(networkType);
-              },
-              fail(e) {
-                reject(e);
-              },
-            });
-          });
-
-          let result = MDData.match(/\!\[.*?\)/g);
-
-          if (result) {
-            for (let item of result) {
-              let img = item.split('(')[1].split(')')[0];
-              let new_item = `![](${base_url}/${folder}${img})`;
-
-              // console.log(item, new_item);
-              MDData = MDData.replace(item, new_item);
-            }
-          }
-
-          return MDData;
-        }
-
-        requestImg(this.data.folder)
-          .then(MDData => {
-            this.setData!({
-              MDData,
-            });
-
-            this.show(key);
-          })
-          .catch(() => {
-            this.setData!({
-              MDData,
-            });
-
-            this.show(key);
-          });
-      },
-      fail() {
-        wx.showToast({
-          title: '网络连接失败',
-          icon: 'loading',
+    new Request()
+      .create(key, baseUrl, this.data.folder)
+      .then((MDData: any) => {
+        this.setData!({
+          MDData,
         });
-      },
-    });
+
+        this.show(key);
+      })
+      .catch(MDData => {
+        this.setData!({
+          MDData,
+        });
+
+        this.show(key);
+      });
   },
-  __bind_touchend() {
-    // console.log('触摸结束');
-    // console.log(res);
-    // let endX= res.changedTouches[0].pageX;
-    // let endY = res.changedTouches[0].pageY;
-    //
-    // let diff_y = endY - <any>this.data.startY;
-    // let diff_x = endX - <any>this.data.startX;
-    //
-    // console.log(diff_x,diff_y);
-    //
-    // if(Math.abs(diff_y) > 10 ){
-    //   return;
-    // }
-    //
-    // diff_x > 40 && this.before();
-    // diff_x < -40 && this.next();
-  },
-  __bind_touchstart() {
-    // console.log('触摸开始');
-    // console.log(res);
-    // let startX=res.touches[0].pageX;
-    // let startY = res.changedTouches[0].pageY;
-    //
-    // this.setData!({
-    //   startX,
-    //   startY,
-    // });
-  },
-  __bind_touchmove() {
-    // console.log('触摸中');
-    // console.log(res);
-  },
-  __bind_tap() {},
-  __bind_touchcancel() {},
-  adError(e: any) {
-    console.log(e);
-  },
-  adSuccess(res: any) {
-    console.log(res);
-  },
+
+  // 评论内容
   inputNote(res: any) {
     // this.checkToken();
 
@@ -434,38 +296,18 @@ Page({
       note: res.detail.value,
     });
   },
-  inputNoteTitle(res: any) {
-    // this.checkToken();
 
+  // 评论标题
+  inputNoteTitle(res: any) {
     this.setData!({
       noteTitle: res.detail.value,
     });
   },
-  checkToken() {
-    let token;
-    try {
-      token = fs.readFileSync(`${wx.env.USER_DATA_PATH}/token`, 'base64');
-    } catch (e) {
-      token = '';
-    }
-    if (!token) {
-      wx.showModal({
-        title: '未登录 GitHub',
-        content: '点击确定登录 GitHub 账户',
-        success: (res: any) => {
-          res.confirm === true &&
-            wx.navigateTo({
-              url: '/pages/login/index',
-            });
-        },
-      });
 
-      throw new Error('login first');
-    }
-  },
-  // 提交 issue
+  // 提交评论
   pushNote() {
-    this.checkToken();
+    // 检查 token
+    new Token().check();
 
     const note = this.data.note;
     const noteTitle = this.data.noteTitle;
@@ -489,70 +331,65 @@ Page({
       showCancel: false,
     });
 
-    // const repo = 'khs1994/docker_practice_miniprogram';
-    const repo = 'yeasy/docker_practice';
-
     const token = fs.readFileSync(`${wx.env.USER_DATA_PATH}/token`, 'base64');
 
     // console.log(token);
 
-    wx.request({
-      url: 'https://ci.khs1994.com/proxy_github_api/repos/' + repo + '/issues',
-      method: 'POST',
-      data: {
-        title: noteTitle,
-        body:
-          note +
-          '\n' +
-          `
-
-## This issue from docker_practice miniprogram
-
-> [${this.data.key}](https://github.com/yeasy/docker_practice/blob/master/${
-            this.data.key
-          })
-`,
-      },
-      header: {
-        Authorization: 'Basic ' + token,
-      },
-      success: (res: any) => {
-        if (res.statusCode !== 201) {
-          this.pushNodeError(res);
-
-          return;
-        }
-
-        wx.showModal({
-          title: '提交成功',
-          content: '请登录 GitHub 查看最新回复',
-          showCancel: false,
-          success: () => {
-            this.setData!({
-              textareaValue: '',
-              textareaTitleValue: '',
-              note: '',
-              noteTitle: '',
-            });
-          },
+    // 提交 issue
+    new Issue()
+      .create(this.data.key, note, noteTitle, token)
+      .then(() => {
+        this.setData!({
+          textareaValue: '',
+          textareaTitleValue: '',
+          note: '',
+          noteTitle: '',
         });
-      },
-      fail: (e: any) => {
-        this.pushNodeError(e);
-      },
-      complete: () => {
+      })
+      // @ts-ignore
+      .finally(() => {
         this.setData!({
           isLoading: false,
         });
-      },
-    });
+      });
   },
-  // 提交 note 出现错误
-  pushNodeError(e: any) {
-    wx.showModal({
-      title: '提交失败',
-      content: JSON.stringify(e),
-      showCancel: false,
-    });
+
+  // towxml 事件
+
+  __bind_touchend() {
+    // console.log('触摸结束' + res);
+    // let endX= res.changedTouches[0].pageX;
+    // let endY = res.changedTouches[0].pageY;
+    //
+    // let diff_y = endY - <any>this.data.startY;
+    // let diff_x = endX - <any>this.data.startX;
+    //
+    // console.log(diff_x,diff_y);
+    //
+    // if(Math.abs(diff_y) > 10 ){
+    //   return;
+    // }
+    //
+    // diff_x > 40 && this.before();
+    // diff_x < -40 && this.next();
   },
+
+  __bind_touchstart() {
+    // console.log('触摸开始' + res);
+    // let startX=res.touches[0].pageX;
+    // let startY = res.changedTouches[0].pageY;
+    //
+    // this.setData!({
+    //   startX,
+    //   startY,
+    // });
+  },
+
+  __bind_touchmove() {
+    // console.log('触摸中' + res);
+  },
+
+  __bind_tap() {},
+
+  __bind_touchcancel() {},
 });

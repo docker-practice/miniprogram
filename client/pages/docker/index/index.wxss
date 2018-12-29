@@ -6,6 +6,7 @@
 @import '/weui/weui.wxss';
 
 .weui-footer__text {
+  padding-top: 2vh;
   font-size: 40rpx;
 }
 

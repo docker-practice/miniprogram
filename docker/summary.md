@@ -158,4 +158,5 @@
     - [Node.js](../content/content?key=appendix/repo/nodejs.md)
   - [附录三：Docker 命令查询](../content/content?key=appendix/command/README.md)
   - [附录四：Dockerfile 最佳实践](../content/content?key=appendix/best_practices.md)
-  - [附录五：资源链接](../content/content?key=appendix/resources/README.md)
+  - [附录五：如何调试 Docker](../content/content?key=appendix/debug.md)
+  - [附录六：资源链接](../content/content?key=appendix/resources.md)

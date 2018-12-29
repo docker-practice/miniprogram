@@ -4,8 +4,10 @@
     "i-tab-bar": "/iviewui/dist/tab-bar/index",
     "i-tab-bar-item": "/iviewui/dist/tab-bar-item/index",
     "i-notice-bar": "/iviewui/dist/notice-bar/index",
-    "i-button": "/iviewui/dist/button/index"
+    "i-button": "/iviewui/dist/button/index",
+    "i-spin": "/iviewui/dist/spin/index"
   },
   "enablePullDownRefresh": true,
-  "backgroundColor": "#36a1f0"
+  "backgroundColor": "#36a1f0",
+  "navigationStyle": "custom"
 }

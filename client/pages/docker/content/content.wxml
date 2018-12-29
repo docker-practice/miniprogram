@@ -1,11 +1,23 @@
 <!-- <progress percent="{{percent}}" stroke-width="3px" activeColor="{{progressColor}}"></progress> -->
 <view style="height:100%;background-color:{{noticeBGColor}}">
+
+<view
+style="height:{{statusBarHeight}}px;width:100%;background-color:#36a1f0;position:fixed"
+>
+</view>
+
+<view style="padding-top:{{statusBarHeight}}px">
 <i-notice-bar icon="systemprompt" loop
 wx:if="{{showNotice}}" backgroundcolor="{{noticeBGColor}}" color="#36a1f0"
 speed="1200"
 >
 《Docker 技术入门与实战》第三版已经面世，介绍最新的容器技术栈，欢迎大家阅读使用并反馈建议。
 </i-notice-bar>
+</view>
+
+<!-- <view class="container" wx:if="{{spinShow}}" i-class="{{}}">
+  <i-spin fix></i-spin>
+</view> -->
 
 <import src="/towxml/entry.wxml"/>
 
@@ -23,12 +35,18 @@ speed="1200"
 </i-drawer>
 -->
 
+<view wx:if="{{show}}">
+
+<view class="ad" style="background-color:{{noticeBGColor}}">
+<ad unit-id="adunit-1246f0a5e441ea4c"></ad>
+</view>
+
 <view wx:if="{{theme === 'dark'}}" class="dark">
-<textarea bindinput="inputNoteTitle" placeholder="请输入标题..." class="dark-title"
+<textarea bindinput="inputNoteTitle" placeholder="请输入标题..." class="dark-title note-title"
 value="{{textareaTitleValue}}"
 ></textarea>
 
-<textarea bindinput="inputNote" class="dark" placeholder="请输入您学习本节遇到的问题...(支持 Markdown 格式)"
+<textarea bindinput="inputNote" class="dark" placeholder="您可以在这里提交学习本节遇到的问题，或者发现的内容错误~(支持 Markdown 格式)"
 maxlength='-1' value="{{textareaValue}}">
 </textarea>
 
@@ -37,10 +55,10 @@ maxlength='-1' value="{{textareaValue}}">
 </view>
 
 <view wx:else class="light">
-<textarea bindinput="inputNoteTitle" placeholder="请输入标题..." class="light-title"
+<textarea bindinput="inputNoteTitle" placeholder="请输入标题..." class="light-title note-title"
 value="{{textareaTitleValue}}"></textarea>
 
-<textarea bindinput="inputNote" class="light" placeholder="请输入您学习本节遇到的问题...(支持 Markdown 格式)"
+<textarea bindinput="inputNote" class="light" placeholder="您可以在这里提交学习本节遇到的问题，或者发现的内容错误~(支持 Markdown 格式)"
 maxlength='-1' value="{{textareaValue}}">
 </textarea>
 
@@ -48,9 +66,17 @@ maxlength='-1' value="{{textareaValue}}">
 <view class="note-list"></view>
 </view>
 
+<view class="weui-footer" style="background-color:{{noticeBGColor}}">
+  <view class="weui-footer__text">Copyright ©docker_practice</view>
+</view>
+
+</view>
+<view wx:else style="height: 100vh;background-color:{{noticeBGColor}}"></view>
+
 <i-tab-bar fixed bind:change="tabbar" i-class="{{tabbarMode}}">
   <i-tab-bar-item key="before" icon="return" wx:if="{{before_key}}"></i-tab-bar-item>
   <i-tab-bar-item key="menu" icon="createtask"></i-tab-bar-item>
   <i-tab-bar-item key="next" icon="enter" wx:if="{{next_key}}"></i-tab-bar-item>
 </i-tab-bar>
+
 </view>

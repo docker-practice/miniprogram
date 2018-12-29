@@ -32,6 +32,9 @@ Page({
     textareaValue: '',
     textareaTitleValue: '',
     isLoading: false,
+    statusBarHeight: '20',
+    // spinShow: false,
+    show: false,
   },
   onUnload() {
     app.globalData.MDData = '';
@@ -49,6 +52,14 @@ Page({
     let theme: any = app.globalData.theme;
 
     const noticeBGColor = theme === 'dark' ? '#000000' : '#ffffff';
+
+    wx.getSystemInfo({
+      success: res => {
+        this.setData!({
+          statusBarHeight: res.statusBarHeight,
+        });
+      },
+    });
 
     if (noticeBGColor === '#000000') {
       wx.setNavigationBarColor({
@@ -123,7 +134,7 @@ Page({
   },
 
   show(key: string, isCache: boolean = false) {
-    let data;
+    let data: any;
 
     if (isCache) {
       data = JSON.parse(wx.getStorageSync(key));
@@ -138,19 +149,19 @@ Page({
 
     const theme = app.globalData.theme;
     data.theme = theme;
-    data.footer = true;
-    data.ad = false;
+    // data.footer = true;
+    // data.ad = false;
     console.log(theme);
-
-    this.setData!({
-      data,
-    });
 
     // wx.setNavigationBarColor({
     //   backgroundColor: theme === 'dark' ? '#000000': '#ffffff',
     //   frontColor: theme === 'dark' ? '#ffffff': '#000000',
     //   animation: {},
     // });
+
+    this.setData!({
+      data: {},
+    });
 
     setTimeout(() => {
       // clearInterval(this.data.intervalNum);
@@ -161,6 +172,13 @@ Page({
       // });
 
       wx.hideNavigationBarLoading({});
+
+      this.setData!({
+        // 去掉加载动画
+        // spinShow: false,
+        data,
+        show: true,
+      });
     }, 1000);
 
     // setTimeout(()=>{
@@ -171,7 +189,7 @@ Page({
 
     wx.pageScrollTo({
       scrollTop: 0,
-      duration: 700,
+      // duration: 1000,
     });
   },
   onShareAppMessage: function(): any {
@@ -209,6 +227,11 @@ Page({
   next() {
     const [, next_key] = <any>this.data.next_key;
 
+    this.setData!({
+      // spinShow: true,
+      show: false,
+    });
+
     // wx.redirectTo({
     //   url: './content?key='+ next_key,
     // });
@@ -223,6 +246,11 @@ Page({
   },
   before() {
     const [, before_key] = <any>this.data.before_key;
+
+    this.setData!({
+      // spinShow: true,
+      show: false,
+    });
 
     if (!before_key) {
       wx.showToast({

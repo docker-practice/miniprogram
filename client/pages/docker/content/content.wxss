@@ -4,12 +4,13 @@
 @import '/weui/weui.wxss';
 
 page {
-  height: 100%;
+  height: auto;
 }
 
 .weui-footer__text {
   font-size: 40rpx;
   padding-bottom: 11vh;
+  padding-top: 2vh;
 }
 
 button {
@@ -74,10 +75,19 @@ textarea.light{
   padding-bottom: 10vh;
 }
 
+.note-title {
+  margin-top: 4vh;
+}
+
 view.dark {
   background-color: #000;
 }
 
 view.light {
   background-color: #fff;
+}
+
+.ad {
+  margin-top: 5vh;
+  height: 20vh;
 }

@@ -258,7 +258,7 @@
     width: 9999px;
     display: block;
     /* font-size: 80%; */
-    font-size: 110%;
+    font-size: 90%;
 }
 
 /**列表**/

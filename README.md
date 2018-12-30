@@ -8,12 +8,13 @@
 
 - https://github.com/yeasy/docker_practice
 
+## TODO
+
+- [x] 评论功能，与 GitHub Issue 互通。
+- [x] 支持多种字体
+
 ## 致谢
 
 - https://github.com/sbfkcel/towxml
 - https://github.com/tencent/weui-wxss
 - https://github.com/TalkingData/iview-weapp
-
-## TODO
-
-- [ ] 评论功能，与 GitHub Issue 互通。

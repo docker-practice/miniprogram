@@ -1,8 +1,14 @@
+import { IMyApp } from '../../app';
+const app = getApp<IMyApp>();
+
+import Font from '../../utils/Font';
+
 Page({
   data: {
     switch: true,
     rate_index: 0,
     storageSize: '0 MB',
+    fontType: '默认',
   },
   onLoad() {
     wx.getStorage({
@@ -10,6 +16,15 @@ Page({
       success: (e: any) => {
         this.setData!({
           rate_index: e.data,
+        });
+      },
+    });
+
+    wx.getStorage({
+      key: 'fontType',
+      success: (e: any) => {
+        this.setData!({
+          fontType: e.data,
         });
       },
     });
@@ -45,6 +60,31 @@ Page({
       success: () => {
         this.setData!({
           storageSize: '0.00 MB',
+        });
+      },
+    });
+  },
+  chooseFont() {
+    const fonts = ['默认', 'ZCOOL KuaiLe'];
+
+    wx.showActionSheet({
+      itemList: fonts,
+      success: res => {
+        const font = fonts[res.tapIndex];
+
+        console.log(font);
+
+        new Font().force(font);
+
+        wx.setStorage({
+          key: 'fontType',
+          data: font,
+        });
+
+        app.globalData.fontType = font;
+
+        this.setData!({
+          fontType: font,
         });
       },
     });

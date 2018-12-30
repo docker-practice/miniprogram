@@ -9,7 +9,9 @@
   <i-cell title="评分">
     <i-rate title="评分" bind:change="rate" value="{{rate_index}}" slot="footer"></i-rate>
   </i-cell>
-  <i-cell title="清理缓存" value="{{storageSize}}" bind:click="cleanup">
-  </i-cell>
+
+  <i-cell title="清理缓存" value="{{storageSize}}" bind:click="cleanup"></i-cell>
+
+  <i-cell title="选择字体" value="{{fontType}}" bind:click="chooseFont"></i-cell>
 </i-cell-group>
 </i-panel>

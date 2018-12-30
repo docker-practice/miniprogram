@@ -11,6 +11,7 @@ import Issue from './util/Issue';
 import Request from './util/Request';
 import Show from './util/Show';
 import Style from './util/Style';
+import Font from '../../../utils/Font';
 
 Page({
   data: {
@@ -43,6 +44,7 @@ Page({
     show: false,
     hideFirst: true,
     showFixedStatusBar: false,
+    fontType: '默认',
   },
 
   onUnload() {
@@ -66,6 +68,10 @@ Page({
 
   onLoad(options: any) {
     // console.log('onload');
+    // 设置字体
+    const fontType = app.globalData.fontType;
+    new Font().force(fontType);
+
     this.load(options);
   },
 
@@ -96,6 +102,9 @@ Page({
   load(options: any) {
     const theme: any = app.globalData.theme;
     const noticeBGColor = theme === 'dark' ? '#000000' : '#ffffff';
+
+    // 设置字体
+    const fontType = app.globalData.fontType;
 
     // 获取状态栏（信号栏）高度
     wx.getSystemInfo({
@@ -149,13 +158,15 @@ Page({
       key,
       next_key,
       before_key,
+      fontType,
     });
 
     this.request(key);
   },
 
   show(key: string, isCache: boolean = false) {
-    let data = Show(isCache, key, this.data.MDData);
+    const fontType = this.data.fontType;
+    let data = Show(isCache, key, this.data.MDData, fontType);
 
     this.data.hideFirst &&
       this.setData!({

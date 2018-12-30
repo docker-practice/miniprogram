@@ -5,6 +5,7 @@ export interface IMyApp {
     userInfo?: wx.UserInfo;
     MDData: any;
     theme?: 'light' | 'dark';
+    fontType: string;
     [index: string]: any;
   };
   towxml: any;
@@ -14,12 +15,25 @@ const towxml = require('/towxml/main.js');
 
 App<IMyApp>({
   onLaunch() {
+    // 显示红点
+    wx.showTabBarRedDot({
+      index: 1,
+    });
+
     // 获取主题
     wx.getStorage({
       key: 'theme',
       success: res => {
         console.log(res);
         this.globalData.theme = res.data ? <'light' | 'dark'>res.data : 'light';
+      },
+    });
+
+    // 设置字体
+    wx.getStorage({
+      key: 'fontType',
+      success: res => {
+        this.globalData.fontType = res.data || 'default';
       },
     });
 
@@ -58,6 +72,7 @@ App<IMyApp>({
   globalData: {
     MDData: '',
     theme: 'light',
+    fontType: 'default',
     baseUrl: 'https://gitee.com/docker_practice/docker_practice/raw/master',
   },
   towxml: new towxml(),

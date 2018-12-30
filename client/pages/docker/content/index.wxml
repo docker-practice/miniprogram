@@ -1,5 +1,5 @@
 <!-- <progress percent="{{percent}}" stroke-width="3px" activeColor="{{progressColor}}"></progress> -->
-<view style="height:100%;background-color:{{noticeBGColor}}">
+<view style="height:100%;background-color:{{noticeBGColor}};font-family:{{fontType}}">
 
 <view
 style="height:{{statusBarHeight}}px;width:100%;background-color:{{noticeBGColor}};position:fixed"

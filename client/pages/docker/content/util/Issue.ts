@@ -2,8 +2,11 @@
 
 export default class Issue {
   create(key: string, note: string, noteTitle: string, token: string) {
-    // const repo = 'khs1994/docker_practice_miniprogram';
-    const repo = 'yeasy/docker_practice';
+    let repo = 'yeasy/docker_practice';
+
+    if (key === 'miniprogram.md') {
+      repo = 'khs1994/docker_practice_miniprogram';
+    }
 
     return new Promise((resolve, reject) => {
       wx.request({

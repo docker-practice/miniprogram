@@ -3,7 +3,12 @@
 import { IMyApp } from '../../../../app';
 const app = getApp<IMyApp>();
 
-export default function show(isCache: boolean, key: string, MDData: any) {
+export default function show(
+  isCache: boolean,
+  key: string,
+  MDData: any,
+  fontType: string,
+) {
   let data: any;
 
   if (isCache) {
@@ -19,6 +24,7 @@ export default function show(isCache: boolean, key: string, MDData: any) {
 
   const theme = app.globalData.theme;
   data.theme = theme;
+  data.fontType = fontType;
   // data.footer = true;
   // data.ad = false;
   // console.log(theme);

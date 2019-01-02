@@ -60,9 +60,6 @@ Page({
 
     setTimeout(() => {
       wx.stopPullDownRefresh();
-      this.setData!({
-        hideFirst: true,
-      });
     }, 2000);
   },
 
@@ -189,8 +186,9 @@ Page({
         // spinShow: false,
         data,
         show: true,
+        hideFirst: true,
       });
-    }, 1000);
+    }, 500);
 
     // setTimeout(()=>{
     //   this.setData!({

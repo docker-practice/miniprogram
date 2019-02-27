@@ -19,6 +19,14 @@ speed="1200"
   <i-spin fix></i-spin>
 </view> -->
 
+<view class="ad" style="background-color:{{noticeBGColor}}" wx:if="{{showAd}}">
+<ad unit-id="adunit-1246f0a5e441ea4c" binderror="adError"></ad>
+</view>
+
+<view class="adError" style="background-color:{{noticeBGColor}}" wx:else>
+  <button type='warn'>打赏</button>
+</view>
+
 <import src="/towxml/entry.wxml"/>
 
 <template is="entry" data="{{...data}}"/>
@@ -37,9 +45,9 @@ speed="1200"
 
 <view wx:if="{{show}}">
 
-<view class="ad" style="background-color:{{noticeBGColor}}">
+<!-- <view class="ad" style="background-color:{{noticeBGColor}}">
 <ad unit-id="adunit-1246f0a5e441ea4c"></ad>
-</view>
+</view> -->
 
 <view wx:if="{{theme === 'dark'}}" class="dark">
 <textarea bindinput="inputNoteTitle" placeholder="请输入标题..." class="dark-title note-title"
@@ -51,6 +59,9 @@ maxlength='-1' value="{{textareaValue}}">
 </textarea>
 
 <i-button bind:click="pushNote" size="large">提交到 GitHub</i-button>
+
+<i-button i-class="favorites" bind:click="favorites" size="large" loading="{{isLoading}}" type="primary">收藏</i-button>
+
 <view class="note-list"></view>
 </view>
 
@@ -63,8 +74,14 @@ maxlength='-1' value="{{textareaValue}}">
 </textarea>
 
 <i-button bind:click="pushNote" size="large" loading="{{isLoading}}">提交到 GitHub</i-button>
+
+<i-button i-class="favorites" bind:click="favorites" size="large" loading="{{isLoading}}" type="primary">收藏</i-button>
+
 <view class="note-list"></view>
+
 </view>
+
+<i-button i-class="buyBook" bind:click="buyBook" size="large" loading="{{isLoading}}" type="success">进阶学习 (实体书) 📕</i-button>
 
 <view class="weui-footer" style="background-color:{{noticeBGColor}}">
   <view class="weui-footer__text">Copyright ©docker_practice</view>

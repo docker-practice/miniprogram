@@ -4,7 +4,7 @@
     "ignore": []
   },
   "compileType": "miniprogram",
-  "libVersion": "2.4.2",
+  "libVersion": "2.6.1",
   "projectname": "docker",
   "miniprogramRoot": "client/",
   "scripts": {
@@ -18,7 +18,8 @@
     "postcss": true,
     "minified": true,
     "newFeature": true,
-    "autoAudits": false
+    "autoAudits": false,
+    "nodeModules": true
   },
   "appid": "wxb830c3abf8a658a5",
   "condition": {

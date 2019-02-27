@@ -64,7 +64,48 @@ Page({
       },
     });
   },
+  zan() {
+    wx.navigateToMiniProgram({
+      appId: 'wx18a2ac992306a5a4',
+      path: 'pages/apps/largess/detail?id=dhS32KPVsgs%3D',
+    });
+  },
+
+  buyBook() {
+    wx.setClipboardData({
+      data: 'https://u.jd.com/tKZmVG',
+      success() {
+        wx.showModal({
+          title: '请在浏览器中打开',
+          content:
+            '在浏览器中粘贴地址购买实体书《Docker 技术入门与实战》学习更多内容，感谢您的支持',
+          showCancel: false,
+        });
+      },
+    });
+  },
+
+  favorites() {
+    wx.showModal({
+      title: '即将支持',
+      content: '敬请期待',
+      showCancel: false,
+    });
+  },
+
   chooseFont() {
+    const res = wx.getSystemInfoSync();
+
+    if ((res.platform = 'android')) {
+      wx.showModal({
+        title: 'Android 暂不支持此功能',
+        content: '快马加鞭开发中...',
+        showCancel: false,
+      });
+
+      return;
+    }
+
     const fonts = ['默认', 'ZCOOL KuaiLe'];
 
     wx.showActionSheet({

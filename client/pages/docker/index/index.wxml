@@ -10,9 +10,9 @@ speed="1200" backgroundcolor="#fff" color="#36a1f0" wx:if="{{lazy}}"
 
 <import src="/towxml/entry.wxml"/>
 
-<template is="entry" data="{{...data}}"/>
-
 <ad unit-id="adunit-3ea71b7cfce6c721"></ad>
+
+<template is="entry" data="{{...data}}"/>
 
 <view class="weui-footer">
   <view class="weui-footer__text">Copyright ©docker_practice</view>

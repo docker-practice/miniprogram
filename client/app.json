@@ -4,6 +4,7 @@
     "pages/docker/content/index",
     "pages/index/index",
     "pages/settings/index",
+    "pages/random/index",
     "pages/login/index"
   ],
   "window": {
@@ -27,5 +28,6 @@
         "text": "个人主页"
       }
     ]
-  }
+  },
+  "navigateToMiniProgramAppIdList": ["wx18a2ac992306a5a4"]
 }

@@ -45,6 +45,7 @@ Page({
     hideFirst: true,
     showFixedStatusBar: false,
     fontType: '默认',
+    showAd: true,
   },
 
   onUnload() {
@@ -217,6 +218,10 @@ Page({
 
   // 跳页
   jump(type = 'next') {
+    wx.showLoading({
+      title: '加载中',
+    });
+
     const [, jump_key] =
       type === 'next' ? <any>this.data.next_key : <any>this.data.before_key;
 
@@ -226,6 +231,8 @@ Page({
     });
 
     this.load({ key: jump_key });
+
+    setTimeout(() => wx.hideLoading(), 1250);
 
     if (!jump_key) {
       wx.showToast({
@@ -361,6 +368,34 @@ Page({
           isLoading: false,
         });
       });
+  },
+
+  adError() {
+    this.setData!({
+      showAd: false,
+    });
+  },
+
+  favorites() {
+    wx.showModal({
+      title: '即将支持',
+      content: '敬请期待',
+      showCancel: false,
+    });
+  },
+
+  buyBook() {
+    wx.setClipboardData({
+      data: 'https://u.jd.com/tKZmVG',
+      success() {
+        wx.showModal({
+          title: '请在浏览器中打开',
+          content:
+            '在浏览器中粘贴地址购买实体书《Docker 技术入门与实战》学习更多内容，感谢您的支持',
+          showCancel: false,
+        });
+      },
+    });
   },
 
   // towxml 事件

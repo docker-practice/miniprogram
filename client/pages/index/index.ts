@@ -87,7 +87,7 @@ Page({
     });
 
     wx.showModal({
-      title: 'GitHub',
+      title: '请在浏览器打开',
       content: '浏览器粘贴链接，在项目 GitHub 交流',
       showCancel: false,
     });
@@ -101,7 +101,14 @@ Page({
   settings() {
     let theme = wx.getStorageSync('theme');
 
-    let itemList = ['分享', '暗黑模式', '技术交流', '登录 GitHub', '更多设置'];
+    let itemList = [
+      '分享',
+      '暗黑模式',
+      '打赏 👍',
+      '技术交流',
+      '登录 GitHub',
+      '更多设置',
+    ];
 
     theme === 'dark' ? (itemList[1] = '明亮模式') : '';
 
@@ -139,9 +146,15 @@ Page({
             this.changeTheme();
             break;
           case 2:
-            this.copyLink();
+            wx.navigateToMiniProgram({
+              appId: 'wx18a2ac992306a5a4',
+              path: 'pages/apps/largess/detail?id=dhS32KPVsgs%3D',
+            });
             break;
           case 3:
+            this.copyLink();
+            break;
+          case 4:
             if (token) {
               fs.unlink({
                 filePath: tokenFile,
@@ -154,7 +167,7 @@ Page({
               url: '../login/index',
             });
             break;
-          case 4:
+          case 5:
             wx.navigateTo({
               url: '../settings/index',
             });

@@ -72,7 +72,7 @@ textarea.light{
 }
 
 .note-list {
-  padding-bottom: 10vh;
+  padding-bottom: 1vh;
 }
 
 .note-title {
@@ -88,6 +88,21 @@ view.light {
 }
 
 .ad {
-  margin-top: 5vh;
+  margin-top: 2vh;
   height: 20vh;
+}
+
+.adError {
+  margin-top: 2vh;
+  height: 5vh;
+  margin-bottom: 2vh;
+  text-align: center;
+}
+
+.favorites {
+  float: right;
+}
+
+.buyBook {
+  width: 93%;
 }

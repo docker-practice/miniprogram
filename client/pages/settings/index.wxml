@@ -13,5 +13,11 @@
   <i-cell title="清理缓存" value="{{storageSize}}" bind:click="cleanup"></i-cell>
 
   <i-cell title="字体" value="{{fontType}}" bind:click="chooseFont"></i-cell>
+
+  <i-cell title="打赏 👍" value="在新打开的小程序中打赏" bind:click="zan"></i-cell>
+
+  <i-cell title="实体书 📕" value="进阶学习" bind:click="buyBook"></i-cell>
+
+  <i-cell title="收藏夹 📁" value="马上找到你要的内容" bind:click="favorites"></i-cell>
 </i-cell-group>
 </i-panel>

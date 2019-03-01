@@ -1,13 +1,11 @@
 import { IMyApp } from '../../../app';
 const app = getApp<IMyApp>();
 
-const fs = wx.getFileSystemManager();
+// const fs = wx.getFileSystemManager();
 
 import { next, before } from './util/next_page';
 // const MenuData = require('../index/summary.js');
 import getFolder from './util/getFolder';
-import Token from './util/Token';
-import Issue from './util/Issue';
 import Request from './util/Request';
 import Show from './util/Show';
 import Style from './util/Style';
@@ -34,11 +32,6 @@ Page({
     tabbarMode: 'light',
     // lazy: true,
     theme: 'light',
-    note: '',
-    noteTitle: '',
-    textareaValue: '',
-    textareaTitleValue: '',
-    isLoading: false,
     statusBarHeight: 0,
     // spinShow: false,
     show: false,
@@ -222,6 +215,10 @@ Page({
       title: '加载中',
     });
 
+    this.setData!({
+      showAd: false,
+    });
+
     const [, jump_key] =
       type === 'next' ? <any>this.data.next_key : <any>this.data.before_key;
 
@@ -232,7 +229,13 @@ Page({
 
     this.load({ key: jump_key });
 
-    setTimeout(() => wx.hideLoading(), 1250);
+    setTimeout(() => {
+      wx.hideLoading();
+
+      this.setData!({
+        showAd: true,
+      });
+    }, 1250);
 
     if (!jump_key) {
       wx.showToast({
@@ -304,70 +307,10 @@ Page({
       });
   },
 
-  // 评论内容
-  inputNote(res: any) {
-    // this.checkToken();
-
-    this.setData!({
-      note: res.detail.value,
-    });
-  },
-
-  // 评论标题
-  inputNoteTitle(res: any) {
-    this.setData!({
-      noteTitle: res.detail.value,
-    });
-  },
-
-  // 提交评论
   pushNote() {
-    // 检查 token
-    new Token().check();
-
-    const note = this.data.note;
-    const noteTitle = this.data.noteTitle;
-
-    if (!note || !noteTitle) {
-      wx.showToast({
-        title: '请输入标题及内容',
-        icon: 'none',
-      });
-
-      return;
-    }
-
-    this.setData!({
-      isLoading: true,
+    wx.navigateTo({
+      url: '../../note/index?key=' + this.data.key,
     });
-
-    wx.showModal({
-      title: noteTitle,
-      content: note,
-      showCancel: false,
-    });
-
-    const token = fs.readFileSync(`${wx.env.USER_DATA_PATH}/token`, 'base64');
-
-    // console.log(token);
-
-    // 提交 issue
-    new Issue()
-      .create(this.data.key, note, noteTitle, token)
-      .then(() => {
-        this.setData!({
-          textareaValue: '',
-          textareaTitleValue: '',
-          note: '',
-          noteTitle: '',
-        });
-      })
-      // @ts-ignore
-      .finally(() => {
-        this.setData!({
-          isLoading: false,
-        });
-      });
   },
 
   adError() {
@@ -381,6 +324,13 @@ Page({
       title: '即将支持',
       content: '敬请期待',
       showCancel: false,
+    });
+  },
+
+  dashang() {
+    wx.navigateToMiniProgram({
+      appId: 'wx18a2ac992306a5a4',
+      path: 'pages/apps/largess/detail?id=dhS32KPVsgs%3D',
     });
   },
 

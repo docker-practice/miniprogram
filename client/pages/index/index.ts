@@ -122,7 +122,7 @@ Page({
     } catch (e) {}
 
     if (token) {
-      itemList[3] = '登出 GitHub';
+      itemList[4] = '登出 GitHub';
     }
 
     wx.showActionSheet({

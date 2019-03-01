@@ -13,11 +13,6 @@ page {
   padding-top: 2vh;
 }
 
-button {
-  display: inline-block;
-  width: 32.4vw;
-}
-
 .h2w-light .h2w__a {
   color: #36a1f0;
   border-bottom-color: #36a1f0;
@@ -34,49 +29,6 @@ button {
 
 .dark {
   background: #000!important;
-}
-
-textarea.dark{
-  border: 1px solid #fff;
-  width: 98%;
-  color: #fff;
-  margin-left: 1%;
-  margin-right: 2%;
-}
-
-.dark-title {
-  border: 1px solid #fff;
-  color: #fff;
-  background-color: #000;
-  width: 98%;
-  height: 5vh;
-  margin-bottom: 2vh;
-  margin-left: 1%;
-  margin-right: 2%;
-}
-
-textarea.light{
-  border: 1px solid #000;
-  width: 98%;
-  margin-left: 1%;
-  margin-right: 2%;
-}
-
-.light-title {
-  border: 1px solid #000;
-  width: 98%;
-  height: 5vh;
-  margin-bottom: 2vh;
-  margin-left: 1%;
-  margin-right: 2%;
-}
-
-.note-list {
-  padding-bottom: 1vh;
-}
-
-.note-title {
-  margin-top: 4vh;
 }
 
 view.dark {
@@ -101,8 +53,9 @@ view.light {
 
 .favorites {
   float: right;
+  width: 30vw;
 }
 
-.buyBook {
-  width: 93%;
+.dashang {
+  width: 30vw;
 }

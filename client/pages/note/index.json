@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "i-button": "/iviewui/dist/button/index"
+  },
+  "navigationBarTitleText": "内容反馈"
+}

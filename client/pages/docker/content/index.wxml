@@ -24,7 +24,7 @@ speed="1200"
 </view>
 
 <view class="adError" style="background-color:{{noticeBGColor}}" wx:else>
-  <button type='warn'>打赏</button>
+  <button bindtap="dashang" type='warn' class="dashang">打赏</button>
 </view>
 
 <import src="/towxml/entry.wxml"/>
@@ -45,49 +45,20 @@ speed="1200"
 
 <view wx:if="{{show}}">
 
-<!-- <view class="ad" style="background-color:{{noticeBGColor}}">
-<ad unit-id="adunit-1246f0a5e441ea4c"></ad>
-</view> -->
+<i-button inline="true" bind:click="pushNote" size="large">在 GitHub 反馈本节内容</i-button>
 
-<view wx:if="{{theme === 'dark'}}" class="dark">
-<textarea bindinput="inputNoteTitle" placeholder="请输入标题..." class="dark-title note-title"
-value="{{textareaTitleValue}}"
-></textarea>
-
-<textarea bindinput="inputNote" class="dark" placeholder="您可以在这里提交学习本节遇到的问题，或者发现的内容错误~(支持 Markdown 格式)"
-maxlength='-1' value="{{textareaValue}}">
-</textarea>
-
-<i-button bind:click="pushNote" size="large">提交到 GitHub</i-button>
-
-<i-button i-class="favorites" bind:click="favorites" size="large" loading="{{isLoading}}" type="primary">收藏</i-button>
-
-<view class="note-list"></view>
-</view>
-
-<view wx:else class="light">
-<textarea bindinput="inputNoteTitle" placeholder="请输入标题..." class="light-title note-title"
-value="{{textareaTitleValue}}"></textarea>
-
-<textarea bindinput="inputNote" class="light" placeholder="您可以在这里提交学习本节遇到的问题，或者发现的内容错误~(支持 Markdown 格式)"
-maxlength='-1' value="{{textareaValue}}">
-</textarea>
-
-<i-button bind:click="pushNote" size="large" loading="{{isLoading}}">提交到 GitHub</i-button>
-
-<i-button i-class="favorites" bind:click="favorites" size="large" loading="{{isLoading}}" type="primary">收藏</i-button>
+<i-button inline="true" i-class="favorites" bind:click="favorites" size="large" type="primary">收藏</i-button>
 
 <view class="note-list"></view>
 
-</view>
-
-<i-button i-class="buyBook" bind:click="buyBook" size="large" loading="{{isLoading}}" type="success">进阶学习 (实体书) 📕</i-button>
+<i-button i-class="buyBook" bind:click="buyBook" size="large" type="success">进阶学习 (实体书) 📕</i-button>
 
 <view class="weui-footer" style="background-color:{{noticeBGColor}}">
   <view class="weui-footer__text">Copyright ©docker_practice</view>
 </view>
 
 </view>
+
 <view wx:else style="height: 100vh;background-color:{{noticeBGColor}}"></view>
 
 <i-tab-bar fixed bind:change="tabbar" i-class="{{tabbarMode}}">

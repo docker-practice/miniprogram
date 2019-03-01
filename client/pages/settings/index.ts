@@ -96,7 +96,7 @@ Page({
   chooseFont() {
     const res = wx.getSystemInfoSync();
 
-    if ((res.platform = 'android')) {
+    if (res.platform === 'android') {
       wx.showModal({
         title: 'Android 暂不支持此功能',
         content: '快马加鞭开发中...',

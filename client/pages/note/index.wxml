@@ -1,0 +1,27 @@
+<view style="height:100%;background-color:{{noticeBGColor}}">
+
+<view style="height:4vh"></view>
+
+<view wx:if="{{theme === 'dark'}}" class="dark">
+
+<textarea bindinput="inputNoteTitle" placeholder="请输入标题..." class="dark-title note-title"
+value="{{textareaTitleValue}}"
+></textarea>
+
+<textarea bindinput="inputNote" class="dark" placeholder="您可以在这里提交学习本节遇到的问题，或者发现的内容错误~(支持 Markdown 格式)"
+maxlength='-1' value="{{textareaValue}}">
+</textarea>
+
+</view>
+
+<view wx:else class="light">
+<textarea bindinput="inputNoteTitle" placeholder="请输入标题..." class="light-title note-title"
+value="{{textareaTitleValue}}"></textarea>
+
+<textarea bindinput="inputNote" class="light" placeholder="您可以在这里提交学习本节遇到的问题，或者发现的内容错误~(支持 Markdown 格式)"
+maxlength='-1' value="{{textareaValue}}">
+</textarea>
+</view>
+
+<i-button type="success" bind:click="pushNote" size="large">提交反馈到 GitHub</i-button>
+</view>

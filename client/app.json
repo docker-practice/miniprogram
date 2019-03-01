@@ -5,6 +5,7 @@
     "pages/index/index",
     "pages/settings/index",
     "pages/random/index",
+    "pages/note/index",
     "pages/login/index"
   ],
   "window": {

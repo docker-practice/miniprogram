@@ -45,6 +45,8 @@ speed="1200"
 </i-drawer>
 -->
 
+<view style="margin-top:10vh"></view>
+
 <view wx:if="{{show}}">
 
 <i-button inline="true" bind:click="pushNote" size="large">在 GitHub 反馈本节内容</i-button>

@@ -113,9 +113,6 @@ Page({
 
     Style(noticeBGColor);
 
-    // 加载中
-    wx.showNavigationBarLoading();
-
     const key = options.key;
     const folder = getFolder(key);
     let next_key = next(key);
@@ -125,18 +122,6 @@ Page({
     before_key = before_key ? before_key : '';
 
     // console.log(before_key, key, next_key);
-
-    // let time = 1;
-
-    // let intervalNum = setInterval(() => {
-    //   // console.log(time);
-    //   if (time > 50) {
-    //     return;
-    //   }
-    //   this.setData!({
-    //     percent: time++ * 2,
-    //   });
-    // }, 20);
 
     this.setData!({
       // percent: 0,
@@ -168,13 +153,6 @@ Page({
     setTimeout(() => {
       // clearInterval(this.data.intervalNum);
 
-      // this.setData!({
-      //   percent: 100,
-      //   progressColor: '#fff',
-      // });
-
-      wx.hideNavigationBarLoading();
-
       this.setData!({
         // 去掉加载动画
         // spinShow: false,
@@ -182,13 +160,9 @@ Page({
         show: true,
         hideFirst: true,
       });
-    }, 500);
 
-    // setTimeout(()=>{
-    //   this.setData!({
-    //     showNotice: false,
-    //   })
-    // },10000);
+      wx.hideLoading();
+    }, 500);
 
     // 返回顶部
     wx.pageScrollTo({
@@ -230,12 +204,12 @@ Page({
     this.load({ key: jump_key });
 
     setTimeout(() => {
-      wx.hideLoading();
+      // wx.hideLoading();
 
       this.setData!({
         showAd: true,
       });
-    }, 1250);
+    }, 100);
 
     if (!jump_key) {
       wx.showToast({
@@ -266,14 +240,6 @@ Page({
     if (!key) {
       return;
     }
-
-    // console.log(key);
-
-    // wx.getStorageInfo({
-    //   success(res) {
-    //     console.log(res);
-    //   },
-    // });
 
     if (cache && wx.getStorageSync(key)) {
       this.show(key, true);
@@ -335,15 +301,15 @@ Page({
   },
 
   buyBook() {
-    wx.setClipboardData({
-      data: 'https://u.jd.com/tKZmVG',
-      success() {
-        wx.showModal({
-          title: '请在浏览器中打开',
-          content:
-            '在浏览器中粘贴地址购买实体书《Docker 技术入门与实战》学习更多内容，感谢您的支持',
-          showCancel: false,
-        });
+    wx.showModal({
+      title: '请在浏览器中打开',
+      content:
+        '点击确定复制网址，在浏览器中粘贴地址购买实体书《Docker 技术入门与实战》学习更多内容',
+      success(res) {
+        res.confirm &&
+          wx.setClipboardData({
+            data: 'https://u.jd.com/tKZmVG',
+          });
       },
     });
   },

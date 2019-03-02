@@ -1,6 +1,8 @@
 // pages/docker/summary/index.js
 
 import list from './summary';
+import daShang from '../../../utils/DaShang';
+import openGithub from '../../../utils/OpenGithub';
 
 Page({
   /**
@@ -13,6 +15,17 @@ Page({
   kindToggle: function(e: any) {
     var id = e.currentTarget.id,
       list = this.data.list;
+
+    if (id === 'dashang') {
+      this.dashang();
+      return;
+    }
+
+    if (id === 'github') {
+      this.github();
+      return;
+    }
+
     for (var i = 0, len = list.length; i < len; ++i) {
       if (list[i].id == id) {
         list[i].open = !list[i].open;
@@ -26,17 +39,15 @@ Page({
   },
 
   openGithub() {
-    wx.showModal({
-      title: '请在浏览器打开',
-      content: '点击确定复制网址，在浏览器中粘贴网址打开',
-      success(res) {
-        if (res.confirm) {
-          wx.setClipboardData({
-            data: 'https://github.com/yeasy/docker_practice',
-          });
-        }
-      },
-    });
+    openGithub();
+  },
+
+  dashang() {
+    daShang();
+  },
+
+  github() {
+    openGithub();
   },
 
   /**
@@ -77,7 +88,23 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  // onShareAppMessage: function () {
-  //
-  // }
+  onShareAppMessage: function(): any {
+    return {
+      title: '开始 Docker 之旅~',
+      imageUrl:
+        'https://gitee.com/docker_practice/docker_practice/raw/master/_images/cover.jpg',
+      success() {
+        console.log(1);
+        wx.showToast({
+          title: '感谢支持',
+        });
+      },
+      fail() {
+        wx.showToast({
+          title: '转发失败',
+          icon: 'success',
+        });
+      },
+    };
+  },
 });

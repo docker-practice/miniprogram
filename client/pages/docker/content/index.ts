@@ -10,6 +10,8 @@ import Request from './util/Request';
 import Show from './util/Show';
 import Style from './util/Style';
 import Font from '../../../utils/Font';
+import daShang from '../../../utils/DaShang';
+import buyBook from '../../../utils/BuyBook';
 
 Page({
   data: {
@@ -21,8 +23,6 @@ Page({
     // startY: '',
     // endX: '',
     // endY: '',
-    // percent: 0,
-    // intervalNum: 0,
     // progressColor: '#36a1f0',
     // showMenu: false,
     MDData: '',
@@ -100,9 +100,7 @@ Page({
     // 获取状态栏（信号栏）高度
     wx.getSystemInfo({
       success: res => {
-        if (res.version.split('.')[0] === '6') {
-          return;
-        }
+        res.version.split('.')[0] === '6';
 
         this.setData!({
           showFixedStatusBar: true,
@@ -151,11 +149,8 @@ Page({
       });
 
     setTimeout(() => {
-      // clearInterval(this.data.intervalNum);
-
       this.setData!({
-        // 去掉加载动画
-        // spinShow: false,
+        // spinShow: false, // 去掉加载动画
         data,
         show: true,
         hideFirst: true,
@@ -215,6 +210,7 @@ Page({
       wx.showToast({
         title: '没有了',
       });
+
       return;
     }
   },
@@ -294,24 +290,11 @@ Page({
   },
 
   dashang() {
-    wx.navigateToMiniProgram({
-      appId: 'wx18a2ac992306a5a4',
-      path: 'pages/apps/largess/detail?id=dhS32KPVsgs%3D',
-    });
+    daShang();
   },
 
   buyBook() {
-    wx.showModal({
-      title: '请在浏览器中打开',
-      content:
-        '点击确定复制网址，在浏览器中粘贴地址购买实体书《Docker 技术入门与实战》学习更多内容',
-      success(res) {
-        res.confirm &&
-          wx.setClipboardData({
-            data: 'https://u.jd.com/tKZmVG',
-          });
-      },
-    });
+    buyBook();
   },
 
   // towxml 事件

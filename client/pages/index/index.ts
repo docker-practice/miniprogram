@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 import { IMyApp } from '../../app';
+import daShang from '../../utils/DaShang';
 
 const app = getApp<IMyApp>();
 
@@ -136,22 +137,18 @@ Page({
 
         switch (index) {
           case 0:
+            const url =
+              'https://gitee.com/khs1994-docker/docker_practice/raw/master/gh_410be172deaa_344.jpg';
             wx.previewImage({
-              current:
-                'https://gitee.com/khs1994-docker/docker_practice/raw/master/gh_410be172deaa_344.jpg',
-              urls: [
-                'https://gitee.com/khs1994-docker/docker_practice/raw/master/gh_410be172deaa_344.jpg',
-              ],
+              current: url,
+              urls: [url],
             });
             break;
           case 1:
             this.changeTheme();
             break;
           case 2:
-            wx.navigateToMiniProgram({
-              appId: 'wx18a2ac992306a5a4',
-              path: 'pages/apps/largess/detail?id=dhS32KPVsgs%3D',
-            });
+            daShang();
             break;
           case 3:
             this.copyLink();

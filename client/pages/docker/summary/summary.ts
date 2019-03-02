@@ -1,5 +1,13 @@
 export default [
   {
+    id: 'dashang',
+    name: '打赏',
+  },
+  {
+    id: 'github',
+    name: '开源',
+  },
+  {
     id: 'miniProgram',
     name: '微信小程序使用说明',
     open: false,

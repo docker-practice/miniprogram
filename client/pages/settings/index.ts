@@ -2,6 +2,8 @@ import { IMyApp } from '../../app';
 const app = getApp<IMyApp>();
 
 import Font from '../../utils/Font';
+import buyBook from '../../utils/BuyBook';
+import daShang from '../../utils/DaShang';
 
 Page({
   data: {
@@ -65,24 +67,11 @@ Page({
     });
   },
   zan() {
-    wx.navigateToMiniProgram({
-      appId: 'wx18a2ac992306a5a4',
-      path: 'pages/apps/largess/detail?id=dhS32KPVsgs%3D',
-    });
+    daShang();
   },
 
   buyBook() {
-    wx.showModal({
-      title: '请在浏览器中打开',
-      content:
-        '点击确定复制网址，在浏览器中粘贴网址购买实体书《Docker 技术入门与实战》学习更多内容',
-      success(res) {
-        res.confirm &&
-          wx.setClipboardData({
-            data: 'https://u.jd.com/tKZmVG',
-          });
-      },
-    });
+    buyBook();
   },
 
   favorites() {

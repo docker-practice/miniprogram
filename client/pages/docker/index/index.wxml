@@ -8,6 +8,8 @@ speed="1200" backgroundcolor="#fff" color="#36a1f0" wx:if="{{lazy}}"
   <i-spin fix></i-spin>
 </view>
 
+<button bindtap="newSummary">使用新版目录</button>
+
 <import src="/towxml/entry.wxml"/>
 
 <ad unit-id="adunit-3ea71b7cfce6c721"></ad>

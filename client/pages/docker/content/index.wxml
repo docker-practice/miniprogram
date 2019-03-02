@@ -23,8 +23,10 @@ speed="1200"
 <ad unit-id="adunit-1246f0a5e441ea4c" binderror="adError"></ad>
 </view>
 
-<view class="adError" style="background-color:{{noticeBGColor}}" wx:else>
+<view class="ad" style="background-color:{{noticeBGColor}}" wx:else>
+  <view class="adError" wx:if="{{show}}">
   <button bindtap="dashang" type='warn' class="dashang">打赏</button>
+  </view>
 </view>
 
 <import src="/towxml/entry.wxml"/>
@@ -54,7 +56,7 @@ speed="1200"
 <i-button i-class="buyBook" bind:click="buyBook" size="large" type="success">进阶学习 (实体书) 📕</i-button>
 
 <view class="weui-footer" style="background-color:{{noticeBGColor}}">
-  <view class="weui-footer__text">Copyright ©docker_practice</view>
+  <view class="weui-footer__text">GitHub yeasy/docker_practice</view>
 </view>
 
 </view>

@@ -70,7 +70,7 @@ Page({
   onShareAppMessage() {
     return {
       title: '开始 Docker 之旅~',
-      path: '/pages/docker/index/index',
+      path: '/pages/docker/summary/index',
       imageUrl:
         'https://gitee.com/docker_practice/docker_practice/raw/master/_images/cover.jpg',
       success() {
@@ -252,7 +252,7 @@ Page({
     // });
 
     wx.switchTab({
-      url: '../index/index',
+      url: '../summary/index',
     });
   },
 

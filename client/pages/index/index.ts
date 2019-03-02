@@ -82,14 +82,16 @@ Page({
   },
 
   copyLink() {
-    wx.setClipboardData({
-      data: 'https://github.com/yeasy/docker_practice/issues',
-    });
-
     wx.showModal({
       title: '请在浏览器打开',
-      content: '浏览器粘贴链接，在项目 GitHub 交流',
-      showCancel: false,
+      content:
+        '点击确定复制网址，在浏览器中打开项目 GitHub 与 Docker 爱好者交流',
+      success(res) {
+        res.confirm &&
+          wx.setClipboardData({
+            data: 'https://github.com/yeasy/docker_practice/issues',
+          });
+      },
     });
   },
 

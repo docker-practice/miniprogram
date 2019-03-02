@@ -21,6 +21,12 @@ Page({
    */
   onLoad: function() {},
 
+  newSummary() {
+    wx.navigateTo({
+      url: '../summary/index',
+    });
+  },
+
   show() {
     // wx.request({
     // url: 'https://ci.khs1994.com/proxy_github_raw/yeasy/docker_practice/master/SUMMARY.md',

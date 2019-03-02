@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/docker/summary/index",
     "pages/docker/index/index",
     "pages/docker/content/index",
     "pages/index/index",
@@ -21,7 +22,7 @@
     "selectedColor": "#fff",
     "list": [
       {
-        "pagePath": "pages/docker/index/index",
+        "pagePath": "pages/docker/summary/index",
         "text": "目录"
       },
       {

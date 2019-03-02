@@ -45,10 +45,7 @@ view.light {
 }
 
 .adError {
-  margin-top: 2vh;
-  height: 5vh;
-  margin-bottom: 2vh;
-  text-align: center;
+  padding-top: 5vh;
 }
 
 .favorites {

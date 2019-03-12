@@ -13,21 +13,21 @@ export default function style(noticeBGColor: string) {
         textStyle: noticeBGColor === '#000000' ? 'light' : 'dark',
       });
 
-      // if (noticeBGColor === '#000000') {
-      //   // 暗色模式
-      //   wx.setNavigationBarColor({
-      //     frontColor: '#ffffff',
-      //     backgroundColor: noticeBGColor,
-      //     animation: {},
-      //   });
-      // } else {
-      //   // 亮色模式 '#ffffff'
-      //   wx.setNavigationBarColor({
-      //     frontColor: '#000000',
-      //     backgroundColor: noticeBGColor,
-      //     animation: {},
-      //   });
-      // }
+      if (noticeBGColor === '#000000') {
+        // 暗色模式
+        wx.setNavigationBarColor({
+          frontColor: '#ffffff',
+          backgroundColor: noticeBGColor,
+          animation: {},
+        });
+      } else {
+        // 亮色模式 '#ffffff'
+        wx.setNavigationBarColor({
+          frontColor: '#000000',
+          backgroundColor: noticeBGColor,
+          animation: {},
+        });
+      }
     },
   });
 }

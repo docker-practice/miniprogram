@@ -5,6 +5,9 @@
     "compile": "npx tsc",
     "compile-pro": "npx tsc --inlineSources false --inlineSourceMap false"
   },
+  "dependencies": {
+    "towxml": "github:pcit-ce/towxml"
+  },
   "devDependencies": {
     "@types/wx": "github:khs1994/types-wx",
     "typescript": "^3.2.2"

@@ -9,7 +9,6 @@
     "cleanup": "npx rimraf docker/summary.ts client/pages/docker/content/util/summary.ts client/pages/docker/index/summary.js"
   },
   "devDependencies": {
-    "towxml": "*",
     "weui-wxss": "*",
     "iview-weapp": "*"
   }

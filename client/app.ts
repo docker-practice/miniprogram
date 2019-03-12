@@ -11,7 +11,7 @@ export interface IMyApp {
   towxml: any;
 }
 
-const towxml = require('/towxml/main.js');
+import * as towxml from 'towxml';
 
 App<IMyApp>({
   onLaunch() {

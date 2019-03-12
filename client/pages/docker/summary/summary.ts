@@ -14,6 +14,10 @@ export default [
     pages: [{ id: 'miniprogram.md', name: '功能' }],
   },
   {
+    id: 'alipay',
+    name: '支付宝线下红包 (瓜分 9亿)',
+  },
+  {
     id: 'introduction',
     name: '简介',
     open: false,
@@ -22,6 +26,11 @@ export default [
       { id: 'CHANGELOG.md', name: '修订记录' },
       { id: 'CONTRIBUTING.md', name: '如何贡献' },
     ],
+  },
+  // 广告位 index 4
+  {
+    id: 'bus',
+    name: '公交 地铁红包',
   },
   {
     id: 'docker_introduction',

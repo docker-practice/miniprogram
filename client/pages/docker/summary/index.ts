@@ -1,15 +1,33 @@
-// pages/docker/summary/index.js
+// import { IMyApp } from '../../../app';
+// const app = getApp<IMyApp>();
 
 import list from './summary';
 import daShang from '../../../utils/DaShang';
 import openGithub from '../../../utils/OpenGithub';
+import bus from '../../../utils/bus';
+import alipay from '../../../utils/Alipay';
+// @ts-ignore
+wx.cloud.init({
+  env: 'pro-02adcb',
+});
+// @ts-ignore
+const db = wx.cloud.database({
+  env: 'pro-02adcb',
+});
 
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    list,
+    list: [
+      {
+        id: '',
+        name: '',
+        open: false,
+      },
+    ],
+    showAd: false,
   },
 
   kindToggle: function(e: any) {
@@ -23,6 +41,16 @@ Page({
 
     if (id === 'github') {
       this.github();
+      return;
+    }
+
+    if (id == 'bus' || id === 'beta') {
+      this.bus();
+      return;
+    }
+
+    if (id === 'alipay') {
+      alipay();
       return;
     }
 
@@ -50,10 +78,60 @@ Page({
     openGithub();
   },
 
+  bus() {
+    if (this.data.showAd) {
+      bus();
+      return;
+    }
+
+    wx.showModal({
+      title: '请发电子邮件洽谈',
+      content: 'docker@khs1994.com',
+      showCancel: false,
+    });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function() {},
+  onLoad: function() {
+    this.setData!({
+      // @ts-ignore
+      list,
+    });
+
+    db.collection('showAd')
+      .doc('XHyMSHkPDdDCJ6Zf')
+      .get()
+      .then(
+        (res: any) => {
+          // console.log(res);
+          const showAd = res.data.show;
+
+          if (!showAd) {
+            list[5].id = 'beta';
+            list[5].name = '容器、云服务相关广告位招租';
+          }
+
+          this.setData!({
+            showAd,
+            // @ts-ignore
+            list,
+          });
+        },
+        (res: any) => {
+          console.log(res);
+
+          list[5].id = 'beta';
+          list[5].name = '容器、云服务相关广告位招租';
+          this.setData!({
+            showAd: false,
+            // @ts-ignore
+            list,
+          });
+        },
+      );
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

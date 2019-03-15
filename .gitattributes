@@ -1,2 +1,8 @@
-*.wxss linguist-language=css
-*.wxml linguist-language=html
+*.wxss           linguist-language=css
+*.wxml           linguist-language=html
+
+/iviewui         linguist-vendored
+/wuss            linguist-vendored
+/client/weui     linguist-vendored
+/client/iviewui  linguist-vendored
+/client/towxml   linguist-vendored

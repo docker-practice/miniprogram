@@ -17,7 +17,11 @@
     "strict": true,
     "removeComments": true,
     "pretty": true,
-    "strictPropertyInitialization": true
+    "strictPropertyInitialization": true,
+    "lib": [
+      "ESNext",
+      "DOM"
+    ]
   },
   "include": ["./**/*.ts"],
   "exclude": ["node_modules", "miniprogram_dist", "**/*.spec.ts"]

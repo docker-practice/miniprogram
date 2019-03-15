@@ -9,8 +9,8 @@
   "miniprogramRoot": "client/",
   "scripts": {
     "beforeCompile": "npm run docker && cd client && npm run compile",
-    "beforePreview": "npm run docker && cd client && npm run compile-pro",
-    "beforeUpload": "npm run docker && cd client && npm run compile-pro"
+    "beforePreview": "npm run docker && cd client && npm run compile:pro",
+    "beforeUpload": "npm run docker && cd client && npm run compile:pro"
   },
   "setting": {
     "urlCheck": true,

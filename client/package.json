@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "compile": "npx tsc",
-    "compile-pro": "npx tsc --inlineSources false --inlineSourceMap false"
+    "compile:pro": "npx tsc --inlineSources false --inlineSourceMap false",
+    "yarn:update": "yarn upgrade-interactive --latest"
   },
   "dependencies": {
     "towxml": "github:pcit-ce/towxml"
@@ -11,5 +12,6 @@
   "devDependencies": {
     "@types/wx": "github:khs1994/types-wx",
     "typescript": "^3.2.2"
-  }
+  },
+  "license": "MIT"
 }

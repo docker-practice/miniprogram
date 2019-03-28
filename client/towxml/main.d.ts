@@ -1,1 +1,1 @@
-declare module "towxml";
+declare module 'towxml';

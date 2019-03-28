@@ -1,6 +1,6 @@
 /**index.wxss**/
 
-@import '/weui/weui.wxss';
+/* @import '/weui/weui.wxss'; */
 
 page {
   background-color: #36a1f0;

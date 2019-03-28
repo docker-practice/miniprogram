@@ -100,7 +100,7 @@ Page({
     // 获取状态栏（信号栏）高度
     wx.getSystemInfo({
       success: res => {
-        res.version.split('.')[0] === '6';
+        // res.version.split('.')[0] === '6';
 
         this.setData!({
           showFixedStatusBar: true,

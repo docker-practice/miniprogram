@@ -4,7 +4,7 @@
     "ignore": []
   },
   "compileType": "miniprogram",
-  "libVersion": "2.6.1",
+  "libVersion": "2.6.4",
   "projectname": "docker",
   "miniprogramRoot": "client/",
   "scripts": {
@@ -22,6 +22,8 @@
     "nodeModules": true
   },
   "appid": "wxb830c3abf8a658a5",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
   "condition": {
     "search": {
       "current": -1,

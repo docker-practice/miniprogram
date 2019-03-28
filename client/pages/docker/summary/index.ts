@@ -171,12 +171,6 @@ Page({
       title: '开始 Docker 之旅~',
       imageUrl:
         'https://gitee.com/docker_practice/docker_practice/raw/master/_images/cover.jpg',
-      success() {
-        console.log(1);
-        wx.showToast({
-          title: '感谢支持',
-        });
-      },
       fail() {
         wx.showToast({
           title: '转发失败',

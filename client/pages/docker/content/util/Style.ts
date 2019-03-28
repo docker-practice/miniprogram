@@ -1,9 +1,9 @@
 export default function style(noticeBGColor: string) {
   wx.getSystemInfo({
-    success(res) {
-      let version = res.version.split('.')[0];
+    success() {
+      // let version = res.version.split('.')[0];
 
-      console.log(version);
+      // console.log(version);
 
       wx.setBackgroundColor({
         backgroundColor: noticeBGColor,

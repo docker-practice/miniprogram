@@ -221,9 +221,11 @@ Page({
     //   showMenu: true,
     // });
 
-    wx.switchTab({
-      url: '../summary/index',
-    });
+    wx.navigateBack({ delta: 1 });
+
+    // wx.switchTab({
+    //   url: '../summary/index',
+    // });
   },
 
   // menuClose() {

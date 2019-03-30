@@ -1,5 +1,9 @@
 export default [
   {
+    id: 'oldmenu',
+    name: '经典目录',
+  },
+  {
     id: 'dashang',
     name: '打赏',
   },
@@ -101,6 +105,14 @@ export default [
       {
         id: 'image/multistage-builds/laravel.md',
         name: '实战多阶段构建 Laravel 镜像',
+      },
+      {
+        id: 'image/manifest.md',
+        name: '构建多种系统架构支持的 Docker 镜像',
+      },
+      {
+        id: 'image/buildkit.md',
+        name: '使用 BuildKit 构建镜像',
       },
       { id: 'image/other.md', name: '其它制作镜像的方式' },
       { id: 'image/internal.md', name: '实现原理' },

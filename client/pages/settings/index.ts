@@ -34,7 +34,7 @@ Page({
     wx.getStorageInfo({
       success: (res: any) => {
         this.setData!({
-          storageSize: (res.currentSize / 1024).toFixed(2) + ' MB',
+          storageSize: ((res.currentSize / 1024) as any).toFixed(2) + ' MB',
         });
       },
     });
@@ -95,7 +95,7 @@ Page({
       return;
     }
 
-    const fonts = ['默认', 'ZCOOL KuaiLe'];
+    const fonts: Array<string> = ['默认', 'ZCOOL KuaiLe'];
 
     wx.showActionSheet({
       itemList: fonts,
@@ -117,6 +117,12 @@ Page({
           fontType: font,
         });
       },
+    });
+  },
+
+  oldMenu() {
+    wx.navigateTo({
+      url: '/pages/docker/index/index',
     });
   },
 });

@@ -19,5 +19,7 @@
   <i-cell title="实体书 📕" value="进阶学习" bind:click="buyBook"></i-cell>
 
   <i-cell title="收藏夹 📁" value="马上找到你要的内容" bind:click="favorites"></i-cell>
+
+  <i-cell title="经典目录" value="怀旧经典" bind:click="oldMenu"></i-cell>
 </i-cell-group>
 </i-panel>

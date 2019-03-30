@@ -42,6 +42,8 @@
     - [参考文档](../content/index?key=image/dockerfile/references.md)
   - [Dockerfile 多阶段构建](../content/index?key=image/multistage-builds/README.md)
     - [实战多阶段构建 Laravel 镜像](../content/index?key=image/multistage-builds/laravel.md)
+  - [构建多种系统架构支持的 Docker 镜像](../content/index?key=image/manifest.md)
+  - [使用 BuildKit 构建镜像](../content/index?key=image/buildkit.md)
   - [其它制作镜像的方式](../content/index?key=image/other.md)
   - [实现原理](../content/index?key=image/internal.md)
 - [操作容器](../content/index?key=container/README.md)

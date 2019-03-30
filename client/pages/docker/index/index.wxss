@@ -8,6 +8,7 @@
 .weui-footer__text {
   padding-top: 2vh;
   font-size: 40rpx;
+  margin-bottom: 3vh;
 }
 
 .h2w__h1 {

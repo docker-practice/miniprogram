@@ -7,14 +7,6 @@ import openGithub from '../../../utils/OpenGithub';
 import bus from '../../../utils/bus';
 import alipay from '../../../utils/Alipay';
 
-wx.cloud.init({
-  env: 'pro-02adcb',
-});
-
-const db = wx.cloud.database({
-  env: 'pro-02adcb',
-});
-
 Page({
   /**
    * 页面的初始数据
@@ -27,12 +19,12 @@ Page({
         open: false,
       },
     ],
-    showAd: false,
+    showAd: true,
   },
 
   kindToggle: function(e: any) {
-    var id = e.currentTarget.id,
-      list = this.data.list;
+    let id = e.currentTarget.id;
+    let list: any = this.data.list;
 
     if (id === 'dashang') {
       this.dashang();
@@ -54,7 +46,14 @@ Page({
       return;
     }
 
-    for (var i = 0, len = list.length; i < len; ++i) {
+    if (id === 'oldmenu') {
+      wx.navigateTo({
+        url: '/pages/docker/index/index',
+      });
+      return;
+    }
+
+    for (let i = 0, len = list.length; i < len; ++i) {
       if (list[i].id == id) {
         list[i].open = !list[i].open;
       } else {
@@ -99,38 +98,6 @@ Page({
       // @ts-ignore
       list,
     });
-
-    db.collection('showAd')
-      .doc('XHyMSHkPDdDCJ6Zf')
-      .get()
-      .then(
-        (res: any) => {
-          // console.log(res);
-          const showAd = res.data.show;
-
-          if (!showAd) {
-            list[5].id = 'beta';
-            list[5].name = '容器、云服务相关广告位招租';
-          }
-
-          this.setData!({
-            showAd,
-            // @ts-ignore
-            list,
-          });
-        },
-        (res: any) => {
-          console.log(res);
-
-          list[5].id = 'beta';
-          list[5].name = '容器、云服务相关广告位招租';
-          this.setData!({
-            showAd: false,
-            // @ts-ignore
-            list,
-          });
-        },
-      );
   },
 
   /**

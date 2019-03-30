@@ -6,11 +6,11 @@ import daShang from '../../../utils/DaShang';
 import openGithub from '../../../utils/OpenGithub';
 import bus from '../../../utils/bus';
 import alipay from '../../../utils/Alipay';
-// @ts-ignore
+
 wx.cloud.init({
   env: 'pro-02adcb',
 });
-// @ts-ignore
+
 const db = wx.cloud.database({
   env: 'pro-02adcb',
 });

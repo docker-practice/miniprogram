@@ -5,3 +5,5 @@ package-lock.json
 iviewui
 
 docker/summary.ts
+
+client/buildcache

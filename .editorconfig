@@ -1,9 +1,15 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
 root = true
 
 [*]
+
+indent_style = space
 
 indent_size = 2
 
 insert_final_newline = true
 
 end_of_line = lf
+
+charset=utf-8

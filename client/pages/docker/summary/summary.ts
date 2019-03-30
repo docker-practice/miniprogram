@@ -15,7 +15,7 @@ export default [
   },
   {
     id: 'alipay',
-    name: '支付宝线下红包 (瓜分 9亿)',
+    name: '支付宝线下红包',
   },
   {
     id: 'introduction',

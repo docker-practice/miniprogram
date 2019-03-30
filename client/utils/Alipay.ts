@@ -1,8 +1,8 @@
 export default function alipay() {
-  const extra =
-    new Date().getMonth() === 2
-      ? '3 月还可参加瓜分 9 亿活动，支付宝搜索『9亿』参加活动'
-      : '';
+  const extra = '';
+  // new Date().getMonth() === 2
+  //   ? '3 月还可参加瓜分 9 亿活动，支付宝搜索『9亿』参加活动'
+  //   : '';
 
   wx.showModal({
     title: '点击确定，复制搜索码',

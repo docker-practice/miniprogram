@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "incremental": true,
+    "tsBuildInfoFile": "./buildcache/front-end",
     "strictNullChecks": true,
     "noImplicitAny": true,
     "module": "CommonJS",

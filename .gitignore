@@ -10,5 +10,6 @@ client/pages/**/*.js
 client/app.js
 client/utils/*.js
 client/pages/docker/content/util/summary.ts
+client/buildcache
 
 docker/summary.ts

@@ -1,5 +1,9 @@
 export default [
   {
+    id: 'qiandao',
+    name: '签到',
+  },
+  {
     id: 'oldmenu',
     name: '经典目录',
   },

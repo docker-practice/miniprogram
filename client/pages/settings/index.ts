@@ -11,6 +11,7 @@ Page({
     rate_index: 0,
     storageSize: '0 MB',
     fontType: '默认',
+    jifen: '10',
   },
   onLoad() {
     wx.getStorage({

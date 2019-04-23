@@ -11,6 +11,10 @@ speed="1200" backgroundcolor="#fff" color="#36a1f0">
     <view class="page__desc">欢迎进入 Docker 世界</view>
 </view>
 
+<view style="margin-bottom:20px;margin-left:10px;margin-right:10px">
+<official-account></official-account>
+</view>
+
 <view class="page__bd page__bd_spacing">
     <view class="kind-list">
         <block wx:for="{{list}}" wx:key="id">

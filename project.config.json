@@ -1,12 +1,13 @@
 {
-  "description": "项目配置文件",
+  "description": "docker_practice",
   "packOptions": {
     "ignore": []
   },
   "compileType": "miniprogram",
-  "libVersion": "2.6.5",
+  "libVersion": "2.6.6",
   "projectname": "docker",
   "miniprogramRoot": "client/",
+  "cloudfunctionRoot": "functions/",
   "scripts": {
     "beforeCompile": "npm run docker && cd client && npm run compile",
     "beforePreview": "npm run docker && cd client && npm run compile:pro",
@@ -18,12 +19,15 @@
     "postcss": true,
     "minified": true,
     "newFeature": true,
+    "nodeModules": true,
     "autoAudits": false,
-    "nodeModules": true
+    "uglifyFileName": false,
+    "checkInvalidKey": true
   },
   "appid": "wxb830c3abf8a658a5",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
     "search": {
       "current": -1,
@@ -41,8 +45,15 @@
       "list": []
     },
     "miniprogram": {
-      "current": -1,
-      "list": []
+      "current": 0,
+      "list": [
+        {
+          "id": -1,
+          "name": "t",
+          "pathName": "pages/docker/summary/index",
+          "scene": 1011
+        }
+      ]
     }
   }
 }

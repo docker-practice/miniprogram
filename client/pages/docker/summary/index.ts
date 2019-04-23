@@ -1,12 +1,14 @@
-// import { IMyApp } from '../../../app';
-// const app = getApp<IMyApp>();
+//import { IMyApp } from '../../../app';
+//const app = getApp<IMyApp>();
 
 import list from './summary';
 import daShang from '../../../utils/DaShang';
 import openGithub from '../../../utils/OpenGithub';
 import bus from '../../../utils/bus';
 import alipay from '../../../utils/Alipay';
-let videAd: any = null;
+import qiandao from '../../../utils/Qiandao';
+
+let videAd: wx.RewardedVideoAd | null = null;
 
 Page({
   /**
@@ -106,35 +108,13 @@ Page({
     });
 
     // 激励广告
-    //@ts-ignore
     if (wx.createRewardedVideoAd) {
-      //@ts-ignore
       videAd = wx.createRewardedVideoAd({
         adUnitId: 'adunit-a929f1a7fb4e4e96',
       });
     }
 
-    //@ts-ignore
-    videAd.onClose(status => {
-      console.log(status);
-
-      if (status.isEnded) {
-        wx.showModal({
-          title: '签到成功',
-          content: '积分 +2',
-          showCancel: false,
-        });
-      } else {
-        wx.showModal({
-          title: '签到成功',
-          content: '积分 +1',
-          showCancel: false,
-        });
-      }
-    });
-
-    //@ts-ignore
-    videAd.onError(res => {
+    videAd!.onError(res => {
       wx.showModal({
         title: '出现错误',
         content: JSON.stringify(res),
@@ -142,39 +122,8 @@ Page({
     });
   },
 
-  showVideoAd() {
-    //@ts-ignore
-    videAd.show().catch(err => {
-      wx.showModal({
-        title: '出现错误',
-        content: JSON.stringify(err),
-      });
-      //@ts-ignore
-      videAd.load().then(() => {
-        //@ts-ignore
-        videAd.show();
-      });
-    });
-  },
-
   qiandao() {
-    wx.showModal({
-      title: '获得额外积分',
-      content: '观看完整广告视频，额外获得 1 积分',
-      confirmText: '观看视频',
-      cancelText: '立即签到',
-      success: res => {
-        if (res.confirm) {
-          this.showVideoAd();
-        } else {
-          wx.showModal({
-            title: '签到成功',
-            content: '积分 +1',
-            showCancel: false,
-          });
-        }
-      },
-    });
+    qiandao(videAd);
   },
 
   /**

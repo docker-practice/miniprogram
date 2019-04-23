@@ -4,6 +4,7 @@ const app = getApp<IMyApp>();
 import Font from '../../utils/Font';
 import buyBook from '../../utils/BuyBook';
 import daShang from '../../utils/DaShang';
+import Jifen from '../../utils/Jifen';
 
 Page({
   data: {
@@ -11,7 +12,7 @@ Page({
     rate_index: 0,
     storageSize: '0 MB',
     fontType: '默认',
-    jifen: '10',
+    jifen: '获取中',
   },
   onLoad() {
     wx.getStorage({
@@ -38,6 +39,12 @@ Page({
           storageSize: ((res.currentSize / 1024) as any).toFixed(2) + ' MB',
         });
       },
+    });
+
+    new Jifen().get().then(res => {
+      this.setData!({
+        jifen: res,
+      });
     });
   },
   onChange(e: any) {

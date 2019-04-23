@@ -1,7 +1,7 @@
 export default [
   {
     id: 'qiandao',
-    name: '签到',
+    name: '签到 (领积分)',
   },
   {
     id: 'oldmenu',

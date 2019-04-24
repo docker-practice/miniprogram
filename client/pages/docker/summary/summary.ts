@@ -38,7 +38,11 @@ export default [
   // 广告位 index 4
   {
     id: 'bus',
-    name: '公交 地铁红包',
+    name: '支付宝公交地铁红包',
+  },
+  {
+    id: 'ad',
+    name: '云服务广告位招租',
   },
   {
     id: 'docker_introduction',

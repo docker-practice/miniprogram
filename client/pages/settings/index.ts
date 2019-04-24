@@ -14,23 +14,31 @@ Page({
     fontType: '默认',
     jifen: '获取中',
   },
-  onLoad() {
-    wx.getStorage({
-      key: 'rate',
-      success: (e: any) => {
-        this.setData!({
-          rate_index: e.data,
-        });
-      },
+  getStorage(key: string) {
+    return new Promise(resolve => {
+      wx.getStorage({
+        key,
+        success(res) {
+          resolve(res.data);
+        },
+        fail() {
+          resolve(undefined);
+        },
+      });
     });
-
-    wx.getStorage({
-      key: 'fontType',
-      success: (e: any) => {
-        this.setData!({
-          fontType: e.data,
-        });
-      },
+  },
+  onLoad() {
+    Promise.all([
+      this.getStorage('rate'),
+      this.getStorage('fontType'),
+      new Jifen().get(),
+    ]).then(res => {
+      console.log(res);
+      this.setData!({
+        rate_index: res[0] || 0,
+        fontType: res[1] || '默认',
+        jifen: res[2] || 0,
+      });
     });
 
     wx.getStorageInfo({
@@ -39,12 +47,6 @@ Page({
           storageSize: ((res.currentSize / 1024) as any).toFixed(2) + ' MB',
         });
       },
-    });
-
-    new Jifen().get().then(res => {
-      this.setData!({
-        jifen: res,
-      });
     });
   },
   onChange(e: any) {

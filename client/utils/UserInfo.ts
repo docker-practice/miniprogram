@@ -4,7 +4,26 @@ wx.cloud.init({
 
 export default class UserInfo {
   static async getOpenId() {
-    return await wx.cloud
+    let openId: string;
+
+    openId = await new Promise(resolve => {
+      wx.getStorage({
+        key: 'openId',
+        success(res) {
+          resolve(res.data);
+        },
+        fail() {
+          resolve(undefined);
+        },
+      });
+    });
+
+    if (openId) {
+      console.log('get openid from cache');
+      return openId;
+    }
+
+    openId = await wx.cloud
       .callFunction({
         name: 'sign',
         data: {
@@ -15,5 +34,12 @@ export default class UserInfo {
         // 获取 open_id
         return res.result.userInfo.openId;
       });
+
+    wx.setStorage({
+      key: 'openId',
+      data: openId,
+    });
+
+    return openId;
   }
 }

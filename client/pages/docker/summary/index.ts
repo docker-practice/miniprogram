@@ -8,7 +8,8 @@ import bus from '../../../utils/bus';
 import alipay from '../../../utils/Alipay';
 import qiandao from '../../../utils/Qiandao';
 
-let videAd: wx.RewardedVideoAd | null = null;
+let videAd: wx.RewardedVideoAd;
+let interstitialAd: any;
 
 Page({
   /**
@@ -39,8 +40,8 @@ Page({
       return;
     }
 
-    if (id == 'bus' || id === 'beta') {
-      this.bus();
+    if (id == 'bus' || id === 'ad') {
+      this.ad(id);
       return;
     }
 
@@ -85,8 +86,8 @@ Page({
     openGithub();
   },
 
-  bus() {
-    if (this.data.showAd) {
+  ad(id: string) {
+    if (id === 'bus') {
       bus();
       return;
     }
@@ -112,12 +113,62 @@ Page({
       videAd = wx.createRewardedVideoAd({
         adUnitId: 'adunit-a929f1a7fb4e4e96',
       });
+
+      videAd.onError(res => {
+        wx.showModal({
+          title: '提示',
+          content: JSON.stringify(res),
+          showCancel: false,
+        });
+      });
     }
 
-    videAd!.onError(res => {
+    // 插屏广告
+    // @ts-ignore
+    if (wx.createInterstitialAd) {
+      // @ts-ignore
+      interstitialAd = wx.createInterstitialAd({
+        adUnitId: 'adunit-6ef44789d84b9392',
+      });
+
+      interstitialAd.show().then(
+        () => {},
+        (err: any) => {
+          console.log(err);
+        },
+      );
+
+      interstitialAd.onClose(() => {});
+
+      interstitialAd.onError((res: any) => {
+        console.log(res);
+      });
+
+      interstitialAd.onLoad(() => {
+        console.log('on load event');
+      });
+    }
+    // 检查新版本
+    let um = wx.getUpdateManager();
+
+    um.onCheckForUpdate(res => {
+      if (res.hasUpdate) {
+        wx.showModal({
+          title: '发现新版本',
+          content: '下载中...',
+          showCancel: false,
+        });
+      }
+    });
+
+    um.onUpdateReady(() => {
       wx.showModal({
-        title: '出现错误',
-        content: JSON.stringify(res),
+        title: '更新',
+        content: '新版本已经下载好了',
+        confirmText: '立即更新',
+        success: res => {
+          res.confirm && um.applyUpdate();
+        },
       });
     });
   },

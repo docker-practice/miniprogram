@@ -7,7 +7,6 @@ wx.cloud.init({
 export default class Jifen {
   async get() {
     return await UserInfo.getOpenId().then(async _openid => {
-      console.log(_openid);
       return await wx.cloud
         .database({ env: 'pro-02adcb' })
         .collection('sign')

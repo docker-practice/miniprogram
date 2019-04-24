@@ -1,3 +1,5 @@
+import UserInfo from './UserInfo';
+
 wx.cloud.init({
   env: 'pro-02adcb',
 });
@@ -9,8 +11,9 @@ const db = wx.cloud.database({
 function showVideoAd(openid: string, videAd: wx.RewardedVideoAd) {
   videAd.show().catch(err => {
     wx.showModal({
-      title: '出现错误',
+      title: '提示',
       content: JSON.stringify(err),
+      showCancel: false,
     });
     videAd.load();
   });
@@ -82,7 +85,6 @@ function addJifen(_openid: string, jifen: number, sign_time: number) {
       let { _id, sign_number = 0, jifen: jifen_from_db = 0 } = res.data[0];
 
       sign_number += 1;
-      console.log(jifen);
       jifen += jifen_from_db;
 
       db.collection('sign')
@@ -143,21 +145,14 @@ export default function qiandao(videAd: any) {
   wx.showLoading({
     title: '加载中',
   });
+  UserInfo.getOpenId().then(
+    res => {
+      // 获取 open_id
+      let _openid = res;
 
-  wx.cloud
-    .callFunction({
-      name: 'sign',
-      data: {
-        k: 1,
-      },
-    })
-    .then(
-      (res: any) => {
-        // 获取 open_id
-        let _openid = res.result.userInfo.openId;
-
-        // 是否签到
-        isSign(_openid).then(res => {
+      // 是否签到
+      isSign(_openid).then(
+        res => {
           wx.hideLoading();
           if (res) {
             wx.showModal({
@@ -170,11 +165,22 @@ export default function qiandao(videAd: any) {
           }
           // 签到
           sign(_openid, videAd);
-        });
-      },
-      res => {
-        // 获取记录出错
-        console.log(res);
-      },
-    );
+        },
+        () => {
+          wx.showModal({
+            title: '提示',
+            content: '签到失败',
+          });
+        },
+      );
+    },
+    res => {
+      // 获取记录出错
+      console.log(res);
+      wx.showModal({
+        title: '提示',
+        content: '获取用户信息失败',
+      });
+    },
+  );
 }

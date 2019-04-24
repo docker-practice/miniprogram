@@ -24,7 +24,6 @@ App<IMyApp>({
     wx.getStorage({
       key: 'theme',
       success: res => {
-        console.log(res);
         this.globalData.theme = res.data ? <'light' | 'dark'>res.data : 'light';
       },
     });

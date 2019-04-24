@@ -28,8 +28,12 @@ function showVideoAd(openid: string, videAd: wx.RewardedVideoAd) {
         content: '积分 +2',
         showCancel: false,
       });
-
+      let sign_time = getSignTime();
       addJifen(openid, 2, getSignTime());
+      wx.setStorage({
+        key: 'sign_time',
+        data: sign_time,
+      });
     } else {
       // 存储签到时间
       wx.showModal({
@@ -37,8 +41,12 @@ function showVideoAd(openid: string, videAd: wx.RewardedVideoAd) {
         content: '积分 +1',
         showCancel: false,
       });
-
-      addJifen(openid, 1, getSignTime());
+      let sign_time = getSignTime();
+      addJifen(openid, 1, sign_time);
+      wx.setStorage({
+        key: 'sign_time',
+        data: sign_time,
+      });
     }
   });
 }
@@ -47,13 +55,18 @@ function sign(openid: string, videAd: any) {
   wx.showModal({
     title: '获得额外积分',
     content: '观看完整广告视频，额外获得 1 积分',
-    confirmText: '观看视频',
-    cancelText: '立即签到',
+    confirmText: '立即签到',
+    cancelText: '不要积分',
     success: res => {
       if (res.confirm) {
         showVideoAd(openid, videAd);
       } else {
-        addJifen(openid, 1, getSignTime());
+        let sign_time = getSignTime();
+        addJifen(openid, 1, sign_time);
+        wx.setStorage({
+          key: 'sign_time',
+          data: sign_time,
+        });
         wx.showModal({
           title: '签到成功',
           content: '积分 +1',
@@ -99,7 +112,31 @@ function addJifen(_openid: string, jifen: number, sign_time: number) {
     });
 }
 
-async function isSign(_openid: string) {
+export async function isSign(_openid: string, local: boolean = false) {
+  if (!_openid) {
+    _openid = await UserInfo.getOpenId();
+  }
+  if (local) {
+    return await new Promise(resolve => {
+      wx.getStorage({
+        key: 'sign_time',
+        success: res => {
+          let sign_time = res.data || 0;
+          if (
+            sign_time < getEndTime() &&
+            sign_time > getEndTime() - 24 * 60 * 60 * 1000
+          ) {
+            return resolve(true);
+          }
+
+          return resolve(false);
+        },
+        fail: () => {
+          resolve(false);
+        },
+      });
+    });
+  }
   return await db
     .collection('sign')
     .where({
@@ -130,6 +167,11 @@ async function isSign(_openid: string) {
         sign_time_from_db < getEndTime() &&
         sign_time_from_db > getEndTime() - 24 * 60 * 60 * 1000
       ) {
+        wx.setStorage({
+          key: 'sign_time',
+          data: sign_time_from_db,
+        });
+
         return true;
       }
 
@@ -157,7 +199,7 @@ export default function qiandao(videAd: any) {
           if (res) {
             wx.showModal({
               title: '已签到',
-              content: '明天再来吧',
+              content: '明天记得来学习哟',
               showCancel: false,
             });
 

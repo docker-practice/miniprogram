@@ -1,7 +1,8 @@
 export default [
   {
-    id: 'qiandao',
-    name: '签到 (领积分)',
+    id: 'unsign',
+    name: '签到 (领学习积分)',
+    color: '#00BFFF',
   },
   {
     id: 'oldmenu',
@@ -10,6 +11,7 @@ export default [
   {
     id: 'dashang',
     name: '打赏',
+    color: '#1E90FF',
   },
   {
     id: 'github',
@@ -24,6 +26,7 @@ export default [
   {
     id: 'alipay',
     name: '支付宝线下红包',
+    color: '#FF4500',
   },
   {
     id: 'introduction',
@@ -39,10 +42,12 @@ export default [
   {
     id: 'bus',
     name: '支付宝公交地铁红包',
+    color: '#FFB90F',
   },
   {
     id: 'ad',
     name: '云服务广告位招租',
+    color: '#00BFFF',
   },
   {
     id: 'docker_introduction',

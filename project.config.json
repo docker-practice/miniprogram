@@ -45,16 +45,8 @@
       "list": []
     },
     "miniprogram": {
-      "current": 0,
-      "list": [
-        {
-          "id": 0,
-          "name": "t",
-          "pathName": "pages/docker/summary/index",
-          "query": "",
-          "scene": null
-        }
-      ]
+      "current": -1,
+      "list": []
     }
   }
 }

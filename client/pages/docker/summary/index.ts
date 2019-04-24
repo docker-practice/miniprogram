@@ -7,6 +7,7 @@ import openGithub from '../../../utils/OpenGithub';
 import bus from '../../../utils/bus';
 import alipay from '../../../utils/Alipay';
 import qiandao from '../../../utils/Qiandao';
+import { isSign } from '../../../utils/Qiandao';
 
 let videAd: wx.RewardedVideoAd;
 let interstitialAd: any;
@@ -57,8 +58,17 @@ Page({
       return;
     }
 
-    if (id === 'qiandao') {
+    if (id === 'unsign') {
       this.qiandao();
+      return;
+    }
+
+    if (id === 'sign') {
+      wx.showModal({
+        title: '已签到',
+        content: '明天记得来学习哟',
+        showCancel: false,
+      });
       return;
     }
 
@@ -108,6 +118,19 @@ Page({
       list,
     });
 
+    isSign('', true).then(res => {
+      res &&
+        (list[0] = {
+          id: 'sign',
+          name: '已签到(努力学习哟)',
+        });
+
+      this.setData!({
+        // @ts-ignore
+        list,
+      });
+    });
+
     // 激励广告
     if (wx.createRewardedVideoAd) {
       videAd = wx.createRewardedVideoAd({
@@ -153,11 +176,7 @@ Page({
 
     um.onCheckForUpdate(res => {
       if (res.hasUpdate) {
-        wx.showModal({
-          title: '发现新版本',
-          content: '下载中...',
-          showCancel: false,
-        });
+        console.log('发现新版本');
       }
     });
 

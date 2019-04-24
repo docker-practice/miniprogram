@@ -133,8 +133,6 @@ Page({
       success: res => {
         let index = res.tapIndex;
 
-        console.log(index);
-
         switch (index) {
           case 0:
             const url =

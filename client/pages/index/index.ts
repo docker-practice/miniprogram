@@ -53,6 +53,10 @@ Page({
 
   getUserInfo(e: any) {
     console.log(e);
+    if (e.detail.errMsg !== 'getUserInfo:ok') {
+      return;
+    }
+
     app.globalData.userInfo = e.detail.userInfo;
     this.setData!({
       userInfo: e.detail.userInfo,

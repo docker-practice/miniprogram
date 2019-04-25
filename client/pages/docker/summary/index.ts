@@ -109,6 +109,21 @@ Page({
     });
   },
 
+  isSign(local: boolean = false) {
+    isSign('', local).then(res => {
+      res &&
+        (list[0] = {
+          id: 'sign',
+          name: '已签到',
+        });
+
+      this.setData!({
+        // @ts-ignore
+        list,
+      });
+    });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -118,18 +133,7 @@ Page({
       list,
     });
 
-    isSign('', true).then(res => {
-      res &&
-        (list[0] = {
-          id: 'sign',
-          name: '已签到(努力学习哟)',
-        });
-
-      this.setData!({
-        // @ts-ignore
-        list,
-      });
-    });
+    this.isSign(true);
 
     // 激励广告
     if (wx.createRewardedVideoAd) {
@@ -194,6 +198,8 @@ Page({
 
   qiandao() {
     qiandao(videAd);
+
+    this.isSign();
   },
 
   /**

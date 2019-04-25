@@ -1,16 +1,11 @@
-// 云函数入口文件
+// 返回是否存在时间误差 5 分钟内
 const cloud = require('wx-server-sdk')
 
 cloud.init()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  const wxContext = cloud.getWXContext()
+  const time = event.time;
 
-  return {
-    event,
-    openid: wxContext.OPENID,
-    appid: wxContext.APPID,
-    unionid: wxContext.UNIONID,
-  }
+  return Math.abs((time - new Date().getTime())) < 5 * 60 * 1000;
 }

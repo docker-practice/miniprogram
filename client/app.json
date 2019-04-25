@@ -1,14 +1,5 @@
 {
-  "pages": [
-    "pages/docker/summary/index",
-    "pages/docker/index/index",
-    "pages/docker/content/index",
-    "pages/index/index",
-    "pages/settings/index",
-    "pages/random/index",
-    "pages/note/index",
-    "pages/login/index"
-  ],
+  "pages": ["pages/docker/summary/index", "pages/index/index"],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarTitleText": "Docker 从入门到实践",
@@ -31,6 +22,38 @@
       }
     ]
   },
+  "subpackages": [
+    {
+      "root": "pages/settings",
+      "pages": ["index"],
+      "plugins": {
+        "tucao": {
+          "version": "1.1.4",
+          "provider": "wx8abaf00ee8c3202e"
+        }
+      }
+    },
+    {
+      "root": "pages/docker/index",
+      "pages": ["index"]
+    },
+    {
+      "root": "pages/docker/content",
+      "pages": ["index"]
+    },
+    {
+      "root": "pages/login",
+      "pages": ["index"]
+    },
+    {
+      "root": "pages/note",
+      "pages": ["index"]
+    },
+    {
+      "root": "pages/random",
+      "pages": ["index"]
+    }
+  ],
   "navigateToMiniProgramAppIdList": ["wx18a2ac992306a5a4"],
   "sitemapLocation": "sitemap.json"
 }

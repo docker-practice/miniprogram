@@ -183,10 +183,41 @@ function getSignTime(): number {
   return new Date().getTime();
 }
 
-export default function qiandao(videAd: any) {
+export async function checkTime(time: number = 0) {
+  time === 0 && (time = getSignTime());
+  return await wx.cloud
+    .callFunction({
+      name: 'time',
+      data: {
+        time,
+      },
+    })
+    .then(
+      res => {
+        return res;
+      },
+      () => {
+        return false;
+      },
+    );
+}
+
+export default async function qiandao(videAd: any) {
   wx.showLoading({
     title: '加载中',
   });
+
+  if (!(await checkTime())) {
+    wx.showModal({
+      title: '请检查设备时间设置',
+      content: '设备时间与实际时间相差较大',
+    });
+
+    wx.hideLoading();
+
+    return;
+  }
+
   UserInfo.getOpenId().then(
     res => {
       // 获取 open_id
@@ -196,6 +227,7 @@ export default function qiandao(videAd: any) {
       isSign(_openid).then(
         res => {
           wx.hideLoading();
+
           if (res) {
             wx.showModal({
               title: '已签到',

@@ -13,6 +13,14 @@ import Font from '../../../utils/Font';
 import daShang from '../../../utils/DaShang';
 import buyBook from '../../../utils/BuyBook';
 
+wx.onNetworkStatusChange(res => {
+  wx.showToast({
+    title: `${res.networkType.toUpperCase()} 已连接`,
+    icon: 'none',
+    duration: 1500,
+  });
+});
+
 Page({
   data: {
     data: '',

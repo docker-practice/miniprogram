@@ -23,5 +23,11 @@
   <i-cell title="收藏夹 📁" value="马上找到你要的内容" bind:click="favorites"></i-cell>
 
   <i-cell title="经典目录" value="怀旧经典" bind:click="oldMenu"></i-cell>
+
+  <i-cell title="" value=""><button plain="true" bind:tap="tucao">Docker 社区</button></i-cell>
+  <i-cell title="" value=""><button plain="true" open-type="feedback">反馈</button></i-cell>
+  <i-cell title="" value=""><button plain="true" open-type="openSetting">授权设置</button></i-cell>
+  <i-cell title="" value=""><button plain="true" open-type="contact">联系我们</button></i-cell>
+
 </i-cell-group>
 </i-panel>

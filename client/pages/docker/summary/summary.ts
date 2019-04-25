@@ -5,10 +5,6 @@ export default [
     color: '#00BFFF',
   },
   {
-    id: 'oldmenu',
-    name: '经典目录',
-  },
-  {
     id: 'dashang',
     name: '打赏',
     color: '#1E90FF',
@@ -29,14 +25,8 @@ export default [
     color: '#FF4500',
   },
   {
-    id: 'introduction',
-    name: '简介',
-    open: false,
-    pages: [
-      { id: 'README.md', name: '前言' },
-      { id: 'CHANGELOG.md', name: '修订记录' },
-      { id: 'CONTRIBUTING.md', name: '如何贡献' },
-    ],
+    id: 'oldmenu',
+    name: '经典目录',
   },
   // 广告位 index 4
   {
@@ -48,6 +38,16 @@ export default [
     id: 'ad',
     name: '云服务广告位招租',
     color: '#00BFFF',
+  },
+  {
+    id: 'introduction',
+    name: '项目简介',
+    open: false,
+    pages: [
+      { id: 'README.md', name: '前言' },
+      { id: 'CHANGELOG.md', name: '修订记录' },
+      { id: 'CONTRIBUTING.md', name: '如何贡献' },
+    ],
   },
   {
     id: 'docker_introduction',

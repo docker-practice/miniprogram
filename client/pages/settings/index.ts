@@ -5,6 +5,7 @@ import Font from '../../utils/Font';
 import buyBook from '../../utils/BuyBook';
 import daShang from '../../utils/DaShang';
 import Jifen from '../../utils/Jifen';
+import UserInfo from '../../utils/UserInfo';
 
 Page({
   data: {
@@ -89,6 +90,30 @@ Page({
       title: '即将支持',
       content: '敬请期待',
       showCancel: false,
+    });
+  },
+
+  tucao() {
+    UserInfo.getOpenId().then(res => {
+      let openid = res;
+
+      const userInfo = {
+        avatar: app.globalData.userInfo!.avatarUrl,
+        nickname: app.globalData.userInfo!.nickName,
+        openid,
+      };
+
+      const extraData = {};
+
+      // @ts-ignore
+      const Tucao = requirePlugin('tucao').default;
+      // 初始化并触发跳转，支持链式调用
+      Tucao.init(void 0, {
+        productId: 59821,
+        navigateTo: wx.navigateTo,
+        ...userInfo,
+        extraData,
+      }).go();
     });
   },
 

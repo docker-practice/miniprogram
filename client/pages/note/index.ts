@@ -2,8 +2,8 @@ import { IMyApp } from '../../app';
 const app = getApp<IMyApp>();
 const fs = wx.getFileSystemManager();
 
-import Token from '../docker/content/util/Token';
-import Issue from '../docker/content/util/Issue';
+import Token from '../../utils/Token';
+import Issue from '../../utils/Issue';
 
 Page({
   /**

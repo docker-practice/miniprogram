@@ -38,6 +38,7 @@ page{
 }
 
 .weui-footer__text {
-  font-size: 17px;
+  font-size: 7vw;
   margin-bottom: 5vh;
+  padding: 0!important;
 }

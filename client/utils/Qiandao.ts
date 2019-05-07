@@ -22,7 +22,6 @@ function showVideoAd(openid: string, videAd: wx.RewardedVideoAd) {
     console.log(status);
 
     if (status.isEnded) {
-      // 存储签到时间
       wx.showModal({
         title: '签到成功',
         content: '积分 +2',
@@ -30,12 +29,12 @@ function showVideoAd(openid: string, videAd: wx.RewardedVideoAd) {
       });
       let sign_time = getSignTime();
       addJifen(openid, 2, getSignTime());
+      // 存储签到时间
       wx.setStorage({
         key: 'sign_time',
         data: sign_time,
       });
     } else {
-      // 存储签到时间
       wx.showModal({
         title: '签到成功',
         content: '积分 +1',
@@ -43,6 +42,7 @@ function showVideoAd(openid: string, videAd: wx.RewardedVideoAd) {
       });
       let sign_time = getSignTime();
       addJifen(openid, 1, sign_time);
+      // 存储签到时间
       wx.setStorage({
         key: 'sign_time',
         data: sign_time,
@@ -51,29 +51,36 @@ function showVideoAd(openid: string, videAd: wx.RewardedVideoAd) {
   });
 }
 
-function sign(openid: string, videAd: any) {
-  wx.showModal({
-    title: '获得额外积分',
-    content: '观看完整广告视频，额外获得 1 积分',
-    confirmText: '立即签到',
-    cancelText: '不要积分',
-    success: res => {
-      if (res.confirm) {
-        showVideoAd(openid, videAd);
-      } else {
-        let sign_time = getSignTime();
-        addJifen(openid, 1, sign_time);
-        wx.setStorage({
-          key: 'sign_time',
-          data: sign_time,
-        });
-        wx.showModal({
-          title: '签到成功',
-          content: '积分 +1',
-          showCancel: false,
-        });
-      }
-    },
+async function sign(openid: string, videAd: any) {
+  return await new Promise(resolve => {
+    wx.showModal({
+      title: '获得额外积分',
+      content: '观看完整广告视频，额外获得 1 积分',
+      confirmText: '立即签到',
+      cancelText: '不要积分',
+      success: res => {
+        if (res.confirm) {
+          showVideoAd(openid, videAd);
+          resolve(true);
+        } else {
+          let sign_time = getSignTime();
+
+          addJifen(openid, 1, sign_time).then(() => {
+            wx.setStorage({
+              key: 'sign_time',
+              data: sign_time,
+            });
+            wx.showModal({
+              title: '签到成功',
+              content: '积分 +1',
+              showCancel: false,
+            });
+
+            return resolve(true);
+          });
+        }
+      },
+    });
   });
 }
 
@@ -86,8 +93,9 @@ function getEndTime(): number {
   return Date.UTC(year, month, day + 1) + offset;
 }
 
-function addJifen(_openid: string, jifen: number, sign_time: number) {
-  db.collection('sign')
+async function addJifen(_openid: string, jifen: number, sign_time: number) {
+  return await db
+    .collection('sign')
     .where({
       _openid,
     })
@@ -137,7 +145,7 @@ export async function isSign(_openid: string, local: boolean = false) {
       });
     });
   }
-  return await db
+  let result = await db
     .collection('sign')
     .where({
       _openid,
@@ -177,6 +185,8 @@ export async function isSign(_openid: string, local: boolean = false) {
 
       return false;
     });
+
+  return result;
 }
 
 function getSignTime(): number {
@@ -208,53 +218,60 @@ export default async function qiandao(videAd: any) {
   });
 
   if (!(await checkTime())) {
+    wx.hideLoading();
+
     wx.showModal({
       title: '请检查设备时间设置',
       content: '设备时间与实际时间相差较大',
     });
 
-    wx.hideLoading();
-
-    return;
+    return false;
   }
 
-  UserInfo.getOpenId().then(
+  let _openid: string;
+
+  try {
+    _openid = await UserInfo.getOpenId();
+  } catch {
+    wx.hideLoading();
+
+    wx.showModal({
+      title: '提示',
+      content: '获取用户信息失败',
+    });
+
+    return false;
+  }
+
+  let result = await isSign(_openid).then(
     res => {
-      // 获取 open_id
-      let _openid = res;
+      wx.hideLoading();
 
-      // 是否签到
-      isSign(_openid).then(
-        res => {
-          wx.hideLoading();
+      if (res) {
+        wx.showModal({
+          title: '已签到',
+          content: '明天记得来学习哟',
+          showCancel: false,
+        });
 
-          if (res) {
-            wx.showModal({
-              title: '已签到',
-              content: '明天记得来学习哟',
-              showCancel: false,
-            });
+        return false;
+      }
 
-            return;
-          }
-          // 签到
-          sign(_openid, videAd);
-        },
-        () => {
-          wx.showModal({
-            title: '提示',
-            content: '签到失败',
-          });
-        },
-      );
+      return true;
     },
-    res => {
-      // 获取记录出错
-      console.log(res);
+    () => {
       wx.showModal({
         title: '提示',
-        content: '获取用户信息失败',
+        content: '签到失败',
       });
+
+      return false;
     },
   );
+
+  if (result) {
+    return await sign(_openid, videAd);
+  }
+
+  return false;
 }

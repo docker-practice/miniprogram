@@ -1,19 +1,20 @@
 <!-- <progress percent="{{percent}}" stroke-width="3px" activeColor="{{progressColor}}"></progress> -->
 <view style="height:100%;background-color:{{noticeBGColor}};font-family:{{fontType}}">
 
-<view
+<!-- <view
 style="height:{{statusBarHeight}}px;width:100%;background-color:{{noticeBGColor}};position:fixed"
-wx:if="{{showFixedStatusBar}}">
-</view>
+wx:if="{{show}}">
+</view> -->
 
-<view style="padding-top:{{statusBarHeight}}px">
+<view style="padding-top:{{statusBarHeight}}px"></view>
+
 <i-notice-bar icon="systemprompt" loop
-wx:if="{{showNotice}}" backgroundcolor="{{noticeBGColor}}" color="#36a1f0"
+wx:if="{{show}}" backgroundcolor="{{noticeBGColor}}" color="#36a1f0"
 speed="1200"
 >
 《Docker 技术入门与实战》第三版已经面世，介绍最新的容器技术栈，欢迎大家阅读使用并反馈建议。
 </i-notice-bar>
-</view>
+
 
 <!-- <view class="container" wx:if="{{spinShow}}" i-class="{{}}">
   <i-spin fix></i-spin>
@@ -49,16 +50,20 @@ speed="1200"
 
 <view wx:if="{{show}}">
 
-<i-button inline="true" bind:click="pushNote" size="large">在 GitHub 反馈本节内容</i-button>
+<i-button shape="circle" bind:click="pushNote" size="large" type="primary">在 GitHub 反馈本节内容</i-button>
 
-<i-button inline="true" i-class="favorites" bind:click="favorites" size="large" type="primary">收藏</i-button>
+<i-button i-class="favorites" shape="circle" bind:click="favorites" size="large" type="error">收藏</i-button>
 
-<view class="note-list"></view>
+<i-button i-class="buyBook" shape="circle" bind:click="buyBook" size="large" type="success">进阶学习 (实体书) 📕</i-button>
 
-<i-button i-class="buyBook" bind:click="buyBook" size="large" type="success">进阶学习 (实体书) 📕</i-button>
+<!-- <view class="note-list"></view> -->
 
 <view class="weui-footer" style="background-color:{{noticeBGColor}}">
-  <view class="weui-footer__text">GitHub yeasy/docker_practice</view>
+  <view bindtap="openGithub" class="weui-footer__text">
+    <image wx:if="{{theme === 'light'}}" style="height:7vh" src="/images/icon_nav_github.svg"/>
+    <image wx:else style="height:7vh" src="/images/icon_nav_github_white.svg"/>
+    yeasy/docker_practice
+  </view>
 </view>
 
 </view>

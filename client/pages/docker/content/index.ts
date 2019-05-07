@@ -7,19 +7,11 @@ import { next, before } from './util/next_page';
 // const MenuData = require('../index/summary.js');
 import getFolder from './util/getFolder';
 import Request from './util/Request';
-import Show from './util/Show';
 import Style from './util/Style';
 import Font from '../../../utils/Font';
 import daShang from '../../../utils/DaShang';
 import buyBook from '../../../utils/BuyBook';
-
-wx.onNetworkStatusChange(res => {
-  wx.showToast({
-    title: `${res.networkType.toUpperCase()} 已连接`,
-    icon: 'none',
-    duration: 1500,
-  });
-});
+import openGithub from '../../../utils/OpenGithub';
 
 Page({
   data: {
@@ -54,6 +46,10 @@ Page({
   },
 
   onPullDownRefresh() {
+    wx.showLoading({
+      title: '加载中...',
+    });
+
     this.setData!({
       hideFirst: false,
     });
@@ -62,14 +58,51 @@ Page({
 
     setTimeout(() => {
       wx.stopPullDownRefresh();
+      wx.hideLoading();
     }, 2000);
   },
 
   onLoad(options: any) {
     // console.log('onload');
+
+    wx.onNetworkStatusChange(res => {
+      wx.showToast({
+        title: `${res.networkType.toUpperCase()} 已连接`,
+        icon: 'none',
+        duration: 1500,
+      });
+    });
+
+    const theme: any = app.globalData.theme;
+    const noticeBGColor = theme === 'dark' ? '#000000' : '#ffffff';
+
+    // 获取状态栏（信号栏）高度
+    wx.getSystemInfo({
+      success: res => {
+        // res.version.split('.')[0] === '6';
+
+        this.setData!({
+          showFixedStatusBar: true,
+          statusBarHeight: res.statusBarHeight,
+        });
+      },
+    });
+
+    Style(noticeBGColor);
+
     // 设置字体
     const fontType = app.globalData.fontType;
     new Font().force(fontType);
+
+    this.setData!({
+      // percent: 0,
+      // progressColor: '#36a1f0',
+      // showNotice: true,
+      noticeBGColor,
+      tabbarMode: theme,
+      theme,
+      fontType,
+    });
 
     this.load(options);
   },
@@ -98,57 +131,105 @@ Page({
   // 系统事件 end
 
   // 处理加载事件
-  load(options: any) {
-    const theme: any = app.globalData.theme;
-    const noticeBGColor = theme === 'dark' ? '#000000' : '#ffffff';
-
-    // 设置字体
-    const fontType = app.globalData.fontType;
-
-    // 获取状态栏（信号栏）高度
-    wx.getSystemInfo({
-      success: res => {
-        // res.version.split('.')[0] === '6';
-
-        this.setData!({
-          showFixedStatusBar: true,
-          statusBarHeight: res.statusBarHeight,
-        });
-      },
-    });
-
-    Style(noticeBGColor);
-
+  load(options: any, requestFirst: boolean = false) {
     const key = options.key;
-    const folder = getFolder(key);
-    let next_key = next(key);
-    let before_key = before(key);
+
+    let [folder, next_key, before_key] = [
+      getFolder(key),
+      next(key),
+      before(key),
+    ];
 
     next_key = next_key ? next_key : '';
     before_key = before_key ? before_key : '';
 
     // console.log(before_key, key, next_key);
 
+    if (requestFirst) {
+      this.request(key)
+        .then(() => {
+          this.setData!({
+            folder,
+            key,
+            next_key,
+            before_key,
+          });
+        })
+        .catch(() => {
+          this.setData!({
+            showAd: true,
+            show: true,
+          });
+
+          wx.showToast({
+            icon: 'loading',
+            title: '网络连接错误',
+            duration: 1000,
+          });
+        });
+
+      return;
+    }
+
     this.setData!({
-      // percent: 0,
-      // progressColor: '#36a1f0',
-      // showNotice: true,
-      noticeBGColor,
-      tabbarMode: theme,
-      theme,
       folder,
       key,
       next_key,
       before_key,
-      fontType,
     });
 
     this.request(key);
   },
 
+  async request(key: any, cache: boolean = true) {
+    if (!key) {
+      return;
+    }
+
+    if (cache && wx.getStorageSync(key)) {
+      this.show(key, true);
+
+      return;
+    }
+
+    // 上传分析数据
+    wx.reportAnalytics('pages', {
+      // @ts-ignore
+      page: key,
+    });
+
+    const baseUrl = app.globalData.baseUrl;
+
+    return new Request()
+      .create(key, baseUrl, this.data.folder)
+      .then((MDData: any) => {
+        this.setData!({
+          MDData,
+        });
+        this.show(key);
+      })
+      .catch(() => {
+        // 网络连接错误
+        return Promise.reject();
+      });
+  },
+
   show(key: string, isCache: boolean = false) {
-    const fontType = this.data.fontType;
-    let data = Show(isCache, key, this.data.MDData, fontType);
+    let data: any;
+
+    if (isCache) {
+      data = JSON.parse(wx.getStorageSync(key));
+    } else {
+      data = app.towxml.toJson(this.data.MDData, 'markdown');
+
+      wx.setStorage({
+        key,
+        data: JSON.stringify(data),
+      });
+    }
+
+    data.theme = app.globalData.theme;
+    data.fontType = this.data.fontType;
 
     this.data.hideFirst &&
       this.setData!({
@@ -160,12 +241,15 @@ Page({
       this.setData!({
         // spinShow: false, // 去掉加载动画
         data,
+        showAd: true,
         show: true,
         hideFirst: true,
       });
-
-      wx.hideLoading();
     }, 500);
+
+    setTimeout(() => {
+      wx.hideLoading();
+    }, 1500);
 
     // 返回顶部
     wx.pageScrollTo({
@@ -174,6 +258,7 @@ Page({
     });
   },
 
+  // tabbar 点击事件处理函数
   tabbar(res: any) {
     const key = res.detail.key;
 
@@ -192,35 +277,17 @@ Page({
       title: '加载中',
     });
 
-    this.setData!({
-      showAd: false,
-    });
-
-    const [, jump_key] =
+    const [, key] =
       type === 'next' ? <any>this.data.next_key : <any>this.data.before_key;
 
+    // 隐藏广告 功能按钮
     this.setData!({
       // spinShow: true,
+      showAd: false,
       show: false, // 隐藏
     });
 
-    this.load({ key: jump_key });
-
-    setTimeout(() => {
-      // wx.hideLoading();
-
-      this.setData!({
-        showAd: true,
-      });
-    }, 100);
-
-    if (!jump_key) {
-      wx.showToast({
-        title: '没有了',
-      });
-
-      return;
-    }
+    this.load({ key }, true);
   },
 
   menu() {
@@ -241,43 +308,6 @@ Page({
   //     showMenu: false,
   //   });
   // },
-
-  request(key: any, cache: boolean = true) {
-    if (!key) {
-      return;
-    }
-
-    if (cache && wx.getStorageSync(key)) {
-      this.show(key, true);
-
-      return;
-    }
-
-    // 上传分析数据
-    wx.reportAnalytics('pages', {
-      // @ts-ignore
-      page: key,
-    });
-
-    const baseUrl = app.globalData.baseUrl;
-
-    new Request()
-      .create(key, baseUrl, this.data.folder)
-      .then((MDData: any) => {
-        this.setData!({
-          MDData,
-        });
-
-        this.show(key);
-      })
-      .catch(MDData => {
-        this.setData!({
-          MDData,
-        });
-
-        this.show(key);
-      });
-  },
 
   pushNote() {
     wx.navigateTo({
@@ -305,6 +335,10 @@ Page({
 
   buyBook() {
     buyBook();
+  },
+
+  openGithub() {
+    openGithub();
   },
 
   // towxml 事件

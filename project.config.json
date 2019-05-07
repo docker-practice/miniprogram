@@ -22,7 +22,14 @@
     "nodeModules": true,
     "autoAudits": false,
     "uglifyFileName": false,
-    "checkInvalidKey": true
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
   },
   "appid": "wxb830c3abf8a658a5",
   "simulatorType": "wechat",

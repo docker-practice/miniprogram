@@ -17,7 +17,6 @@ export default [
     id: 'miniProgram',
     name: '微信小程序使用说明',
     open: false,
-    pages: [{ id: 'miniprogram.md', name: '功能' }],
   },
   {
     id: 'alipay',

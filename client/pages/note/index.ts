@@ -117,7 +117,6 @@ Page({
           noteTitle: '',
         });
       })
-      // @ts-ignore
       .finally(() => {});
   },
 });

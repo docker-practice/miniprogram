@@ -1,3 +1,40 @@
+async function requestImg(folder: string, baseUrl: string, MDData: string) {
+  await new Promise((resolve, reject) => {
+    wx.getNetworkType({
+      success(res) {
+        const networkType = res.networkType;
+
+        // if (networkType !== 'wifi') {
+        //   wx.showToast({
+        //     title: '无图模式',
+        //   });
+        //
+        //   reject('not wifi');
+        // }
+
+        resolve(networkType);
+      },
+      fail(e) {
+        reject(e);
+      },
+    });
+  });
+
+  let result = MDData.match(/\!\[.*?\)/g);
+
+  if (result) {
+    for (let item of result) {
+      let img = item.split('(')[1].split(')')[0];
+      let new_item = `![](${baseUrl}/${folder}${img})`;
+
+      // console.log(item, new_item);
+      MDData = MDData.replace(item, new_item);
+    }
+  }
+
+  return MDData;
+}
+
 // 请求 markdown 数据
 
 export default class Request {
@@ -15,60 +52,25 @@ export default class Request {
     return new Promise((resolve, reject) => {
       wx.request({
         url,
-        success: (res: any) => {
-          let MDData = res.data;
+        success: res => {
+          let MDData = res.data as string;
 
-          async function requestImg(folder: string, baseUrl: string) {
-            await new Promise((resolve, reject) => {
-              wx.getNetworkType({
-                success(res) {
-                  const networkType = res.networkType;
-
-                  // if (networkType !== 'wifi') {
-                  //   wx.showToast({
-                  //     title: '无图模式',
-                  //   });
-                  //
-                  //   reject('not wifi');
-                  // }
-
-                  resolve(networkType);
-                },
-                fail(e) {
-                  reject(e);
-                },
-              });
-            });
-
-            let result = MDData.match(/\!\[.*?\)/g);
-
-            if (result) {
-              for (let item of result) {
-                let img = item.split('(')[1].split(')')[0];
-                let new_item = `![](${baseUrl}/${folder}${img})`;
-
-                // console.log(item, new_item);
-                MDData = MDData.replace(item, new_item);
-              }
-            }
-
-            return MDData;
+          if (res.statusCode === 404) {
+            reject();
           }
 
-          requestImg(folder, baseUrl)
+          requestImg(folder, baseUrl, MDData)
             .then((MDData: any) => {
               resolve(MDData);
             })
             .catch(() => {
-              reject(MDData);
+              // TODO 网络环境不适合请求图片
+              resolve(MDData);
             });
         },
 
-        fail() {
-          wx.showToast({
-            title: '网络连接失败',
-            icon: 'loading',
-          });
+        fail: () => {
+          reject();
         },
       });
     });

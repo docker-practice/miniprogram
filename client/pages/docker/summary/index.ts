@@ -72,6 +72,14 @@ Page({
       return;
     }
 
+    if (id === 'miniProgram') {
+      wx.navigateTo({
+        url: '../content/index?key=miniprogram.md',
+      });
+
+      return;
+    }
+
     for (let i = 0, len = list.length; i < len; ++i) {
       if (list[i].id == id) {
         list[i].open = !list[i].open;
@@ -158,12 +166,14 @@ Page({
         adUnitId: 'adunit-6ef44789d84b9392',
       });
 
-      interstitialAd.show().then(
-        () => {},
-        (err: any) => {
-          console.log(err);
-        },
-      );
+      wx.nextTick(() => {
+        interstitialAd.show().then(
+          () => {},
+          (err: any) => {
+            console.log(err);
+          },
+        );
+      });
 
       interstitialAd.onClose(() => {});
 
@@ -197,9 +207,9 @@ Page({
   },
 
   qiandao() {
-    qiandao(videAd);
-
-    this.isSign();
+    qiandao(videAd).then(() => {
+      this.isSign();
+    });
   },
 
   /**

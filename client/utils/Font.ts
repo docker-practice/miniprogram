@@ -40,6 +40,7 @@ export default class Font {
         wx.showToast({
           title: '非 WiFi 网络下不加载自定义字体',
           icon: 'none',
+          duration: 1000,
         });
       }); // then end
   } // force end

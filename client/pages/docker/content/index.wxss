@@ -48,11 +48,6 @@ view.light {
   padding-top: 5vh;
 }
 
-/* .favorites {
-  float: right;
+.dashang {
   width: 30vw;
-} */
-
-/* .dashang {
-  width: 30vw;
-} */
+}

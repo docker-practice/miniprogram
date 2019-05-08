@@ -13,6 +13,10 @@ while(!feof($fh)){
   $name = explode('[',$line)[1] ?? null;
   $name = explode('](',$name)[0];
 
+  if($name === '进阶学习'){
+    continue;
+  }
+
   if($key){
     $array[] = [$key=>$name];
   }

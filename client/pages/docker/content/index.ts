@@ -111,7 +111,7 @@ Page({
   onShareAppMessage() {
     return {
       title: '开始 Docker 之旅~',
-      path: '/pages/docker/summary/index',
+      path: '/pages/docker/content/index?key=' + this.data.key,
       imageUrl:
         'https://gitee.com/docker_practice/docker_practice/raw/master/_images/cover.jpg',
       success() {
@@ -295,6 +295,14 @@ Page({
     //   MenuData,
     //   showMenu: true,
     // });
+
+    if (getCurrentPages().length === 1) {
+      wx.switchTab({
+        url: '/pages/docker/summary/index',
+      });
+
+      return;
+    }
 
     wx.navigateBack({ delta: 1 });
 

@@ -52,9 +52,9 @@ speed="1200"
 
 <i-button shape="circle" bind:click="pushNote" size="large" type="primary">在 GitHub 反馈本节内容</i-button>
 
-<i-button i-class="favorites" shape="circle" bind:click="favorites" size="large" type="error">收藏</i-button>
+<i-button shape="circle" bind:click="favorites" size="large" type="error">收藏</i-button>
 
-<i-button i-class="buyBook" shape="circle" bind:click="buyBook" size="large" type="success">进阶学习 (实体书) 📕</i-button>
+<i-button shape="circle" bind:click="buyBook" size="large" type="success">进阶学习 (实体书) 📕</i-button>
 
 <!-- <view class="note-list"></view> -->
 

@@ -1,0 +1,9 @@
+.btn_buy {
+  margin-top: 5vh;
+  width: 96vw;
+}
+
+.btn_share {
+  margin-top: 2vh;
+  width: 96vw;
+}

@@ -1,12 +1,22 @@
 export default function openGithub() {
   wx.showModal({
-    title: '请在浏览器打开',
-    content: '点击确定复制网址，在浏览器中打开项目 GitHub',
+    title: 'GitHub',
+    content: '您可以在小程序中查看详情，也可以复制网址在浏览器打开',
+    confirmText: '复制网址',
+    cancelText: '查看详情',
     success(res) {
-      res.confirm &&
+      if (res.confirm) {
         wx.setClipboardData({
           data: 'https://github.com/yeasy/docker_practice',
         });
+
+        return;
+      }
+
+      wx.navigateToMiniProgram({
+        appId: 'wx5d7793555064ce62',
+        path: 'pages/repo-detail/repo-detail?repo=yeasy/docker_practice',
+      });
     },
   });
 }

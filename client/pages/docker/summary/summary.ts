@@ -27,16 +27,17 @@ export default [
     id: 'oldmenu',
     name: '经典目录',
   },
+  {
+    id: 'ad',
+    // name: '云服务广告位招租',
+    name: '进阶学习(实体书)',
+    color: '#00BFFF',
+  },
   // 广告位 index 4
   {
     id: 'bus',
     name: '支付宝公交地铁红包',
     color: '#FFB90F',
-  },
-  {
-    id: 'ad',
-    name: '云服务广告位招租',
-    color: '#00BFFF',
   },
   {
     id: 'introduction',

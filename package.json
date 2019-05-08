@@ -3,8 +3,8 @@
   "version": "18.12.0-alpha.0",
   "scripts": {
     "fmt": "npx prettier --write ./**/*.ts ./**/*.json ./**/*.md",
-    "predocker": "cd docker && php tojson.php",
-    "docker": "cd docker && node serverrender.js",
+    "presummary": "cd docker && php tojson.php",
+    "summary": "cd docker && node serverrender.js",
     "preinstall": "echo don't install in this folder && exit 1",
     "cleanup": "npx rimraf docker/summary.ts client/pages/docker/content/util/summary.ts client/pages/docker/index/summary.js"
   },

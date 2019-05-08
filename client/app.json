@@ -52,8 +52,16 @@
     {
       "root": "pages/random",
       "pages": ["index"]
+    },
+    {
+      "root": "pages/book",
+      "pages": ["index"]
     }
   ],
-  "navigateToMiniProgramAppIdList": ["wx18a2ac992306a5a4"],
+  "navigateToMiniProgramAppIdList": [
+    "wx18a2ac992306a5a4",
+    "wx13e41a437b8a1d2e",
+    "wx5d7793555064ce62"
+  ],
   "sitemapLocation": "sitemap.json"
 }

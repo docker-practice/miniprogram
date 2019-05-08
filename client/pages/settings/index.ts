@@ -14,6 +14,7 @@ Page({
     storageSize: '0 MB',
     fontType: '默认',
     jifen: '获取中',
+    sdkVersion: '0.0.0',
   },
   getStorage(key: string) {
     return new Promise(resolve => {
@@ -33,12 +34,23 @@ Page({
       this.getStorage('rate'),
       this.getStorage('fontType'),
       new Jifen().get(),
+      new Promise(resolve => {
+        wx.getSystemInfo({
+          success: res => {
+            resolve(res.SDKVersion);
+          },
+          fail: () => {
+            resolve('0.0.0');
+          },
+        });
+      }),
     ]).then(res => {
       console.log(res);
       this.setData!({
         rate_index: res[0] || 0,
         fontType: res[1] || '默认',
         jifen: res[2] || 0,
+        sdkVersion: res[3] || '0.0.0',
       });
     });
 

@@ -1,0 +1,7 @@
+<image mode="aspectFit" src="https://gitee.com/khs1994-docker/docker_practice/raw/master/_images/docker_primer3.png"
+style="height:70vh;width:100vw"
+/>
+
+<button type="warn" class="btn_buy" bind:tap="buyBook">JD.COM 立即购买</button>
+
+<button type="primary" class="btn_share" bind:tap="share">分享</button>

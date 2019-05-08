@@ -110,10 +110,13 @@ Page({
       return;
     }
 
-    wx.showModal({
-      title: '请发电子邮件洽谈',
-      content: 'docker@khs1994.com',
-      showCancel: false,
+    // wx.showModal({
+    //   title: '请发电子邮件洽谈',
+    //   content: 'docker@khs1994.com',
+    //   showCancel: false,
+    // });
+    wx.navigateTo({
+      url: '../../book/index',
     });
   },
 

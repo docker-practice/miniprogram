@@ -9,6 +9,23 @@ import alipay from '../../../utils/Alipay';
 import qiandao from '../../../utils/Qiandao';
 import { isSign } from '../../../utils/Qiandao';
 
+// test
+import test from '../../../utils/Toolkit/test/index';
+test();
+
+// worker
+let worker = wx.createWorker('workers/test/index.js');
+
+worker.postMessage({
+  msg: 'main message',
+});
+
+worker.onMessage(res => {
+  console.log(res);
+});
+
+worker.terminate();
+
 let videAd: wx.RewardedVideoAd;
 let interstitialAd: any;
 
@@ -146,6 +163,10 @@ Page({
 
     this.isSign(true);
 
+    if (wx.getSystemInfoSync().platform === 'devtools') {
+      return;
+    }
+
     // 激励广告
     if (wx.createRewardedVideoAd) {
       videAd = wx.createRewardedVideoAd({
@@ -169,14 +190,14 @@ Page({
         adUnitId: 'adunit-6ef44789d84b9392',
       });
 
-      wx.nextTick(() => {
+      setTimeout(() => {
         interstitialAd.show().then(
           () => {},
           (err: any) => {
             console.log(err);
           },
         );
-      });
+      }, 15000);
 
       interstitialAd.onClose(() => {});
 

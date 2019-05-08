@@ -15,6 +15,7 @@ speed="1200"
 《Docker 技术入门与实战》第三版已经面世，介绍最新的容器技术栈，欢迎大家阅读使用并反馈建议。
 </i-notice-bar>
 
+<view wx:else style="height:72rpx"></view>
 
 <!-- <view class="container" wx:if="{{spinShow}}" i-class="{{}}">
   <i-spin fix></i-spin>

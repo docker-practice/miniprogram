@@ -22,7 +22,7 @@ speed="1200" backgroundcolor="#fff" color="#36a1f0">
                 <view id="{{item.id}}" class="weui-flex kind-list__item-hd {{item.open ? 'kind-list__item-hd_show' : ''}}" bindtap="kindToggle">
                     <view wx:if="{{item.color}}" class="weui-flex__item" style="color: {{item.color}}">{{item.name}}</view>
                     <view wx:else class="weui-flex__item">{{item.name}}</view>
-                    <image lazy-load="true" class="kind-list__img" src="/images/icon_nav_{{item.id}}.svg"></image>
+                    <image lazy-load="{{true}}" class="kind-list__img" src="/images/icon_nav_{{item.id}}.svg"></image>
                 </view>
                 <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
                     <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">

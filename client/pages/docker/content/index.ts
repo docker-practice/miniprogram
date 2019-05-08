@@ -12,6 +12,11 @@ import Font from '../../../utils/Font';
 import daShang from '../../../utils/DaShang';
 import buyBook from '../../../utils/BuyBook';
 import openGithub from '../../../utils/OpenGithub';
+import Cache from '../../../utils/Toolkit/Cache';
+
+const cache = new Cache();
+
+let interstitialAd: any;
 
 Page({
   data: {
@@ -105,6 +110,46 @@ Page({
     });
 
     this.load(options);
+
+    if (wx.getSystemInfoSync().platform === 'devtools') {
+      return;
+    }
+
+    // 插屏广告
+    // @ts-ignore
+    if (wx.createInterstitialAd) {
+      // @ts-ignore
+      interstitialAd = wx.createInterstitialAd({
+        adUnitId: 'adunit-6ef44789d84b9392',
+      });
+
+      setTimeout(async () => {
+        if (await cache.exists('ad/show')) {
+          console.log('==> 1 hour not show ad');
+          return;
+        }
+
+        interstitialAd.show().then(
+          () => {
+            // 展示成功
+            cache.set('ad/show', '', 3600);
+          },
+          (err: any) => {
+            console.log('==>content ', err);
+          },
+        );
+      }, 15000);
+
+      interstitialAd.onClose(() => {});
+
+      interstitialAd.onError((res: any) => {
+        console.log('==>content ', res);
+      });
+
+      interstitialAd.onLoad(() => {
+        console.log('==>content on load event');
+      });
+    }
   },
 
   // 分享按钮
@@ -181,12 +226,12 @@ Page({
     this.request(key);
   },
 
-  async request(key: any, cache: boolean = true) {
+  async request(key: any, useCache: boolean = true) {
     if (!key) {
       return;
     }
 
-    if (cache && wx.getStorageSync(key)) {
+    if (useCache && (await cache.exists('book/' + key))) {
       this.show(key, true);
 
       return;
@@ -214,18 +259,19 @@ Page({
       });
   },
 
-  show(key: string, isCache: boolean = false) {
+  async show(key: string, isCache: boolean = false) {
     let data: any;
 
     if (isCache) {
-      data = JSON.parse(wx.getStorageSync(key));
+      try {
+        data = await cache.get('book/' + key);
+      } catch {
+        data = app.towxml.toJson(this.data.MDData, 'markdown');
+      }
     } else {
       data = app.towxml.toJson(this.data.MDData, 'markdown');
 
-      wx.setStorage({
-        key,
-        data: JSON.stringify(data),
-      });
+      cache.set('book/' + key, data);
     }
 
     data.theme = app.globalData.theme;

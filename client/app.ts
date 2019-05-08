@@ -1,4 +1,9 @@
 //app.ts
+
+import Cache from './utils/Toolkit/Cache';
+
+const cache = new Cache();
+
 export interface IMyApp {
   userInfoReadyCallback?(res: wx.UserInfo): void;
   globalData: {
@@ -21,19 +26,13 @@ App<IMyApp>({
     });
 
     // 获取主题
-    wx.getStorage({
-      key: 'theme',
-      success: res => {
-        this.globalData.theme = res.data ? <'light' | 'dark'>res.data : 'light';
-      },
+    cache.get('style/theme').then(theme => {
+      this.globalData.theme = theme ? <'light' | 'dark'>theme : 'light';
     });
 
     // 设置字体
-    wx.getStorage({
-      key: 'fontType',
-      success: res => {
-        this.globalData.fontType = res.data || 'default';
-      },
+    cache.get('style/fontType').then((fontType: any) => {
+      this.globalData.fontType = fontType || 'default';
     });
 
     // 展示本地存储能力

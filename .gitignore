@@ -8,7 +8,8 @@ miniprogram_npm
 
 client/pages/**/*.js
 client/app.js
-client/utils/*.js
+client/utils/**/*.js
+client/workers/**/*.js
 client/pages/docker/content/util/summary.ts
 client/buildcache
 

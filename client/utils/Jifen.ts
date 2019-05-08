@@ -15,7 +15,7 @@ export default class Jifen {
         })
         .get()
         .then(res => {
-          console.log(res);
+          // console.log(res);
           return res.data[0].jifen || 0;
         });
     });

@@ -63,5 +63,6 @@
     "wx13e41a437b8a1d2e",
     "wx5d7793555064ce62"
   ],
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "workers": "workers"
 }

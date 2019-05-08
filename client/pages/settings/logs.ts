@@ -1,5 +1,7 @@
 //logs.js
-import { formatTime } from '../../utils/util';
+import Time from '../../utils/Toolkit/Time';
+
+let time = new Time();
 
 Page({
   data: {
@@ -8,7 +10,7 @@ Page({
   onLoad() {
     this.setData!({
       logs: (wx.getStorageSync('logs') || []).map((log: number) => {
-        return formatTime(new Date(log));
+        return time.format(new Date(log));
       }),
     });
   },

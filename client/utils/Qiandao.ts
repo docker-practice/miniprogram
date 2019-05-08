@@ -1,4 +1,7 @@
 import UserInfo from './UserInfo';
+import Cache from './Toolkit/Cache';
+
+const cache = new Cache();
 
 wx.cloud.init({
   env: 'pro-02adcb',
@@ -29,11 +32,8 @@ function showVideoAd(openid: string, videAd: wx.RewardedVideoAd) {
       });
       let sign_time = getSignTime();
       addJifen(openid, 2, getSignTime());
-      // 存储签到时间
-      wx.setStorage({
-        key: 'sign_time',
-        data: sign_time,
-      });
+
+      cache.set('sign/time', `${sign_time}`, 0, true);
     } else {
       wx.showModal({
         title: '签到成功',
@@ -43,10 +43,8 @@ function showVideoAd(openid: string, videAd: wx.RewardedVideoAd) {
       let sign_time = getSignTime();
       addJifen(openid, 1, sign_time);
       // 存储签到时间
-      wx.setStorage({
-        key: 'sign_time',
-        data: sign_time,
-      });
+
+      cache.set('sign/time', `${sign_time}`, 0, true);
     }
   });
 }
@@ -66,17 +64,14 @@ async function sign(openid: string, videAd: any) {
           let sign_time = getSignTime();
 
           addJifen(openid, 1, sign_time).then(() => {
-            wx.setStorage({
-              key: 'sign_time',
-              data: sign_time,
-            });
+            cache.set('sign/time', `${sign_time}`, 0, true);
             wx.showModal({
               title: '签到成功',
               content: '积分 +1',
               showCancel: false,
             });
 
-            return resolve(true);
+            resolve(true);
           });
         }
       },
@@ -84,6 +79,7 @@ async function sign(openid: string, videAd: any) {
   });
 }
 
+// 获取当天 24 点的时间戳
 function getEndTime(): number {
   let date = new Date();
   let year = date.getFullYear();
@@ -125,26 +121,18 @@ export async function isSign(_openid: string, local: boolean = false) {
     _openid = await UserInfo.getOpenId();
   }
   if (local) {
-    return await new Promise(resolve => {
-      wx.getStorage({
-        key: 'sign_time',
-        success: res => {
-          let sign_time = res.data || 0;
-          if (
-            sign_time < getEndTime() &&
-            sign_time > getEndTime() - 24 * 60 * 60 * 1000
-          ) {
-            return resolve(true);
-          }
+    try {
+      let result = await cache.get('sign/time');
 
-          return resolve(false);
-        },
-        fail: () => {
-          resolve(false);
-        },
-      });
-    });
+      if (result) {
+        return true;
+      }
+      return false;
+    } catch {
+      return false;
+    }
   }
+
   let result = await db
     .collection('sign')
     .where({
@@ -175,10 +163,7 @@ export async function isSign(_openid: string, local: boolean = false) {
         sign_time_from_db < getEndTime() &&
         sign_time_from_db > getEndTime() - 24 * 60 * 60 * 1000
       ) {
-        wx.setStorage({
-          key: 'sign_time',
-          data: sign_time_from_db,
-        });
+        cache.set('sign/time', `${sign_time_from_db}`, 0, true);
 
         return true;
       }
@@ -238,6 +223,7 @@ export default async function qiandao(videAd: any) {
     wx.showModal({
       title: '提示',
       content: '获取用户信息失败',
+      showCancel: false,
     });
 
     return false;

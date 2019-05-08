@@ -6,6 +6,13 @@ import buyBook from '../../utils/BuyBook';
 import daShang from '../../utils/DaShang';
 import Jifen from '../../utils/Jifen';
 import UserInfo from '../../utils/UserInfo';
+import Cache from '../../utils/Toolkit/Cache';
+
+const cache = new Cache();
+
+wx.cloud.init({
+  env: 'pro-02adcb',
+});
 
 Page({
   data: {
@@ -15,24 +22,12 @@ Page({
     fontType: '默认',
     jifen: '获取中',
     sdkVersion: '0.0.0',
-  },
-  getStorage(key: string) {
-    return new Promise(resolve => {
-      wx.getStorage({
-        key,
-        success(res) {
-          resolve(res.data);
-        },
-        fail() {
-          resolve(undefined);
-        },
-      });
-    });
+    userNum: 5700,
   },
   onLoad() {
     Promise.all([
-      this.getStorage('rate'),
-      this.getStorage('fontType'),
+      cache.get('rate/index'),
+      cache.get('style/fontType'),
       new Jifen().get(),
       new Promise(resolve => {
         wx.getSystemInfo({
@@ -44,6 +39,20 @@ Page({
           },
         });
       }),
+      wx.cloud
+        .callFunction({
+          name: 'getDailySummary',
+          data: {},
+        })
+        .then(
+          res => {
+            return res.result;
+          },
+          e => {
+            console.log(e);
+            return 5701;
+          },
+        ),
     ]).then(res => {
       console.log(res);
       this.setData!({
@@ -51,6 +60,7 @@ Page({
         fontType: res[1] || '默认',
         jifen: res[2] || 0,
         sdkVersion: res[3] || '0.0.0',
+        userNum: res[4] || 5702,
       });
     });
 
@@ -75,10 +85,7 @@ Page({
       rate_index: index,
     });
 
-    wx.setStorage({
-      key: 'rate',
-      data: index,
-    });
+    cache.set('rate/index', index);
   },
   cleanup() {
     wx.clearStorage({
@@ -153,10 +160,7 @@ Page({
 
         new Font().force(font);
 
-        wx.setStorage({
-          key: 'fontType',
-          data: font,
-        });
+        cache.set('style/fontType', font);
 
         app.globalData.fontType = font;
 

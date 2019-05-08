@@ -1,22 +1,16 @@
+import Cache from './Toolkit/Cache';
+
 wx.cloud.init({
   env: 'pro-02adcb',
 });
+
+const cache = new Cache();
 
 export default class UserInfo {
   static async getOpenId() {
     let openId: string;
 
-    openId = await new Promise(resolve => {
-      wx.getStorage({
-        key: 'openId',
-        success(res) {
-          resolve(res.data);
-        },
-        fail() {
-          resolve(undefined);
-        },
-      });
-    });
+    openId = await cache.get('userinfo/openId');
 
     if (openId) {
       console.log('get openid from cache');
@@ -32,13 +26,10 @@ export default class UserInfo {
       })
       .then((res: any) => {
         // 获取 open_id
-        return res.result.userInfo.openId;
+        return res.result.openid;
       });
 
-    wx.setStorage({
-      key: 'openId',
-      data: openId,
-    });
+    cache.set('userinfo/openId', openId);
 
     return openId;
   }

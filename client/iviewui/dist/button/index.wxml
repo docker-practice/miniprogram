@@ -16,5 +16,5 @@
     bindgetuserinfo="bindgetuserinfo"
     bindgetphonenumber="bindgetphonenumber"
     binderror="binderror"
-    plain="true"
+    plain="{{true}}"
 ><view class="i-btn-loading-inner" wx:if="{{loading}}"></view><slot></slot></button>

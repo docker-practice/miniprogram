@@ -2,8 +2,10 @@
 //获取应用实例
 import { IMyApp } from '../../app';
 import daShang from '../../utils/DaShang';
+import Cache from '../../utils/Toolkit/Cache';
 
 const app = getApp<IMyApp>();
+const cache = new Cache();
 
 Page({
   data: {
@@ -65,25 +67,23 @@ Page({
   },
 
   changeTheme() {
-    let theme = wx.getStorageSync('theme');
-    theme = theme === 'dark' ? 'light' : 'dark';
+    cache.get('style/theme').then((theme: any) => {
+      theme = theme === 'dark' ? 'light' : 'dark';
+      cache.set('style/theme', theme);
 
-    wx.setStorage({
-      key: 'theme',
-      data: theme,
+      app.globalData.theme = theme;
     });
-
-    app.globalData.theme = theme;
   },
 
   clearStorage() {
-    wx.clearStorage({
-      success() {
+    cache.flush().then(
+      () => {
         wx.showToast({
           title: 'success',
         });
       },
-    });
+      () => {},
+    );
   },
 
   copyLink() {

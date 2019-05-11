@@ -1,5 +1,9 @@
 {
-  "pages": ["pages/docker/summary/index", "pages/index/index"],
+  "pages": [
+    "pages/docker/summary/index",
+    "pages/index/index",
+    "pages/donate/index"
+  ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarTitleText": "Docker 从入门到实践",

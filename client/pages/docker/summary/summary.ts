@@ -1,7 +1,7 @@
 export default [
   {
     id: 'unsign',
-    name: '签到 (领学习积分)',
+    name: '签到 (领积分、兑权益)',
     color: '#00BFFF',
   },
   {
@@ -18,10 +18,21 @@ export default [
     name: '微信小程序使用说明',
     open: false,
   },
+  // 广告位
+  {
+    id: 'yuebao',
+    name: '余额宝体验金',
+    color: '#FFB90F',
+  },
   {
     id: 'alipay',
     name: '支付宝线下红包',
     color: '#FF4500',
+  },
+  {
+    id: 'bus',
+    name: '支付宝公交地铁红包',
+    color: '#FFB90F',
   },
   {
     id: 'oldmenu',
@@ -32,12 +43,6 @@ export default [
     // name: '云服务广告位招租',
     name: '进阶学习(实体书)',
     color: '#00BFFF',
-  },
-  // 广告位 index 4
-  {
-    id: 'bus',
-    name: '支付宝公交地铁红包',
-    color: '#FFB90F',
   },
   {
     id: 'introduction',

@@ -105,8 +105,8 @@ Page({
       'https://code.aliyun.com/khs1994-docker/docker_practice/raw/master';
   },
 
-  settings() {
-    let theme = wx.getStorageSync('theme');
+  async settings() {
+    let theme = await cache.get('style/theme');
 
     let itemList = [
       '分享',

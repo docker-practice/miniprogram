@@ -10,11 +10,12 @@ import Request from './util/Request';
 import Style from './util/Style';
 import Font from '../../../utils/Font';
 import daShang from '../../../utils/DaShang';
-import buyBook from '../../../utils/BuyBook';
+import Ad from '../../../utils/Ad';
 import openGithub from '../../../utils/OpenGithub';
 import Cache from '../../../utils/Toolkit/Cache';
 
 const cache = new Cache();
+const ad = new Ad();
 
 let interstitialAd: any;
 
@@ -69,6 +70,9 @@ Page({
 
   onLoad(options: any) {
     // console.log('onload');
+    wx.showLoading({
+      title: '加载中...',
+    });
 
     wx.onNetworkStatusChange(res => {
       wx.showToast({
@@ -189,7 +193,7 @@ Page({
     before_key = before_key ? before_key : '';
 
     // console.log(before_key, key, next_key);
-
+    // 跳页时先进行网络请求，若成功再赋值
     if (requestFirst) {
       this.request(key)
         .then(() => {
@@ -201,20 +205,26 @@ Page({
           });
         })
         .catch(() => {
+          // 首次进入，网络连接错误数据为空
+          let show = this.data.MDData ? true : false;
+
           this.setData!({
             showAd: true,
-            show: true,
+            show,
           });
 
-          wx.showToast({
-            icon: 'loading',
-            title: '网络连接错误',
-            duration: 1000,
-          });
+          setTimeout(() => {
+            wx.showToast({
+              icon: 'loading',
+              title: '网络连接错误',
+              duration: 1000,
+            });
+          }, 800);
         });
 
       return;
     }
+    // 首次进入，先赋值，再请求
 
     this.setData!({
       folder,
@@ -223,7 +233,26 @@ Page({
       before_key,
     });
 
-    this.request(key);
+    this.request(key).then(
+      () => {},
+      () => {
+        this.setData!({
+          // showAd: false,
+          show: false,
+        });
+
+        wx.showModal({
+          title: '网络连接错误',
+          content: '',
+          showCancel: false,
+          // complete: ()=>{
+          //   wx.navigateBack({
+          //     delta: 1,
+          //   });
+          // },
+        });
+      },
+    );
   },
 
   async request(key: any, useCache: boolean = true) {
@@ -320,7 +349,7 @@ Page({
   // 跳页
   jump(type = 'next') {
     wx.showLoading({
-      title: '加载中',
+      title: '加载中...',
     });
 
     const [, key] =
@@ -388,7 +417,7 @@ Page({
   },
 
   buyBook() {
-    buyBook();
+    ad.buyBook();
   },
 
   openGithub() {

@@ -1,25 +1,9 @@
-import Ad from '../../utils/Ad';
-
-const ad = new Ad();
-
+// pages/donate/index.js
 Page({
   /**
    * 页面的初始数据
    */
   data: {},
-
-  buyBook() {
-    ad.buyBook(true);
-  },
-
-  share() {
-    let imgUrl =
-      'https://user-images.githubusercontent.com/16733187/57310918-3c3afd80-711d-11e9-8816-266e5ede70bb.jpg';
-    wx.previewImage({
-      current: imgUrl,
-      urls: [imgUrl],
-    });
-  },
 
   /**
    * 生命周期函数--监听页面加载

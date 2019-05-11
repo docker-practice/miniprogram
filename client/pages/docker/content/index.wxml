@@ -10,7 +10,7 @@ wx:if="{{show}}">
 
 <i-notice-bar icon="systemprompt" loop
 wx:if="{{show}}" backgroundcolor="{{noticeBGColor}}" color="#36a1f0"
-speed="1200"
+speed="1200" bind:tap="buyBook"
 >
 《Docker 技术入门与实战》第三版已经面世，介绍最新的容器技术栈，欢迎大家阅读使用并反馈建议。
 </i-notice-bar>

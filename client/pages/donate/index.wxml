@@ -1,0 +1,7 @@
+<image
+src="https://gitee.com/khs1994-docker/docker_practice/raw/master/docker_dashang.png"
+mode="aspectFit" show-menu-by-longpress="{{true}}"
+style="width:100vw"
+/>
+
+<button type="warn" class="btn_tip">长按图片打赏</button>

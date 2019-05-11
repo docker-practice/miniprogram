@@ -2,13 +2,14 @@ import { IMyApp } from '../../app';
 const app = getApp<IMyApp>();
 
 import Font from '../../utils/Font';
-import buyBook from '../../utils/BuyBook';
+import Ad from '../../utils/Ad';
 import daShang from '../../utils/DaShang';
 import Jifen from '../../utils/Jifen';
 import UserInfo from '../../utils/UserInfo';
 import Cache from '../../utils/Toolkit/Cache';
 
 const cache = new Cache();
+const ad = new Ad();
 
 wx.cloud.init({
   env: 'pro-02adcb',
@@ -101,7 +102,7 @@ Page({
   },
 
   buyBook() {
-    buyBook();
+    ad.buyBook();
   },
 
   favorites() {

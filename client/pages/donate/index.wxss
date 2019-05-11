@@ -1,0 +1,4 @@
+.btn_tip {
+  width: 96vw;
+  margin-top: 2vh;
+}

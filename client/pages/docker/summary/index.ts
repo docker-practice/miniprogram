@@ -4,10 +4,11 @@
 import list from './summary';
 import daShang from '../../../utils/DaShang';
 import openGithub from '../../../utils/OpenGithub';
-import bus from '../../../utils/bus';
-import alipay from '../../../utils/Alipay';
 import qiandao from '../../../utils/Qiandao';
 import { isSign } from '../../../utils/Qiandao';
+import Ad from '../../../utils/Ad';
+
+const ad = new Ad();
 
 // test
 import test from '../../../utils/Toolkit/test/index';
@@ -58,13 +59,13 @@ Page({
       return;
     }
 
-    if (id == 'bus' || id === 'ad') {
+    if (id == 'bus' || id === 'ad' || id === 'yuebao') {
       this.ad(id);
       return;
     }
 
     if (id === 'alipay') {
-      alipay();
+      ad.alipay();
       return;
     }
 
@@ -121,9 +122,20 @@ Page({
     openGithub();
   },
 
+  buyBook() {
+    wx.navigateTo({
+      url: '../../book/index',
+    });
+  },
+
   ad(id: string) {
     if (id === 'bus') {
-      bus();
+      ad.bus();
+      return;
+    }
+
+    if (id === 'yuebao') {
+      ad.yuebao();
       return;
     }
 
@@ -132,9 +144,7 @@ Page({
     //   content: 'docker@khs1994.com',
     //   showCancel: false,
     // });
-    wx.navigateTo({
-      url: '../../book/index',
-    });
+    this.buyBook();
   },
 
   isSign(local: boolean = false) {

@@ -1,5 +1,5 @@
 <i-notice-bar icon="systemprompt" loop
-speed="1200" backgroundcolor="#fff" color="#36a1f0">
+speed="1200" backgroundcolor="#fff" color="#36a1f0" bind:tap="buyBook">
 《Docker 技术入门与实战》第三版已经面世，介绍最新的容器技术栈，欢迎大家阅读使用并反馈建议。
 </i-notice-bar>
 
@@ -41,5 +41,5 @@ speed="1200" backgroundcolor="#fff" color="#36a1f0">
 
 </view>
 <view class="weui-footer">
-  <view bindtap="openGithub" class="weui-footer__text"><image style="height:7vh"src="/images/icon_nav_github.svg"/> yeasy/docker_practice</view>
+  <view bindtap="openGithub" class="weui-footer__text"><image style="height:7vh;width:100vw" src="/images/icon_nav_github.svg"/> yeasy/docker_practice</view>
 </view>

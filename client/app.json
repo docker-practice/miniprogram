@@ -29,13 +29,7 @@
   "subpackages": [
     {
       "root": "pages/settings",
-      "pages": ["index"],
-      "plugins": {
-        "tucao": {
-          "version": "1.1.4",
-          "provider": "wx8abaf00ee8c3202e"
-        }
-      }
+      "pages": ["index"]
     },
     {
       "root": "pages/docker/index",

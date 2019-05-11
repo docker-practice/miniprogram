@@ -19,6 +19,24 @@ const ad = new Ad();
 
 let interstitialAd: any;
 
+function parsePath(href: string) {
+  let arr: Array<string | null> = href.split('/');
+
+  while (true) {
+    let index = arr.indexOf('..');
+    if (index === -1) {
+      break;
+    }
+
+    arr[index] = null;
+    arr[index - 1] = null;
+    // remove null
+    arr = arr.filter(d => d);
+  }
+
+  return arr.join('/');
+}
+
 Page({
   data: {
     data: '',
@@ -241,6 +259,8 @@ Page({
           show: false,
         });
 
+        wx.hideLoading();
+
         wx.showModal({
           title: '网络连接错误',
           content: '',
@@ -459,7 +479,27 @@ Page({
     // console.log('触摸中' + res);
   },
 
-  __bind_tap() {},
+  __bind_tap(res: any) {
+    console.log(res);
+    let href = res.currentTarget.dataset._el.attr.href || '';
+
+    if (href === '' || !href.match(/.md$/g)) {
+      return;
+    }
+
+    const folder = this.data.folder;
+
+    href = folder === '/' ? href : folder + href;
+
+    if (href.match(/../g)) {
+      console.log(href);
+      href = parsePath(href);
+    }
+
+    wx.navigateTo({
+      url: 'index?key=' + href,
+    });
+  },
 
   __bind_touchcancel() {},
 });

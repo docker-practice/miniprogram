@@ -5,7 +5,7 @@ import Font from '../../utils/Font';
 import Ad from '../../utils/Ad';
 import daShang from '../../utils/DaShang';
 import Jifen from '../../utils/Jifen';
-import UserInfo from '../../utils/UserInfo';
+// import UserInfo from '../../utils/UserInfo';
 import Cache from '../../utils/Toolkit/Cache';
 
 const cache = new Cache();
@@ -107,34 +107,39 @@ Page({
 
   favorites() {
     wx.showModal({
-      title: '即将支持',
-      content: '敬请期待',
+      title: '敬请期待',
+      content: '',
       showCancel: false,
     });
   },
 
   tucao() {
-    UserInfo.getOpenId().then(res => {
-      let openid = res;
-
-      const userInfo = {
-        avatar: app.globalData.userInfo!.avatarUrl,
-        nickname: app.globalData.userInfo!.nickName,
-        openid,
-      };
-
-      const extraData = {};
-
-      // @ts-ignore
-      const Tucao = requirePlugin('tucao').default;
-      // 初始化并触发跳转，支持链式调用
-      Tucao.init(void 0, {
-        productId: 59821,
-        navigateTo: wx.navigateTo,
-        ...userInfo,
-        extraData,
-      }).go();
+    wx.showModal({
+      title: '敬请期待',
+      content: '',
+      showCancel: false,
     });
+    // UserInfo.getOpenId().then(res => {
+    // let openid = res;
+    //
+    // const userInfo = {
+    //   avatar: app.globalData.userInfo!.avatarUrl,
+    //   nickname: app.globalData.userInfo!.nickName,
+    //   openid,
+    // };
+
+    // const extraData = {};
+
+    // @ts-ignore
+    // const Tucao = requirePlugin('tucao').default;
+    // 初始化并触发跳转，支持链式调用
+    // Tucao.init(void 0, {
+    //   productId: 59821,
+    //   navigateTo: wx.navigateTo,
+    //   ...userInfo,
+    //   extraData,
+    // }).go();
+    // });
   },
 
   chooseFont() {

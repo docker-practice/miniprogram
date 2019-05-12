@@ -136,7 +136,7 @@
 - [容器与云计算](../content/index?key=cloud/README.md)
   - [简介](../content/index?key=cloud/intro.md)
   - [亚马逊云](../content/index?key=cloud/aws.md)
-  - [腾讯云](../content/index?key=cloud/qcloud.md)
+  - [腾讯云](../content/index?key=cloud/tencentCloud.md)
   - [阿里云](../content/index?key=cloud/alicloud.md)
   - [小结](../content/index?key=cloud/summary.md)
 - [实战案例-操作系统](../content/index?key=cases/os/README.md)

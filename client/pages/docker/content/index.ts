@@ -483,7 +483,12 @@ Page({
     console.log(res);
     let href = res.currentTarget.dataset._el.attr.href || '';
 
-    if (href === '' || !href.match(/.md$/g)) {
+    if (
+      href.match(/^http:\/\//g) ||
+      href.match(/^https:\/\//g) ||
+      href === '' ||
+      !href.match(/.md$/g)
+    ) {
       return;
     }
 

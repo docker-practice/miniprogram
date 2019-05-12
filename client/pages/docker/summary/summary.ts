@@ -333,7 +333,7 @@ export default [
       { id: 'cloud/README.md', name: '容器与云计算' },
       { id: 'cloud/intro.md', name: '简介' },
       { id: 'cloud/aws.md', name: '亚马逊云' },
-      { id: 'cloud/qcloud.md', name: '腾讯云' },
+      { id: 'cloud/tencentCloud.md', name: '腾讯云' },
       { id: 'cloud/alicloud.md', name: '阿里云' },
       { id: 'cloud/summary.md', name: '小结' },
     ],

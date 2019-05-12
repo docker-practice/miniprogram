@@ -25,6 +25,12 @@ async function requestImg(folder: string, baseUrl: string, MDData: string) {
   if (result) {
     for (let item of result) {
       let img = item.split('(')[1].split(')')[0];
+
+      if (img.match(/^http/g)) {
+        // 图片地址为网址的不进行替换
+        continue;
+      }
+
       let new_item = `![](${baseUrl}/${folder}${img})`;
 
       // console.log(item, new_item);

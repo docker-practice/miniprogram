@@ -31,10 +31,11 @@ function showVideoAd(openid: string, videAd: wx.RewardedVideoAd) {
         showCancel: false,
       });
       let sign_time = getSignTime();
-      addJifen(openid, 2, getSignTime());
+      addJifen(openid, 2, sign_time);
 
       cache.set('sign/time', `${sign_time}`, 0, true);
     } else {
+      console.log('主动关闭');
       wx.showModal({
         title: '签到成功',
         content: '积分 +1',
@@ -80,7 +81,7 @@ async function sign(openid: string, videAd: any) {
 }
 
 // 获取当天 24 点的时间戳
-function getEndTime(): number {
+export function getEndTime(): number {
   let date = new Date();
   let year = date.getFullYear();
   let month = date.getMonth();

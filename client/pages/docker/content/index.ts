@@ -147,14 +147,14 @@ Page({
 
       setTimeout(async () => {
         if (await cache.exists('ad/show')) {
-          console.log('==> 1 hour not show ad');
+          console.log("==> 0.5 hour don't show ad");
           return;
         }
 
         interstitialAd.show().then(
           () => {
             // 展示成功
-            cache.set('ad/show', '', 3600);
+            cache.set('ad/show', '', 1800);
           },
           (err: any) => {
             console.log('==>content ', err);
@@ -426,8 +426,8 @@ Page({
 
   favorites() {
     wx.showModal({
-      title: '即将支持',
-      content: '敬请期待',
+      title: '敬请期待',
+      content: '',
       showCancel: false,
     });
   },

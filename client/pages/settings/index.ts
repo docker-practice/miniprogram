@@ -7,11 +7,16 @@ import daShang from '../../utils/DaShang';
 import Jifen from '../../utils/Jifen';
 // import UserInfo from '../../utils/UserInfo';
 import Cache from '../../utils/Toolkit/Cache';
+import { getEndTime } from '../../utils/Qiandao';
 
 const cache = new Cache();
 const ad = new Ad();
 
 wx.cloud.init({
+  env: 'pro-02adcb',
+});
+
+const db = wx.cloud.database({
   env: 'pro-02adcb',
 });
 
@@ -24,6 +29,7 @@ Page({
     jifen: '获取中',
     sdkVersion: '0.0.0',
     userNum: 5700,
+    signNum: '获取中',
   },
   onLoad() {
     Promise.all([
@@ -54,14 +60,22 @@ Page({
             return 5701;
           },
         ),
+      db
+        .collection('sign')
+        .where({
+          sign_time: db.command.gte(getEndTime() - 24 * 3600 * 1000),
+        })
+        .get(),
     ]).then(res => {
       console.log(res);
+      let signNum = res[5].data.length || '获取中';
       this.setData!({
         rate_index: res[0] || 0,
         fontType: res[1] || '默认',
         jifen: res[2] || 0,
         sdkVersion: res[3] || '0.0.0',
         userNum: res[4] || 5702,
+        signNum: signNum > 20 ? '20+' : signNum,
       });
     });
 

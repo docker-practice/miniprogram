@@ -8,6 +8,8 @@
   </i-cell> -->
   <i-cell title="积分" value="{{jifen}}"></i-cell>
 
+  <i-cell title="今日签到" value="{{signNum}}"></i-cell>
+
   <i-cell title="评分">
     <i-rate title="评分" bind:change="rate" value="{{rate_index}}" slot="footer"></i-rate>
   </i-cell>

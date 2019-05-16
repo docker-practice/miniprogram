@@ -19,21 +19,21 @@ export default [
     open: false,
   },
   // 广告位
-  {
-    id: 'yuebao',
-    name: '余额宝体验金',
-    color: '#FFB90F',
-  },
-  {
-    id: 'alipay',
-    name: '支付宝线下红包',
-    color: '#FF4500',
-  },
-  {
-    id: 'bus',
-    name: '支付宝公交地铁红包',
-    color: '#FFB90F',
-  },
+  // {
+  //   id: 'yuebao',
+  //   name: '余额宝体验金',
+  //   color: '#FFB90F',
+  // },
+  // {
+  //   id: 'alipay',
+  //   name: '支付宝线下红包',
+  //   color: '#FF4500',
+  // },
+  // {
+  //   id: 'bus',
+  //   name: '支付宝公交地铁红包',
+  //   color: '#FFB90F',
+  // },
   {
     id: 'oldmenu',
     name: '经典目录',

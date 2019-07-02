@@ -22,7 +22,7 @@ speed="1200" bind:tap="buyBook"
 </view> -->
 
 <view class="ad" style="background-color:{{noticeBGColor}}" wx:if="{{showAd}}">
-<ad unit-id="adunit-1246f0a5e441ea4c" binderror="adError"></ad>
+<ad unit-id="adunit-3ea71b7cfce6c721" binderror="adError"></ad>
 </view>
 
 <view class="ad" style="background-color:{{noticeBGColor}}" wx:else>

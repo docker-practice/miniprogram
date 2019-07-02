@@ -30,10 +30,10 @@
 
   <i-cell title="SDK 版本" value="{{sdkVersion}}"></i-cell>
 
-  <i-cell title="" value=""><button plain="{{true}}" bind:tap="tucao">Docker 社区</button></i-cell>
+  <i-cell title="" value=""><button plain="{{true}}" open-type="contact">智能客服</button></i-cell>
+  <!-- <i-cell title="" value=""><button plain="{{true}}" bind:tap="tucao">Docker 社区</button></i-cell> -->
   <i-cell title="" value=""><button plain="{{true}}" open-type="feedback">反馈</button></i-cell>
   <i-cell title="" value=""><button plain="{{true}}" open-type="openSetting">授权设置</button></i-cell>
-  <i-cell title="" value=""><button plain="{{true}}" open-type="contact">联系我们</button></i-cell>
 
 </i-cell-group>
 </i-panel>

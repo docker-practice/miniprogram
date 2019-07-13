@@ -1,10 +1,59 @@
-<!--index.wxml-->
 <view class="container">
   <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <button class="getUserInfoBtn" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname" bindtap="settings">Get started with Docker now</text>
+      <text class="userinfo-nickname">Get started with Docker now</text>
     </block>
   </view>
+</view>
+
+<view class="settings">
+<i-panel>
+<i-cell-group>
+  <!-- <i-cell title="开关">
+    <i-switch slot="footer" value="{{switch}}" bind:change="onChange">
+      <i-icon type="right" slot="open"></i-icon>
+      <i-icon type="close" slot="close"></i-icon>
+    </i-switch>
+  </i-cell> -->
+  <i-cell title="积分" value="{{jifen}}"></i-cell>
+
+  <i-cell title="今日签到" value="{{signNum}}"></i-cell>
+
+  <i-cell title="切换主题" value="{{theme}}" bind:click="changeTheme"></i-cell>
+
+  <i-cell title="{{gitHubStatus}}" value="提出 issue" bind:click="loginGitHub"></i-cell>
+
+  <i-cell title="清理缓存" value="{{storageSize}}" bind:click="cleanup"></i-cell>
+
+  <i-cell title="字体" value="{{fontType}}" bind:click="chooseFont"></i-cell>
+
+  <i-cell title="打赏 👍" value="长按识别二维码进行打赏" bind:click="zan"></i-cell>
+
+  <i-cell title="实体书 📕" value="进阶学习" bind:click="buyBook"></i-cell>
+
+  <i-cell title="收藏夹 📁" value="马上找到你要的内容" bind:click="favorites"></i-cell>
+
+  <i-cell title="经典目录" value="怀旧经典" bind:click="oldMenu"></i-cell>
+
+  <i-cell title="技术交流" value="GitHub" bind:click="copyLink"></i-cell>
+
+  <i-cell title="分享" value="展示小程序码" bind:click="share"></i-cell>
+
+  <i-cell title="评分">
+    <i-rate title="评分" bind:change="rate" value="{{rate_index}}" slot="footer"></i-rate>
+  </i-cell>
+
+  <i-cell title="累积用户" value="{{userNum}}"></i-cell>
+
+  <i-cell title="SDK 版本" value="{{sdkVersion}}"></i-cell>
+
+  <i-cell title="" value=""><button plain="{{true}}" open-type="contact">智能客服</button></i-cell>
+  <!-- <i-cell title="" value=""><button plain="{{true}}" bind:tap="tucao">Docker 社区</button></i-cell> -->
+  <i-cell title="" value=""><button plain="{{true}}" open-type="feedback">反馈</button></i-cell>
+  <i-cell title="" value=""><button plain="{{true}}" open-type="openSetting">授权设置</button></i-cell>
+
+</i-cell-group>
+</i-panel>
 </view>

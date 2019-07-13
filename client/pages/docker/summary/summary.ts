@@ -9,15 +9,6 @@ export default [
     name: '打赏',
     color: '#1E90FF',
   },
-  {
-    id: 'github',
-    name: '开源',
-  },
-  {
-    id: 'miniProgram',
-    name: '微信小程序使用说明',
-    open: false,
-  },
   // 广告位
   // {
   //   id: 'yuebao',
@@ -38,12 +29,12 @@ export default [
     id: 'oldmenu',
     name: '经典目录',
   },
-  {
-    id: 'ad',
-    // name: '云服务广告位招租',
-    name: '进阶学习(实体书)',
-    color: '#00BFFF',
-  },
+  // {
+  //   id: 'ad',
+  //   // name: '云服务广告位招租',
+  //   name: '进阶学习(实体书)',
+  //   color: '#00BFFF',
+  // },
   {
     id: 'introduction',
     name: '项目简介',

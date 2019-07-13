@@ -28,10 +28,6 @@
   },
   "subpackages": [
     {
-      "root": "pages/settings",
-      "pages": ["index"]
-    },
-    {
       "root": "pages/docker/index",
       "pages": ["index"]
     },

@@ -15,17 +15,17 @@ import test from '../../../utils/Toolkit/test/index';
 test();
 
 // worker
-let worker = wx.createWorker('workers/test/index.js');
-
-worker.postMessage({
-  msg: 'main message',
-});
-
-worker.onMessage(res => {
-  console.log(res);
-});
-
-worker.terminate();
+// let worker = wx.createWorker('workers/test/index.js');
+//
+// worker.postMessage({
+//   msg: 'main message',
+// });
+//
+// worker.onMessage(res => {
+//   console.log(res);
+// });
+//
+// worker.terminate();
 
 let videAd: wx.RewardedVideoAd;
 let interstitialAd: any;

@@ -236,8 +236,8 @@ export default async function qiandao(videAd: any) {
 
       if (res) {
         wx.showModal({
-          title: '已签到',
-          content: '明天记得来学习哟',
+          title: '提示',
+          content: '已解锁进阶内容',
           showCancel: false,
         });
 

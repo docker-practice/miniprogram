@@ -27,7 +27,7 @@ speed="1200" backgroundcolor="#fff" color="#36a1f0" bind:tap="buyBook">
                 <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
                     <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
                         <block wx:for="{{item.pages}}" wx:for-item="page" wx:key="id">
-                            <navigator url="../content/index?key={{page.id}}" class="weui-cell weui-cell_access">
+                            <navigator url="../content/index?key={{page.id}}&pro={{page.pro === undefined ? 0:1}}" class="weui-cell weui-cell_access">
                                 <view class="weui-cell__bd">{{page.name}}</view>
                                 <view class="weui-cell__ft weui-cell__ft_in-access"></view>
                             </navigator>

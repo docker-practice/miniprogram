@@ -83,8 +83,8 @@ Page({
 
     if (id === 'sign') {
       wx.showModal({
-        title: '已签到',
-        content: '明天记得来学习哟',
+        title: '提示',
+        content: '已解锁进阶内容',
         showCancel: false,
       });
       return;
@@ -152,7 +152,7 @@ Page({
       res &&
         (list[0] = {
           id: 'sign',
-          name: '已签到',
+          name: '进阶内容已解锁',
         });
 
       this.setData!({
@@ -190,8 +190,13 @@ Page({
           showCancel: false,
         });
       });
-    }
 
+      videAd.onClose(() => {
+        setTimeout(() => {
+          this.isSign();
+        }, 2000);
+      });
+    }
     // 插屏广告
     // @ts-ignore
     if (wx.createInterstitialAd) {

@@ -13,6 +13,7 @@ import daShang from '../../../utils/DaShang';
 import Ad from '../../../utils/Ad';
 import openGithub from '../../../utils/OpenGithub';
 import Cache from '../../../utils/Toolkit/Cache';
+import { isSign } from '../../../utils/Qiandao';
 
 const cache = new Cache();
 const ad = new Ad();
@@ -86,8 +87,9 @@ Page({
     }, 2000);
   },
 
-  onLoad(options: any) {
+  async onLoad(options: any) {
     // console.log('onload');
+
     wx.showLoading({
       title: '加载中...',
     });
@@ -133,9 +135,9 @@ Page({
 
     this.load(options);
 
-    if (wx.getSystemInfoSync().platform === 'devtools') {
-      return;
-    }
+    // if (wx.getSystemInfoSync().platform === 'devtools') {
+    //   return;
+    // }
 
     // 插屏广告
     // @ts-ignore
@@ -147,14 +149,14 @@ Page({
 
       setTimeout(async () => {
         if (await cache.exists('ad/show')) {
-          console.log("==> 0.5 hour don't show ad");
+          console.log("==> 10 mins don't show ad");
           return;
         }
 
         interstitialAd.show().then(
           () => {
             // 展示成功
-            cache.set('ad/show', '', 1800);
+            cache.set('ad/show', '', 10 * 60);
           },
           (err: any) => {
             console.log('==>content ', err);
@@ -171,6 +173,28 @@ Page({
       interstitialAd.onLoad(() => {
         console.log('==>content on load event');
       });
+    }
+
+    if (options.pro === '1') {
+      console.log('this is pro content');
+
+      let isSigned = await isSign('', true);
+      isSigned ? console.log('is sign') : console.log('unsign');
+
+      if (!isSigned) {
+        wx.showModal({
+          title: '提示',
+          content: '请到首页解锁进阶内容',
+          showCancel: false,
+          success: () => {
+            wx.switchTab({
+              url: '/pages/docker/summary/index',
+            });
+          },
+        });
+
+        return;
+      }
     }
   },
 

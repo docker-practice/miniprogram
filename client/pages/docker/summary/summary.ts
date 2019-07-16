@@ -1,7 +1,7 @@
 export default [
   {
     id: 'unsign',
-    name: '签到 (领积分、兑权益)',
+    name: '解锁进阶内容',
     color: '#00BFFF',
   },
   {
@@ -179,15 +179,27 @@ export default [
     name: '高级网络配置',
     open: false,
     pages: [
-      { id: 'advanced_network/README.md', name: '高级网络配置' },
-      { id: 'advanced_network/quick_guide.md', name: '快速配置指南' },
-      { id: 'advanced_network/access_control.md', name: '容器访问控制' },
-      { id: 'advanced_network/port_mapping.md', name: '端口映射实现' },
-      { id: 'advanced_network/docker0.md', name: '配置 docker0 网桥' },
-      { id: 'advanced_network/bridge.md', name: '自定义网桥' },
-      { id: 'advanced_network/example.md', name: '工具和示例' },
-      { id: 'advanced_network/config_file.md', name: '编辑网络配置文件' },
-      { id: 'advanced_network/ptp.md', name: '实例：创建一个点到点连接' },
+      { id: 'advanced_network/README.md', name: '高级网络配置', pro: 1 },
+      { id: 'advanced_network/quick_guide.md', name: '快速配置指南', pro: 1 },
+      {
+        id: 'advanced_network/access_control.md',
+        name: '容器访问控制',
+        pro: 1,
+      },
+      { id: 'advanced_network/port_mapping.md', name: '端口映射实现', pro: 1 },
+      { id: 'advanced_network/docker0.md', name: '配置 docker0 网桥', pro: 1 },
+      { id: 'advanced_network/bridge.md', name: '自定义网桥', pro: 1 },
+      { id: 'advanced_network/example.md', name: '工具和示例', pro: 1 },
+      {
+        id: 'advanced_network/config_file.md',
+        name: '编辑网络配置文件',
+        pro: 1,
+      },
+      {
+        id: 'advanced_network/ptp.md',
+        name: '实例：创建一个点到点连接',
+        pro: 1,
+      },
     ],
   },
   {

@@ -266,6 +266,10 @@ Page({
   },
 
   setThemeTitle(theme: string) {
+    if (theme === undefined) {
+      theme = 'light';
+    }
+
     this.setData!({
       theme: theme === 'light' ? '明亮模式' : '暗黑模式',
     });

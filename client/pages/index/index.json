@@ -7,5 +7,7 @@
     "i-rate": "/iviewui/dist/rate/index"
   },
   "navigationStyle": "default",
-  "enablePullDownRefresh": false
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "light",
+  "backgroundColor": "#36a1f0"
 }

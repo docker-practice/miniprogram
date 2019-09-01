@@ -39,15 +39,8 @@ view.light {
   background-color: #fff;
 }
 
-.ad {
-  margin-top: 2vh;
-  height: 20vh;
-}
-
-.adError {
-  padding-top: 5vh;
-}
-
-.dashang {
-  width: 30vw;
+.h2w__ad {
+  margin-top: 3vh;
+  margin-left: -11rpx;
+  margin-bottom: 3vh;
 }

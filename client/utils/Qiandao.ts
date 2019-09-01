@@ -12,6 +12,11 @@ const db = wx.cloud.database({
 });
 
 export function uploadAdError(err: any) {
+  const errCode = err.code || 0;
+  if (errCode == 1004) {
+    return;
+  }
+
   db.collection('adError')
     .add({
       data: {

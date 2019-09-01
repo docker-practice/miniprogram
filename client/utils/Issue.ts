@@ -5,7 +5,7 @@ export default class Issue {
     let repo = 'yeasy/docker_practice';
 
     if (key === 'miniprogram.md') {
-      repo = 'khs1994/docker_practice_miniprogram';
+      repo = 'docker-practice/miniprogram';
     }
 
     return new Promise((resolve, reject) => {

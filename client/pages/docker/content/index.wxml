@@ -21,16 +21,6 @@ speed="1200" bind:tap="buyBook"
   <i-spin fix></i-spin>
 </view> -->
 
-<view class="ad" style="background-color:{{noticeBGColor}}" wx:if="{{showAd}}">
-<ad unit-id="adunit-3ea71b7cfce6c721" binderror="adError"></ad>
-</view>
-
-<view class="ad" style="background-color:{{noticeBGColor}}" wx:else>
-  <view class="adError" wx:if="{{show}}">
-  <button bindtap="dashang" type='warn' class="dashang">打赏</button>
-  </view>
-</view>
-
 <import src="/towxml/entry.wxml"/>
 
 <template is="entry" data="{{...data}}"/>

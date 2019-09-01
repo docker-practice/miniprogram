@@ -334,6 +334,13 @@ Page({
       });
   },
 
+  randomInsert(insertArr: Array<any>, arr: Array<any>) {
+    insertArr.forEach((value: any) =>
+      arr.splice(Math.random() * arr.length, 0, value),
+    );
+    return arr;
+  },
+
   async show(key: string, isCache: boolean = false) {
     let data: any;
 
@@ -351,6 +358,11 @@ Page({
 
     data.theme = app.globalData.theme;
     data.fontType = this.data.fontType;
+
+    data.child = this.randomInsert(
+      [{ node: 'ad', adId: 'adunit-3ea71b7cfce6c721' }],
+      data.child,
+    );
 
     this.data.hideFirst &&
       this.setData!({

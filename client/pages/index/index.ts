@@ -38,6 +38,9 @@ Page({
     theme: '明亮模式',
     gitHubStatus: '登录 GitHub',
   },
+  onPullDownRefresh() {
+    this.onLoad();
+  },
   onLoad() {
     Promise.all([
       cache.get('rate/index'),
@@ -129,6 +132,8 @@ Page({
         },
       });
     }
+
+    wx.stopPullDownRefresh();
   },
   onChange(e: any) {
     console.log(e);

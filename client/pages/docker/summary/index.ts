@@ -43,6 +43,8 @@ Page({
       },
     ],
     showAd: true,
+    isHide: false,
+    interstitialAd: null,
   },
 
   kindToggle: function(e: any) {
@@ -211,20 +213,31 @@ Page({
         adUnitId: 'adunit-6ef44789d84b9392',
       });
 
+      this.setData!({
+        interstitialAd,
+      });
+
       setTimeout(() => {
-        interstitialAd.show().then(
-          () => {},
-          (err: any) => {
-            console.log(err);
-          },
-        );
+        if (!this.data.isHide) {
+          interstitialAd
+            .show()
+            .then(() => {})
+            .catch((err: any) => {
+              console.log(err);
+            })
+            .finally(() => {
+              this.setData!({
+                interstitialAd: null,
+              });
+            });
+        }
       }, 15000);
 
       interstitialAd.onClose(() => {});
 
       interstitialAd.onError((err: any) => {
         console.log(err);
-        uploadAdError(err);
+        // uploadAdError(err);
       });
 
       interstitialAd.onLoad(() => {
@@ -266,12 +279,35 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {},
+  onShow: function() {
+    this.setData!({
+      isHide: false,
+    });
+
+    if (!this.data.interstitialAd) {
+      return;
+    }
+
+    // @ts-ignore
+    this.data.interstitialAd
+      .show()
+      .then(() => {})
+      .catch(() => {})
+      .finally(() => {
+        this.setData!({
+          interstitialAd: null,
+        });
+      });
+  },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {},
+  onHide: function() {
+    this.setData!({
+      isHide: true,
+    });
+  },
 
   /**
    * 生命周期函数--监听页面卸载

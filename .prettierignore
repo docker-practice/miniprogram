@@ -7,3 +7,5 @@ iviewui
 docker/summary.ts
 
 client/buildcache
+
+project.config.json

@@ -11,20 +11,55 @@ const db = wx.cloud.database({
   env: 'pro-02adcb',
 });
 
+export function uploadAdError(err: any) {
+  db.collection('adError')
+    .add({
+      data: {
+        error: JSON.stringify(err),
+      },
+    })
+    .then(() => {}, () => {});
+}
+
 function showVideoAd(openid: string, videAd: wx.RewardedVideoAd) {
   videAd.show().catch(err => {
+    // error
     wx.showModal({
       title: '提示',
       content: JSON.stringify(err),
       showCancel: false,
     });
-    videAd.load();
+
+    uploadAdError(err);
+
+    videAd.load().then(
+      () => {
+        videAd.show().then(
+          () => {},
+          err => {
+            // error
+            console.log(err);
+            uploadAdError(err);
+          },
+        );
+      },
+      err => {
+        // error
+        console.log(err);
+        uploadAdError(err);
+      },
+    );
+  }); //show end
+
+  videAd.onError(err => {
+    uploadAdError(err);
   });
 
   videAd.onClose(status => {
     console.log(status);
 
     if (status.isEnded) {
+      console.log('播放完成');
       wx.showModal({
         title: '签到成功',
         content: '积分 +2',
@@ -44,7 +79,6 @@ function showVideoAd(openid: string, videAd: wx.RewardedVideoAd) {
       let sign_time = getSignTime();
       addJifen(openid, 1, sign_time);
       // 存储签到时间
-
       cache.set('sign/time', `${sign_time}`, 0, true);
     }
   });
@@ -52,31 +86,8 @@ function showVideoAd(openid: string, videAd: wx.RewardedVideoAd) {
 
 async function sign(openid: string, videAd: any) {
   return await new Promise(resolve => {
-    wx.showModal({
-      title: '获得额外积分',
-      content: '观看完整广告视频，额外获得 1 积分',
-      confirmText: '立即签到',
-      cancelText: '不要积分',
-      success: res => {
-        if (res.confirm) {
-          showVideoAd(openid, videAd);
-          resolve(true);
-        } else {
-          let sign_time = getSignTime();
-
-          addJifen(openid, 1, sign_time).then(() => {
-            cache.set('sign/time', `${sign_time}`, 0, true);
-            wx.showModal({
-              title: '签到成功',
-              content: '积分 +1',
-              showCancel: false,
-            });
-
-            resolve(true);
-          });
-        }
-      },
-    });
+    showVideoAd(openid, videAd);
+    resolve(true);
   });
 }
 
@@ -209,6 +220,7 @@ export default async function qiandao(videAd: any) {
     wx.showModal({
       title: '请检查设备时间设置',
       content: '设备时间与实际时间相差较大',
+      showCancel: false,
     });
 
     return false;

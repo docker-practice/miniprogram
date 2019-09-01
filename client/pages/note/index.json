@@ -2,5 +2,7 @@
   "usingComponents": {
     "i-button": "/iviewui/dist/button/index"
   },
-  "navigationBarTitleText": "内容反馈"
+  "navigationBarTitleText": "内容反馈",
+  "navigationStyle": "default",
+  "enablePullDownRefresh": false
 }

@@ -8,7 +8,9 @@
     "backgroundTextStyle": "light",
     "navigationBarTitleText": "Docker 从入门到实践",
     "navigationBarTextStyle": "white",
-    "navigationBarBackgroundColor": "#36a1f0"
+    "navigationBarBackgroundColor": "#36a1f0",
+    "navigationStyle": "custom",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "backgroundColor": "#36a1f0",
@@ -29,10 +31,6 @@
   "subpackages": [
     {
       "root": "pages/docker/index",
-      "pages": ["index"]
-    },
-    {
-      "root": "pages/docker/content",
       "pages": ["index"]
     },
     {

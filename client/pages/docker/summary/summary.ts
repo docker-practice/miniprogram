@@ -360,7 +360,10 @@ export default [
     open: false,
     pages: [
       { id: 'cases/ci/README.md', name: '实战案例-CI/CD' },
-      { id: 'cases/ci/drone.md', name: 'Drone' },
+      { id: 'cases/ci/actions/README.md', name: 'GitHub Actions' },
+      { id: 'cases/ci/drone/install.md', name: '部署 Drone' },
+      { id: 'cases/ci/drone/README.md', name: 'Drone' },
+      { id: 'cases/ci/travis/README.md', name: 'Travis CI' },
     ],
   },
   {

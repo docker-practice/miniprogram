@@ -5,7 +5,7 @@ import list from './summary';
 import daShang from '../../../utils/DaShang';
 import openGithub from '../../../utils/OpenGithub';
 import qiandao from '../../../utils/Qiandao';
-import { isSign } from '../../../utils/Qiandao';
+import { isSign, uploadAdError } from '../../../utils/Qiandao';
 import Ad from '../../../utils/Ad';
 
 const ad = new Ad();
@@ -110,6 +110,10 @@ Page({
     });
   },
 
+  adError(res: any) {
+    uploadAdError(res.detail);
+  },
+
   openGithub() {
     openGithub();
   },
@@ -173,9 +177,9 @@ Page({
 
     this.isSign(true);
 
-    if (wx.getSystemInfoSync().platform === 'devtools') {
-      return;
-    }
+    // if (wx.getSystemInfoSync().platform === 'devtools') {
+    //   return;
+    // }
 
     // 激励广告
     if (wx.createRewardedVideoAd) {
@@ -183,12 +187,14 @@ Page({
         adUnitId: 'adunit-a929f1a7fb4e4e96',
       });
 
-      videAd.onError(res => {
+      videAd.onError(err => {
         wx.showModal({
           title: '提示',
-          content: JSON.stringify(res),
+          content: JSON.stringify(err),
           showCancel: false,
         });
+
+        uploadAdError(err);
       });
 
       videAd.onClose(() => {
@@ -216,8 +222,9 @@ Page({
 
       interstitialAd.onClose(() => {});
 
-      interstitialAd.onError((res: any) => {
-        console.log(res);
+      interstitialAd.onError((err: any) => {
+        console.log(err);
+        uploadAdError(err);
       });
 
       interstitialAd.onLoad(() => {

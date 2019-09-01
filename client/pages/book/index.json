@@ -1,4 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "Docker 技术入门与实战"
+  "navigationBarTitleText": "Docker 技术入门与实战",
+  "navigationStyle": "default",
+  "enablePullDownRefresh": false
 }

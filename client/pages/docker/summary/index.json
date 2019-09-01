@@ -1,5 +1,7 @@
 {
   "usingComponents": {
     "i-notice-bar": "/iviewui/dist/notice-bar/index"
-  }
+  },
+  "navigationStyle": "default",
+  "enablePullDownRefresh": false
 }

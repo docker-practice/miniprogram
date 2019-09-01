@@ -13,7 +13,7 @@ import daShang from '../../../utils/DaShang';
 import Ad from '../../../utils/Ad';
 import openGithub from '../../../utils/OpenGithub';
 import Cache from '../../../utils/Toolkit/Cache';
-import { isSign } from '../../../utils/Qiandao';
+import { isSign, uploadAdError } from '../../../utils/Qiandao';
 
 const cache = new Cache();
 const ad = new Ad();
@@ -160,14 +160,16 @@ Page({
           },
           (err: any) => {
             console.log('==>content ', err);
+            uploadAdError(err);
           },
         );
       }, 15000);
 
       interstitialAd.onClose(() => {});
 
-      interstitialAd.onError((res: any) => {
-        console.log('==>content ', res);
+      interstitialAd.onError((err: any) => {
+        console.log('==>content ', err);
+        uploadAdError(err);
       });
 
       interstitialAd.onLoad(() => {
@@ -442,10 +444,12 @@ Page({
     });
   },
 
-  adError() {
+  adError(res: any) {
     this.setData!({
       showAd: false,
     });
+
+    uploadAdError(res.detail);
   },
 
   favorites() {

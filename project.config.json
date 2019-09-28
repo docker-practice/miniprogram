@@ -4,18 +4,19 @@
 		"ignore": []
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.8.1",
+	"libVersion": "2.8.3",
 	"projectname": "docker",
 	"miniprogramRoot": "client/",
 	"cloudfunctionRoot": "functions/",
 	"scripts": {
-		"beforeCompile": "npm run summary && cd client && npm run compile",
-		"beforePreview": "npm run summary && cd client && npm run compile:pro",
-		"beforeUpload": "npm run summary && cd client && npm run compile:pro"
+		"beforeCompile": "npm run gitbook:summary:generate && cd client && npm run compile",
+		"beforePreview": "npm run gitbook:summary:generate && cd client && npm run compile:pro",
+		"beforeUpload": "npm run gitbook:summary:generate && cd client && npm run compile:pro"
 	},
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
+		"enhance": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
@@ -29,7 +30,8 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"bundle": false
 	},
 	"appid": "wxb830c3abf8a658a5",
 	"simulatorType": "wechat",

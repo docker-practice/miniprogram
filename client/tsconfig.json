@@ -20,7 +20,7 @@
     "removeComments": true,
     "pretty": true,
     "strictPropertyInitialization": true,
-    "lib": ["ESNext", "DOM"]
+    "lib": ["esnext", "dom"]
   },
   "include": ["./**/*.ts"],
   "exclude": ["node_modules", "miniprogram_dist", "**/*.spec.ts"]

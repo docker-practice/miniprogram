@@ -13,4 +13,6 @@ client/workers/**/*.js
 client/pages/docker/content/util/summary.ts
 client/buildcache
 
-docker/summary.ts
+docker/*
+!docker/towxml.js
+!docker/summary.generate.js

@@ -1,15 +1,14 @@
+// @ts-ignore
 import summary from './summary';
 
-const obj = JSON.parse(summary);
+const obj = summary;
 
 function getIndex(key: any) {
   let result: any;
 
   obj.forEach((item: any, i: any) => {
-    for (let item_item in item) {
-      if (item_item === key) {
-        result = i;
-      }
+    if (item['path'] === key) {
+      result = i;
     }
   });
 
@@ -17,21 +16,16 @@ function getIndex(key: any) {
 }
 
 function parse(result: any) {
-  let title: string;
-  let key: string;
+  let title: string = result['title'];
+  let key: string = result['path'];
 
-  for (let item in result) {
-    key = item;
-    title = result[key];
-  }
-
-  // @ts-ignore
   return [title, key];
 }
 
-export function next(key: any): any {
+function next(key: any): any {
   let index = getIndex(key);
   let result = obj[index + 1];
+
   if (result) {
     return parse(result);
   }
@@ -39,7 +33,7 @@ export function next(key: any): any {
   return undefined;
 }
 
-export function before(key: any): any {
+function before(key: any): any {
   let index = getIndex(key);
   let result = obj[index - 1];
   if (result) {
@@ -48,5 +42,7 @@ export function before(key: any): any {
 
   return undefined;
 }
+
+export { before, next };
 
 export default next;

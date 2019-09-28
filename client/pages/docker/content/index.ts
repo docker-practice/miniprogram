@@ -1,4 +1,5 @@
 import { IMyApp } from '../../../app';
+
 const app = getApp<IMyApp>();
 
 // const fs = wx.getFileSystemManager();
@@ -37,6 +38,14 @@ function parsePath(href: string) {
 
   return arr.join('/');
 }
+
+wx.onNetworkStatusChange(res => {
+  wx.showToast({
+    title: `${res.networkType.toUpperCase()} 已连接`,
+    icon: 'none',
+    duration: 1500,
+  });
+});
 
 Page({
   data: {
@@ -94,15 +103,7 @@ Page({
       title: '加载中...',
     });
 
-    wx.onNetworkStatusChange(res => {
-      wx.showToast({
-        title: `${res.networkType.toUpperCase()} 已连接`,
-        icon: 'none',
-        duration: 1500,
-      });
-    });
-
-    const theme: any = app.globalData.theme;
+    const theme: any = app.globalData.theme || 'light';
     const noticeBGColor = theme === 'dark' ? '#000000' : '#ffffff';
 
     // 获取状态栏（信号栏）高度
@@ -313,10 +314,10 @@ Page({
     }
 
     // 上传分析数据
-    wx.reportAnalytics('pages', {
-      // @ts-ignore
-      page: key,
-    });
+    // wx.reportAnalytics('pages', {
+    //   // @ts-ignore
+    //   page: key,
+    // });
 
     const baseUrl = app.globalData.baseUrl;
 
@@ -335,6 +336,13 @@ Page({
   },
 
   randomInsert(insertArr: Array<any>, arr: Array<any>) {
+    // console.log(arr.length);
+    if (arr.length > 30) {
+      insertArr = [
+        ...insertArr,
+        { node: 'ad', adId: 'adunit-1246f0a5e441ea4c' },
+      ];
+    }
     insertArr.forEach((value: any) =>
       arr.splice(Math.random() * arr.length, 0, value),
     );
@@ -356,7 +364,7 @@ Page({
       cache.set('book/' + key, data);
     }
 
-    data.theme = app.globalData.theme;
+    data.theme = this.data.theme || 'light';
     data.fontType = this.data.fontType;
 
     data.child = this.randomInsert(

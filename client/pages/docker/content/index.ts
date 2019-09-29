@@ -53,6 +53,7 @@ Page({
     showFixedStatusBar: false,
     fontType: '默认',
     showAd: true,
+    ad: ['adunit-3ea71b7cfce6c721', 'adunit-1246f0a5e441ea4c'],
   },
 
   onUnload() {

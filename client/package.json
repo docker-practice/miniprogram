@@ -7,7 +7,7 @@
     "yarn:update": "yarn upgrade-interactive --latest"
   },
   "dependencies": {
-    "towxml": "github:pcit-ce/towxml"
+    "wx-markdown": "github:docker-practice/wx-markdown"
   },
   "devDependencies": {
     "@types/wx": "github:khs1994/types-wx",

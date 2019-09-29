@@ -23,5 +23,5 @@
     "lib": ["esnext", "dom"]
   },
   "include": ["./**/*.ts"],
-  "exclude": ["node_modules", "miniprogram_dist", "**/*.spec.ts"]
+  "exclude": ["node_modules", "miniprogram_npm", "**/*.spec.ts"]
 }

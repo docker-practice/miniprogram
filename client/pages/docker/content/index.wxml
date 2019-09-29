@@ -21,7 +21,7 @@ speed="1200" bind:tap="buyBook"
   <i-spin fix></i-spin>
 </view> -->
 
-<markdown markdown="{{data}}" theme="{{theme}}" ad="{{}}"
+<markdown markdown="{{data}}" theme="{{theme}}" ad="{{ad}}"
 fontType="{{fontType}}"
 folder="{{folder}}"
 >

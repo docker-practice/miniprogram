@@ -10,20 +10,6 @@ page {
   padding-top: 2vh;
 }
 
-.h2w-light .h2w__a {
-  color: #36a1f0;
-  border-bottom-color: #36a1f0;
-}
-
-.h2w-dark .h2w__a {
-  color: #36a1f0;
-  border-bottom-color: #36a1f0;
-}
-
-.h2w__a {
-  border-bottom-color: #36a1f0;
-}
-
 .dark {
   background: #000!important;
 }
@@ -34,10 +20,4 @@ view.dark {
 
 view.light {
   background-color: #fff;
-}
-
-.h2w__ad {
-  margin-top: 3vh;
-  margin-left: -11rpx;
-  margin-bottom: 3vh;
 }

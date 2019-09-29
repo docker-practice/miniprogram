@@ -7,7 +7,7 @@ iviewui
 client/buildcache
 client/src/Framework/src/Support/Summary/summary.ts
 client/src/ui
-client/src/towxml
+client/miniprogram_npm
 
 summary/summary.ts
 summary/summary.mini.md

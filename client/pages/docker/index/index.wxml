@@ -8,11 +8,9 @@ speed="1200" backgroundcolor="#fff" color="#36a1f0" wx:if="{{lazy}}"
   <i-spin fix></i-spin>
 </view>
 
-<import src="/src/towxml/entry.wxml"/>
+<markdown markdown="{{data}}" isTowxml="{{true}}"></markdown>
 
 <ad unit-id="adunit-3ea71b7cfce6c721"></ad>
-
-<template is="entry" data="{{...data}}"/>
 
 <view class="weui-footer">
   <view class="weui-footer__text">Copyright ©docker_practice</view>

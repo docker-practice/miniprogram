@@ -3,6 +3,4 @@
 
 /iviewui         linguist-vendored
 /wuss            linguist-vendored
-/client/weui     linguist-vendored
-/client/iviewui  linguist-vendored
-/client/towxml   linguist-vendored
+/client/src/ui   linguist-vendored

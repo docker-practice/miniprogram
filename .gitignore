@@ -14,7 +14,7 @@ client/workers/**/*.js
 client/pages/docker/content/util/summary.ts
 client/buildcache
 
-docker/*
-!docker/towxml.js
-!docker/summary.generate.js
+summary/*
+!summary/towxml.js
+!summary/summary.generate.js
 !wx_background_fetch_data

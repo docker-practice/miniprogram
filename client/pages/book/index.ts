@@ -1,4 +1,4 @@
-import Ad from '../../utils/Ad';
+import Ad from '../../src/utils/Ad';
 
 const ad = new Ad();
 

@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "i-button": "/iviewui/dist/button/index"
+    "i-button": "/src/ui/iviewui/dist/button/index"
   },
   "navigationBarTitleText": "GitHub 登录",
   "navigationStyle": "default",

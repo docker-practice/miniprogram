@@ -1,4 +1,4 @@
-import Cache from './Toolkit/Cache';
+import Cache from '../Framework/src/Support/Cache';
 
 wx.cloud.init({
   env: 'pro-02adcb',

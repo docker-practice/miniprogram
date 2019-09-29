@@ -1,4 +1,3 @@
-// @ts-ignore
 import summary from './summary';
 
 const obj = summary;

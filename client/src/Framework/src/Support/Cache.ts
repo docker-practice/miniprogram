@@ -1,7 +1,9 @@
+const { removeStorage, getStorage, setStorage, clearStorage } = wx;
+
 export default class Cache {
   checkTTL(key: string, res: wx.GetStorageSuccessCallbackResult) {
     if (res.data.ttl === undefined) {
-      wx.removeStorage({
+      removeStorage({
         key,
       });
 
@@ -13,7 +15,7 @@ export default class Cache {
       return true;
     }
 
-    wx.removeStorage({
+    removeStorage({
       key,
     });
 
@@ -22,7 +24,7 @@ export default class Cache {
 
   async get(key: string): Promise<any> {
     return await new Promise(resolve => {
-      wx.getStorage({
+      getStorage({
         key,
         success: res => {
           let data = res.data.value;
@@ -43,7 +45,7 @@ export default class Cache {
 
   async exists(key: string) {
     return await new Promise(resolve => {
-      wx.getStorage({
+      getStorage({
         key,
         success: res => {
           if (this.checkTTL(key, res)) {
@@ -60,8 +62,8 @@ export default class Cache {
   }
 
   /**
-   *
-   *
+   * @param key    string
+   * @param value  string
    * @param ttl    number  s
    * @param today  today   only on today
    */
@@ -91,7 +93,7 @@ export default class Cache {
     };
 
     return await new Promise((resolve, reject) => {
-      wx.setStorage({
+      setStorage({
         key,
         data,
         success: () => {
@@ -106,7 +108,7 @@ export default class Cache {
 
   async flush() {
     return await new Promise((resolve, reject) => {
-      wx.clearStorage({
+      clearStorage({
         success: () => {
           resolve();
         },
@@ -119,7 +121,7 @@ export default class Cache {
 
   async del(key: string) {
     return await new Promise((resolve, reject) => {
-      wx.removeStorage({
+      removeStorage({
         key,
         success: () => {
           resolve();

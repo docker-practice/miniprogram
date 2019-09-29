@@ -8,6 +8,8 @@ docker/summary.ts
 
 client/buildcache
 client/pages/docker/content/util/summary.ts
+client/src/ui
+client/src/towxml
 docker/summary.mini.md
 docker/summary.source.md
 

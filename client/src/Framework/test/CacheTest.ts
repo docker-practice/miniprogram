@@ -1,4 +1,4 @@
-import Cache from '../Cache';
+import Cache from '../src/Support/Cache';
 import assert from './assert';
 
 let cache = new Cache();

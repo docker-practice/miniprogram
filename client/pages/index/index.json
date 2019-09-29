@@ -1,10 +1,10 @@
 {
   "usingComponents": {
-    "i-cell-group": "/iviewui/dist/cell-group/index",
-    "i-cell": "/iviewui/dist/cell/index",
-    "i-switch": "/iviewui/dist/switch/index",
-    "i-panel": "/iviewui/dist/panel/index",
-    "i-rate": "/iviewui/dist/rate/index"
+    "i-cell-group": "/src/ui/iviewui/dist/cell-group/index",
+    "i-cell": "/src/ui/iviewui/dist/cell/index",
+    "i-switch": "/src/ui/iviewui/dist/switch/index",
+    "i-panel": "/src/ui/iviewui/dist/panel/index",
+    "i-rate": "/src/ui/iviewui/dist/rate/index"
   },
   "navigationStyle": "default",
   "enablePullDownRefresh": true,

@@ -2,13 +2,13 @@ import { IMyApp } from '../../app';
 const app = getApp<IMyApp>();
 const fs = wx.getFileSystemManager();
 
-import Font from '../../utils/Font';
-import Ad from '../../utils/Ad';
-import daShang from '../../utils/DaShang';
-import Jifen from '../../utils/Jifen';
+import Font from '../../src/utils/Font';
+import Ad from '../../src/utils/Ad';
+import daShang from '../../src/utils/DaShang';
+import Jifen from '../../src/utils/Jifen';
 // import UserInfo from '../../utils/UserInfo';
-import Cache from '../../utils/Toolkit/Cache';
-import { getEndTime } from '../../utils/Qiandao';
+import Cache from '../../src/Framework/src/Support/Cache';
+import { getEndTime } from '../../src/utils/Qiandao';
 
 const cache = new Cache();
 const ad = new Ad();

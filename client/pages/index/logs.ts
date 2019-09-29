@@ -1,5 +1,5 @@
 //logs.js
-import Time from '../../utils/Toolkit/Time';
+import Time from '../../src/Framework/src/Support/Time';
 
 let time = new Time();
 

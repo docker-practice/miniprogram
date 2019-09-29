@@ -2,16 +2,16 @@
 //const app = getApp<IMyApp>();
 
 import list from './summary';
-import daShang from '../../../utils/DaShang';
-import openGithub from '../../../utils/OpenGithub';
-import qiandao from '../../../utils/Qiandao';
-import { isSign, uploadAdError } from '../../../utils/Qiandao';
-import Ad from '../../../utils/Ad';
+import daShang from '../../../src/utils/DaShang';
+import openGithub from '../../../src/utils/OpenGithub';
+import qiandao from '../../../src/utils/Qiandao';
+import { isSign, uploadAdError } from '../../../src/utils/Qiandao';
+import Ad from '../../../src/utils/Ad';
 
 const ad = new Ad();
 
 // test
-import test from '../../../utils/Toolkit/test/index';
+import test from '../../../src/Framework/test/index';
 test();
 
 // worker

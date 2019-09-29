@@ -1,15 +1,9 @@
 import UserInfo from './UserInfo';
-import Cache from './Toolkit/Cache';
+import Cache from '../Framework/src/Support/Cache';
+import DB from '../Framework/src/Support/DB';
 
 const cache = new Cache();
-
-wx.cloud.init({
-  env: 'pro-02adcb',
-});
-
-const db = wx.cloud.database({
-  env: 'pro-02adcb',
-});
+const db = DB.getInstance();
 
 export function uploadAdError(err: any) {
   const errCode = err.code || err.errCode || 0;

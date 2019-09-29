@@ -1,6 +1,4 @@
-//app.ts
-
-import Cache from './utils/Toolkit/Cache';
+import Cache from './src/Framework/src/Support/Cache';
 
 const cache = new Cache();
 
@@ -13,10 +11,7 @@ export interface IMyApp {
     fontType: string;
     [index: string]: any;
   };
-  towxml: any;
 }
-
-import * as towxml from 'towxml';
 
 App<IMyApp>({
   onLaunch() {
@@ -34,11 +29,6 @@ App<IMyApp>({
     cache.get('style/fontType').then((fontType: any) => {
       this.globalData.fontType = fontType || 'default';
     });
-
-    // 展示本地存储能力
-    // var logs: number[] = wx.getStorageSync('logs') || [];
-    // logs.unshift(Date.now());
-    // wx.setStorageSync('logs', logs);
 
     // 登录
     wx.login({
@@ -73,5 +63,4 @@ App<IMyApp>({
     fontType: 'default',
     baseUrl: 'https://gitee.com/docker_practice/docker_practice/raw/master',
   },
-  towxml: new towxml(),
 });

@@ -1,11 +1,12 @@
 {
   "usingComponents": {
-    "i-drawer": "/iviewui/dist/drawer/index",
-    "i-tab-bar": "/iviewui/dist/tab-bar/index",
-    "i-tab-bar-item": "/iviewui/dist/tab-bar-item/index",
-    "i-notice-bar": "/iviewui/dist/notice-bar/index",
-    "i-button": "/iviewui/dist/button/index",
-    "i-spin": "/iviewui/dist/spin/index"
+    "i-drawer": "/src/ui/iviewui/dist/drawer/index",
+    "i-tab-bar": "/src/ui/iviewui/dist/tab-bar/index",
+    "i-tab-bar-item": "/src/ui/iviewui/dist/tab-bar-item/index",
+    "i-notice-bar": "/src/ui/iviewui/dist/notice-bar/index",
+    "i-button": "/src/ui/iviewui/dist/button/index",
+    "i-spin": "/src/ui/iviewui/dist/spin/index",
+    "markdown": "/src/markdown/index"
   },
   "enablePullDownRefresh": true,
   "backgroundColor": "#36a1f0",

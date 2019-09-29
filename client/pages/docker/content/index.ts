@@ -1,21 +1,16 @@
 import { IMyApp } from '../../../app';
-
-const app = getApp<IMyApp>();
-
-// const fs = wx.getFileSystemManager();
-
 import { next, before } from './util/next_page';
-// const MenuData = require('../index/summary.js');
 import getFolder from './util/getFolder';
 import Request from './util/Request';
 import Style from './util/Style';
-import Font from '../../../utils/Font';
-import daShang from '../../../utils/DaShang';
-import Ad from '../../../utils/Ad';
-import openGithub from '../../../utils/OpenGithub';
-import Cache from '../../../utils/Toolkit/Cache';
-import { isSign, uploadAdError } from '../../../utils/Qiandao';
+import Font from '../../../src/utils/Font';
+import daShang from '../../../src/utils/DaShang';
+import Ad from '../../../src/utils/Ad';
+import openGithub from '../../../src/utils/OpenGithub';
+import Cache from '../../../src/Framework/src/Support/Cache';
+import { isSign, uploadAdError } from '../../../src/utils/Qiandao';
 
+const app = getApp<IMyApp>();
 const cache = new Cache();
 const ad = new Ad();
 
@@ -307,7 +302,7 @@ Page({
       return;
     }
 
-    if (useCache && (await cache.exists('book/' + key))) {
+    if (useCache && (await cache.exists('book/markdown' + key))) {
       this.show(key, true);
 
       return;
@@ -335,47 +330,21 @@ Page({
       });
   },
 
-  randomInsert(insertArr: Array<any>, arr: Array<any>) {
-    // console.log(arr.length);
-    if (arr.length > 30) {
-      insertArr = [
-        ...insertArr,
-        { node: 'ad', adId: 'adunit-1246f0a5e441ea4c' },
-      ];
-    }
-    insertArr.forEach((value: any) =>
-      arr.splice(Math.random() * arr.length, 0, value),
-    );
-    return arr;
-  },
-
   async show(key: string, isCache: boolean = false) {
     let data: any;
 
     if (isCache) {
-      try {
-        data = await cache.get('book/' + key);
-      } catch {
-        data = app.towxml.toJson(this.data.MDData, 'markdown');
-      }
+      data = await cache.get('book/markdown' + key);
     } else {
-      data = app.towxml.toJson(this.data.MDData, 'markdown');
+      data = this.data.MDData;
 
-      cache.set('book/' + key, data);
+      await cache.set('book/markdown' + key, data);
     }
-
-    data.theme = this.data.theme || 'light';
-    data.fontType = this.data.fontType;
-
-    data.child = this.randomInsert(
-      [{ node: 'ad', adId: 'adunit-3ea71b7cfce6c721' }],
-      data.child,
-    );
 
     this.data.hideFirst &&
       this.setData!({
         // @ts-ignore
-        data: {},
+        data: '',
       });
 
     setTimeout(() => {

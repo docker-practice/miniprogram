@@ -1,0 +1,3 @@
+<import src="/src/towxml/entry.wxml"/>
+
+<template is="entry" data="{{...MDdata}}"/>

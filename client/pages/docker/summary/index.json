@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "i-notice-bar": "/iviewui/dist/notice-bar/index"
+    "i-notice-bar": "/src/ui/iviewui/dist/notice-bar/index"
   },
   "navigationStyle": "default",
   "enablePullDownRefresh": false

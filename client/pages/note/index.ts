@@ -2,8 +2,8 @@ import { IMyApp } from '../../app';
 const app = getApp<IMyApp>();
 const fs = wx.getFileSystemManager();
 
-import Token from '../../utils/Token';
-import Issue from '../../utils/Issue';
+import Token from '../../src/utils/Token';
+import Issue from '../../src/utils/Issue';
 
 Page({
   /**

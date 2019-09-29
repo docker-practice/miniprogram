@@ -3,7 +3,7 @@
 @import '/towxml/style/main.wxss';
 @import '/towxml/style/theme/light.wxss';
 @import '/towxml/style/theme/dark.wxss';
-@import '/weui/weui.wxss';
+@import '/src/ui/weui/weui.wxss';
 
 .weui-footer__text {
   padding-top: 2vh;

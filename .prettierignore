@@ -4,13 +4,13 @@ package-lock.json
 
 iviewui
 
-docker/summary.ts
-
 client/buildcache
-client/pages/docker/content/util/summary.ts
+client/src/Framework/src/Support/Summary/summary.ts
 client/src/ui
 client/src/towxml
-docker/summary.mini.md
-docker/summary.source.md
+
+summary/summary.ts
+summary/summary.mini.md
+summary/summary.source.md
 
 project.config.json

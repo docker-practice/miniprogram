@@ -21,13 +21,11 @@ speed="1200" bind:tap="buyBook"
   <i-spin fix></i-spin>
 </view> -->
 
-<!--
-<import src="/towxml/entry.wxml"/>
-
-<template is="entry" data="{{...data}}"/>
--->
-
-<markdown markdown="{{data}}" theme="{{theme}}" ad="{{}}" fontType="{{fontType}}"></markdown>
+<markdown markdown="{{data}}" theme="{{theme}}" ad="{{}}"
+fontType="{{fontType}}"
+folder="{{folder}}"
+>
+</markdown>
 
 <!-- <view class="weui-footer weui-footer_fixed-bottom footer-btn">
   <button bindtap="before" wx:if="{{before_key}}">上一页</button>

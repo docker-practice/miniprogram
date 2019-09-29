@@ -1,8 +1,8 @@
 /* pages/docker/index.wxss */
 
-@import '/towxml/style/main.wxss';
-@import '/towxml/style/theme/light.wxss';
-@import '/towxml/style/theme/dark.wxss';
+@import '/src/towxml/style/main.wxss';
+@import '/src/towxml/style/theme/light.wxss';
+@import '/src/towxml/style/theme/dark.wxss';
 @import '/src/ui/weui/weui.wxss';
 
 .weui-footer__text {

@@ -42,4 +42,5 @@ line.forEach((v) => {
 });
 
 fs.writeFileSync(__dirname + '\\summary.ts', 'export default ' + JSON.stringify(array));
-fs.copyFileSync(__dirname + '\\summary.ts', __dirname + '/../client/pages/docker/content/util/summary.ts');
+fs.copyFileSync(__dirname + '\\summary.ts',
+  __dirname + '/../client/src/Framework/src/Support/Summary/summary.ts');

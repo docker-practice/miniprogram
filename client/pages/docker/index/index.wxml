@@ -8,7 +8,7 @@ speed="1200" backgroundcolor="#fff" color="#36a1f0" wx:if="{{lazy}}"
   <i-spin fix></i-spin>
 </view>
 
-<import src="/towxml/entry.wxml"/>
+<import src="/src/towxml/entry.wxml"/>
 
 <ad unit-id="adunit-3ea71b7cfce6c721"></ad>
 

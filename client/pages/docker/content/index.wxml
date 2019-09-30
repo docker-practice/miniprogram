@@ -51,10 +51,14 @@ folder="{{folder}}"
 
 <!-- <view class="note-list"></view> -->
 
-<view class="weui-footer" style="background-color:{{noticeBGColor}}">
-  <view bindtap="openGithub" class="weui-footer__text">
-    <image wx:if="{{theme === 'light'}}" style="height:7vh" src="/images/icon_nav_github.svg"/>
-    <image wx:else style="height:7vh" src="/images/icon_nav_github_white.svg"/>
+<view class="weui-footer" style="background-color:{{noticeBGColor}}" style="color:#333">
+  <view wx:if="{{theme === 'light'}}" bindtap="openGithub" class="weui-footer__text">
+    <image style="height:7vh" src="/images/icon_nav_github.svg"/>
+    yeasy/docker_practice
+  </view>
+
+  <view wx:else bindtap="openGithub" class="weui-footer__text" style="color:#ddd">
+    <image style="height:7vh" src="/images/icon_nav_github_white.svg"/>
     yeasy/docker_practice
   </view>
 </view>

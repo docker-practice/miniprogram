@@ -1,4 +1,4 @@
-const Towxml = require('../client/node_modules/towxml');
+const Towxml = require('../client/node_modules/@pcit/towxml');
 const towxml = new Towxml();
 const fs = require('fs');
 

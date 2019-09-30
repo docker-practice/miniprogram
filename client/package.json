@@ -7,7 +7,7 @@
     "yarn:update": "yarn upgrade-interactive --latest"
   },
   "dependencies": {
-    "wx-markdown": "github:docker-practice/wx-markdown"
+    "wx-markdown": "0.0.1"
   },
   "devDependencies": {
     "@types/wx": "github:khs1994/types-wx",

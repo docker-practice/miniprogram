@@ -9,6 +9,7 @@ import Jifen from '../../src/utils/Jifen';
 // import UserInfo from '../../utils/UserInfo';
 import Cache from '../../src/Framework/src/Support/Cache';
 import { getEndTime } from '../../src/utils/Qiandao';
+import DB from '../../src/Framework/src/Support/DB';
 
 const cache = new Cache();
 const ad = new Ad();
@@ -17,9 +18,7 @@ wx.cloud.init({
   env: 'pro-02adcb',
 });
 
-const db = wx.cloud.database({
-  env: 'pro-02adcb',
-});
+const db = DB.getInstance();
 
 Page({
   data: {
@@ -37,6 +36,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     theme: '明亮模式',
     gitHubStatus: '登录 GitHub',
+    isTest: false,
   },
   onPullDownRefresh() {
     this.onLoad();

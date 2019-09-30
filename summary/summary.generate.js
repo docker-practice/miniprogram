@@ -16,9 +16,10 @@ let array = [];
 
 line.forEach((v) => {
   // console.log(v);
-  if (!v) {
+  if (v.match(/^#/) !== null || !v){
     return;
   }
+
   let path;
   let key;
 

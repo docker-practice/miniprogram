@@ -14,8 +14,11 @@ export default function openGithub() {
       }
 
       wx.navigateToMiniProgram({
-        appId: 'wx5d7793555064ce62',
-        path: 'pages/repo-detail/repo-detail?repo=yeasy/docker_practice',
+        // appId: 'wx5d7793555064ce62',
+        // path: 'pages/repo-detail/repo-detail?repo=yeasy/docker_practice',
+        appId: 'wx2252b6835e7eb568',
+        path:
+          'pages/repo/repo?url=https://api.github.com/repos/yeasy/docker_practice',
       });
     },
   });

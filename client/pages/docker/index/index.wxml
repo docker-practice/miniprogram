@@ -8,7 +8,7 @@ speed="1200" backgroundcolor="#fff" color="#36a1f0" wx:if="{{lazy}}"
   <i-spin fix></i-spin>
 </view>
 
-<markdown markdown="{{data}}" isTowxml="{{true}}"></markdown>
+<markdown markdown="{{data}}" isTowxml="{{true}}" navigator="{{false}}"></markdown>
 
 <ad unit-id="adunit-3ea71b7cfce6c721"></ad>
 

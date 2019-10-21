@@ -11,7 +11,8 @@ function getTime(isBegin = false) {
   let date = dateInstance.getDate();
 
   // 获取当天时间戳
-  time = Date.UTC(year, month, date) + dateInstance.getTimezoneOffset() * 60 * 1000;
+  time =
+    Date.UTC(year, month, date) + dateInstance.getTimezoneOffset() * 60 * 1000;
   // - 3600*24*1000 获取前一天的时间戳
   time = time - 3600 * 24 * 1000;
 
@@ -54,4 +55,4 @@ exports.main = async (event, context) => {
   //   appid: wxContext.APPID,
   //   unionid: wxContext.UNIONID,
   // }
-}
+};

@@ -1,13 +1,18 @@
 export default [
   {
     id: 'unsign',
-    name: '解锁进阶内容',
+    name: '看视频，解锁进阶内容',
     color: '#00BFFF',
   },
   {
     id: 'dashang',
     name: '打赏',
-    color: '#1E90FF',
+    color: '#ea3524',
+  },
+  {
+    id: 'subscribeMessage',
+    name: '订阅更新',
+    color: '#07c160',
   },
   // 广告位
   // {

@@ -9,6 +9,7 @@
 </view>
 
 <view class="settings">
+<!-- 个人主页 -->
 <i-panel>
 <i-cell-group>
   <!-- <i-cell title="开关">
@@ -22,6 +23,8 @@
   <i-cell title="今日签到" value="{{signNum}}"></i-cell>
 
   <i-cell title="切换主题" value="{{theme}}" bind:click="changeTheme"></i-cell>
+
+  <i-cell title="切换源" value="加载缓慢? 换个源试试" bind:click="switchSource"></i-cell>
 
   <i-cell title="{{gitHubStatus}}" value="提出 issue" bind:click="loginGitHub"></i-cell>
 

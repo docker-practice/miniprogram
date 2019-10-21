@@ -1,3 +1,4 @@
+<!-- 经典目录 -->
 <i-notice-bar icon="systemprompt" loop
 speed="1200" backgroundcolor="#fff" color="#36a1f0" wx:if="{{lazy}}"
 >

@@ -50,11 +50,6 @@ export default class Request {
 
     let url = `${baseUrl}/${key}`;
 
-    if (key === 'README.md' || key === 'miniprogram.md') {
-      // url = 'https://ci.khs1994.com/proxy_github_raw/khs1994-docker/docker_practice/master/README.md';
-      url = `https://gitee.com/khs1994-docker/docker_practice/raw/master/${key}`;
-    }
-
     return new Promise((resolve, reject) => {
       wx.request({
         url,

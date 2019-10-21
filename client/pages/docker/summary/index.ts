@@ -7,8 +7,12 @@ import openGithub from '../../../src/utils/OpenGithub';
 import qiandao from '../../../src/utils/Qiandao';
 import { isSign, uploadAdError } from '../../../src/utils/Qiandao';
 import Ad from '../../../src/utils/Ad';
+import DB from '../../../src/Framework/src/Support/DB';
+// import Cloud from '../../../src/Framework/src/Support/Cloud';
 
 const ad = new Ad();
+const db = DB.getInstance();
+// const cloud = Cloud.getInstance();
 
 // test
 import test from '../../../src/Framework/test/index';
@@ -45,11 +49,53 @@ Page({
     showAd: true,
     isHide: false,
     interstitialAd: null,
+    noticeMessage:
+      '《Docker 技术入门与实战》第三版已经面世，介绍最新的容器技术栈，欢迎大家阅读使用并反馈建议。',
   },
 
   kindToggle: function(e: any) {
     let id = e.currentTarget.id;
     let list: any = this.data.list;
+
+    if (id === 'subscribeMessage') {
+      const tmplId = 'Frzqb0OUmqebNle3KJtrGN-X1M26ezf-5Bbpx9cBwp4';
+      // @ts-ignore
+      wx.requestSubscribeMessage({
+        tmplIds: [tmplId],
+        success(res: any) {
+          console.log(res);
+
+          if (res[tmplId] !== 'accept') {
+            wx.showModal({
+              title: '',
+              content: JSON.stringify(res),
+            });
+
+            return;
+          }
+
+          wx.cloud
+            .callFunction({
+              name: 'subscribeMessage',
+              data: {
+                addOpenId: 1,
+              },
+            })
+            .then(
+              res => {
+                console.log(res);
+              },
+              e => {
+                console.log(e);
+              },
+            );
+        },
+        fail(e: any) {
+          console.log(e);
+        },
+      });
+      return;
+    }
 
     if (id === 'dashang') {
       this.dashang();
@@ -176,6 +222,25 @@ Page({
       // @ts-ignore
       list,
     });
+
+    // 获取通知消息
+    db.collection('noticeMessage')
+      .doc('noticeMessage')
+      .get()
+      .then(
+        (res: any) => {
+          let noticeMessage;
+
+          if (noticeMessage = res.data.message) {
+            this.setData!({
+              noticeMessage,
+            });
+          }
+        },
+        e => {
+          console.log(e);
+        },
+      );
 
     this.isSign(true);
 

@@ -1,4 +1,4 @@
-import { IMyApp } from '../../app';
+import { IMyApp, baseUrls } from '../../app';
 const app = getApp<IMyApp>();
 const fs = wx.getFileSystemManager();
 
@@ -410,5 +410,28 @@ Page({
 
   onShow() {
     this.updateGitHubStatus(this.getGitHubStatus());
+  },
+
+  async switchSource() {
+    let itemList = ['Gitee', 'A 云', 'USTC'];
+
+    const baseUrlIndex = await cache.get('baseUrlIndex');
+
+    if (baseUrlIndex === '1' || baseUrlIndex === '2') {
+      itemList[baseUrlIndex] += '(已选择)';
+    } else {
+      itemList[0] += '(已选择)';
+    }
+
+    wx.showActionSheet({
+      itemList,
+      success(res) {
+        cache.set('baseUrlIndex', res.tapIndex.toString());
+
+        let url = baseUrls[res.tapIndex];
+        app.globalData.baseUrl = url;
+        console.log(url);
+      },
+    });
   },
 });

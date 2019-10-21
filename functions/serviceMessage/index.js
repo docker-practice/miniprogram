@@ -1,9 +1,6 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk');
-const {
-  NLP,
-  TencentAIError
-} = require('@khs1994/tencent-ai');
+const { NLP, TencentAIError } = require('@khs1994/tencent-ai');
 
 cloud.init();
 
@@ -15,13 +12,13 @@ exports.main = async (event, context) => {
 
   await cloud.openapi.customerServiceMessage.setTyping({
     touser: openid,
-    command: 'Typing'
+    command: 'Typing',
   });
 
   const AIApp = {
     // 设置请求数据（应用密钥、接口请求参数）
     appkey: process.env.TENCENTAIAPPKEY,
-    appid: process.env.TENCENTAIAPPID
+    appid: process.env.TENCENTAIAPPID,
   };
 
   const nlp = new NLP(AIApp.appkey, AIApp.appid);
@@ -43,8 +40,8 @@ exports.main = async (event, context) => {
 
   await cloud.openapi.customerServiceMessage.setTyping({
     touser: openid,
-    command: 'CancelTyping'
+    command: 'CancelTyping',
   });
 
   return event;
-}
+};

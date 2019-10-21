@@ -1,3 +1,4 @@
+<!-- github 登录页面 -->
 <form bindsubmit="login">
 <input placeholder="GitHub Username" name="username" id="username"
 auto-focus></input>

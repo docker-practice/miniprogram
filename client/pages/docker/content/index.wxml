@@ -1,3 +1,4 @@
+<!-- 正文部分 -->
 <!-- <progress percent="{{percent}}" stroke-width="3px" activeColor="{{progressColor}}"></progress> -->
 <view style="height:100%;background-color:{{noticeBGColor}};font-family:{{fontType}}">
 

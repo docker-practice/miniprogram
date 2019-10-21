@@ -13,6 +13,12 @@ export interface IMyApp {
   };
 }
 
+export const baseUrls = [
+  'https://gitee.com/docker_practice/docker_practice/raw/master',
+  'https://code.aliyun.com/docker-practice/docker_practice/raw/master',
+  'https://git.lug.ustc.edu.cn/docker-practice/docker_practice/raw/master',
+];
+
 App<IMyApp>({
   onLaunch() {
     // 显示红点
@@ -56,6 +62,17 @@ App<IMyApp>({
         }
       },
     });
+
+    cache.get('baseUrlIndex').then(
+      res => {
+        this.globalData.baseUrl = baseUrls[res] || baseUrls[0];
+        console.log(this.globalData.baseUrl);
+      },
+      e => {
+        console.log(e);
+        console.log('baseUrlIndex not found');
+      },
+    );
   },
   globalData: {
     MDData: '',

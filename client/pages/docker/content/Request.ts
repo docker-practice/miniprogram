@@ -1,3 +1,5 @@
+import readme from './readme';
+
 async function requestImg(folder: string, baseUrl: string, MDData: string) {
   await new Promise((resolve, reject) => {
     wx.getNetworkType({
@@ -49,6 +51,12 @@ export default class Request {
     // const base_url = 'https://gitee.com/docker_practice/docker_practice/raw/master';
 
     let url = `${baseUrl}/${key}`;
+
+    if (key === 'README.md') {
+      return new Promise(resolve => {
+        resolve(readme);
+      });
+    }
 
     return new Promise((resolve, reject) => {
       wx.request({

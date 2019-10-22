@@ -67,8 +67,9 @@ Page({
 
           if (res[tmplId] !== 'accept') {
             wx.showModal({
-              title: '',
+              title: '订阅失败',
               content: JSON.stringify(res),
+              showCancel: false,
             });
 
             return;
@@ -231,7 +232,7 @@ Page({
         (res: any) => {
           let noticeMessage;
 
-          if (noticeMessage = res.data.message) {
+          if ((noticeMessage = res.data.message)) {
             this.setData!({
               noticeMessage,
             });

@@ -26,10 +26,10 @@ async function send(touser, page) {
       },
       templateId: 'Frzqb0OUmqebNle3KJtrGN-X1M26ezf-5Bbpx9cBwp4',
     });
-    console.log(result);
+    // console.log(result);
     return result;
   } catch (err) {
-    console.log('err' + touser + page);
+    // console.log('[x] err' + touser + page);
     return err;
   }
 }
@@ -60,28 +60,45 @@ exports.main = async (event, context) => {
 
   page = 'pages/docker/summary/index';
 
-  openIds.map(async k => {
+  // tests
+  // openIds = ["oehia5bTRVpsBi2MvtrOShvZwBIQ"];
+
+  console.log(openIds);
+
+  if (openIds.length === 0) {
+    console.log('no user subscribe');
+    return;
+  }
+
+  // openIds.map(async k => {
+  for (let index = 0; index < openIds.length; index++) {
+    let touser = openIds[index];
+
+    // let touser = k;
     await send(touser, page).then(
       async res => {
         await db
           .where({
-            openId: k,
+            openId: touser,
           })
           .remove();
 
-        console.log('handled ' + k);
+        console.log('[S] handled ' + touser);
+        console.log(res);
       },
       async e => {
         await db
           .where({
-            openId: k,
+            openId: touser,
           })
           .remove();
 
-        console.log('handled error ' + k);
+        console.log('[X] handled error ' + touser);
+        console.log(e);
       },
     );
-  });
+  }
+  // });
 
   // return {
   //   event,

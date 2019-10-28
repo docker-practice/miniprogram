@@ -7,7 +7,8 @@
     "yarn:update": "yarn upgrade-interactive --latest"
   },
   "dependencies": {
-    "wx-markdown": "^0.0.3"
+    "wemark": "github:docker-practice/wemark",
+    "wx-markdown": "^0.0.4"
   },
   "devDependencies": {
     "@types/wx": "github:khs1994/types-wx",

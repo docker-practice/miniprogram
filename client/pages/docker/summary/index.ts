@@ -90,6 +90,13 @@ Page({
                 console.log(e);
               },
             );
+
+        wx.showModal({
+          title: '订阅成功',
+          content:'',
+          showCancel:false,
+        });
+
         },
         fail(e: any) {
           console.log(e);

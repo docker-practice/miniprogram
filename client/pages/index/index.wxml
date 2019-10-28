@@ -26,6 +26,8 @@
 
   <i-cell title="切换源" value="加载缓慢? 换个源试试" bind:click="switchSource"></i-cell>
 
+  <i-cell title="渲染引擎" value="{{mdEngine}}" bind:click="switchEngine"></i-cell>
+
   <i-cell title="{{gitHubStatus}}" value="提出 issue" bind:click="loginGitHub"></i-cell>
 
   <i-cell title="清理缓存" value="{{storageSize}}" bind:click="cleanup"></i-cell>

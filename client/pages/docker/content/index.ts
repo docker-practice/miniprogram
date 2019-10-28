@@ -54,6 +54,9 @@ Page({
     fontType: '默认',
     showAd: true,
     ad: ['adunit-3ea71b7cfce6c721', 'adunit-1246f0a5e441ea4c'],
+    useWemark: true,
+    wemarkType: 'rich-text',
+    cache: true,
   },
 
   onUnload() {
@@ -105,6 +108,16 @@ Page({
     const fontType = app.globalData.fontType;
     new Font().force(fontType);
 
+    let mdEngine = await cache.get('system/md-engine');
+    let useWemark = true;
+    let wemarkType= 'rich-text';
+
+    if(mdEngine === 'wemark'){
+      wemarkType = 'wemark';
+    }else if(mdEngine === 'wx-markdown'){
+      useWemark = false;
+    }
+
     this.setData!({
       // percent: 0,
       // progressColor: '#36a1f0',
@@ -113,6 +126,8 @@ Page({
       tabbarMode: theme,
       theme,
       fontType,
+      useWemark,
+      wemarkType,
     });
 
     this.load(options);
@@ -320,11 +335,11 @@ Page({
     let data: any;
 
     if (isCache) {
-      data = await cache.get('book/markdown' + key);
+      data = await cache.get('book/markdown/' + key);
     } else {
       data = this.data.MDData;
 
-      await cache.set('book/markdown' + key, data);
+      await cache.set('book/markdown/' + key, data);
     }
 
     this.data.hideFirst &&

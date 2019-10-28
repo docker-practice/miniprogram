@@ -26,10 +26,10 @@ Page({
     rate_index: 0,
     storageSize: '0 MB',
     fontType: '默认',
-    jifen: '获取中',
+    jifen: '获取中...',
     sdkVersion: '0.0.0',
     userNum: 5700,
-    signNum: '获取中',
+    signNum: '获取中...',
     motto: '点击 “编译” 以构建',
     userInfo: {},
     hasUserInfo: false,
@@ -37,6 +37,7 @@ Page({
     theme: '明亮模式',
     gitHubStatus: '登录 GitHub',
     isTest: false,
+    mdEngine: '获取中...',
   },
   onPullDownRefresh() {
     this.onLoad();
@@ -78,6 +79,7 @@ Page({
         .get(),
       cache.get('style/theme'),
       this.getGitHubStatus(),
+      cache.get('system/md-engine'),
     ]).then(res => {
       console.log(res);
       let signNum = res[5].data.length || 0;
@@ -88,6 +90,7 @@ Page({
         sdkVersion: res[3] || '0.0.0',
         userNum: res[4] || 5702,
         signNum: signNum > 20 ? '20+' : signNum,
+        mdEngine: res[8] || 'wemark-richtext',
       });
 
       this.setThemeTitle(res[6]);
@@ -433,5 +436,19 @@ Page({
         console.log(url);
       },
     });
+  },
+
+  async switchEngine(){
+    let itemList = ['wx-markdown','wemark','wemark-richtext']
+    wx.showActionSheet({
+      itemList,
+      success: (res)=>{
+        let mdEngine = itemList[res.tapIndex];
+        cache.set('system/md-engine',mdEngine);
+        this.setData!({
+          mdEngine,
+        });
+      }
+    })
   },
 });

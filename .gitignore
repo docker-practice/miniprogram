@@ -18,3 +18,4 @@ summary/*
 !summary/towxml.js
 !summary/summary.generate.js
 !wx_background_fetch_data
+!summary/towxmlrichtext.js

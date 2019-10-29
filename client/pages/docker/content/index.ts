@@ -55,6 +55,7 @@ Page({
     useWemark: false,
     wemarkType: 'rich-text',
     cache: true,
+    wxMarkdownRichtext: true,
   },
 
   onUnload() {
@@ -110,11 +111,15 @@ Page({
     let mdEngine = await cache.get('system/md-engine');
     let useWemark = true;
     let wemarkType = 'rich-text';
+    let wxMarkdownRichtext = false;
 
     if (mdEngine === 'wemark') {
       wemarkType = 'wemark';
     } else if (mdEngine === 'wx-markdown') {
       useWemark = false;
+    }else if (mdEngine === 'wx-markdown-richtext'){
+      useWemark = false;
+      wxMarkdownRichtext = true;
     }
 
     this.setData!({
@@ -127,6 +132,7 @@ Page({
       fontType,
       useWemark,
       wemarkType,
+      wxMarkdownRichtext,
     });
 
     this.load(options);

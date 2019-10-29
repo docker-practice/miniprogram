@@ -93,7 +93,7 @@ Page({
         userNum: res[4] || 5702,
         // @ts-ignore
         signNum: signNum > 20 ? '20+' : signNum,
-        mdEngine: res[8] || 'wemark-richtext',
+        mdEngine: res[8] || 'wx-markdown-richtext',
       });
 
       this.setThemeTitle(res[6]);
@@ -442,7 +442,7 @@ Page({
   },
 
   async switchEngine() {
-    let itemList = ['wx-markdown', 'wemark', 'wemark-richtext'];
+    let itemList = ['wx-markdown', 'wx-markdown-richtext','wemark', 'wemark-richtext'];
     wx.showActionSheet({
       itemList,
       success: res => {

@@ -11,5 +11,6 @@
   "devDependencies": {
     "weui-wxss": "*",
     "iview-weapp": "*"
-  }
+  },
+  "dependencies": {}
 }

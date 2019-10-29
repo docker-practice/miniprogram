@@ -11,8 +11,7 @@
     "wx-markdown": "^0.0.4"
   },
   "devDependencies": {
-    "@types/wx": "github:khs1994/types-wx",
-    "typescript": "^3.6.4"
+    "miniprogram-api-typings": "*"
   },
   "license": "MIT"
 }

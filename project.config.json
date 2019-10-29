@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.9.0",
+	"libVersion": "2.9.1",
 	"projectname": "docker",
 	"miniprogramRoot": "client/",
 	"cloudfunctionRoot": "functions/",
@@ -31,7 +31,7 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"bundle": false
+		"bundle": true
 	},
 	"appid": "wxb830c3abf8a658a5",
 	"simulatorType": "wechat",

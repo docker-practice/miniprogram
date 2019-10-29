@@ -1,7 +1,7 @@
 const { removeStorage, getStorage, setStorage, clearStorage } = wx;
 
 export default class Cache {
-  checkTTL(key: string, res: wx.GetStorageSuccessCallbackResult) {
+  checkTTL(key: string, res: any) {
     if (res.data.ttl === undefined) {
       removeStorage({
         key,

@@ -3,9 +3,9 @@ import Cache from './src/Framework/src/Support/Cache';
 const cache = new Cache();
 
 export interface IMyApp {
-  userInfoReadyCallback?(res: wx.UserInfo): void;
+  userInfoReadyCallback?(res: any): void;
   globalData: {
-    userInfo?: wx.UserInfo;
+    userInfo?: any;
     MDData: any;
     theme?: 'light' | 'dark';
     fontType: string;

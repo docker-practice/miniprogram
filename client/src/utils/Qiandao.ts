@@ -20,8 +20,8 @@ export function uploadAdError(err: any) {
     .then(() => {}, () => {});
 }
 
-function showVideoAd(openid: string, videAd: wx.RewardedVideoAd) {
-  videAd.show().catch(err => {
+function showVideoAd(openid: string, videAd: any) {
+  videAd.show().catch((err: any) => {
     // error
     wx.showModal({
       title: '提示',
@@ -35,14 +35,14 @@ function showVideoAd(openid: string, videAd: wx.RewardedVideoAd) {
       () => {
         videAd.show().then(
           () => {},
-          err => {
+          (err: any) => {
             // error
             console.log(err);
             uploadAdError(err);
           },
         );
       },
-      err => {
+      (err: any) => {
         // error
         console.log(err);
         uploadAdError(err);
@@ -50,11 +50,11 @@ function showVideoAd(openid: string, videAd: wx.RewardedVideoAd) {
     );
   }); //show end
 
-  videAd.onError(err => {
+  videAd.onError((err: any) => {
     uploadAdError(err);
   });
 
-  videAd.onClose(status => {
+  videAd.onClose((status: any) => {
     console.log(status);
 
     if (status.isEnded) {

@@ -31,7 +31,7 @@ test();
 //
 // worker.terminate();
 
-let videAd: wx.RewardedVideoAd;
+let videAd: any;
 let interstitialAd: any;
 
 Page({
@@ -91,12 +91,11 @@ Page({
               },
             );
 
-        wx.showModal({
-          title: '订阅成功',
-          content:'',
-          showCancel:false,
-        });
-
+          wx.showModal({
+            title: '订阅成功',
+            content: '',
+            showCancel: false,
+          });
         },
         fail(e: any) {
           console.log(e);
@@ -262,7 +261,7 @@ Page({
         adUnitId: 'adunit-a929f1a7fb4e4e96',
       });
 
-      videAd.onError(err => {
+      videAd.onError((err: any) => {
         wx.showModal({
           title: '提示',
           content: JSON.stringify(err),
@@ -291,18 +290,22 @@ Page({
       });
 
       setTimeout(() => {
-        if (!this.data.isHide) {
-          interstitialAd
-            .show()
-            .then(() => {})
-            .catch((err: any) => {
-              console.log(err);
-            })
-            .finally(() => {
-              this.setData!({
-                interstitialAd: null,
+        try {
+          if (!this.data.isHide) {
+            interstitialAd
+              .show()
+              .then(() => {})
+              .catch((err: any) => {
+                console.log(err);
+              })
+              .finally(() => {
+                this.setData!({
+                  interstitialAd: null,
+                });
               });
-            });
+          }
+        } catch (e) {
+          console.log(e);
         }
       }, 15000);
 
@@ -361,16 +364,20 @@ Page({
       return;
     }
 
-    // @ts-ignore
-    this.data.interstitialAd
-      .show()
-      .then(() => {})
-      .catch(() => {})
-      .finally(() => {
-        this.setData!({
-          interstitialAd: null,
+    try {
+      // @ts-ignore
+      this.data.interstitialAd
+        .show()
+        .then(() => {})
+        .catch(() => {})
+        .finally(() => {
+          this.setData!({
+            interstitialAd: null,
+          });
         });
-      });
+    } catch (e) {
+      console.log(e);
+    }
   },
 
   /**

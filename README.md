@@ -18,6 +18,16 @@
 
 ## 使用说明
 
+## 开发者
+
+- `$ npm -g i typescript`
+- 复制 `SUMMARY.md` 到 `summary/summary.source.md`
+- 执行 `$ npm run gitbook:summary:towxml`
+- 更新 `client/pages/docker/summary/summary.ts`
+- 安装依赖 `$ cd clinet ; npm install`
+- 微信开发者工具 -> 工具 -> 构建 npm
+- 编译
+
 ## 致谢
 
 - https://github.com/sbfkcel/towxml

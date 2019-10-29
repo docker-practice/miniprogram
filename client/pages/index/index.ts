@@ -87,8 +87,11 @@ Page({
         rate_index: res[0] || 0,
         fontType: res[1] || '默认',
         jifen: res[2] || 0,
+        // @ts-ignore
         sdkVersion: res[3] || '0.0.0',
+        // @ts-ignore
         userNum: res[4] || 5702,
+        // @ts-ignore
         signNum: signNum > 20 ? '20+' : signNum,
         mdEngine: res[8] || 'wemark-richtext',
       });
@@ -438,17 +441,17 @@ Page({
     });
   },
 
-  async switchEngine(){
-    let itemList = ['wx-markdown','wemark','wemark-richtext']
+  async switchEngine() {
+    let itemList = ['wx-markdown', 'wemark', 'wemark-richtext'];
     wx.showActionSheet({
       itemList,
-      success: (res)=>{
+      success: res => {
         let mdEngine = itemList[res.tapIndex];
-        cache.set('system/md-engine',mdEngine);
+        cache.set('system/md-engine', mdEngine);
         this.setData!({
           mdEngine,
         });
-      }
-    })
+      },
+    });
   },
 });

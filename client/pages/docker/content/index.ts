@@ -17,8 +17,6 @@ const app = getApp<IMyApp>();
 const cache = new Cache();
 const ad = new Ad();
 
-let interstitialAd: any;
-
 wx.onNetworkStatusChange(res => {
   wx.showToast({
     title: `${res.networkType.toUpperCase()} 已连接`,
@@ -54,7 +52,7 @@ Page({
     fontType: '默认',
     showAd: true,
     ad: ['adunit-3ea71b7cfce6c721', 'adunit-1246f0a5e441ea4c'],
-    useWemark: true,
+    useWemark: false,
     wemarkType: 'rich-text',
     cache: true,
   },
@@ -70,6 +68,7 @@ Page({
 
     this.setData!({
       hideFirst: false,
+      cache: false,
     });
 
     this.request(this.data.key, false);
@@ -110,11 +109,11 @@ Page({
 
     let mdEngine = await cache.get('system/md-engine');
     let useWemark = true;
-    let wemarkType= 'rich-text';
+    let wemarkType = 'rich-text';
 
-    if(mdEngine === 'wemark'){
+    if (mdEngine === 'wemark') {
       wemarkType = 'wemark';
-    }else if(mdEngine === 'wx-markdown'){
+    } else if (mdEngine === 'wx-markdown') {
       useWemark = false;
     }
 
@@ -137,12 +136,12 @@ Page({
     // }
 
     // 插屏广告
-    // @ts-ignore
     if (wx.createInterstitialAd) {
-      // @ts-ignore
-      interstitialAd = wx.createInterstitialAd({
+      let interstitialAd = wx.createInterstitialAd({
         adUnitId: 'adunit-6ef44789d84b9392',
       });
+
+      console.log(interstitialAd);
 
       setTimeout(async () => {
         if (await cache.exists('ad/show')) {
@@ -303,7 +302,8 @@ Page({
       return;
     }
 
-    if (useCache && (await cache.exists('book/markdown' + key))) {
+    if (useCache && (await cache.exists('book/markdown/' + key))) {
+      console.log('md source data cached');
       this.show(key, true);
 
       return;
@@ -396,6 +396,7 @@ Page({
       // spinShow: true,
       showAd: false,
       show: false, // 隐藏
+      cache: true,
     });
 
     this.load({ key }, true);

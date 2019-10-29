@@ -102,7 +102,9 @@ Page({
       showCancel: false,
     });
 
-    const token = fs.readFileSync(`${wx.env.USER_DATA_PATH}/token`, 'base64');
+    const token = <string>(
+      fs.readFileSync(`${wx.env.USER_DATA_PATH}/token`, 'base64')
+    );
 
     // console.log(token);
 

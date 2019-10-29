@@ -20,7 +20,8 @@
     "removeComments": true,
     "pretty": true,
     "strictPropertyInitialization": true,
-    "lib": ["esnext", "dom"]
+    "lib": ["esnext"],
+    "typeRoots": ["./node_modules/miniprogram-api-typings"]
   },
   "include": ["./**/*.ts"],
   "exclude": ["node_modules", "miniprogram_npm", "**/*.spec.ts"]

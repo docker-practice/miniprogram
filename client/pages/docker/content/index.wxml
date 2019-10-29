@@ -24,8 +24,10 @@ speed="1200" bind:tap="buyBook"
 
 <wemark wx:if="{{useWemark}}"
 md="{{data}}" link highlight type="{{wemarkType}}"
+adId="{{ad[0]}}" theme="{{theme}}"
 >
 </wemark>
+
 <markdown markdown="{{data}}" theme="{{theme}}" ad="{{ad}}" wx:else
 fontType="{{fontType}}"
 folder="{{folder}}"

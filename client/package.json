@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "wemark": "github:docker-practice/wemark",
-    "wx-markdown": "^0.0.5"
+    "wx-markdown": "^0.0.6"
   },
   "devDependencies": {
     "miniprogram-api-typings": "*"

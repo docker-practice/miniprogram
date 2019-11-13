@@ -29,8 +29,8 @@ Page({
   data: {
     data: '',
     key: '',
-    next_key: '',
-    before_key: '',
+    next_key: ['title', 'path'],
+    before_key: ['title', 'path'],
     // startX: '',
     // startY: '',
     // endX: '',
@@ -109,17 +109,17 @@ Page({
     new Font().force(fontType);
 
     let mdEngine = await cache.get('system/md-engine');
-    let useWemark = true;
+    let useWemark = false;
     let wemarkType = 'rich-text';
-    let wxMarkdownRichtext = false;
+    let wxMarkdownRichtext = true;
 
     if (mdEngine === 'wemark') {
+      useWemark = true;
       wemarkType = 'wemark';
+    } else if (mdEngine === 'wemark-richtext') {
+      useWemark = true;
     } else if (mdEngine === 'wx-markdown') {
-      useWemark = false;
-    }else if (mdEngine === 'wx-markdown-richtext'){
-      useWemark = false;
-      wxMarkdownRichtext = true;
+      wxMarkdownRichtext = false;
     }
 
     this.setData!({
@@ -226,17 +226,17 @@ Page({
   // 系统事件 end
 
   // 处理加载事件
-  load(options: any, requestFirst: boolean = false) {
+  async load(options: any, requestFirst: boolean = false) {
     const key = options.key;
 
     let [folder, next_key, before_key] = [
       getFolder(key),
-      next(key),
-      before(key),
+      await next(key),
+      await before(key),
     ];
 
-    next_key = next_key ? next_key : '';
-    before_key = before_key ? before_key : '';
+    next_key = next_key ? next_key : [];
+    before_key = before_key ? before_key : [];
 
     // console.log(before_key, key, next_key);
     // 跳页时先进行网络请求，若成功再赋值

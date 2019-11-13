@@ -17,7 +17,10 @@ export function uploadAdError(err: any) {
         error: JSON.stringify(err),
       },
     })
-    .then(() => {}, () => {});
+    .then(
+      () => {},
+      () => {},
+    );
 }
 
 function showVideoAd(openid: string, videAd: any) {
@@ -71,8 +74,8 @@ function showVideoAd(openid: string, videAd: any) {
     } else {
       console.log('主动关闭');
       wx.showModal({
-        title: '签到成功',
-        content: '积分 +1',
+        title: '未完整播放',
+        content: '积分 +0',
         showCancel: false,
       });
       let sign_time = getSignTime();

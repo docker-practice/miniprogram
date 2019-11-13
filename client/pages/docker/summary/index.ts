@@ -1,7 +1,6 @@
 //import { IMyApp } from '../../../app';
 //const app = getApp<IMyApp>();
 
-import list from './summary';
 import daShang from '../../../src/utils/DaShang';
 import openGithub from '../../../src/utils/OpenGithub';
 import qiandao from '../../../src/utils/Qiandao';
@@ -33,6 +32,8 @@ test();
 
 let videAd: any;
 let interstitialAd: any;
+
+import getSummary from '../../../src/utils/getSummary';
 
 Page({
   /**
@@ -206,7 +207,9 @@ Page({
     this.buyBook();
   },
 
-  isSign(local: boolean = false) {
+  async isSign(local: boolean = false) {
+    let list: any = this.data.list;
+
     isSign('', local).then(res => {
       res &&
         (list[0] = {
@@ -219,12 +222,16 @@ Page({
         list,
       });
     });
+
+    wx.stopPullDownRefresh();
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function() {
+  onLoad: async function() {
+    let list = JSON.parse(await getSummary('list', false));
+
     this.setData!({
       // @ts-ignore
       list,
@@ -273,7 +280,7 @@ Page({
 
       videAd.onClose(() => {
         setTimeout(() => {
-          this.isSign();
+          this.isSign(false);
         }, 2000);
       });
     }
@@ -397,7 +404,16 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {},
+  async onPullDownRefresh() {
+    let list = JSON.parse(await getSummary('list', true));
+
+    this.setData!({
+      // @ts-ignore
+      list,
+    });
+
+    this.isSign(true);
+  },
 
   /**
    * 页面上拉触底事件的处理函数

@@ -12,5 +12,6 @@ client/miniprogram_npm
 summary/summary.ts
 summary/summary.mini.md
 summary/summary.source.md
+summary/dist/*.json
 
 project.config.json

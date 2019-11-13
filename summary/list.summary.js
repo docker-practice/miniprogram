@@ -1,4 +1,4 @@
-export default [
+module.exports = [
   {
     id: 'unsign',
     name: '看视频，解锁进阶内容',
@@ -209,7 +209,7 @@ export default [
   },
   {
     id: 'compose',
-    name: 'Docker 三剑客之 Compose 项目',
+    name: 'Docker Compose',
     open: false,
     pages: [
       { id: 'compose/README.md', name: 'Docker 三剑客之 Compose 项目' },
@@ -222,22 +222,6 @@ export default [
       { id: 'compose/rails.md', name: '实战 Rails' },
       { id: 'compose/wordpress.md', name: '实战 WordPress' },
     ],
-  },
-  {
-    id: 'machine',
-    name: 'Docker 三剑客之 Machine 项目',
-    open: false,
-    pages: [
-      { id: 'machine/README.md', name: 'Docker 三剑客之 Machine 项目' },
-      { id: 'machine/install.md', name: '安装' },
-      { id: 'machine/usage.md', name: '使用' },
-    ],
-  },
-  {
-    id: 'swarm',
-    name: 'Docker 三剑客之 Docker Swarm',
-    open: false,
-    pages: [{ id: 'swarm/README.md', name: 'Docker 三剑客之 Docker Swarm' }],
   },
   {
     id: 'swarm_mode',
@@ -315,21 +299,6 @@ export default [
       { id: 'kubernetes/concepts.md', name: '基本概念' },
       { id: 'kubernetes/kubectl.md', name: 'kubectl 使用' },
       { id: 'kubernetes/design.md', name: '架构设计' },
-    ],
-  },
-  {
-    id: 'mesos',
-    name: 'Mesos - 优秀的集群资源调度平台',
-    open: false,
-    pages: [
-      { id: 'mesos/README.md', name: 'Mesos - 优秀的集群资源调度平台' },
-      { id: 'mesos/intro.md', name: 'Mesos 简介' },
-      { id: 'mesos/installation.md', name: '安装与使用' },
-      { id: 'mesos/architecture.md', name: '原理与架构' },
-      { id: 'mesos/configuration.md', name: 'Mesos 配置项解析' },
-      { id: 'mesos/monitor.md', name: '日志与监控' },
-      { id: 'mesos/framework.md', name: '常见应用框架' },
-      { id: 'mesos/summary.md', name: '本章小结' },
     ],
   },
   {

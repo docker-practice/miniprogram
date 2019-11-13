@@ -80,7 +80,7 @@ Page({
       cache.get('style/theme'),
       this.getGitHubStatus(),
       cache.get('system/md-engine'),
-    ]).then(res => {
+    ]).then((res: any) => {
       console.log(res);
       let signNum = res[5].data.length || 0;
       this.setData!({
@@ -442,7 +442,12 @@ Page({
   },
 
   async switchEngine() {
-    let itemList = ['wx-markdown', 'wx-markdown-richtext','wemark', 'wemark-richtext'];
+    let itemList = [
+      'wx-markdown',
+      'wx-markdown-richtext',
+      'wemark',
+      'wemark-richtext',
+    ];
     wx.showActionSheet({
       itemList,
       success: res => {

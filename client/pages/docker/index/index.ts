@@ -1,10 +1,10 @@
 // pages/docker/index.js
 
-// import { IMyApp } from '../../../app';
+import { IMyApp } from '../../../app';
 
-// const app = getApp<IMyApp>();
+const app = getApp<IMyApp>();
 
-const data = require('./summary.js');
+import summaryHandler from './summaryHandler';
 
 Page({
   /**
@@ -19,7 +19,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function() {},
+  onLoad: function() {
+    this.show();
+  },
 
   newSummary() {
     wx.navigateTo({
@@ -28,25 +30,18 @@ Page({
   },
 
   show() {
-    // wx.request({
-    // url: 'https://ci.khs1994.com/proxy_github_raw/yeasy/docker_practice/master/SUMMARY.md',
-    // success:(res:any)=>{
-    // app.globalData.MDData = res.data;
+    const baseUrl = app.globalData.baseUrl;
+    let url = baseUrl + '/SUMMARY.md';
 
-    // wx.redirectTo({
-    //   url: '../more/markdown',
-    // });
+    wx.showLoading({ title: '加载中' });
 
-    // const towxml = app.towxml.toJson(res.data, 'markdown');
-    // const theme = app.globalData.theme;
-
-    // data.theme = theme;
-
-    data.footer = false;
-    data.ad = false;
-
-    this.setData!({
-      data,
+    wx.request({
+      url,
+      success: (res: any) => {
+        this.setData!({
+          data: summaryHandler(res.data),
+        });
+      },
     });
     // },
     // });
@@ -64,7 +59,7 @@ Page({
         lazy: true,
         spinShow: false,
       });
-    }, 500);
+    }, 1000);
   },
 
   /**
@@ -75,9 +70,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
-    this.show();
-  },
+  onShow: function() {},
 
   /**
    * 生命周期函数--监听页面隐藏

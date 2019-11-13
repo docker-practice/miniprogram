@@ -15,7 +15,7 @@ Docker 自身仍在快速发展中，生态环境也在蓬勃成长。建议初�
 
 >如果有容器相关的疑问，请通过 [GitHub yeasy/docker_practice Issues](https://github.com/yeasy/docker_practice/issues/new/choose) 来提出。
 
-### 长按图片保存 扫码加入微信群
+### 长按图片(或截屏)保存 扫码加入微信群
 
 ![](https://user-images.githubusercontent.com/16733187/65308302-55b87f80-dbbc-11e9-9d42-57eac554fb3b.jpg)
 

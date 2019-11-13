@@ -42,6 +42,8 @@ line.forEach((v) => {
   array = [...array, { title: key, path: path }]
 });
 
-fs.writeFileSync(__dirname + '\\summary.ts', 'export default ' + JSON.stringify(array));
-fs.copyFileSync(__dirname + '\\summary.ts',
-  __dirname + '/../client/src/Framework/src/Support/Summary/summary.ts');
+fs.writeFileSync(__dirname + '\\dist/index.summary.json', JSON.stringify(array));
+
+const listSummary = require('./list.summary');
+
+fs.writeFileSync(__dirname + '\\dist/list.summary.json',JSON.stringify(listSummary));

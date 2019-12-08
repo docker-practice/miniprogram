@@ -5,6 +5,5 @@
 !wx_background_fetch_data
 !summary/towxmlrichtext.js
 !list.summary.js
-!dist
-dist/**
 !README.md
+!summary.source.md

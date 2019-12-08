@@ -1,0 +1,25 @@
+page{
+  background-color: #F8F8F8;
+  font-size: 16px;
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}
+
+.news {
+ margin-top: 5%;
+ margin-bottom: 5%;
+ margin-left: 2%;
+ margin-right: 2%;
+ background-color: white;
+ height: 30%;
+}
+
+.title {
+  font-weight: bold;
+  margin-left: 10rpx;
+}
+
+.date {
+  margin-left: 70%;
+  font-size: small;
+  color: #AAA;
+}

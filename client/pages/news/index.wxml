@@ -1,0 +1,8 @@
+<ad unit-id="adunit-3ea71b7cfce6c721"></ad>
+
+<view wx:for="{{news}}">
+  <view class="news" bindtap="click" data-key="{{item.key}}">
+    <view class="title">{{item.title}}</view>
+    <view class="date">{{item.date}}</view>
+  </view>
+</view>

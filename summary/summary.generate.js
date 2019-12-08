@@ -42,6 +42,10 @@ line.forEach((v) => {
   array = [...array, { title: key, path: path }]
 });
 
+try{
+fs.mkdirSync(__dirname + '\\dist');
+}catch{}
+
 fs.writeFileSync(__dirname + '\\dist/index.summary.json', JSON.stringify(array));
 
 const listSummary = require('./list.summary');

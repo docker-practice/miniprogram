@@ -14,12 +14,12 @@ module.exports = [
     name: '订阅更新',
     color: '#07c160',
   },
-  // 广告位
-  // {
-  //   id: 'yuebao',
-  //   name: '余额宝体验金',
-  //   color: '#FFB90F',
-  // },
+  // 文章
+  {
+    id: 'news',
+    name: '产品动态',
+  //  color: '#FFB90F',
+  },
   // {
   //   id: 'alipay',
   //   name: '支付宝线下红包',
@@ -85,6 +85,7 @@ module.exports = [
       { id: 'install/mac.md', name: 'macOS' },
       { id: 'install/windows.md', name: 'Windows 10' },
       { id: 'install/mirror.md', name: '镜像加速器' },
+      { id: 'install/experimental.md', name: '开启实验特性' },
     ],
   },
   {
@@ -123,10 +124,6 @@ module.exports = [
       {
         id: 'image/manifest.md',
         name: '构建多种系统架构支持的 Docker 镜像',
-      },
-      {
-        id: 'image/buildkit.md',
-        name: '使用 BuildKit 构建镜像',
       },
       { id: 'image/other.md', name: '其它制作镜像的方式' },
       { id: 'image/internal.md', name: '实现原理' },
@@ -208,6 +205,17 @@ module.exports = [
     ],
   },
   {
+    id: 'buildx',
+    name: "Docker Buildx",
+    open: false,
+    pages: [
+      {id: "buildx/README.md", name: "Docker Buildx"},
+      {id: "buildx/buildkit.md", name: "BuildKit"},
+      {id: "buildx/buildx.md", name: "使用 buildx 构建镜像"},
+      {id: "buildx/multi-arch-images.md",name: "使用 buildx 构建多种系统架构支持的 Docker 镜像"},
+    ]
+  },
+  {
     id: 'compose',
     name: 'Docker Compose',
     open: false,
@@ -221,21 +229,6 @@ module.exports = [
       { id: 'compose/django.md', name: '实战 Django' },
       { id: 'compose/rails.md', name: '实战 Rails' },
       { id: 'compose/wordpress.md', name: '实战 WordPress' },
-    ],
-  },
-  {
-    id: 'swarm_mode',
-    name: 'Swarm mode',
-    open: false,
-    pages: [
-      { id: 'swarm_mode/README.md', name: 'Swarm mode' },
-      { id: 'swarm_mode/overview.md', name: '基本概念' },
-      { id: 'swarm_mode/create.md', name: '创建 Swarm 集群' },
-      { id: 'swarm_mode/deploy.md', name: '部署服务' },
-      { id: 'swarm_mode/stack.md', name: '使用 compose 文件' },
-      { id: 'swarm_mode/secret.md', name: '管理密钥' },
-      { id: 'swarm_mode/config.md', name: '管理配置信息' },
-      { id: 'swarm_mode/rolling_update.md', name: '滚动升级' },
     ],
   },
   {
@@ -290,16 +283,31 @@ module.exports = [
   },
   {
     id: 'kubernetes',
-    name: 'Kubernetes 项目',
+    name: 'Kubernetes - 开源容器编排引擎',
     open: false,
     pages: [
       { id: 'kubernetes/README.md', name: 'Kubernetes 项目' },
       { id: 'kubernetes/intro.md', name: '简介' },
-      { id: 'kubernetes/quickstart.md', name: '快速上手' },
       { id: 'kubernetes/concepts.md', name: '基本概念' },
-      { id: 'kubernetes/kubectl.md', name: 'kubectl 使用' },
       { id: 'kubernetes/design.md', name: '架构设计' },
     ],
+  },
+  {
+    id: "kube-setup",
+    name: "部署 Kubernetes",
+    open: false,
+    pages: [
+      {id: "kubernetes/setup/README.md", name: "部署 Kubernetes"},
+      {id: "kubernetes/setup/docker.md", name: "使用 Docker 容器部署"}
+    ]
+  },
+  {
+    id: "kubectl",
+    name: "Kubernetes 命令行 kubectl",
+    open: false,
+    pages: [
+      {id: "kubernetes/kubectl/README.md",name: "Kubernetes 命令行 kubectl"}
+    ]
   },
   {
     id: 'cloud',
@@ -316,10 +324,10 @@ module.exports = [
   },
   {
     id: 'cases_os',
-    name: '实战案例-操作系统',
+    name: '实战案例 - 操作系统',
     open: false,
     pages: [
-      { id: 'cases/os/README.md', name: '实战案例-操作系统' },
+      { id: 'cases/os/README.md', name: '实战案例 - 操作系统' },
       { id: 'cases/os/busybox.md', name: 'Busybox' },
       { id: 'cases/os/alpine.md', name: 'Alpine' },
       { id: 'cases/os/debian.md', name: 'Debian Ubuntu' },
@@ -329,15 +337,24 @@ module.exports = [
   },
   {
     id: 'cases_ci',
-    name: '实战案例-CI/CD',
+    name: '实战案例 - CI/CD',
     open: false,
     pages: [
-      { id: 'cases/ci/README.md', name: '实战案例-CI/CD' },
+      { id: 'cases/ci/README.md', name: '实战案例 - CI/CD' },
       { id: 'cases/ci/actions/README.md', name: 'GitHub Actions' },
       { id: 'cases/ci/drone/install.md', name: '部署 Drone' },
       { id: 'cases/ci/drone/README.md', name: 'Drone' },
       { id: 'cases/ci/travis/README.md', name: 'Travis CI' },
     ],
+  },
+  {
+    id: 'ide',
+    name: "在 IDE 中使用 Docker",
+    open: false,
+    pages: [
+        {id: "IDE/README.md", name: "在 IDE 中使用 Docker"},
+        {id: "IDE/vsCode.md", name: "VSCode"},
+    ]
   },
   {
     id: 'opensource',
@@ -366,6 +383,8 @@ module.exports = [
       { id: 'appendix/repo/mongodb.md', name: 'MongoDB' },
       { id: 'appendix/repo/redis.md', name: 'Redis' },
       { id: 'appendix/command/README.md', name: '附录三：Docker 命令查询' },
+      { id: 'appendix/command/docker.md', name: '客户端命令 (docker)' },
+      { id: 'appendix/command/dockerd.md', name: '服务端命令 (dockerd)' },
       { id: 'appendix/best_practices.md', name: '附录四：Dockerfile 最佳实践' },
       { id: 'appendix/debug.md', name: '附录五：如何调试 Docker' },
       { id: 'appendix/resources.md', name: '附录六：资源链接' },

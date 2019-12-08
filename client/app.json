@@ -2,7 +2,9 @@
   "pages": [
     "pages/docker/summary/index",
     "pages/index/index",
-    "pages/donate/index"
+    "pages/donate/index",
+    "pages/news/index",
+    "pages/mdContent/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

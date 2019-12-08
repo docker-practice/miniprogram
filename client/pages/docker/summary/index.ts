@@ -120,8 +120,8 @@ Page({
       return;
     }
 
-    if (id === 'alipay') {
-      ad.alipay();
+    if (id === 'news') {
+      wx.navigateTo({url: '/pages/news/index'});
       return;
     }
 

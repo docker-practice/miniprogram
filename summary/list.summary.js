@@ -11,13 +11,13 @@ module.exports = [
   },
   {
     id: 'subscribeMessage',
-    name: '订阅更新',
+    name: '每日订阅',
     color: '#07c160',
   },
   // 文章
   {
     id: 'news',
-    name: '产品动态',
+    name: '容器生态 一手掌握',
   //  color: '#FFB90F',
   },
   // {

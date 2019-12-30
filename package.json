@@ -6,7 +6,9 @@
     "gitbook:summary:generate": "node summary/summary.generate.js",
     "gitbook:summary:towxml": "cd summary && node towxml.js",
     "preinstall": "echo don't install in this folder && exit 1",
-    "cleanup": "npx rimraf summary/summary.ts client/src/Framework/src/Support/Summary/summary.ts client/pages/docker/index/summary.js"
+    "cleanup": "npx rimraf summary/summary.ts client/src/Framework/src/Support/Summary/summary.ts client/pages/docker/index/summary.js",
+    "cloud:db:summary": "",
+    "cloud:db:news": ""
   },
   "devDependencies": {
     "weui-wxss": "*",

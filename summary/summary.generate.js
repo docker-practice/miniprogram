@@ -13,6 +13,7 @@ let summary = fs.readFileSync(summaryPath, 'utf-8');
 const line = summary.split('\n');
 
 let array = [];
+let sitemap = [];
 
 line.forEach((v) => {
   // console.log(v);
@@ -40,6 +41,8 @@ line.forEach((v) => {
   fs.appendFileSync(summaryMiniPath, v.replace(path, newPath) + '\n');
 
   array = [...array, { title: key, path: path }]
+
+  sitemap = [ ...sitemap, {path: "pages/docker/content/index", query: "key="+path} ]
 });
 
 try{
@@ -51,3 +54,11 @@ fs.writeFileSync(__dirname + '\\dist/index.summary.json', JSON.stringify(array))
 const listSummary = require('./list.summary');
 
 fs.writeFileSync(__dirname + '\\dist/list.summary.json',JSON.stringify(listSummary));
+
+fs.writeFileSync(__dirname + '\\dist/cloud.db.json',JSON.stringify({
+  _id: "summary",
+  index: JSON.stringify(array),
+  list: JSON.stringify(listSummary),
+}))
+
+fs.writeFileSync(__dirname + '\\../functions/sitemap/sitemap.js','module.exports = ' + JSON.stringify(sitemap));

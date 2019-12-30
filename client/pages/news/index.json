@@ -1,5 +1,6 @@
 {
   "usingComponents": {},
   "navigationStyle": "default",
-  "enablePullDownRefresh": false
+  "enablePullDownRefresh": false,
+  "navigationBarTitleText": "容器生态"
 }

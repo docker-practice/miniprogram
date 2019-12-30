@@ -5,8 +5,8 @@ page{
 }
 
 .news {
- margin-top: 5%;
- margin-bottom: 5%;
+ margin-top: 3%;
+ margin-bottom: 3%;
  margin-left: 2%;
  margin-right: 2%;
  background-color: white;
@@ -14,12 +14,23 @@ page{
 }
 
 .title {
+  font-family: "STHeitiTC-Light", "Microsoft YaHei Light", "Hiragino Sans GB", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-weight: bold;
   margin-left: 10rpx;
+  padding-top: 15rpx;
+  padding-bottom: 10rpx;
+  font-size: 35rpx;
 }
 
 .date {
-  margin-left: 70%;
+  margin-left: 10rpx;
   font-size: small;
-  color: #AAA;
+  color: #888;
+}
+
+.weui-footer__text {
+  padding-top: 2vh;
+  font-size: 35rpx;
+  margin-bottom: 3vh;
+  color: #8d8d8d;
 }

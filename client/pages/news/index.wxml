@@ -1,8 +1,14 @@
-<ad unit-id="adunit-3ea71b7cfce6c721"></ad>
+<ad unit-id="adunit-4478ecdd36509a60" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
 
 <view wx:for="{{news}}">
   <view class="news" bindtap="click" data-key="{{item.key}}">
     <view class="title">{{item.title}}</view>
     <view class="date">{{item.date}}</view>
   </view>
+</view>
+
+<ad unit-id="adunit-3ea71b7cfce6c721"></ad>
+
+<view class="weui-footer">
+  <view class="weui-footer__text">©docker-practice.com</view>
 </view>

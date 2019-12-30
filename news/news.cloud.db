@@ -1,0 +1,11 @@
+{"_id":1,"title":"WSL2 介绍","date":"2019/12/01","key":"news/2019/wsl2.md"}
+{"_id":2,"title":"Docker for Desktop Windows 支持 WSL2 后端","date":"2019/12/01","key":"news/2019/docker-wsl2.md"}
+{"_id":3,"title":"Compose 发布 1.25.0 版本","date":"2019/12/01","key":"news/2019/compose-1.25.0.md"}
+{"_id":4,"title":"Helm 3.0.0 已发布","date":"2019/12/01","key":"news/2019/helm-3.0.0.md"}
+{"_id":5,"title":"Kubernetes 即将发布 1.17.0 版本","date":"2019/12/01","key":"news/2019/kubernetes-1.17.0.md"}
+{"_id":6,"title":"CRI 介绍","date":"2019/12/01","key":"news/2019/cri.md"}
+{"_id":7,"title":"[修订记录] Drone agent 更新为 docker-runner","date":"2019/12/01","key":"news/2019/drone-docker-runner.md"}
+{"_id":8,"title":"[修订记录] 使用 Buildx 构建镜像","date":"2019/12/01","key":"news/2019/buildx.md"}
+{"_id":9,"title":"[修订记录] 使用 docker context 操作多个 Docker 后端","date":"2019/12/01","key":"news/2019/docker-context.md"}
+{"_id":10,"title":"[修订记录] 使用 kubeadm 部署 Kubernetes","date":"2019/12/01","key":"news/2019/kubeadm.md"}
+{"_id":11,"title":"[修订记录] 在 Docker 桌面版启动 Kubernetes","date":"2019/12/01","key":"news/2019/docker-desktop-k8s.md"}

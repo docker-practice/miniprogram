@@ -2,6 +2,7 @@
 
 .weui-footer__text {
   padding-top: 2vh;
-  font-size: 40rpx;
+  font-size: 35rpx;
   margin-bottom: 3vh;
+  color: #8d8d8d;
 }

@@ -44,7 +44,7 @@
         * [实战多阶段构建 Laravel 镜像](image/multistage-builds/laravel.md)
     * [构建多种系统架构支持的 Docker 镜像](image/manifest.md)
     * [其它制作镜像的方式](image/other.md)
-    * [实现原理](image/internal.md)
+    * [实现原理](image/internal.md)   
 * [操作容器](container/README.md)
     * [启动](container/run.md)
     * [守护态运行](container/daemon.md)

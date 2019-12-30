@@ -121,7 +121,7 @@ Page({
     }
 
     if (id === 'news') {
-      wx.navigateTo({url: '/pages/news/index'});
+      wx.navigateTo({ url: '/pages/news/index' });
       return;
     }
 

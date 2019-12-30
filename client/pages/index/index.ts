@@ -20,6 +20,16 @@ wx.cloud.init({
 
 const db = DB.getInstance();
 
+// wx.cloud
+// .callFunction({
+//   name: 'sitemap',
+//   data: {},
+// }).then(res=>{
+//   console.log(res);
+// }).catch(e=>{
+//   console.log(e);
+// });
+
 Page({
   data: {
     switch: true,

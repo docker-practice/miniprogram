@@ -6,9 +6,9 @@ let n = 1;
 
 let end = false;
 
-function onEnd(){
+function onEnd() {
   wx.showToast({
-    title: "到底了"
+    title: '到底了',
   });
 }
 
@@ -18,14 +18,14 @@ Page({
    */
   data: {
     news: [
-    //   {
-    //     "title" : "标题标题1标题1标题1标题1标题1标题1标题1标题1标题1标题1",
-    //     "time" : "2019/12/01"
-    //   },
-    //   {
-    //     "title" : "标题标题1标题1标题1标题1标题1标题1标题1标题1标题1标题1标题1",
-    //     "time" : "2019/11/04"
-    //   },
+      //   {
+      //     "title" : "标题标题1标题1标题1标题1标题1标题1标题1标题1标题1标题1",
+      //     "time" : "2019/12/01"
+      //   },
+      //   {
+      //     "title" : "标题标题1标题1标题1标题1标题1标题1标题1标题1标题1标题1标题1",
+      //     "time" : "2019/11/04"
+      //   },
     ],
   },
 
@@ -33,13 +33,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function() {
-    db.collection('news').limit(10).get().then((res)=>{
-      console.log(res)
-      this.setData!({
-        // @ts-ignore
-        news: res.data
-      })
-    })
+    db.collection('news')
+      .orderBy('_id', 'desc')
+      .limit(10)
+      .get()
+      .then(res => {
+        console.log(res);
+        this.setData!({
+          // @ts-ignore
+          news: res.data,
+        });
+      });
   },
 
   /**
@@ -55,12 +59,19 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {},
+  onHide: function() {
+    console.log('hide');
+    end = false;
+  },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {},
+  onUnload: function() {
+    console.log('unload');
+    end = false;
+    n = 1;
+  },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -71,37 +82,43 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-    console.log(end)
-    if(end){
-      onEnd()
+    console.log(end);
+    if (end) {
+      onEnd();
 
-      return
+      return;
     }
 
-    const news = this.data.news
-    db.collection('news').skip(10*n).limit(10).get().then((res)=>{
-      console.log(res)
-      if(res.data.length === 0){
-        onEnd()
+    const news = this.data.news;
+    db.collection('news')
+      .orderBy('_id', 'desc')
+      .skip(10 * n)
+      .limit(10)
+      .get()
+      .then(res => {
+        console.log(res);
+        console.log(res.data.length);
+        if (res.data.length === 0) {
+          onEnd();
 
-        end = true;
+          end = true;
 
-        return;
-      }
-      this.setData!({
-        // @ts-ignore
-        news: [...news, ...res.data],
-      })
+          return;
+        }
+        this.setData!({
+          // @ts-ignore
+          news: [...news, ...res.data],
+        });
 
-      n += 1
-    })
+        n += 1;
+      });
   },
 
-  click(res:any){
-    console.log(res)
+  click(res: any) {
+    console.log(res);
     const key = res.currentTarget.dataset.key;
     wx.navigateTo({
-      url: "../mdContent/index?key="+key
-    })
-  }
+      url: '../mdContent/index?key=' + key,
+    });
+  },
 });

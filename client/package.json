@@ -8,7 +8,10 @@
   },
   "dependencies": {
     "wemark": "github:docker-practice/wemark",
-    "wx-markdown": "^0.0.6"
+    "wx-markdown": "^0.0.6",
+    "wx-markdown-next": "^0.0.1",
+    "towxml": "docker-practice/towxml",
+    "@pcit/towxml": "*"
   },
   "devDependencies": {
     "miniprogram-api-typings": "*"

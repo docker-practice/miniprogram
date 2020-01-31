@@ -229,6 +229,7 @@ module.exports = [
       { id: 'compose/django.md', name: '实战 Django' },
       { id: 'compose/rails.md', name: '实战 Rails' },
       { id: 'compose/wordpress.md', name: '实战 WordPress' },
+      { id: 'compose/lnmp.md', name: '实战 LNMP'},
     ],
   },
   {
@@ -298,7 +299,10 @@ module.exports = [
     open: false,
     pages: [
       {id: "kubernetes/setup/README.md", name: "部署 Kubernetes"},
-      {id: "kubernetes/setup/docker.md", name: "使用 Docker 容器部署"}
+      {id: "kubernetes/setup/kubeadm.md", name: "使用 kubeadm 部署 kubernetes"},
+      {id: "kubernetes/setup/docker-desktop.md", name: "在 Docker Desktop 使用"},
+      {id: "kubernetes/setup/systemd.md", name: "一步步部署 kubernetes 集群"},
+      {id: "kubernetes/setup/dashboard.md", name: "部署 Dashboard"},
     ]
   },
   {
@@ -316,9 +320,9 @@ module.exports = [
     pages: [
       { id: 'cloud/README.md', name: '容器与云计算' },
       { id: 'cloud/intro.md', name: '简介' },
-      { id: 'cloud/aws.md', name: '亚马逊云' },
       { id: 'cloud/tencentCloud.md', name: '腾讯云' },
       { id: 'cloud/alicloud.md', name: '阿里云' },
+      { id: 'cloud/aws.md', name: '亚马逊云' },
       { id: 'cloud/summary.md', name: '小结' },
     ],
   },

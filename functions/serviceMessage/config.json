@@ -2,7 +2,8 @@
   "permissions": {
     "openapi": [
       "customerServiceMessage.send",
-      "customerServiceMessage.setTyping"
+      "customerServiceMessage.setTyping",
+      "customerServiceMessage.uploadTempMedia"
     ]
   }
 }

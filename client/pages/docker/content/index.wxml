@@ -30,14 +30,23 @@ key="{{key}}"
 >
 </wemark>
 
-<markdown markdown="{{data}}" theme="{{theme}}" ad="{{ad}}" wx:else
+<!-- <markdown markdown="{{data}}" theme="{{theme}}" ad="{{ad}}" wx:else
 fontType="{{fontType}}"
 folder="{{folder}}"
 cache="{{cache}}"
 key="{{key}}"
 richtext="{{wxMarkdownRichtext}}"
 >
-</markdown>
+</markdown> -->
+
+<markdown-next markdown="{{data}}" theme="{{theme}}" ad="{{ad}}"
+fontType="{{fontType}}"
+folder="{{folder}}"
+cache="{{cache}}"
+key="{{key}}"
+richtext="{{wxMarkdownRichtext}}"
+>
+</markdown-next>
 
 <!-- <view class="weui-footer weui-footer_fixed-bottom footer-btn">
   <button bindtap="before" wx:if="{{before_key}}">上一页</button>
@@ -57,9 +66,17 @@ richtext="{{wxMarkdownRichtext}}"
 
 <i-button shape="circle" bind:click="pushNote" size="large" type="primary">在 GitHub 反馈本节内容</i-button>
 
-<i-button shape="circle" bind:click="favorites" size="large" type="error">收藏</i-button>
+<i-button shape="circle" bind:click="favorites" size="large" type="warning">收藏</i-button>
 
-<i-button shape="circle" bind:click="buyBook" size="large" type="success">进阶学习 (实体书) 📕</i-button>
+<i-button shape="circle" bind:click="buyBook" size="large" type="error">进阶学习 (实体书) 📕</i-button>
+
+<i-button shape="circle" size="large" type="success"
+open-type="contact"
+send-message-title="加群二维码"
+send-message-path="/pages/docker/summary/index?wechatgroup=true"
+send-message-img="https://gitee.com/docker_practice/miniprogram/raw/master/u=1294795185,3267316264&fm=26&gp=0.jpg"
+show-message-card="{{true}}"
+>加入微信群聊</i-button>
 
 <!-- <view class="note-list"></view> -->
 

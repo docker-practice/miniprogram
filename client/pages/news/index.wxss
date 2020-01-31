@@ -1,3 +1,5 @@
+@import 'weui.wxss';
+
 page{
   background-color: #F8F8F8;
   font-size: 16px;
@@ -13,17 +15,13 @@ page{
  height: 30%;
 }
 
-.title {
-  font-family: "STHeitiTC-Light", "Microsoft YaHei Light", "Hiragino Sans GB", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-weight: bold;
-  margin-left: 10rpx;
-  padding-top: 15rpx;
-  padding-bottom: 10rpx;
-  font-size: 35rpx;
+.weui-flex__item.title {
+  font-family: Arial,Helvetica,sans-serif;
+  color: #333333;
 }
 
-.date {
-  margin-left: 10rpx;
+.weui-flex__item.date {
+  margin-top: 30rpx;
   font-size: small;
   color: #888;
 }

@@ -12,6 +12,9 @@ function onEnd() {
   });
 }
 
+// 这里的变量，在 page 中赋值之后，关闭页面再重新进入，值还会保留。
+let a:any;
+
 Page({
   /**
    * 页面的初始数据
@@ -33,6 +36,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function() {
+    console.log(a);
     db.collection('news')
       .orderBy('_id', 'desc')
       .limit(10)
@@ -49,18 +53,22 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {},
+  onReady: function() {
+    console.log('on ready');
+  },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {},
+  onShow: function() {
+    console.log('on show');
+  },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
-    console.log('hide');
+    console.log('on hide');
     end = false;
   },
 
@@ -68,7 +76,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-    console.log('unload');
+    console.log('on unload');
     end = false;
     n = 1;
   },
@@ -115,6 +123,7 @@ Page({
   },
 
   click(res: any) {
+    a = 1; 
     console.log(res);
     const key = res.currentTarget.dataset.key;
     wx.navigateTo({

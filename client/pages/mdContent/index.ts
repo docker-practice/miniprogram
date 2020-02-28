@@ -14,7 +14,8 @@ Page({
   onLoad: function(options) {
     const { key } = options;
     wx.request({
-      url: 'https://gitee.com/docker_practice/miniprogram/raw/master/' + key,
+      url:
+        'https://code.aliyun.com/docker-practice/miniprogram/raw/master/' + key,
       success: res => {
         console.log(res);
         this.setData({

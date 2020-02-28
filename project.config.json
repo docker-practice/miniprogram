@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.1",
+	"libVersion": "2.10.2",
 	"projectname": "docker",
 	"miniprogramRoot": "client/",
 	"cloudfunctionRoot": "functions/",

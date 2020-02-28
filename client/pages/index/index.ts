@@ -38,6 +38,7 @@ Page({
     fontType: '默认',
     jifen: '获取中...',
     sdkVersion: '0.0.0',
+    version: '0.0.0',
     userNum: 5700,
     signNum: '获取中...',
     motto: '点击 “编译” 以构建',
@@ -57,15 +58,9 @@ Page({
       cache.get('rate/index'),
       cache.get('style/fontType'),
       new Jifen().get(),
-      new Promise(resolve => {
-        wx.getSystemInfo({
-          success: res => {
-            resolve(res.SDKVersion);
-          },
-          fail: () => {
-            resolve('0.0.0');
-          },
-        });
+      // @ts-ignore
+      wx.getSystemInfo().then(res => {
+        return Promise.resolve(res.SDKVersion);
       }),
       wx.cloud
         .callFunction({
@@ -110,12 +105,13 @@ Page({
       this.updateGitHubStatus(res[7] || false);
     });
 
-    wx.getStorageInfo({
-      success: (res: any) => {
-        this.setData!({
-          storageSize: ((res.currentSize / 1024) as any).toFixed(2) + ' MB',
-        });
-      },
+    // @ts-ignore
+    wx.getStorageInfo().then((res: any) => {
+      this.setData!({
+        storageSize: ((res.currentSize / 1024) as any).toFixed(2) + ' MB',
+        // @ts-ignore
+        version: wx.getAccountInfoSync().miniProgram.version || 'dev',
+      });
     });
 
     wx.hideTabBarRedDot({
@@ -167,12 +163,11 @@ Page({
     cache.set('rate/index', index);
   },
   cleanup() {
-    wx.clearStorage({
-      success: () => {
-        this.setData!({
-          storageSize: '0.00 MB',
-        });
-      },
+    // @ts-ignore
+    wx.clearStorage().then(() => {
+      this.setData!({
+        storageSize: '0.00 MB',
+      });
     });
 
     wx.showToast({
@@ -240,23 +235,21 @@ Page({
 
     const fonts: Array<string> = ['默认', 'ZCOOL KuaiLe'];
 
-    wx.showActionSheet({
-      itemList: fonts,
-      success: res => {
-        const font = fonts[res.tapIndex];
+    // @ts-ignore
+    wx.showActionSheet({ itemList: fonts }).then(res => {
+      const font = fonts[res.tapIndex];
 
-        console.log(font);
+      console.log(font);
 
-        new Font().force(font);
+      new Font().force(font);
 
-        cache.set('style/fontType', font);
+      cache.set('style/fontType', font);
 
-        app.globalData.fontType = font;
+      app.globalData.fontType = font;
 
-        this.setData!({
-          fontType: font,
-        });
-      },
+      this.setData!({
+        fontType: font,
+      });
     });
   },
 
@@ -328,12 +321,12 @@ Page({
       title: '请在浏览器打开',
       content:
         '点击确定复制网址，在浏览器中打开项目 GitHub 与 Docker 爱好者交流',
-      success(res) {
-        res.confirm &&
-          wx.setClipboardData({
-            data: 'https://github.com/yeasy/docker_practice/issues',
-          });
-      },
+      // @ts-ignore
+    }).then(res => {
+      res.confirm &&
+        wx.setClipboardData({
+          data: 'https://github.com/yeasy/docker_practice/issues',
+        });
     });
   },
 
@@ -374,21 +367,21 @@ Page({
     let tokenFile = `${wx.env.USER_DATA_PATH}/token`;
 
     if (tokenExists) {
-      let logoutConfirm = await new Promise(resolve => {
-        wx.showModal({
+      let logoutConfirm = await wx
+        .showModal({
           title: '提示',
           content: '是否注销 GitHub',
           cancelText: '我再想想',
           confirmText: '注销',
-          success: res => {
-            if (res.confirm) {
-              resolve(1);
-            }
+        })
+        // @ts-ignore
+        .then(res => {
+          if (res.confirm) {
+            return Promise.resolve(1);
+          }
 
-            resolve(0);
-          },
+          return Promise.resolve(0);
         });
-      });
 
       if (!logoutConfirm) {
         return;
@@ -429,25 +422,24 @@ Page({
   },
 
   async switchSource() {
-    let itemList = ['Gitee', 'A 云', 'USTC'];
+    let itemList = ['A 云', 'USTC'];
 
     const baseUrlIndex = await cache.get('baseUrlIndex');
 
-    if (baseUrlIndex === '1' || baseUrlIndex === '2') {
+    // if (baseUrlIndex === '1' || baseUrlIndex === '2') {
+    if (baseUrlIndex === '1') {
       itemList[baseUrlIndex] += '(已选择)';
     } else {
       itemList[0] += '(已选择)';
     }
 
-    wx.showActionSheet({
-      itemList,
-      success(res) {
-        cache.set('baseUrlIndex', res.tapIndex.toString());
+    // @ts-ignore
+    wx.showActionSheet({ itemList }).then(res => {
+      cache.set('baseUrlIndex', res.tapIndex.toString());
 
-        let url = baseUrls[res.tapIndex];
-        app.globalData.baseUrl = url;
-        console.log(url);
-      },
+      let url = baseUrls[res.tapIndex];
+      app.globalData.baseUrl = url;
+      console.log(url);
     });
   },
 
@@ -458,15 +450,14 @@ Page({
       'wemark',
       'wemark-richtext',
     ];
-    wx.showActionSheet({
-      itemList,
-      success: res => {
-        let mdEngine = itemList[res.tapIndex];
-        cache.set('system/md-engine', mdEngine);
-        this.setData!({
-          mdEngine,
-        });
-      },
+
+    // @ts-ignore
+    wx.showActionSheet({ itemList }).then(res => {
+      let mdEngine = itemList[res.tapIndex];
+      cache.set('system/md-engine', mdEngine);
+      this.setData!({
+        mdEngine,
+      });
     });
   },
 });

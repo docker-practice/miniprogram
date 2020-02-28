@@ -7,7 +7,6 @@
     "i-button": "/src/ui/iviewui/dist/button/index",
     "i-spin": "/src/ui/iviewui/dist/spin/index",
     "markdown": "wx-markdown/component/index",
-    "markdown-next": "wx-markdown-next/component/index",
     "wemark": "wemark/wemark"
   },
   "enablePullDownRefresh": true,

@@ -274,12 +274,12 @@ module.exports = [
   },
   {
     id: 'coreos',
-    name: 'CoreOS 项目',
+    name: 'Fedora CoreOS',
     open: false,
     pages: [
-      { id: 'coreos/README.md', name: 'CoreOS 项目' },
+      { id: 'coreos/README.md', name: 'Fedora CoreOS' },
       { id: 'coreos/intro.md', name: '简介' },
-      { id: 'coreos/intro_tools.md', name: '工具' },
+      { id: 'coreos/install.md', name: '安装' },
     ],
   },
   {

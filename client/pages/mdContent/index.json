@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "markdown": "wx-markdown-next/component/index"
+    "markdown": "wx-markdown/component/index"
   },
   "navigationStyle": "default"
 }

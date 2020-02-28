@@ -30,23 +30,14 @@ key="{{key}}"
 >
 </wemark>
 
-<!-- <markdown markdown="{{data}}" theme="{{theme}}" ad="{{ad}}" wx:else
+<markdown markdown="{{data}}" theme="{{theme}}" ad="{{ad}}"
 fontType="{{fontType}}"
 folder="{{folder}}"
 cache="{{cache}}"
 key="{{key}}"
 richtext="{{wxMarkdownRichtext}}"
 >
-</markdown> -->
-
-<markdown-next markdown="{{data}}" theme="{{theme}}" ad="{{ad}}"
-fontType="{{fontType}}"
-folder="{{folder}}"
-cache="{{cache}}"
-key="{{key}}"
-richtext="{{wxMarkdownRichtext}}"
->
-</markdown-next>
+</markdown>
 
 <!-- <view class="weui-footer weui-footer_fixed-bottom footer-btn">
   <button bindtap="before" wx:if="{{before_key}}">上一页</button>
@@ -74,7 +65,7 @@ richtext="{{wxMarkdownRichtext}}"
 open-type="contact"
 send-message-title="加群二维码"
 send-message-path="/pages/docker/summary/index?wechatgroup=true"
-send-message-img="https://gitee.com/docker_practice/miniprogram/raw/master/u=1294795185,3267316264&fm=26&gp=0.jpg"
+send-message-img="https://gitee.com/docker_practice/miniprogram/raw/master/resources/clickme.jpg"
 show-message-card="{{true}}"
 >加入微信群聊</i-button>
 

@@ -190,11 +190,11 @@ Page({
           title: '提示',
           content: '请到首页解锁进阶内容',
           showCancel: false,
-          success: () => {
-            wx.switchTab({
-              url: '/pages/docker/summary/index',
-            });
-          },
+          // @ts-ignore
+        }).then(() => {
+          wx.switchTab({
+            url: '/pages/docker/summary/index',
+          });
         });
 
         return;
@@ -209,17 +209,6 @@ Page({
       path: '/pages/docker/content/index?key=' + this.data.key,
       imageUrl:
         'https://gitee.com/docker_practice/docker_practice/raw/master/_images/cover.jpg',
-      success() {
-        wx.showToast({
-          title: '感谢支持',
-        });
-      },
-      fail() {
-        wx.showToast({
-          title: '转发失败',
-          icon: 'success',
-        });
-      },
     };
   },
 
@@ -262,7 +251,7 @@ Page({
           setTimeout(() => {
             wx.showToast({
               icon: 'loading',
-              title: '网络连接错误',
+              title: '网络连接错误，请到个人主页切换源',
               duration: 1000,
             });
           }, 800);
@@ -290,7 +279,7 @@ Page({
         wx.hideLoading();
 
         wx.showModal({
-          title: '网络连接错误',
+          title: '网络连接错误，请到个人主页切换源',
           content: '',
           showCancel: false,
           // complete: ()=>{

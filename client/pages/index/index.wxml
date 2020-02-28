@@ -34,11 +34,11 @@
 
   <i-cell title="字体" value="{{fontType}}" bind:click="chooseFont"></i-cell>
 
-  <i-cell title="打赏 👍" value="长按识别二维码进行打赏" bind:click="zan"></i-cell>
+  <i-cell title="👍 打赏" value="长按识别二维码进行打赏" bind:click="zan"></i-cell>
 
-  <i-cell title="实体书 📕" value="进阶学习" bind:click="buyBook"></i-cell>
+  <i-cell title="📕 实体书" value="进阶学习" bind:click="buyBook"></i-cell>
 
-  <i-cell title="收藏夹 📁" value="马上找到你要的内容" bind:click="favorites"></i-cell>
+  <i-cell title="📁 收藏夹" value="马上找到你要的内容" bind:click="favorites"></i-cell>
 
   <i-cell title="经典目录" value="怀旧经典" bind:click="oldMenu"></i-cell>
 
@@ -53,6 +53,7 @@
   <i-cell title="累积用户" value="{{userNum}}"></i-cell>
 
   <i-cell title="SDK 版本" value="{{sdkVersion}}"></i-cell>
+  <i-cell title="版本" value="{{version}}"></i-cell>
 
   <i-cell title="" value=""><button plain="{{true}}" open-type="contact">智能客服</button></i-cell>
   <!-- <i-cell title="" value=""><button plain="{{true}}" bind:tap="tucao">Docker 社区</button></i-cell> -->

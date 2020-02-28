@@ -14,7 +14,7 @@ export interface IMyApp {
 }
 
 export const baseUrls = [
-  'https://gitee.com/docker_practice/docker_practice/raw/master',
+  // 'https://gitee.com/docker_practice/docker_practice/raw/master',
   'https://code.aliyun.com/docker-practice/docker_practice/raw/master',
   'https://git.lug.ustc.edu.cn/docker-practice/docker_practice/raw/master',
 ];
@@ -78,6 +78,7 @@ App<IMyApp>({
     MDData: '',
     theme: 'light',
     fontType: 'default',
-    baseUrl: 'https://gitee.com/docker_practice/docker_practice/raw/master',
+    baseUrl:
+      'https://code.aliyun.com/docker-practice/docker_practice/raw/master',
   },
 });

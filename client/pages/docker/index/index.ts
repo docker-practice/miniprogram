@@ -6,6 +6,8 @@ const app = getApp<IMyApp>();
 
 import summaryHandler from './summaryHandler';
 
+import isqq from '../../../src/utils/isqq';
+
 Page({
   /**
    * 页面的初始数据
@@ -14,6 +16,7 @@ Page({
     data: '',
     lazy: false,
     spinShow: true,
+    isqq,
   },
 
   /**

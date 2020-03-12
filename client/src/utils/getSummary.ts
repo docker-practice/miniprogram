@@ -5,7 +5,25 @@ let cache = new Cache();
 
 let db = DB.getInstance();
 
+import indexSummary from './index.summary';
+import listSummary from './list.summary';
+import isQq from './isqq';
+
 async function forceUpdate(type: any = 'list') {
+  // @ts-ignore
+  const { AppPlatform: platform } = wx.getSystemInfoSync();
+
+  if (isQq) {
+    cache.set('system/summary/list', JSON.stringify(listSummary));
+    cache.set('system/summary/index', JSON.stringify(indexSummary));
+
+    if (type === 'list') {
+      return JSON.stringify(listSummary);
+    }
+
+    return JSON.stringify(indexSummary);
+  }
+
   let result = await db
     .collection('system')
     .doc('summary')

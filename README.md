@@ -21,11 +21,12 @@
 
 ## 开发者
 
-- `$ npm -g i typescript`
+- `$ npm -g i typescript fs-extra`
 - 复制 `SUMMARY.md` 到 `summary/summary.source.md`
+- 安装依赖 `$ cd client ; npm install`
+- 执行 `$ npm run gitbook:summary:generate`
 - 执行 `$ npm run gitbook:summary:towxml`
-- 更新 `client/pages/docker/summary/summary.ts`
-- 安装依赖 `$ cd clinet ; npm install`
+- 执行 `$ npm run towxml:build`
 - 微信开发者工具 -> 工具 -> 构建 npm
 - 编译
 

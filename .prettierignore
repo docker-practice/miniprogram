@@ -8,6 +8,8 @@ client/buildcache
 client/src/Framework/src/Support/Summary/summary.ts
 client/src/ui
 client/miniprogram_npm
+client/src/utils/list.summary.ts
+client/src/utils/index.summary.ts
 
 summary/summary.ts
 summary/summary.mini.md
@@ -15,3 +17,7 @@ summary/summary.source.md
 summary/dist/*.json
 
 project.config.json
+
+functions/sitemap/sitemap.js
+
+.vscode/settings.json

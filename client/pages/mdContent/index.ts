@@ -1,10 +1,15 @@
 // pages/mdContent/index.js
+
+import isqq from '../../src/utils/isqq';
+
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    ad: ['adunit-3ea71b7cfce6c721', 'adunit-1246f0a5e441ea4c'],
+    ad: isqq
+      ? ['f2ba7917096dc03c7d798df304a90c49', 'a4f45b9d8d5704ab70bebfd0780854a8']
+      : ['adunit-3ea71b7cfce6c721', 'adunit-1246f0a5e441ea4c'],
     markdown: '',
   },
 

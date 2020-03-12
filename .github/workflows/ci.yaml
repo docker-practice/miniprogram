@@ -1,0 +1,37 @@
+name: Build
+
+on: push
+
+jobs:
+  qq:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - run: |
+          set -x
+
+          echo $NODE_PATH
+
+          export NODE_PATH=/usr/local/lib/node_modules
+
+          which tsc && tsc -v
+
+          sudo npm -g i fs-extra
+
+          cd client && npm install && cd ..
+
+          npm run towxml:build
+
+          npm run gitbook:summary:generate
+          npm run gitbook:summary:towxml
+      - uses: docker://qqminiapp/build:latest 
+        env:
+          PLUGIN_VERSION: 0.0.1
+          PLUGIN_DESC: CI 自动构建上传
+          PLUGIN_APPTOKEN: ${{ secrets.APPTOKEN }}
+          PLUGIN_BUILDUSER: ${{ github.actor }} 
+          PLUGIN_EXPERIENCE: true 
+          #PLUGIN_FIRSTPAGE: pages/index/index
+          #PLUGIN_USEPACKAGEJSON: true

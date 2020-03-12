@@ -8,11 +8,12 @@
     "preinstall": "echo don't install in this folder && exit 1",
     "cleanup": "npx rimraf summary/summary.ts client/src/Framework/src/Support/Summary/summary.ts client/pages/docker/index/summary.js",
     "cloud:db:summary": "",
-    "cloud:db:news": ""
+    "cloud:db:news": "",
+    "towxml:build": "cd client && npm run towxml:build"
   },
   "devDependencies": {
-    "weui-wxss": "*",
-    "iview-weapp": "*"
+    "iview-weapp": "*",
+    "weui-wxss": "^2.0.1"
   },
   "dependencies": {}
 }

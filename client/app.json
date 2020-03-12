@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/docker/summary/index",
+    "pages/docker/content/index",
     "pages/index/index",
     "pages/donate/index",
     "pages/news/index",

@@ -25,6 +25,9 @@ wx.onNetworkStatusChange(res => {
   });
 });
 
+import isQq from '../../../src/utils/isqq';
+import isqq from '../../../src/utils/isqq';
+
 Page({
   data: {
     data: '',
@@ -51,7 +54,9 @@ Page({
     showFixedStatusBar: false,
     fontType: '默认',
     showAd: true,
-    ad: ['adunit-3ea71b7cfce6c721', 'adunit-1246f0a5e441ea4c'],
+    ad: isqq
+      ? ['f2ba7917096dc03c7d798df304a90c49', 'a4f45b9d8d5704ab70bebfd0780854a8']
+      : ['adunit-3ea71b7cfce6c721', 'adunit-1246f0a5e441ea4c'],
     useWemark: false,
     wemarkType: 'rich-text',
     cache: true,
@@ -144,7 +149,9 @@ Page({
     // 插屏广告
     if (wx.createInterstitialAd) {
       let interstitialAd = wx.createInterstitialAd({
-        adUnitId: 'adunit-6ef44789d84b9392',
+        adUnitId: isQq
+          ? 'b9b0567ae11780a9f7886b61683c1ae2'
+          : 'adunit-6ef44789d84b9392',
       });
 
       console.log(interstitialAd);

@@ -1,4 +1,5 @@
 import DB from '../../src/Framework/src/Support/DB';
+import isqq from '../../src/utils/isqq';
 
 const db = DB.getInstance();
 
@@ -13,13 +14,14 @@ function onEnd() {
 }
 
 // 这里的变量，在 page 中赋值之后，关闭页面再重新进入，值还会保留。
-let a:any;
+let a: any;
 
 Page({
   /**
    * 页面的初始数据
    */
   data: {
+    isqq,
     news: [
       //   {
       //     "title" : "标题标题1标题1标题1标题1标题1标题1标题1标题1标题1标题1",
@@ -123,7 +125,7 @@ Page({
   },
 
   click(res: any) {
-    a = 1; 
+    a = 1;
     console.log(res);
     const key = res.currentTarget.dataset.key;
     wx.navigateTo({

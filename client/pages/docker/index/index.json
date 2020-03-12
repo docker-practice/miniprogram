@@ -2,7 +2,7 @@
   "usingComponents": {
     "i-notice-bar": "/src/ui/iviewui/dist/notice-bar/index",
     "i-spin": "/src/ui/iviewui/dist/spin/index",
-    "markdown": "wx-markdown-next/component/index"
+    "markdown": "/wx-markdown/component/index"
   },
   "navigationStyle": "default",
   "enablePullDownRefresh": false

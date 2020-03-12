@@ -1,10 +1,9 @@
 const fs = require('fs');
 
-const Towxml = require('../client/node_modules/@pcit/towxml');
-const towxml = new Towxml();
+const towxml = require('../client/node_modules/towxml');
 
 //Markdown 转 towxml 数据
-let obj = towxml.toJson('![](https://)', 'markdown');
+let obj = towxml('![](https://)', 'markdown');
 
 // nodes: [{
 //   name: 'div',

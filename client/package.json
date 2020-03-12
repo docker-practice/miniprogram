@@ -4,11 +4,12 @@
   "scripts": {
     "compile": "npx tsc",
     "compile:pro": "npx tsc --inlineSources false --inlineSourceMap false",
-    "yarn:update": "yarn upgrade-interactive --latest"
+    "yarn:update": "yarn upgrade-interactive --latest",
+    "towxml:build": "cd node_modules/towxml && npm run build"
   },
   "dependencies": {
     "wemark": "github:docker-practice/wemark",
-    "wx-markdown": "khs1994/wx-markdown"
+    "wx-markdown": "github:khs1994/wx-markdown"
   },
   "devDependencies": {
     "miniprogram-api-typings": "*"

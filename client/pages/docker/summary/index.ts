@@ -34,6 +34,7 @@ let videAd: any;
 let interstitialAd: any;
 
 import getSummary from '../../../src/utils/getSummary';
+import isqq from '../../../src/utils/isqq';
 
 Page({
   /**
@@ -47,6 +48,7 @@ Page({
         open: false,
       },
     ],
+    isqq,
     showAd: true,
     isHide: false,
     interstitialAd: null,
@@ -265,7 +267,9 @@ Page({
     // 激励广告
     if (wx.createRewardedVideoAd) {
       videAd = wx.createRewardedVideoAd({
-        adUnitId: 'adunit-a929f1a7fb4e4e96',
+        adUnitId: isqq
+          ? '823e0c24a1987ed2fdfdeefcc8883c7c'
+          : 'adunit-a929f1a7fb4e4e96',
       });
 
       videAd.onError((err: any) => {
@@ -289,7 +293,9 @@ Page({
     if (wx.createInterstitialAd) {
       // @ts-ignore
       interstitialAd = wx.createInterstitialAd({
-        adUnitId: 'adunit-6ef44789d84b9392',
+        adUnitId: isqq
+          ? 'b9b0567ae11780a9f7886b61683c1ae2'
+          : 'adunit-6ef44789d84b9392',
       });
 
       this.setData!({

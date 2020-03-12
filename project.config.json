@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.2",
+	"libVersion": "2.10.3",
 	"projectname": "docker",
 	"miniprogramRoot": "client/",
 	"cloudfunctionRoot": "functions/",
@@ -31,12 +31,16 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"bundle": true
+		"bundle": true,
+		"remoteDebugLogEnable": false,
+		"scriptsEnable": true
 	},
 	"appid": "wxb830c3abf8a658a5",
+	"qqappid": "1110255921",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+	"qqLibVersion": "1.13.0",
 	"condition": {
 		"search": {
 			"current": -1,

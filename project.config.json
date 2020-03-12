@@ -1,65 +1,65 @@
 {
-	"description": "docker_practice",
-	"packOptions": {
-		"ignore": []
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.10.3",
-	"projectname": "docker",
-	"miniprogramRoot": "client/",
-	"cloudfunctionRoot": "functions/",
-	"scripts": {
-		"beforeCompile": "npm run gitbook:summary:generate && cd client && npm run compile",
-		"beforePreview": "npm run gitbook:summary:generate && cd client && npm run compile:pro",
-		"beforeUpload": "npm run gitbook:summary:generate && cd client && npm run compile:pro"
-	},
-	"setting": {
-		"urlCheck": true,
-		"es6": true,
-		"enhance": true,
-		"postcss": true,
-		"minified": true,
-		"newFeature": true,
-		"nodeModules": true,
-		"autoAudits": false,
-		"uglifyFileName": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"bundle": true,
-		"remoteDebugLogEnable": false,
-		"scriptsEnable": true
-	},
-	"appid": "wxb830c3abf8a658a5",
-	"qqappid": "1110255921",
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
-	"qqLibVersion": "1.13.0",
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"list": []
-		},
-		"miniprogram": {
-			"current": -1,
-			"list": []
-		}
-	}
+  "description": "docker_practice",
+  "packOptions": {
+    "ignore": []
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.10.3",
+  "projectname": "docker",
+  "miniprogramRoot": "client/",
+  "cloudfunctionRoot": "functions/",
+  "scripts": {
+    "beforeCompile": "npm run gitbook:summary:generate && cd client && npm run compile",
+    "beforePreview": "npm run gitbook:summary:generate && cd client && npm run compile:pro",
+    "beforeUpload": "npm run gitbook:summary:generate && cd client && npm run compile:pro"
+  },
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "newFeature": true,
+    "nodeModules": true,
+    "autoAudits": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "bundle": true,
+    "remoteDebugLogEnable": false,
+    "scriptsEnable": true
+  },
+  "appid": "wxb830c3abf8a658a5",
+  "qqappid": "1110255921",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+  "qqLibVersion": "1.13.0",
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "plugin": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "miniprogram": {
+      "current": -1,
+      "list": []
+    }
+  }
 }

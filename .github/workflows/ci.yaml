@@ -26,6 +26,8 @@ jobs:
 
           npm run gitbook:summary:generate
           npm run gitbook:summary:towxml
+
+          cp project.config.json client/
       - uses: docker://qqminiapp/build:latest 
         env:
           PLUGIN_VERSION: 0.0.1
@@ -35,3 +37,5 @@ jobs:
           PLUGIN_EXPERIENCE: true 
           #PLUGIN_FIRSTPAGE: pages/index/index
           #PLUGIN_USEPACKAGEJSON: true
+      - run: |
+          ls -la qrcode.png

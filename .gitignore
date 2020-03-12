@@ -13,3 +13,6 @@ client/src/**/*.js
 client/workers/**/*.js
 client/src/Framework/src/Support/Summary/summary.ts
 client/buildcache
+client/project.config.json
+
+qrcode.png

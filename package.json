@@ -9,7 +9,10 @@
     "cleanup": "npx rimraf summary/summary.ts client/src/Framework/src/Support/Summary/summary.ts client/pages/docker/index/summary.js",
     "cloud:db:summary": "",
     "cloud:db:news": "",
-    "towxml:build": "cd client && npm run towxml:build"
+    "towxml:build": "cd client && npm run towxml:build",
+    "npm:build": "",
+    "tsc": "cd client && npm run compile",
+    "tsc:pro": "cd client && npm run compile:pro"
   },
   "devDependencies": {
     "iview-weapp": "*",

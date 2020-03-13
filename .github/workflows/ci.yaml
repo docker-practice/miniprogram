@@ -32,9 +32,10 @@ jobs:
           cp project.config.json client/
 
           mkdir -p client/miniprogram_npm
-          cp -r client/node_modules/wx-markdown/markdown client/miniprogram_npm/
+          cp -r client/node_modules/wx-markdown/markdown client/miniprogram_npm/wx-markdown
           cp -r client/node_modules/wemark/wemark client/miniprogram_npm/
-          cp -r client/node_modules/towxml/dist/. client/miniprogram_npm/towxml
+          cp -r client/node_modules/towxml/dist/towxml client/miniprogram_npm/
+        name: init
       - uses: docker://qqminiapp/build:latest 
         env:
           PLUGIN_VERSION: 0.0.1

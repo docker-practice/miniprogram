@@ -60,13 +60,9 @@ Page({
       cache.get('style/fontType'),
       new Jifen().get(),
       // @ts-ignore
-      isqq
-        ? () => {
-            return '0.0.1';
-          }
-        : wx.getSystemInfo().then(res => {
-            return Promise.resolve(res.SDKVersion);
-          }),
+      wx.getSystemInfo().then(res => {
+        return Promise.resolve(res.SDKVersion);
+      }),
       isqq
         ? () => {
             return 1000;

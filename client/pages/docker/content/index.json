@@ -6,8 +6,8 @@
     "i-notice-bar": "/src/ui/iviewui/dist/notice-bar/index",
     "i-button": "/src/ui/iviewui/dist/button/index",
     "i-spin": "/src/ui/iviewui/dist/spin/index",
-    "markdown": "/wx-markdown/component/index",
-    "wemark": "/wemark/wemark"
+    "markdown": "wx-markdown/component/index",
+    "wemark": "wemark/wemark"
   },
   "enablePullDownRefresh": true,
   "backgroundColor": "#36a1f0",

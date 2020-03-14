@@ -10,6 +10,7 @@ import Jifen from '../../src/utils/Jifen';
 import Cache from '../../src/Framework/src/Support/Cache';
 import { getEndTime } from '../../src/utils/Qiandao';
 import DB from '../../src/Framework/src/Support/DB';
+import isqq from '../../src/utils/isqq';
 
 const cache = new Cache();
 const ad = new Ad();
@@ -59,23 +60,31 @@ Page({
       cache.get('style/fontType'),
       new Jifen().get(),
       // @ts-ignore
-      wx.getSystemInfo().then(res => {
-        return Promise.resolve(res.SDKVersion);
-      }),
-      wx.cloud
-        .callFunction({
-          name: 'getDailySummary',
-          data: {},
-        })
-        .then(
-          res => {
-            return res.result;
-          },
-          e => {
-            console.log(e);
-            return 5701;
-          },
-        ),
+      isqq
+        ? () => {
+            return '0.0.1';
+          }
+        : wx.getSystemInfo().then(res => {
+            return Promise.resolve(res.SDKVersion);
+          }),
+      isqq
+        ? () => {
+            return 1000;
+          }
+        : wx.cloud
+            .callFunction({
+              name: 'getDailySummary',
+              data: {},
+            })
+            .then(
+              res => {
+                return res.result;
+              },
+              e => {
+                console.log(e);
+                return 5701;
+              },
+            ),
       db
         .collection('sign')
         .where({
@@ -105,15 +114,16 @@ Page({
       this.updateGitHubStatus(res[7] || false);
     });
 
-    // @ts-ignore
-    wx.getStorageInfo().then((res: any) => {
-      this.setData!({
-        storageSize: ((res.currentSize / 1024) as any).toFixed(2) + ' MB',
-        // @ts-ignore
-        version: wx.getAccountInfoSync().miniProgram.version || 'dev',
+    if (!isqq) {
+      // @ts-ignore
+      wx.getStorageInfo().then((res: any) => {
+        this.setData!({
+          storageSize: ((res.currentSize / 1024) as any).toFixed(2) + ' MB',
+          // @ts-ignore
+          version: wx.getAccountInfoSync().miniProgram.version || 'dev',
+        });
       });
-    });
-
+    }
     wx.hideTabBarRedDot({
       index: 1,
     });

@@ -10,7 +10,7 @@
     "cloud:db:summary": "",
     "cloud:db:news": "",
     "towxml:build": "cd client && npm run towxml:build",
-    "npm:build": "",
+    "npm:build": "npx miniprogram-ci pack-npm --pp ./client --pkp ./private.wxb830c3abf8a658a5.key --appid wxb830c3abf8a658a5",
     "tsc": "cd client && npm run compile",
     "tsc:pro": "cd client && npm run compile:pro"
   },

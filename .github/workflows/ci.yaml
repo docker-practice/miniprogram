@@ -9,7 +9,8 @@ jobs:
       - uses: actions/checkout@master
         with:
           fetch-depth: 1
-      - run: |
+      - name: init
+        run: |
           set -x
 
           echo $NODE_PATH
@@ -18,7 +19,7 @@ jobs:
 
           which tsc && tsc -v
 
-          sudo npm -g i fs-extra
+          sudo npm -g i fs-extra miniprogram-ci
 
           cd client && npm install && cd ..
 
@@ -26,23 +27,26 @@ jobs:
 
           npm run gitbook:summary:generate
           npm run gitbook:summary:towxml
+      - name: build ts
+        run: |
+          set -x
 
           npm run tsc:pro
+      - name: build npm
+        run: |
+          set -x
+
+          echo 1111 > private.wxb830c3abf8a658a5.key
+          npm run npm:build
 
           cp project.config.json client/
-
-          mkdir -p client/miniprogram_npm
-          cp -r client/node_modules/wx-markdown/markdown client/miniprogram_npm/wx-markdown
-          cp -r client/node_modules/wemark/wemark client/miniprogram_npm/
-          cp -r client/node_modules/towxml/dist/towxml client/miniprogram_npm/
-        name: init
-      - uses: docker://qqminiapp/build:latest 
+      - uses: docker://qqminiapp/build:latest
         env:
           PLUGIN_VERSION: 0.0.1
           PLUGIN_DESC: CI 自动构建上传
           PLUGIN_APPTOKEN: ${{ secrets.APPTOKEN }}
-          PLUGIN_BUILDUSER: ${{ github.actor }} 
-          PLUGIN_EXPERIENCE: true 
+          PLUGIN_BUILDUSER: ${{ github.actor }}
+          PLUGIN_EXPERIENCE: true
           #PLUGIN_FIRSTPAGE: pages/index/index
           #PLUGIN_USEPACKAGEJSON: true
       - run: |

@@ -16,3 +16,5 @@ client/buildcache
 client/project.config.json
 
 qrcode.png
+
+private.*.key

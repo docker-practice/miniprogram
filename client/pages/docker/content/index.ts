@@ -197,7 +197,6 @@ Page({
           title: '提示',
           content: '请到首页解锁进阶内容',
           showCancel: false,
-          // @ts-ignore
         }).then(() => {
           wx.switchTab({
             url: '/pages/docker/summary/index',

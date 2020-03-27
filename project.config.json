@@ -17,7 +17,7 @@
 		"urlCheck": true,
 		"es6": true,
 		"enhance": true,
-		"postcss": false,
+		"postcss": true,
 		"minified": true,
 		"newFeature": true,
 		"nodeModules": true,
@@ -32,8 +32,7 @@
 			"outputPath": ""
 		},
 		"bundle": true,
-		"remoteDebugLogEnable": false,
-		"scriptsEnable": true
+		"remoteDebugLogEnable": false
 	},
 	"appid": "wxb830c3abf8a658a5",
 	"qqappid": "1110255921",

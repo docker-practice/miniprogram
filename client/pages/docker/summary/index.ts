@@ -62,7 +62,7 @@ Page({
 
     if (id === 'subscribeMessage') {
       const tmplId = 'Frzqb0OUmqebNle3KJtrGN-X1M26ezf-5Bbpx9cBwp4';
-      // @ts-ignore
+
       wx.requestSubscribeMessage({
         tmplIds: [tmplId],
         success(res: any) {
@@ -288,10 +288,9 @@ Page({
         }, 2000);
       });
     }
+
     // 插屏广告
-    // @ts-ignore
     if (wx.createInterstitialAd) {
-      // @ts-ignore
       interstitialAd = wx.createInterstitialAd({
         adUnitId: isqq
           ? 'b9b0567ae11780a9f7886b61683c1ae2'

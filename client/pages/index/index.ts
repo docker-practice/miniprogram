@@ -59,7 +59,6 @@ Page({
       cache.get('rate/index'),
       cache.get('style/fontType'),
       new Jifen().get(),
-      // @ts-ignore
       wx.getSystemInfo().then(res => {
         return Promise.resolve(res.SDKVersion);
       }),
@@ -111,7 +110,6 @@ Page({
     });
 
     if (!isqq) {
-      // @ts-ignore
       wx.getStorageInfo().then((res: any) => {
         this.setData!({
           storageSize: ((res.currentSize / 1024) as any).toFixed(2) + ' MB',
@@ -169,7 +167,6 @@ Page({
     cache.set('rate/index', index);
   },
   cleanup() {
-    // @ts-ignore
     wx.clearStorage().then(() => {
       this.setData!({
         storageSize: '0.00 MB',
@@ -241,7 +238,6 @@ Page({
 
     const fonts: Array<string> = ['默认', 'ZCOOL KuaiLe'];
 
-    // @ts-ignore
     wx.showActionSheet({ itemList: fonts }).then(res => {
       const font = fonts[res.tapIndex];
 
@@ -327,7 +323,6 @@ Page({
       title: '请在浏览器打开',
       content:
         '点击确定复制网址，在浏览器中打开项目 GitHub 与 Docker 爱好者交流',
-      // @ts-ignore
     }).then(res => {
       res.confirm &&
         wx.setClipboardData({
@@ -380,7 +375,6 @@ Page({
           cancelText: '我再想想',
           confirmText: '注销',
         })
-        // @ts-ignore
         .then(res => {
           if (res.confirm) {
             return Promise.resolve(1);
@@ -439,7 +433,6 @@ Page({
       itemList[0] += '(已选择)';
     }
 
-    // @ts-ignore
     wx.showActionSheet({ itemList }).then(res => {
       cache.set('baseUrlIndex', res.tapIndex.toString());
 
@@ -457,7 +450,6 @@ Page({
       'wemark-richtext',
     ];
 
-    // @ts-ignore
     wx.showActionSheet({ itemList }).then(res => {
       let mdEngine = itemList[res.tapIndex];
       cache.set('system/md-engine', mdEngine);

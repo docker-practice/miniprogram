@@ -24,11 +24,7 @@ async function forceUpdate(type: any = 'list') {
     return JSON.stringify(indexSummary);
   }
 
-  let result = await db
-    .collection('system')
-    .doc('summary')
-    .get()
-    .then();
+  let result = await db.collection('system').doc('summary').get().then();
   // console.log(result.data);
   let { index, list } = result.data;
 
@@ -42,7 +38,7 @@ async function forceUpdate(type: any = 'list') {
   return index;
 }
 
-export default async function(type = 'list', force = false) {
+export default async function (type = 'list', force = false) {
   if (force) {
     return await forceUpdate(type);
   }

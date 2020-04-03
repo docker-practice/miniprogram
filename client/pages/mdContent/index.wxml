@@ -1,1 +1,2 @@
 <markdown markdown="{{markdown}}" ad="{{ad}}"></markdown>
+<i-button shape="circle" bind:click="share" size="large" type="primary">群内学习</i-button>

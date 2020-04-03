@@ -87,7 +87,7 @@ function showVideoAd(openid: string, videAd: any) {
 }
 
 async function sign(openid: string, videAd: any) {
-  return await new Promise(resolve => {
+  return await new Promise((resolve) => {
     showVideoAd(openid, videAd);
     resolve(true);
   });
@@ -110,7 +110,7 @@ async function addJifen(_openid: string, jifen: number, sign_time: number) {
       _openid,
     })
     .get()
-    .then(res => {
+    .then((res) => {
       console.log(res);
 
       let { _id, sign_number = 0, jifen: jifen_from_db = 0 } = res.data[0];
@@ -118,15 +118,13 @@ async function addJifen(_openid: string, jifen: number, sign_time: number) {
       sign_number += 1;
       jifen += jifen_from_db;
 
-      db.collection('sign')
-        .doc(_id!)
-        .update({
-          data: {
-            sign_time,
-            sign_number,
-            jifen,
-          },
-        });
+      db.collection('sign').doc(_id!).update({
+        data: {
+          sign_time,
+          sign_number,
+          jifen,
+        },
+      });
     });
 }
 
@@ -153,7 +151,7 @@ export async function isSign(_openid: string, local: boolean = false) {
       _openid,
     })
     .get()
-    .then(res => {
+    .then((res) => {
       console.log(res);
 
       if (res.data.length === 0) {
@@ -202,7 +200,7 @@ export async function checkTime(time: number = 0) {
       },
     })
     .then(
-      res => {
+      (res) => {
         return res;
       },
       () => {
@@ -245,7 +243,7 @@ export default async function qiandao(videAd: any) {
   }
 
   let result = await isSign(_openid).then(
-    res => {
+    (res) => {
       wx.hideLoading();
 
       if (res) {

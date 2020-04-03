@@ -27,7 +27,7 @@ App<IMyApp>({
     });
 
     // 获取主题
-    cache.get('style/theme').then(theme => {
+    cache.get('style/theme').then((theme) => {
       this.globalData.theme = theme ? <'light' | 'dark'>theme : 'light';
     });
 
@@ -49,7 +49,7 @@ App<IMyApp>({
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
-            success: res => {
+            success: (res) => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo;
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -64,11 +64,11 @@ App<IMyApp>({
     });
 
     cache.get('baseUrlIndex').then(
-      res => {
+      (res) => {
         this.globalData.baseUrl = baseUrls[res] || baseUrls[0];
         console.log(this.globalData.baseUrl);
       },
-      e => {
+      (e) => {
         console.log(e);
         console.log('baseUrlIndex not found');
       },

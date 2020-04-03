@@ -56,7 +56,7 @@ Page({
       '《Docker 技术入门与实战》第三版已经面世，介绍最新的容器技术栈，欢迎大家阅读使用并反馈建议。',
   },
 
-  kindToggle: function(e: any) {
+  kindToggle: function (e: any) {
     let id = e.currentTarget.id;
     let list: any = this.data.list;
 
@@ -86,10 +86,10 @@ Page({
               },
             })
             .then(
-              res => {
+              (res) => {
                 console.log(res);
               },
-              e => {
+              (e) => {
                 console.log(e);
               },
             );
@@ -212,7 +212,7 @@ Page({
   async isSign(local: boolean = false) {
     let list: any = this.data.list;
 
-    isSign('', local).then(res => {
+    isSign('', local).then((res) => {
       res &&
         (list[0] = {
           id: 'sign',
@@ -231,7 +231,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: async function() {
+  onLoad: async function () {
     let list = JSON.parse(await getSummary('list', false));
 
     this.setData!({
@@ -253,7 +253,7 @@ Page({
             });
           }
         },
-        e => {
+        (e) => {
           console.log(e);
         },
       );
@@ -335,7 +335,7 @@ Page({
     // 检查新版本
     let um = wx.getUpdateManager();
 
-    um.onCheckForUpdate(res => {
+    um.onCheckForUpdate((res) => {
       if (res.hasUpdate) {
         console.log('发现新版本');
       }
@@ -346,7 +346,7 @@ Page({
         title: '更新',
         content: '新版本已经下载好了',
         confirmText: '立即更新',
-        success: res => {
+        success: (res) => {
           res.confirm && um.applyUpdate();
         },
       });
@@ -362,12 +362,12 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {},
+  onReady: function () {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     this.setData!({
       isHide: false,
     });
@@ -395,7 +395,7 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
     this.setData!({
       isHide: true,
     });
@@ -404,7 +404,7 @@ Page({
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {},
+  onUnload: function () {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -423,12 +423,12 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {},
+  onReachBottom: function () {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function(): any {
+  onShareAppMessage: function (): any {
     return {
       title: '开始 Docker 之旅~',
       imageUrl:

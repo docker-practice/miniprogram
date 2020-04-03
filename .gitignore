@@ -1,6 +1,7 @@
 .idea
 
 node_modules
+!node_modules/@types/wx-server-sdk
 miniprogram_npm
 
 !package-lock.json

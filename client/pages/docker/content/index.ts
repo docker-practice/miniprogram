@@ -17,7 +17,7 @@ const app = getApp<IMyApp>();
 const cache = new Cache();
 const ad = new Ad();
 
-wx.onNetworkStatusChange(res => {
+wx.onNetworkStatusChange((res) => {
   wx.showToast({
     title: `${res.networkType.toUpperCase()} 已连接`,
     icon: 'none',
@@ -97,7 +97,7 @@ Page({
 
     // 获取状态栏（信号栏）高度
     wx.getSystemInfo({
-      success: res => {
+      success: (res) => {
         // res.version.split('.')[0] === '6';
 
         this.setData!({

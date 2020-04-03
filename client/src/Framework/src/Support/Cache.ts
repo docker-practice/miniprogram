@@ -23,10 +23,10 @@ export default class Cache {
   }
 
   async get(key: string): Promise<any> {
-    return await new Promise(resolve => {
+    return await new Promise((resolve) => {
       getStorage({
         key,
-        success: res => {
+        success: (res) => {
           let data = res.data.value;
 
           if (this.checkTTL(key, res)) {
@@ -44,10 +44,10 @@ export default class Cache {
   }
 
   async exists(key: string) {
-    return await new Promise(resolve => {
+    return await new Promise((resolve) => {
       getStorage({
         key,
-        success: res => {
+        success: (res) => {
           if (this.checkTTL(key, res)) {
             return resolve(true);
           }

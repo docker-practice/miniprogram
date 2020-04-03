@@ -1,5 +1,5 @@
 // @ts-ignore
-worker.onMessage(res => {
+worker.onMessage((res) => {
   console.log(res);
 
   // @ts-ignore

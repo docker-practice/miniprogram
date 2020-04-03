@@ -13,10 +13,10 @@ exports.main = async (event, context) => {
     .submitPages({
       pages,
     })
-    .then(res => {
+    .then((res) => {
       return res;
     })
-    .catch(e => {
+    .catch((e) => {
       return e;
     });
 

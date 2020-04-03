@@ -12,7 +12,7 @@
     "wx-markdown": "github:khs1994/wx-markdown"
   },
   "devDependencies": {
-    "miniprogram-api-typings": "^2.10.2-1"
+    "miniprogram-api-typings": "^2.10.3"
   },
   "license": "MIT"
 }

@@ -50,7 +50,7 @@ exports.main = async (event, context) => {
 
   let openIds = [];
 
-  await db.get().then(res => {
+  await db.get().then((res) => {
     console.log(res);
 
     res.data.map((k, v) => {
@@ -76,7 +76,7 @@ exports.main = async (event, context) => {
 
     // let touser = k;
     await send(touser, page).then(
-      async res => {
+      async (res) => {
         await db
           .where({
             openId: touser,
@@ -86,7 +86,7 @@ exports.main = async (event, context) => {
         console.log('[S] handled ' + touser);
         console.log(res);
       },
-      async e => {
+      async (e) => {
         await db
           .where({
             openId: touser,

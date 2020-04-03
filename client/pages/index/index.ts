@@ -59,7 +59,7 @@ Page({
       cache.get('rate/index'),
       cache.get('style/fontType'),
       new Jifen().get(),
-      wx.getSystemInfo().then(res => {
+      wx.getSystemInfo().then((res) => {
         return Promise.resolve(res.SDKVersion);
       }),
       isqq
@@ -72,10 +72,10 @@ Page({
               data: {},
             })
             .then(
-              res => {
+              (res) => {
                 return res.result;
               },
-              e => {
+              (e) => {
                 console.log(e);
                 return 5701;
               },
@@ -130,7 +130,7 @@ Page({
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
+      app.userInfoReadyCallback = (res) => {
         this.setData!({
           userInfo: res,
           hasUserInfo: true,
@@ -139,7 +139,7 @@ Page({
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
-        success: res => {
+        success: (res) => {
           app.globalData.userInfo = res.userInfo;
           this.setData!({
             userInfo: res.userInfo,
@@ -238,7 +238,7 @@ Page({
 
     const fonts: Array<string> = ['默认', 'ZCOOL KuaiLe'];
 
-    wx.showActionSheet({ itemList: fonts }).then(res => {
+    wx.showActionSheet({ itemList: fonts }).then((res) => {
       const font = fonts[res.tapIndex];
 
       console.log(font);
@@ -323,7 +323,7 @@ Page({
       title: '请在浏览器打开',
       content:
         '点击确定复制网址，在浏览器中打开项目 GitHub 与 Docker 爱好者交流',
-    }).then(res => {
+    }).then((res) => {
       res.confirm &&
         wx.setClipboardData({
           data: 'https://github.com/yeasy/docker_practice/issues',
@@ -375,7 +375,7 @@ Page({
           cancelText: '我再想想',
           confirmText: '注销',
         })
-        .then(res => {
+        .then((res) => {
           if (res.confirm) {
             return Promise.resolve(1);
           }
@@ -433,7 +433,7 @@ Page({
       itemList[0] += '(已选择)';
     }
 
-    wx.showActionSheet({ itemList }).then(res => {
+    wx.showActionSheet({ itemList }).then((res) => {
       cache.set('baseUrlIndex', res.tapIndex.toString());
 
       let url = baseUrls[res.tapIndex];
@@ -450,7 +450,7 @@ Page({
       'wemark-richtext',
     ];
 
-    wx.showActionSheet({ itemList }).then(res => {
+    wx.showActionSheet({ itemList }).then((res) => {
       let mdEngine = itemList[res.tapIndex];
       cache.set('system/md-engine', mdEngine);
       this.setData!({

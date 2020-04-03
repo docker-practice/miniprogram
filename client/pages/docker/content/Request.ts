@@ -53,7 +53,7 @@ export default class Request {
     let url = `${baseUrl}/${key}`;
 
     if (key === 'README.md') {
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         resolve(readme);
       });
     }
@@ -61,7 +61,7 @@ export default class Request {
     return new Promise((resolve, reject) => {
       wx.request({
         url,
-        success: res => {
+        success: (res) => {
           let MDData = res.data as string;
 
           if (res.statusCode === 404) {

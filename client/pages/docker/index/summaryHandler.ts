@@ -1,9 +1,9 @@
-export default function(summary: string) {
+export default function (summary: string) {
   const line = summary.split('\n');
 
   let newSummary = '';
 
-  line.forEach(v => {
+  line.forEach((v) => {
     // console.log(v);
     if (v.match(/^#/) !== null || !v) {
       return;

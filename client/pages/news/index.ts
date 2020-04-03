@@ -37,13 +37,13 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function() {
+  onLoad: function () {
     console.log(a);
     db.collection('news')
       .orderBy('_id', 'desc')
       .limit(10)
       .get()
-      .then(res => {
+      .then((res) => {
         console.log(res);
         this.setData!({
           // @ts-ignore
@@ -55,21 +55,21 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
     console.log('on ready');
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     console.log('on show');
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
     console.log('on hide');
     end = false;
   },
@@ -77,7 +77,7 @@ Page({
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
     console.log('on unload');
     end = false;
     n = 1;
@@ -86,12 +86,12 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {},
+  onPullDownRefresh: function () {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
     console.log(end);
     if (end) {
       onEnd();
@@ -105,7 +105,7 @@ Page({
       .skip(10 * n)
       .limit(10)
       .get()
-      .then(res => {
+      .then((res) => {
         console.log(res);
         console.log(res.data.length);
         if (res.data.length === 0) {

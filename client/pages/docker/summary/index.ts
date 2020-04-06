@@ -435,4 +435,10 @@ Page({
         'https://gitee.com/docker_practice/docker_practice/raw/master/_images/cover.jpg',
     };
   },
+  onTabItemTap(item) {
+    // tab 点击时执行
+    console.log(item.index);
+    console.log(item.pagePath);
+    console.log(item.text);
+  },
 });

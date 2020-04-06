@@ -127,9 +127,9 @@ Page({
   click(res: any) {
     a = 1;
     console.log(res);
-    const key = res.currentTarget.dataset.key;
+    const { key, title } = res.currentTarget.dataset;
     wx.navigateTo({
-      url: '../mdContent/index?key=' + key,
+      url: `../mdContent/index?key=${key}&title=${title}`,
     });
   },
 });

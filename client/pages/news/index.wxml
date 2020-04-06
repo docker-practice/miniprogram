@@ -4,7 +4,7 @@
     <view class="kind-list">
         <block wx:for="{{news}}">
             <view class="kind-list__item">
-                <view id="{{item.id}}" class="weui-flex kind-list__item-hd {{item.open ? 'kind-list__item-hd_show' : ''}}" bindtap="click" data-key="{{item.key}}">
+                <view id="{{item.id}}" class="weui-flex kind-list__item-hd {{item.open ? 'kind-list__item-hd_show' : ''}}" bindtap="click" data-key="{{item.key}}" data-title="{{item.title}}">
                     <view wx:if="{{item.color}}" class="weui-flex__item" style="color: {{item.color}}">{{item.title}}</view>
                     <view wx:else class="weui-flex__item title">{{item.title}}</view>
                     <view class="weui-flex__item date">{{item.date}}</view>

@@ -9,3 +9,4 @@
 {"_id":9,"title":"[修订记录] 使用 docker context 操作多个 Docker 后端","date":"2019/12/01","key":"news/2019/docker-context.md"}
 {"_id":10,"title":"[修订记录] 使用 kubeadm 部署 Kubernetes","date":"2019/12/01","key":"news/2019/kubeadm.md"}
 {"_id":11,"title":"[修订记录] 在 Docker 桌面版启动 Kubernetes","date":"2019/12/01","key":"news/2019/docker-desktop-k8s.md"}
+{"_id":12,"title":"azk8s.cn 镜像服务已转为仅限 Azure 云内部使用，请立即更换","date":"2020/04/05","key":"news/2020/azk8s.cn.md"}

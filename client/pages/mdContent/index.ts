@@ -1,10 +1,13 @@
 // pages/mdContent/index.js
 
 import isqq from '../../src/utils/isqq';
+import Cache from '../../src/Framework/src/Support/Cache';
 
 let key: any = null;
+let title: any;
 let toDoActivityId: any;
 let expirationTime: any;
+let cache = new Cache();
 
 Page({
   /**
@@ -15,17 +18,55 @@ Page({
       ? ['f2ba7917096dc03c7d798df304a90c49', 'a4f45b9d8d5704ab70bebfd0780854a8']
       : ['adunit-3ea71b7cfce6c721', 'adunit-1246f0a5e441ea4c'],
     markdown: '',
+    openGId: null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: async function (options) {
+    console.log(JSON.stringify(options));
+
     key = options.key;
+    title = options.title;
     // 1585976131
     const { activityId, expirationTime } = options;
+    toDoActivityId = null;
 
-    console.log(JSON.stringify(options));
+    let { shareTicket } = wx.getLaunchOptionsSync();
+
+    console.log('shareTicket: ' + shareTicket);
+    console.log('activityId: ' + activityId);
+
+    if (activityId && shareTicket) {
+      wx.showModal({
+        title: '欢迎从群聊中进入',
+        content: '您的每次进入，都会增加所在群的排名',
+        showCancel: false,
+      });
+
+      wx.getShareInfo({
+        shareTicket,
+        success: async (res) => {
+          let { cloudID } = res;
+
+          let result = await wx.cloud.callFunction({
+            name: 'getGroup',
+            data: {
+              // @ts-ignore
+              group: wx.cloud.CloudID(cloudID), // 这个 CloudID 值到云函数端会被替换
+            },
+          });
+
+          console.log(result);
+
+          this.setData({
+            // @ts-ignore
+            openGId: result.result,
+          });
+        },
+      });
+    }
 
     wx.request({
       url:
@@ -39,7 +80,46 @@ Page({
       },
     });
 
+    // 插屏广告
+    if ((await cache.get('is-news-show-ad')) !== 'true') {
+      let interstitialAd = wx.createInterstitialAd({
+        adUnitId: isqq
+          ? 'b9b0567ae11780a9f7886b61683c1ae2'
+          : 'adunit-6ef44789d84b9392',
+      });
+
+      setTimeout(() => {
+        interstitialAd.show().then(
+          () => {
+            console.log('S 插屏广告 success');
+            cache.set('is-news-show-ad', 'true', 120);
+          },
+          (e) => {
+            console.log('E 插屏广告 error: ' + JSON.stringify(e));
+          },
+        );
+      }, 15000);
+
+      interstitialAd.onError((e) => {
+        console.log('E 插屏广告 onerror: ' + JSON.stringify(e));
+      });
+
+      interstitialAd.onLoad(() => {
+        console.log('L 插屏广告 onload');
+      });
+
+      interstitialAd.onClose(() => {
+        console.log('X 插屏广告 onclose');
+      });
+    } else {
+      console.log('120s 之内不再展示广告');
+    } // if end
+
     if (!activityId) {
+      return;
+    }
+
+    if (activityId === 'null') {
       return;
     }
 
@@ -81,6 +161,10 @@ Page({
     });
 
     console.log(result);
+  },
+
+  onUnLoad() {
+    toDoActivityId = null;
   },
 
   /**
@@ -158,8 +242,8 @@ Page({
 
   onShareAppMessage(): any {
     return {
-      title: '今日分享',
-      path: `pages/mdContent/index?key=${key}&activityId=${toDoActivityId}&expirationTime=${expirationTime}`,
+      title: '今日分享 -- ' + title,
+      path: `pages/mdContent/index?key=${key}&title=${title}&activityId=${toDoActivityId}&expirationTime=${expirationTime}`,
       imageUrl:
         'https://gitee.com/docker_practice/docker_practice/raw/master/_images/cover.jpg',
     };

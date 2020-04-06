@@ -1,1 +1,13 @@
-/* pages/mdContent/index.wxss */
+page {
+  height:100%;
+}
+
+view.light {
+  background-color: #eeeeee;
+  min-height:100%；
+}
+
+view.dark {
+  background-color: #000000;
+  min-height:100%;
+}

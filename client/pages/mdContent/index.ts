@@ -1,5 +1,6 @@
 // pages/mdContent/index.js
 
+import { IMyApp } from '../../app';
 import isqq from '../../src/utils/isqq';
 import Cache from '../../src/Framework/src/Support/Cache';
 
@@ -8,6 +9,8 @@ let title: any;
 let toDoActivityId: any;
 let expirationTime: any;
 let cache = new Cache();
+let theme: 'light' | 'dark' = 'light';
+const app = getApp<IMyApp>();
 
 Page({
   /**
@@ -19,6 +22,7 @@ Page({
       : ['adunit-3ea71b7cfce6c721', 'adunit-1246f0a5e441ea4c'],
     markdown: '',
     openGId: null,
+    theme: 'light',
   },
 
   /**
@@ -26,6 +30,11 @@ Page({
    */
   onLoad: async function (options) {
     console.log(JSON.stringify(options));
+
+    theme = app.globalData.theme;
+    this.setData({
+      theme,
+    })
 
     key = options.key;
     title = options.title;
@@ -170,7 +179,8 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {},
+  onReady: function () {
+  },
 
   /**
    * 生命周期函数--监听页面显示

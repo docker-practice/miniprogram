@@ -3,5 +3,6 @@
     "markdown": "wx-markdown/component/index",
     "i-button": "/src/ui/iviewui/dist/button/index"
   },
-  "navigationStyle": "default"
+  "navigationStyle": "default",
+  "enablePullDownRefresh": false
 }

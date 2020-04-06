@@ -7,7 +7,7 @@ export interface IMyApp {
   globalData: {
     userInfo?: any;
     MDData: any;
-    theme?: 'light' | 'dark';
+    theme: 'light' | 'dark';
     fontType: string;
     [index: string]: any;
   };

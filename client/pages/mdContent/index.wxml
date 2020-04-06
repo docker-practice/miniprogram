@@ -1,7 +1,14 @@
-<markdown markdown="{{markdown}}" ad="{{ad}}"></markdown>
+<view class="{{theme}}">
+<markdown markdown="{{markdown}}" ad="{{ad}}"
+ wx:if="{{theme === 'light'}}"
+></markdown>
+<markdown markdown="{{markdown}}" ad="{{ad}}"
+ wx:else theme="{{theme}}"
+></markdown>
 <i-button shape="circle" bind:click="share" size="large" type="primary">群内学习</i-button>
 <i-button shape="circle" size="large" type="success"
  wx:if="{{openGId}}"
 >
 <open-data class="" type="groupName" open-gid="{{openGId}}"></open-data>
 </i-button>
+</view>

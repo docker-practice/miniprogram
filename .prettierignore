@@ -21,3 +21,5 @@ project.config.json
 functions/sitemap/sitemap.js
 
 .vscode/settings.json
+
+schema

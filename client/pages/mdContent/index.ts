@@ -34,7 +34,7 @@ Page({
     theme = app.globalData.theme;
     this.setData({
       theme,
-    })
+    });
 
     key = options.key;
     title = options.title;
@@ -179,8 +179,7 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  },
+  onReady: function () {},
 
   /**
    * 生命周期函数--监听页面显示

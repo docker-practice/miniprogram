@@ -1,5 +1,37 @@
 {
   "files.exclude": {
     "client/pages/**/index.js": true
-  }
+  },
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "client/app.json"
+      ],
+      "url": "/schema/app.json"
+    },
+    {
+      "fileMatch": [
+        "client/sitemap.json"
+      ],
+      "url": "/schema/sitemap.json"
+    },
+    {
+      "fileMatch": [
+        "project.config.json"
+      ],
+      "url": "/schema/projectconfig.json"
+    },
+    {
+      "fileMatch": [
+        "client/theme.json"
+      ],
+      "url": "/schema/theme.json"
+    },
+    {
+      "fileMatch": [
+        "client/pages/*.json"
+      ],
+      "url": "/schema/page.json"
+    },
+  ]
 }

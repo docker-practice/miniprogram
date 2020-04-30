@@ -62,4 +62,5 @@ jobs:
           ls -la qrcode.png
       - name: upload to wechat
         run: |
+          rm -rf client/project.config.json
           npm run upload

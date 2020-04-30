@@ -21,14 +21,15 @@
 
 ## 开发者
 
-- `$ npm -g i typescript fs-extra`
-- 复制 `SUMMARY.md` 到 `summary/summary.source.md`
+- `$ npm -g i typescript fs-extra miniprogram-ci`
+- **可选** 复制 `SUMMARY.md` 到 `summary/summary.source.md`
 - 安装依赖 `$ cd client ; npm install`
 - 执行 `$ npm run gitbook:summary:generate`
 - 执行 `$ npm run gitbook:summary:towxml`
 - 执行 `$ npm run towxml:build`
-- 微信开发者工具 -> 工具 -> 构建 npm
+- [ 微信开发者工具 -> 工具 -> 构建 npm ](项目贡献者) 或者 `$ npm run npm:build`(项目所有者)
 - 编译
+- 上传预览 `$ npm run upload` (项目所有者)
 
 ## 致谢
 

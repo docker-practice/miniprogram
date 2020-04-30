@@ -8,15 +8,15 @@
     "pages/mdContent/index"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "@bgTxtStyle",
     "navigationBarTitleText": "Docker 从入门到实践",
     "navigationBarTextStyle": "white",
-    "navigationBarBackgroundColor": "#36a1f0",
+    "navigationBarBackgroundColor": "@navBgColor",
     "navigationStyle": "custom",
     "enablePullDownRefresh": true
   },
   "tabBar": {
-    "backgroundColor": "#36a1f0",
+    "backgroundColor": "@tabBgColor",
     "color": "#fff",
     "position": "top",
     "selectedColor": "#fff",
@@ -61,5 +61,7 @@
     "wxbc5e22d529a1c5d0"
   ],
   "sitemapLocation": "sitemap.json",
-  "workers": "workers"
+  "workers": "workers",
+  "darkmode": true,
+  "themeLocation":"theme.json"
 }

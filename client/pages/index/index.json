@@ -9,5 +9,5 @@
   "navigationStyle": "default",
   "enablePullDownRefresh": true,
   "backgroundTextStyle": "light",
-  "backgroundColor": "#36a1f0"
+  "backgroundColor": "@bgColor"
 }

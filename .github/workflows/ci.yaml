@@ -1,4 +1,4 @@
-name: Build
+name: ci
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
       - dev
 
 jobs:
-  qq:
+  wechat-and-qq:
     runs-on: ubuntu-latest
     if: |
       ! contains( github.event.head_commit.message, '[skip action]')
@@ -59,7 +59,7 @@ jobs:
           #PLUGIN_FIRSTPAGE: pages/index/index
           #PLUGIN_USEPACKAGEJSON: true
       - run: |
-          ls -la qrcode.png
+          ls -la qrcode.png || true
       - name: upload to wechat
         run: |
           rm -rf client/project.config.json

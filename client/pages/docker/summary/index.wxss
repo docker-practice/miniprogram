@@ -43,3 +43,14 @@ page{
   color: #8d8d8d;
   margin-top: 3vh;
 }
+
+@media (prefers-color-scheme: dark) {
+  page{
+    background-color: #24292e;
+    color: #24292e;
+  }
+
+  .page__title {
+    color: #fff;
+  }
+}

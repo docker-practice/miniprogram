@@ -4,5 +4,5 @@
   },
   "navigationStyle": "default",
   "enablePullDownRefresh": true,
-  "backgroundColor": "#36a1f0"
+  "backgroundColor": "@bgColor"
 }

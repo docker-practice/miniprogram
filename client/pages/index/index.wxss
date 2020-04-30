@@ -29,3 +29,13 @@ page {
 .getUserInfoBtn{
   margin-top: 50rpx;
 }
+
+@media (prefers-color-scheme: dark) {
+  page {
+    background-color: #24292e;
+  }
+
+  button[plain] {
+    color: #fff;
+  }
+}

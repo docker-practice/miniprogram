@@ -17,6 +17,7 @@ Page({
     lazy: false,
     spinShow: true,
     isqq,
+    theme: 'light',
   },
 
   /**
@@ -24,6 +25,10 @@ Page({
    */
   onLoad: function () {
     this.show();
+
+    this.setData({
+      theme: app.globalData.theme || 'light',
+    });
   },
 
   newSummary() {

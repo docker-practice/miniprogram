@@ -38,4 +38,8 @@ page {
   button[plain] {
     color: #fff;
   }
+
+  button {
+    background-color: #08c160;
+  }
 }

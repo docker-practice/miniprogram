@@ -46,11 +46,27 @@ page{
 
 @media (prefers-color-scheme: dark) {
   page{
-    background-color: #24292e;
-    color: #24292e;
+    background-color: #242424;
+    color: #242424;
   }
 
   .page__title {
     color: #fff;
+  }
+
+  .kind-list__item {
+    background-color: #171717;
+  }
+
+  .weui-cell_access {
+    background-color: #171717;
+  }
+
+  .weui-cell__bd {
+    color: #0091ff;
+  }
+
+  .weui-flex__item{
+    color: #0091ff;
   }
 }

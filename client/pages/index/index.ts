@@ -443,12 +443,7 @@ Page({
   },
 
   async switchEngine() {
-    let itemList = [
-      'wx-markdown',
-      'wx-markdown-richtext',
-      'wemark',
-      'wemark-richtext',
-    ];
+    let itemList = ['wx-markdown', 'wx-markdown-richtext'];
 
     wx.showActionSheet({ itemList }).then((res) => {
       let mdEngine = itemList[res.tapIndex];

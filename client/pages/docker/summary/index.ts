@@ -52,6 +52,7 @@ Page({
     showAd: true,
     isHide: false,
     interstitialAd: null,
+    theme: 'white',
     noticeMessage:
       '《Docker 技术入门与实战》第三版已经面世，介绍最新的容器技术栈，欢迎大家阅读使用并反馈建议。',
   },
@@ -237,6 +238,8 @@ Page({
     this.setData!({
       // @ts-ignore
       list,
+      // @ts-ignore
+      theme: wx.getSystemInfoSync().theme,
     });
 
     // 获取通知消息

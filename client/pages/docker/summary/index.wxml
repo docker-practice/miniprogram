@@ -9,7 +9,7 @@ speed="1200" backgroundcolor="#fff" color="#36a1f0" bind:tap="buyBook">
 
 <!-- <ad unit-id="{{isqq ? 'a4f45b9d8d5704ab70bebfd0780854a8' : 'adunit-3ea71b7cfce6c721'}}" binderror="adError" ad-intervals="30"></ad> -->
 
-<ad unit-id="adunit-86d99366312002b6" ad-type="video" ad-theme="white"></ad>
+<ad unit-id="adunit-86d99366312002b6" ad-type="video" ad-theme="{{theme}}"></ad>
 
 <view class="page">
 <view class="page__hd">
@@ -45,7 +45,7 @@ speed="1200" backgroundcolor="#fff" color="#36a1f0" bind:tap="buyBook">
     </view>
 </view>
 
-<ad unit-id="{{isqq ? 'f2ba7917096dc03c7d798df304a90c49' : 'adunit-4478ecdd36509a60'}}" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
+<ad unit-id="{{isqq ? 'f2ba7917096dc03c7d798df304a90c49' : 'adunit-4478ecdd36509a60'}}" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="{{theme}}"></ad>
 
 </view>
 <view class="weui-footer">

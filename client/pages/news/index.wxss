@@ -32,3 +32,20 @@ page{
   margin-bottom: 3vh;
   color: #8d8d8d;
 }
+
+@media (prefers-color-scheme: dark) {
+  page{
+    background-color: #242424;
+  }
+
+  .kind-list__item-hd {
+    background-color: #171717;
+  }
+
+  .weui-flex__item.title {
+    color: #0091ff;
+  }
+  .weui-flex__item.date {
+    color: #F8F8F8
+  }
+}

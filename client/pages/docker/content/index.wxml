@@ -22,20 +22,11 @@ speed="1200" bind:tap="buyBook"
   <i-spin fix></i-spin>
 </view> -->
 
-<wemark wx:if="{{useWemark}}"
-md="{{data}}" link highlight type="{{wemarkType}}"
-adId="{{ad[0]}}" theme="{{theme}}"
-cache="{{cache}}"
-key="{{key}}"
->
-</wemark>
-
 <markdown markdown="{{data}}" theme="{{theme}}" ad="{{ad}}"
 fontType="{{fontType}}"
 folder="{{folder}}"
 cache="{{cache}}"
 key="{{key}}"
-richtext="{{wxMarkdownRichtext}}"
 >
 </markdown>
 

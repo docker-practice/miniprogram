@@ -8,7 +8,6 @@
     "towxml:build": "cd node_modules/towxml && npm run build"
   },
   "dependencies": {
-    "wemark": "github:docker-practice/wemark",
     "wx-markdown": "github:khs1994/wx-markdown"
   },
   "devDependencies": {

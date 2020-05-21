@@ -25,7 +25,6 @@ wx.onNetworkStatusChange((res) => {
   });
 });
 
-import isQq from '../../../src/utils/isqq';
 import isqq from '../../../src/utils/isqq';
 
 Page({
@@ -57,10 +56,7 @@ Page({
     ad: isqq
       ? ['f2ba7917096dc03c7d798df304a90c49', 'a4f45b9d8d5704ab70bebfd0780854a8']
       : ['adunit-3ea71b7cfce6c721', 'adunit-1246f0a5e441ea4c'],
-    useWemark: false,
-    wemarkType: 'rich-text',
     cache: true,
-    wxMarkdownRichtext: true,
   },
 
   onUnload() {
@@ -113,20 +109,6 @@ Page({
     const fontType = app.globalData.fontType;
     new Font().force(fontType);
 
-    let mdEngine = await cache.get('system/md-engine');
-    let useWemark = false;
-    let wemarkType = 'rich-text';
-    let wxMarkdownRichtext = true;
-
-    if (mdEngine === 'wemark') {
-      useWemark = true;
-      wemarkType = 'wemark';
-    } else if (mdEngine === 'wemark-richtext') {
-      useWemark = true;
-    } else if (mdEngine === 'wx-markdown') {
-      wxMarkdownRichtext = false;
-    }
-
     this.setData!({
       // percent: 0,
       // progressColor: '#36a1f0',
@@ -135,9 +117,6 @@ Page({
       tabbarMode: theme,
       theme,
       fontType,
-      useWemark,
-      wemarkType,
-      wxMarkdownRichtext,
     });
 
     this.load(options);
@@ -149,7 +128,7 @@ Page({
     // 插屏广告
     if (wx.createInterstitialAd) {
       let interstitialAd = wx.createInterstitialAd({
-        adUnitId: isQq
+        adUnitId: isqq
           ? 'b9b0567ae11780a9f7886b61683c1ae2'
           : 'adunit-6ef44789d84b9392',
       });

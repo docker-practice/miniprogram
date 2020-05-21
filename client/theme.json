@@ -1,26 +1,26 @@
 {
   "light": {
-      "navBgColor": "#36a1f0",
-      "navTxtStyle": "black",
-      "bgColor": "#ffffff",
-      "bgTxtStyle": "light",
-      "bgColorTop": "#eeeeee",
-      "bgColorBottom": "#efefef",
-      "tabFontColor": "#000000",
-      "tabSelectedColor": "#3cc51f",
-      "tabBgColor": "#36a1f0",
-      "tabBorderStyle": "black"
+    "navBgColor": "#36a1f0",
+    "navTxtStyle": "black",
+    "bgColor": "#ffffff",
+    "bgTxtStyle": "light",
+    "bgColorTop": "#36a1f0",
+    "bgColorBottom": "#36a1f0",
+    "tabFontColor": "#ffffff",
+    "tabSelectedColor": "#ffffff",
+    "tabBgColor": "#36a1f0",
+    "tabBorderStyle": "white"
   },
   "dark": {
-      "navBgColor": "#24292e",
-      "navTxtStyle": "white",
-      "bgColor": "#1f1f1f",
-      "bgTxtStyle": "dark",
-      "bgColorTop": "#191919",
-      "bgColorBottom": "#1f1f1f",
-      "tabFontColor": "#ffffff",
-      "tabSelectedColor": "#51a937",
-      "tabBgColor": "#24292e",
-      "tabBorderStyle": "white"
+    "navBgColor": "#24292e",
+    "navTxtStyle": "white",
+    "bgColor": "#1f1f1f",
+    "bgTxtStyle": "light",
+    "bgColorTop": "#24292e",
+    "bgColorBottom": "#24292e",
+    "tabFontColor": "#ffffff",
+    "tabSelectedColor": "#ffffff",
+    "tabBgColor": "#24292e",
+    "tabBorderStyle": "white"
   }
 }

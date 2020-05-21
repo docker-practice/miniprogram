@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.11.0",
+	"libVersion": "2.11.1",
 	"projectname": "docker",
 	"miniprogramRoot": "client/",
 	"cloudfunctionRoot": "functions/",
@@ -30,12 +30,15 @@
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
 		},
 		"bundle": true,
+		"useCompilerModule": true,
+		"userConfirmedUseCompilerModuleSwitch": false,
 		"remoteDebugLogEnable": false
 	},
 	"appid": "wxb830c3abf8a658a5",

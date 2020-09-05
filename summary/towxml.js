@@ -1,4 +1,4 @@
-const towxml = require('../client/node_modules/towxml');
+const towxml = require('../client/node_modules/@khs1994/towxml');
 const fs = require('fs');
 
 // let targetPath = '../client/pages/docker/index/summary.js';

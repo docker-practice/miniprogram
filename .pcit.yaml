@@ -8,12 +8,10 @@ steps:
 
       export NODE_PATH=/usr/local/lib/node_modules
 
-      npm -g i fs-extra miniprogram-ci typescript \
+      npm -g i miniprogram-ci typescript \
         --registry https://registry.npm.taobao.org
 
       cd client && npm install --registry https://registry.npm.taobao.org && cd ..
-
-      npm run towxml:build
 
       npm run gitbook:summary:generate
       npm run gitbook:summary:towxml

@@ -14,7 +14,7 @@ Page({
 
   share() {
     let imgUrl =
-      'https://user-images.githubusercontent.com/16733187/57310918-3c3afd80-711d-11e9-8816-266e5ede70bb.jpg';
+      'https://dpsigs.coding.net/p/docker_practice/d/docker-practice.com/git/raw/master/book_20200905223833.jpg';
     wx.previewImage({
       current: imgUrl,
       urls: [imgUrl],

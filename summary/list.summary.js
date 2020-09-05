@@ -356,18 +356,9 @@ module.exports = [
     name: "在 IDE 中使用 Docker",
     open: false,
     pages: [
-        {id: "IDE/README.md", name: "在 IDE 中使用 Docker"},
-        {id: "IDE/vsCode.md", name: "VSCode"},
+        {id: "ide/README.md", name: "在 IDE 中使用 Docker"},
+        {id: "ide/vsCode.md", name: "VSCode"},
     ]
-  },
-  {
-    id: 'opensource',
-    name: 'Docker 开源项目',
-    open: false,
-    pages: [
-      { id: 'opensource/README.md', name: 'Docker 开源项目' },
-      { id: 'opensource/linuxkit.md', name: 'LinuxKit' },
-    ],
   },
   {
     id: 'appendix',

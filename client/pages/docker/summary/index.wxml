@@ -3,13 +3,18 @@
 </view>
 
 <i-notice-bar icon="systemprompt" loop
-speed="1200" backgroundcolor="#fff" color="#36a1f0" bind:tap="buyBook">
+speed="1200" backgroundcolor="{{theme === 'white' ? '#fff': '#000'}}" color="#36a1f0" bind:tap="buyBook">
 {{noticeMessage}}
 </i-notice-bar>
 
 <!-- <ad unit-id="{{isqq ? 'a4f45b9d8d5704ab70bebfd0780854a8' : 'adunit-3ea71b7cfce6c721'}}" binderror="adError" ad-intervals="30"></ad> -->
 
-<ad unit-id="adunit-86d99366312002b6" ad-type="video" ad-theme="{{theme}}"></ad>
+<view class="adContainer" wx:if="{{theme === 'white'}}">
+<ad unit-id="adunit-86d99366312002b6" ad-type="video" ad-theme="white"></ad>
+</view>
+<view class="adContainer" wx:else>
+<ad unit-id="adunit-86d99366312002b6" ad-type="video" ad-theme="black"></ad>
+</view>
 
 <view class="page">
 <view class="page__hd">
@@ -28,12 +33,12 @@ speed="1200" backgroundcolor="#fff" color="#36a1f0" bind:tap="buyBook">
                 <view id="{{item.id}}" class="weui-flex kind-list__item-hd {{item.open ? 'kind-list__item-hd_show' : ''}}" bindtap="kindToggle">
                     <view wx:if="{{item.color}}" class="weui-flex__item" style="color: {{item.color}}">{{item.name}}</view>
                     <view wx:else class="weui-flex__item">{{item.name}}</view>
-                    <image lazy-load="{{true}}" class="kind-list__img" src="/images/icon_nav_{{item.id}}.svg"></image>
+                    <!-- <image wx:if="{{theme === 'white'}}" lazy-load="{{true}}" class="kind-list__img" src="/images/icon_nav_{{item.id}}.svg"></image> -->
                 </view>
                 <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
                     <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
                         <block wx:for="{{item.pages}}" wx:for-item="page" wx:key="id">
-                            <navigator url="../content/index?key={{page.id}}&pro={{page.pro === undefined ? 0:1}}" class="weui-cell weui-cell_access">
+                            <navigator url="../content/index?key={{page.id}}&title={{page.name}}&pro={{page.pro === undefined ? 0:1}}" class="weui-cell weui-cell_access">
                                 <view class="weui-cell__bd">{{page.name}}</view>
                                 <view class="weui-cell__ft weui-cell__ft_in-access"></view>
                             </navigator>
@@ -45,7 +50,12 @@ speed="1200" backgroundcolor="#fff" color="#36a1f0" bind:tap="buyBook">
     </view>
 </view>
 
-<ad unit-id="{{isqq ? 'f2ba7917096dc03c7d798df304a90c49' : 'adunit-4478ecdd36509a60'}}" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="{{theme}}"></ad>
+<view class="adContainer" wx:if="{{theme === 'white'}}">
+<ad unit-id="{{isqq ? 'f2ba7917096dc03c7d798df304a90c49' : 'adunit-4478ecdd36509a60'}}" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="light"></ad>
+</view>
+<view class="adContainer" wx:else>
+<ad unit-id="{{isqq ? 'f2ba7917096dc03c7d798df304a90c49' : 'adunit-4478ecdd36509a60'}}" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="black"></ad>
+</view>
 
 </view>
 <view class="weui-footer">

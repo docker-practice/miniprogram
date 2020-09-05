@@ -5,13 +5,15 @@
     "pages/index/index",
     "pages/donate/index",
     "pages/news/index",
-    "pages/mdContent/index"
+    "pages/mdContent/index",
+    "pages/registry/index"
   ],
   "window": {
     "backgroundTextStyle": "@bgTxtStyle",
     "navigationBarTitleText": "Docker 从入门到实践",
     "navigationBarTextStyle": "white",
     "navigationBarBackgroundColor": "@navBgColor",
+    "backgroundColor": "@bgColor",
     "backgroundColorTop": "@bgColorTop",
     "backgroundColorBottom": "@bgColorBottom",
     "navigationStyle": "custom",
@@ -58,5 +60,6 @@
   "sitemapLocation": "sitemap.json",
   "workers": "workers",
   "darkmode": true,
-  "themeLocation": "theme.json"
+  "themeLocation": "theme.json",
+  "lazyCodeLoading": "requiredComponents"
 }

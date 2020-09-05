@@ -7,31 +7,31 @@
       "fileMatch": [
         "client/app.json"
       ],
-      "url": "/schema/app.json"
+      "url": "/schema/app.schema.json"
     },
     {
       "fileMatch": [
         "client/sitemap.json"
       ],
-      "url": "/schema/sitemap.json"
+      "url": "/schema/sitemap.schema.json"
     },
     {
       "fileMatch": [
         "project.config.json"
       ],
-      "url": "/schema/projectconfig.json"
+      "url": "/schema/projectconfig.schema.json"
     },
     {
       "fileMatch": [
         "client/theme.json"
       ],
-      "url": "/schema/theme.json"
+      "url": "/schema/theme.schema.json"
     },
     {
       "fileMatch": [
         "client/pages/*.json"
       ],
-      "url": "/schema/page.json"
+      "url": "/schema/page.schema.json"
     },
   ]
 }

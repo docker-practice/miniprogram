@@ -17,6 +17,8 @@ const app = getApp<IMyApp>();
 const cache = new Cache();
 const ad = new Ad();
 
+let title = '';
+
 wx.onNetworkStatusChange((res) => {
   wx.showToast({
     title: `${res.networkType.toUpperCase()} 已连接`,
@@ -53,9 +55,10 @@ Page({
     showFixedStatusBar: false,
     fontType: '默认',
     showAd: true,
-    ad: isqq
-      ? ['f2ba7917096dc03c7d798df304a90c49', 'a4f45b9d8d5704ab70bebfd0780854a8']
-      : ['adunit-3ea71b7cfce6c721', 'adunit-1246f0a5e441ea4c'],
+    ad: [],
+    // ad: isqq
+    //   ? ['f2ba7917096dc03c7d798df304a90c49', 'a4f45b9d8d5704ab70bebfd0780854a8']
+    //   : ['adunit-3ea71b7cfce6c721', 'adunit-1246f0a5e441ea4c'],
     cache: true,
   },
 
@@ -197,11 +200,20 @@ Page({
     };
   },
 
+  onShareTimeline() {
+    return {
+      title: 'Docker 从入门到实践 ' + title,
+      // query: '',
+      // imageUrl: '',
+    };
+  },
+
   // 系统事件 end
 
   // 处理加载事件
   async load(options: any, requestFirst: boolean = false) {
     const key = options.key;
+    title = options.title;
 
     let [folder, next_key, before_key] = [
       getFolder(key),
@@ -368,8 +380,10 @@ Page({
       title: '加载中...',
     });
 
-    const [, key] =
+    const [_title, key] =
       type === 'next' ? <any>this.data.next_key : <any>this.data.before_key;
+
+    title = _title;
 
     // 隐藏广告 功能按钮
     this.setData!({

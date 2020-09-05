@@ -3,5 +3,6 @@
     "i-notice-bar": "/src/ui/iviewui/dist/notice-bar/index"
   },
   "navigationStyle": "default",
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "initialRenderingCache": "static"
 }

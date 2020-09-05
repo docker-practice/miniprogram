@@ -5,11 +5,11 @@ import daShang from '../../../src/utils/DaShang';
 import openGithub from '../../../src/utils/OpenGithub';
 import qiandao from '../../../src/utils/Qiandao';
 import { isSign, uploadAdError } from '../../../src/utils/Qiandao';
-import Ad from '../../../src/utils/Ad';
+//import Ad from '../../../src/utils/Ad';
 import DB from '../../../src/Framework/src/Support/DB';
 // import Cloud from '../../../src/Framework/src/Support/Cloud';
 
-const ad = new Ad();
+//const ad = new Ad();
 const db = DB.getInstance();
 // const cloud = Cloud.getInstance();
 
@@ -36,6 +36,8 @@ let interstitialAd: any;
 import getSummary from '../../../src/utils/getSummary';
 import isqq from '../../../src/utils/isqq';
 
+let isHide = false;
+
 Page({
   /**
    * 页面的初始数据
@@ -50,8 +52,6 @@ Page({
     ],
     isqq,
     showAd: true,
-    isHide: false,
-    interstitialAd: null,
     theme: 'white',
     noticeMessage:
       '《Docker 技术入门与实战》第三版已经面世，介绍最新的容器技术栈，欢迎大家阅读使用并反馈建议。',
@@ -193,12 +193,7 @@ Page({
 
   ad(id: string) {
     if (id === 'bus') {
-      ad.bus();
-      return;
-    }
-
-    if (id === 'yuebao') {
-      ad.yuebao();
+      // ad.bus();
       return;
     }
 
@@ -300,13 +295,9 @@ Page({
           : 'adunit-6ef44789d84b9392',
       });
 
-      this.setData!({
-        interstitialAd,
-      });
-
       setTimeout(() => {
         try {
-          if (!this.data.isHide) {
+          if (!isHide) {
             interstitialAd
               .show()
               .then(() => {})
@@ -371,11 +362,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData!({
-      isHide: false,
-    });
+    isHide = false;
 
-    if (!this.data.interstitialAd) {
+    if (!interstitialAd) {
       return;
     }
 
@@ -399,9 +388,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    this.setData!({
-      isHide: true,
-    });
+    isHide = true;
   },
 
   /**

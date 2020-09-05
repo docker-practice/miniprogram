@@ -1,5 +1,5 @@
 <!-- jd.com 导购页面 -->
-<image mode="aspectFit" src="cloud://pro-02adcb.7072-pro-02adcb/images/jd_book_mini.jpg"
+<image mode="aspectFit" src="https://dpsigs.coding.net/p/docker_practice/d/docker-practice.com/git/raw/master/book_20200905223833.jpg"
 style="height:70vh;width:100vw" show-menu-by-longpress="{{true}}"
 />
 

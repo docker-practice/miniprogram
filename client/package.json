@@ -4,14 +4,13 @@
   "scripts": {
     "compile": "npx tsc",
     "compile:pro": "npx tsc --inlineSources false --inlineSourceMap false",
-    "yarn:update": "yarn upgrade-interactive --latest",
-    "towxml:build": "cd node_modules/towxml && npm run build"
+    "yarn:update": "yarn upgrade-interactive --latest"
   },
   "dependencies": {
-    "wx-markdown": "github:khs1994/wx-markdown"
+    "@khs1994/wx-markdown": "0.0.3"
   },
   "devDependencies": {
-    "miniprogram-api-typings": "^2.10.3"
+    "miniprogram-api-typings": "^3.0.2"
   },
   "license": "MIT"
 }

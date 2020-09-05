@@ -11,7 +11,7 @@ export default function dashang() {
     content: '点击打赏，长按图片选择『识别图中二维码』进行打赏',
     confirmText: '打赏',
     confirmColor: '#FF4500',
-    cancelText: '我再看看',
+    cancelText: '我再想想',
     success(res) {
       res.confirm &&
         wx.previewImage({

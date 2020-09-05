@@ -1,4 +1,5 @@
-<ad unit-id="{{isqq ? 'f2ba7917096dc03c7d798df304a90c49' : 'adunit-4478ecdd36509a60'}}" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
+<ad-custom unit-id="adunit-8e6404aa46256998" ad-theme="black"></ad-custom>
+<!-- <ad unit-id="{{isqq ? 'f2ba7917096dc03c7d798df304a90c49' : 'adunit-4478ecdd36509a60'}}" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad> -->
 
 <view class="page__bd page__bd_spacing">
     <view class="kind-list">

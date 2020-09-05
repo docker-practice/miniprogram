@@ -257,4 +257,13 @@ Page({
         'https://gitee.com/docker_practice/docker_practice/raw/master/_images/cover.jpg',
     };
   },
+
+  onShareTimeline(): any {
+    return {
+      title: '今日分享 -- ' + title,
+      query: `key=${key}&title=${title}`,
+      imageUrl:
+        'https://gitee.com/docker_practice/docker_practice/raw/master/_images/cover.jpg',
+    };
+  },
 });

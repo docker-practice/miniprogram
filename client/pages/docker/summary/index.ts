@@ -113,6 +113,14 @@ Page({
       return;
     }
 
+    if (id === 'chengxin') {
+      const imgUrl = 'https://dpsigs.coding.net/p/docker_practice/d/docker-practice.com/git/raw/master/chengxin.png';
+      wx.navigateTo({
+        url: `/pages/random/index?imgUrl=${imgUrl}`
+      });
+      return;
+    }
+
     if (id === 'github') {
       this.github();
       return;

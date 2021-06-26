@@ -51,10 +51,10 @@ speed="1200" backgroundcolor="{{theme === 'white' ? '#fff': '#000'}}" color="#36
 </view>
 
 <view class="adContainer" wx:if="{{theme === 'white'}}">
-<ad unit-id="{{isqq ? 'f2ba7917096dc03c7d798df304a90c49' : 'adunit-4478ecdd36509a60'}}" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="light"></ad>
+<ad unit-id="{{isqq ? 'f2ba7917096dc03c7d798df304a90c49' : 'adunit-1246f0a5e441ea4c'}}" ad-intervals="30" ad-theme="light"></ad>
 </view>
 <view class="adContainer" wx:else>
-<ad unit-id="{{isqq ? 'f2ba7917096dc03c7d798df304a90c49' : 'adunit-4478ecdd36509a60'}}" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="black"></ad>
+<ad unit-id="{{isqq ? 'f2ba7917096dc03c7d798df304a90c49' : 'adunit-1246f0a5e441ea4c'}}" ad-intervals="30" ad-theme="black"></ad>
 </view>
 
 </view>

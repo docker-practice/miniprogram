@@ -4,12 +4,13 @@ export default function dashang() {
   // });
 
   const url =
-    'https://gitee.com/khs1994-docker/docker_practice/raw/master/docker_dashang.png';
+    // 'https://gitee.com/khs1994-docker/docker_practice/raw/master/docker_dashang.png';
+    'https://dpsigs.coding.net/p/docker_practice/d/docker-practice.com/git/raw/master/wechat.jpg';
 
   wx.showModal({
-    title: '打赏',
-    content: '点击打赏，长按图片选择『识别图中二维码』进行打赏',
-    confirmText: '打赏',
+    title: '加入微信群聊',
+    content: '点击加入，长按图片选择『打开对方的名片』添加小助手微信',
+    confirmText: '加入',
     confirmColor: '#FF4500',
     cancelText: '我再想想',
     success(res) {

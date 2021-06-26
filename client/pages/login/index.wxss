@@ -1,5 +1,6 @@
 page {
   background-color: #36a1f0;
+  margin-top: 35%;
 }
 
 #username {
@@ -22,4 +23,15 @@ page {
 
 .loginButton {
   color: #36a1f0!important;
+}
+
+input{
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+
+button {
+  margin-top: 10rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
 }

@@ -9,7 +9,7 @@ speed="1200" backgroundcolor="#fff" color="#36a1f0" wx:if="{{lazy}}"
   <i-spin fix></i-spin>
 </view>
 
-<ad unit-id="{{isqq ? 'f2ba7917096dc03c7d798df304a90c49' : 'adunit-7f0bb210d33e2f9a'}}" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
+<ad unit-id="{{isqq ? 'f2ba7917096dc03c7d798df304a90c49' : 'adunit-1246f0a5e441ea4c'}}" ad-intervals="30" ad-theme="white"></ad>
 
 <markdown markdown="{{data}}" isTowxml="{{false}}" navigator="{{false}}" theme="{{theme}}"></markdown>
 

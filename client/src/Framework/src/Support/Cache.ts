@@ -110,7 +110,7 @@ export default class Cache {
     return await new Promise((resolve, reject) => {
       clearStorage({
         success: () => {
-          resolve();
+          resolve(null);
         },
         fail: () => {
           reject();
@@ -124,7 +124,7 @@ export default class Cache {
       removeStorage({
         key,
         success: () => {
-          resolve();
+          resolve(null);
         },
         fail: () => {
           reject();

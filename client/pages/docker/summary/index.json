@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "i-notice-bar": "/src/ui/iviewui/dist/notice-bar/index"
+    "i-notice-bar": "/src/ui/iviewui/dist/notice-bar/index",
+    "mp-searchbar": "weui-miniprogram/searchbar/searchbar"
   },
   "navigationStyle": "default",
   "enablePullDownRefresh": true,

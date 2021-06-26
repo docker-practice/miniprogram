@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "i-button": "/src/ui/iviewui/dist/button/index"
+    "i-button": "/src/ui/iviewui/dist/button/index",
+    "mp-icon": "weui-miniprogram/icon/icon"
   },
   "navigationBarTitleText": "GitHub 登录",
   "navigationStyle": "default",

@@ -2,7 +2,17 @@
 <form bindsubmit="login">
 <input placeholder="GitHub Username" name="username" id="username"
 auto-focus></input>
-<input placeholder="Password" type="password" name="password" id="password"
+<!-- https://docs.github.com/en/rest/overview/other-authentication-methods -->
+<input placeholder="Personal Access Tokens (PAT)" type="password" name="password" id="password"
 ></input>
-<button form-type="submit" loading="{{isloading}}">登录</button>
+<button form-type="submit" loading="{{isloading}}">登录 GitHub</button>
+<button form-type="submit" loading="{{isScanQrLoading}}">
+<mp-icon icon="qr-code" color="{{color}}" size="{{20}}"></mp-icon>
+扫描二维码登录 GitHub</button>
+
+<form style="margin-left:10%;">
+<mp-icon icon="info" color="{{color}}" size="{{20}}"></mp-icon>
+请扫描含有 PAT 信息的二维码
+</form>
+
 </form>

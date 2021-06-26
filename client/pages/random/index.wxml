@@ -1,2 +1,7 @@
-<!--pages/random/index.wxml-->
-<text>pages/random/index.wxml</text>
+<image mode="aspectFit" src="{{imgUrl}}"
+style="height:70vh;width:100vw" show-menu-by-longpress="{{true}}"
+/>
+
+<button type="warn" class="btn_buy" bind:tap="share">长按图片前往</button>
+
+<button type="primary" class="btn_share" bind:tap="share">分享</button>

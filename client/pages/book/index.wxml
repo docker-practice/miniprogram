@@ -3,6 +3,6 @@
 style="height:70vh;width:100vw" show-menu-by-longpress="{{true}}"
 />
 
-<button type="warn" class="btn_buy" bind:tap="buyBook">JD.COM 立即购买</button>
+<button type="warn" class="btn_buy" bind:tap="share">长按图片前往京东购买</button>
 
 <button type="primary" class="btn_share" bind:tap="share">分享</button>

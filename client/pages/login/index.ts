@@ -7,12 +7,21 @@ Page({
     isloading: false,
     // username: '',
     // password: '',
+    color: 'black', // white
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {},
+  onLoad: function () {
+    wx.getSystemInfo({
+      success:(res)=>{
+        this.setData({
+          color: res.theme == 'dark' ? 'white' : 'black'
+        })
+      }
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -44,14 +53,33 @@ Page({
    */
   onReachBottom: function () {},
 
-  login(res: any) {
-    this.setData!({
-      isloading: true,
-    });
-
+  async login(res: any) {
     // console.log(res);
     const username = res.detail.value.username;
-    const password = res.detail.value.password;
+    let password = res.detail.value.password;
+
+    if(!username){
+      wx.showModal({
+         content: "请输入用户名",
+         showCancel: false,
+      });
+
+      return;
+    }
+
+    this.setData!({
+      isloading: password != "",
+      isScanQrLoading: password == "",
+    });
+
+    if (!password) {
+      password = await wx.scanCode({}).then((res) => {
+        const result = res.result;
+        console.log("==> Get token from qr: " + result);
+
+        return result;
+      });
+    }
 
     // const username = this.data.username;
     // const password = this.data.password;
@@ -63,14 +91,14 @@ Page({
     fs.writeFileSync(
       `${wx.env.USER_DATA_PATH}/token`,
       `${username}:${password}`,
-      'utf-8',
+      "utf-8",
     );
-    const token = fs.readFileSync(`${wx.env.USER_DATA_PATH}/token`, 'base64');
+    const token = fs.readFileSync(`${wx.env.USER_DATA_PATH}/token`, "base64");
 
     wx.request({
-      url: 'https://ci.khs1994.com/proxy_github_api/user',
+      url: "https://ci.khs1994.com/proxy_github_api/user",
       header: {
-        Authorization: 'Basic ' + token,
+        Authorization: "Basic " + token,
       },
       success: (res: any) => {
         if (res.statusCode !== 200) {
@@ -80,7 +108,7 @@ Page({
         }
 
         wx.showToast({
-          title: '登录成功',
+          title: "登录成功",
         });
 
         setTimeout(() => {
@@ -104,11 +132,12 @@ Page({
 
     this.setData!({
       isloading: false,
+      isScanQrLoading: false,
     });
 
     wx.showModal({
-      title: '登录失败',
-      content: '请检查用户名及密码是否正确',
+      title: "登录失败",
+      content: "请检查用户名及密码是否正确",
       showCancel: false,
     });
   },

@@ -6,18 +6,23 @@ module.exports = [
   },
   {
     id: 'dashang',
-    name: '打赏',
-    color: '#ea3524',
-  },
-  {
-    id: 'subscribeMessage',
-    name: '每日订阅',
+    name: '加入微信群聊',
     color: '#07c160',
   },
+  {
+    id: 'chengxin',
+    name: '橙心优选优惠购',
+    color: '#ff4a09',
+  },
+  // {
+  //   id: 'subscribeMessage',
+  //   name: '每日订阅',
+  //   color: '#07c160',
+  // },
   // 文章
   {
     id: 'news',
-    name: '容器生态 一手掌握',
+    name: '容器生态最新动态',
   //  color: '#FFB90F',
   },
   // {
@@ -112,6 +117,8 @@ module.exports = [
       { id: 'image/dockerfile/user.md', name: 'USER 指定当前用户' },
       { id: 'image/dockerfile/healthcheck.md', name: 'HEALTHCHECK 健康检查' },
       { id: 'image/dockerfile/onbuild.md', name: 'ONBUILD 为他人作嫁衣裳' },
+      { id: 'image/dockerfile/label.md', name: 'LABEL 为镜像添加元数据' },
+      { id: 'image/dockerfile/shell.md', name: 'SHELL 指令' },
       { id: 'image/dockerfile/references.md', name: '参考文档' },
       {
         id: 'image/multistage-builds/README.md',
@@ -220,8 +227,9 @@ module.exports = [
     name: 'Docker Compose',
     open: false,
     pages: [
-      { id: 'compose/README.md', name: 'Docker 三剑客之 Compose 项目' },
+      { id: 'compose/README.md', name: 'Docker Compose' },
       { id: 'compose/introduction.md', name: '简介' },
+      { id: 'compose/v2.md', name: 'Compose v2' },
       { id: 'compose/install.md', name: '安装与卸载' },
       { id: 'compose/usage.md', name: '使用' },
       { id: 'compose/commands.md', name: '命令说明' },
@@ -348,7 +356,6 @@ module.exports = [
       { id: 'cases/ci/actions/README.md', name: 'GitHub Actions' },
       { id: 'cases/ci/drone/install.md', name: '部署 Drone' },
       { id: 'cases/ci/drone/README.md', name: 'Drone' },
-      { id: 'cases/ci/travis/README.md', name: 'Travis CI' },
     ],
   },
   {
